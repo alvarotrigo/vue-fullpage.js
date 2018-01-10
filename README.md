@@ -1,4 +1,5 @@
 # Vue-fullpage.js
+![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
 Official Vue.js wrapper for the [fullPage.js](https://github.com/alvarotrigo/fullPage.js/) library.
 
 ## Table of contents
@@ -7,6 +8,8 @@ Official Vue.js wrapper for the [fullPage.js](https://github.com/alvarotrigo/ful
 3. [Options](#options)
 4. [Methods of wrapper](#methods-of-wrapper)
 5. [Callbacks](#callbacks)
+6. [Contributing](#contributing)
+7. [License](#license)
 
 ## Installation
 For using of this component you need to include:
@@ -160,3 +163,34 @@ Or you can use the standard approach for event handling of Vue.js:
 
 Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#callbacks) of fullPage.js library.
 Just translate camelCase name of callback to kebab-case and use it ;)
+
+## Contributing
+Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage.js/wiki/Contributing-to-fullpage.js)
+
+
+## License
+
+**The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification )
+
+(The MIT License)
+
+Copyright (c) 2013 Alvaro Trigo &lt;alvaro@alvarotrigo.com&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
