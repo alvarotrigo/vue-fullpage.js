@@ -1,6 +1,8 @@
 # Vue-fullpage.js
 ![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
+<p align="center">
 Official Vue.js wrapper for the [fullPage.js](https://github.com/alvarotrigo/fullPage.js/) library.
+</p>
 
 ## Table of contents
 1. [Installation](#installation)
