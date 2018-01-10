@@ -1,0 +1,37 @@
+{
+  "name": "vuejs.fullpage",
+  "version": "0.1.0",
+  "description": "VueJS wrapper for fullPage library",
+  "main": "./src/FullPage.vue",
+  "scripts": {
+    "dev": "webpack-dev-server --config=webpack.config.dev.js",
+    "demo1": "webpack --config=webpack.config.js demos/demo1/src/index.js demos/demo1/dist/build.js",
+    "demo2": "webpack --config=webpack.config.js demos/demo2/src/index.js demos/demo2/dist/build.js",
+    "demo3": "webpack --config=webpack.config.js demos/demo3/src/index.js demos/demo3/dist/build.js",
+    "demo4": "webpack --config=webpack.config.js demos/demo4/src/index.js demos/demo4/dist/build.js",
+    "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.js --output-library=fullPage",
+    "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.js --output-library=fullPageMixin"
+  },
+  "dependencies": {
+    "vue": "^2.5.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
+    "css-loader": "^0.28.7",
+    "html-webpack-plugin": "^2.30.1",
+    "vue-loader": "^13.6.0",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "keywords": [
+    "fullPage",
+    "VueJS"
+  ],
+  "author": "IT Brains",
+  "license": "ISC"
+}
