@@ -38,7 +38,17 @@
       options: {
         deep: true,
         handler() {
+          let activeSectionIndex = $('.fp-section.active').index();
+          let activeSlideIndex = $('.fp-section.active').find('.slide.active').index();
+
           this.destroy('all');
+
+          $('.section').eq(activeSectionIndex).addClass('active');
+
+          if(activeSlideIndex > -1){
+            $('.section.active').find('.slide').eq(activeSlideIndex).addClass('active');
+          }
+
           this.init();
         },
       },
@@ -54,6 +64,10 @@
           ...this.options,
           ...this.events,
         });
+      },
+
+      destroy() {
+        $.fn.fullpage.destroy('all');
       },
 
       emitEvent(name, args) {

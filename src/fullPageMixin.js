@@ -14,7 +14,15 @@ export default {
         ...methods,
 
         [method]: (...args) => {
-          $.fn.fullpage[method](args);
+          if (args[0] instanceof Event) {
+            args.shift();
+          }
+
+          if (args.length) {
+            $.fn.fullpage[method].apply( this, args );
+          } else {
+            $.fn.fullpage[method]();
+          }
         }
       };
     }, {}),
