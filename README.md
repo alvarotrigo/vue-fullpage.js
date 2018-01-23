@@ -23,6 +23,18 @@ For using of this component you need to include:
 - [fullPage.js library](https://github.com/alvarotrigo/fullPage.js/) with its dependencies
 - Install and register this wrapper like simple Vue.js component.
 
+
+Terminal:
+```shell
+// With bower
+bower install vue-fullpage.js
+
+// With npm
+npm install vue-fullpage.js
+```
+
+Check out [the license](#license) for commercial projects.
+
 ## Basic usage
 This wrapper creates a `<full-page>` component , which you can use like other Vue.js components. For example:
 
@@ -253,9 +265,7 @@ Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage
 ## License
 
 ### Commercial license
-**You set the price!** You choose what you consider fair. If you want to use vue-fullpage.js to develop commercial sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. [Get vue-fullpage.js Commercial License here]()
+**You set the price!** You choose what you consider fair. If you want to use vue-fullpage.js to develop commercial sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. [Get vue-fullpage.js Commercial License here](https://gum.co/fullpageVueFullpage)
 
 ### Open source license
 If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use vue-fullpage.js under the terms of the GPLv3.
-
-Read more about [vue-fullpage.js license](https://alvarotrigo.com/fullPage/vue-fullpage/license.html).

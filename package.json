@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Official Vue.js wrapper for fullPage library",
   "main": "./src/FullPage.vue",
   "scripts": {
@@ -8,6 +8,10 @@
     "demo1": "webpack --config=webpack.config.js demos/demo1/src/index.js demos/demo1/dist/build.js",
     "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.min.js --output-library=fullPage",
     "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.min.js --output-library=fullPageMixin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alvarotrigo/vue-fullpage.js.git"
   },
   "dependencies": {
     "vue": "^2.5.13"
@@ -37,6 +41,10 @@
     "scrolling",
     "snap"
   ],
+  "bugs": {
+    "url": "https://github.com/alvarotrigo/vue-fullpage.js/issues"
+  },
+  "homepage": "https://github.com/alvarotrigo/vue-fullpage.js",
   "author": "Alvaro Trigo",
   "license": "GNU GPL license v3"
 }
