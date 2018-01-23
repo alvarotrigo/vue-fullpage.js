@@ -6,7 +6,7 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/)
 - [fullpage.js Extensions](http://alvarotrigo.com/fullPage/extensions/)
-- By [@imac2](https://twitter.com/imac2). Contributors [Vasiliy Gryaznoy](https://github.com/VasiliyGryaznoy) and [Nikolay Zhidenko](https://github.com/dragg).
+- By [@imac2](https://twitter.com/imac2).
 
 ## Table of contents
 1. [Installation](#installation)
