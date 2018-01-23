@@ -1,16 +1,13 @@
 {
-  "name": "vuejs.fullpage",
+  "name": "vue-fullpage.js",
   "version": "0.1.0",
-  "description": "VueJS wrapper for fullPage library",
+  "description": "Official Vue.js wrapper for fullPage library",
   "main": "./src/FullPage.vue",
   "scripts": {
     "dev": "webpack-dev-server --config=webpack.config.dev.js",
     "demo1": "webpack --config=webpack.config.js demos/demo1/src/index.js demos/demo1/dist/build.js",
-    "demo2": "webpack --config=webpack.config.js demos/demo2/src/index.js demos/demo2/dist/build.js",
-    "demo3": "webpack --config=webpack.config.js demos/demo3/src/index.js demos/demo3/dist/build.js",
-    "demo4": "webpack --config=webpack.config.js demos/demo4/src/index.js demos/demo4/dist/build.js",
-    "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.js --output-library=fullPage",
-    "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.js --output-library=fullPageMixin"
+    "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.min.js --output-library=fullPage",
+    "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.min.js --output-library=fullPageMixin"
   },
   "dependencies": {
     "vue": "^2.5.13"
@@ -30,8 +27,16 @@
   },
   "keywords": [
     "fullPage",
-    "VueJS"
+    "VueJS",
+    "fullpage.js",
+    "vue-fullpage",
+    "vue-fullpage.js",
+    "sections",
+    "slides",
+    "carousel",
+    "scrolling",
+    "snap"
   ],
-  "author": "IT Brains",
-  "license": "ISC"
+  "author": "Alvaro Trigo",
+  "license": "GNU GPL license v3"
 }

@@ -6,16 +6,17 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/)
 - [fullpage.js Extensions](http://alvarotrigo.com/fullPage/extensions/)
-- By [@imac2](https://twitter.com/imac2)
+- By [@imac2](https://twitter.com/imac2). Contributors [Vasiliy Gryaznoy](https://github.com/VasiliyGryaznoy) and [Nikolay Zhidenko](https://github.com/dragg).
 
 ## Table of contents
 1. [Installation](#installation)
 2. [Basic usage](#basic-usage)
 3. [Options](#options)
-4. [Methods of wrapper](#methods-of-wrapper)
+4. [Methods](#methods)
 5. [Callbacks](#callbacks)
 6. [Contributing](#contributing)
-7. [License](#license)
+7. [Resources](#resources)
+8. [License](#license)
 
 ## Installation
 For using of this component you need to include:
@@ -244,11 +245,15 @@ new Vue({
 ## Contributing
 Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage.js/wiki/Contributing-to-fullpage.js)
 
+# Resources
+- [Wordpress theme](https://alvarotrigo.com/fullPage/utils/wordpress.html)
+- [CSS Easing Animation Tool - Matthew Lein](http://matthewlein.com/ceaser/) (useful to define the `easingcss3` value)
+- [fullPage.js jsDelivr CDN](http://www.jsdelivr.com/#!jquery.fullpage)
 
 ## License
 
 ### Commercial license
-If you want to use vue-fullpage.js to develop commercial sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. Purchase a vue-fullpage.js Commercial License here.
+**You set the price!** You choose what you consider fair. If you want to use vue-fullpage.js to develop commercial sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. [Get vue-fullpage.js Commercial License here]()
 
 ### Open source license
 If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use vue-fullpage.js under the terms of the GPLv3.
