@@ -4,6 +4,10 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
+- [Demo online](https://alvarotrigo.com/vue-fullpage/)
+- [fullpage.js Extensions](http://alvarotrigo.com/fullPage/extensions/)
+- By [@imac2](https://twitter.com/imac2)
+
 ## Table of contents
 1. [Installation](#installation)
 2. [Basic usage](#basic-usage)
@@ -54,14 +58,44 @@ This wrapper creates a `<full-page>` component , which you can use like other Vu
 </script>
 ```
 
+If you prefer to use `Vue.component` followed by `new Vue`, then you would have to include `vue.min.js`, `build.min.js` and optionally `mixin.min.js` if you will make use of fullpage.js methods. [Demo online]().
+
+For example:
+
+```html
+<script src="mixin.min.js"></script>
+<script src="vue.min.js"></script>
+<script src="build.min.js"></script>
+```
+
+Then initialise it this way:
+```javascript
+Vue.component('full-page', fullPage.default);
+
+new Vue({
+    el: '#app',
+    mixins: [fullPageMixin.default],
+    data: {
+        options: {
+            scrollBar: false
+        },
+    },
+    methods: {
+        test: function(e) {
+            alert("Test");
+        }
+    }
+});
+```
+
 ## Options
 You can use any [options](https://github.com/alvarotrigo/fullPage.js#options) supported by fullPage.js library.
 Just pass options object into this wrapper like Vue.js property. You can see this in the example above.
 Options object can contain simple [options](https://github.com/alvarotrigo/fullPage.js#options) as well as fullPage.js [callbacks](https://github.com/alvarotrigo/fullPage.js#callbacks).
 
-## Methods of wrapper
+## Methods
 fullPage.js contains many [methods](https://github.com/alvarotrigo/fullPage.js#methods).
-You can use any of them. Just include fullPage mixin in your component. This mixin contains all methods which fullPage library provides.
+You can use any of them. Just include fullPage mixin in your component and the `fullPageMixin.vue file. This mixin contains all methods which fullPage library provides.
 
 Example:
 ```html
@@ -70,11 +104,11 @@ Example:
     <full-page>
       <div class="section">
         <button class="next" @click="moveSectionDown">Next</button>
-        First section ...
+        Section 1
       </div>
       <div class="section">
         <button class="prev" @click="moveSectionUp">Prev</button>
-        Second section ...
+        Section 2
       </div>
     </full-page>
   </div>
@@ -165,6 +199,47 @@ Or you can use the standard approach for event handling of Vue.js:
 
 Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#callbacks) of fullPage.js library.
 Just translate camelCase name of callback to kebab-case and use it ;)
+
+## Dynamic changes
+vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT watch any DOM changes.
+
+In order for fullPage.js to get updated after a change in any of the fullPage.js options, you'll have to make sure to use such option in the initialization.
+
+For example, if we want fullPage.js to get updated whenever I change the `scrollBar` and `controlArrows` options, I'll have to use this:
+
+```javascript
+<script>
+  import FullPage from 'FullPage';
+
+  export default {
+      components: {
+        FullPage,
+      },
+
+      data() {
+        return {
+          options: {
+            controlArrows: true,
+            scrollBar: true
+          },
+        }
+      },
+    }
+</script>
+```
+
+Or, if using `new Vue`, use an object instead of a function for the `data` property:
+```javascript
+new Vue({
+    el: '#app',
+    data: {
+        options: {
+            controlArrows: true,
+            scrollBar: true
+        },
+    }
+});
+```
 
 ## Contributing
 Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage.js/wiki/Contributing-to-fullpage.js)
