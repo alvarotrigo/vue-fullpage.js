@@ -15,7 +15,8 @@
     "url": "git@github.com:alvarotrigo/vue-fullpage.js.git"
   },
   "dependencies": {
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "jquery": ">=1.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

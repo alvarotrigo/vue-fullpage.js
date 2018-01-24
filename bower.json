@@ -1,0 +1,36 @@
+{
+  "name": "vue-fullpage.js",
+  "homepage": "http://alvarotrigo.com/vue-fullpage/",
+  "authors": [
+    "Alvaro Trigo https://github.com/vue-fullpage.js"
+  ],
+  "description": "Official Vue.js wrapper for fullPage library",
+  "main": [
+    "src/FullPage.vue",
+    "src/fullPageMixin.js"
+  ],
+  "keywords": [
+    "fullPage",
+    "VueJS",
+    "fullpage.js",
+    "vue-fullpage",
+    "vue-fullpage.js",
+    "sections",
+    "slides",
+    "carousel",
+    "scrolling",
+    "snap"
+  ],
+  "license": "GNU GPL license v3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "vue": "^2.5.13",
+      "jquery": ">=1.6.0"
+    }
+}
