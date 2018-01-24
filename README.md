@@ -5,7 +5,7 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 </p>
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/)
-- [fullpage.js Extensions](http://alvarotrigo.com/fullPage/extensions/)
+- [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - By [@imac2](https://twitter.com/imac2).
 
 ## Table of contents
@@ -214,13 +214,21 @@ Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#ca
 Just translate camelCase name of callback to kebab-case and use it ;)
 
 ## Dynamic changes
-vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT watch any DOM changes.
-
-In order for fullPage.js to get updated after a change in any of the fullPage.js options, you'll have to make sure to use such option in the initialization.
-
-For example, if we want fullPage.js to get updated whenever I change the `scrollBar` and `controlArrows` options, I'll have to use this:
+vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT automatically watch any DOM changes. If you want vue-fullpage.js to react to DOM changes call `$.fn.fullpage.update();` after making those changes. For example:
 
 ```javascript
+$('#fullpage').append(`<div class="section">
+    <h3>New section</h3>
+</div>`);
+
+$.fn.fullpage.update();
+```
+
+In order for fullPage.js to get updated after a change in any of the fullPage.js options, you'll have to make sure to use such option in the initialisation.
+
+For example, if we want fullPage.js to get updated whenever I change the `scrollBar` and `controlArrows` options, I'll have to use the following initialisation:
+
+```html
 <script>
   import FullPage from 'FullPage';
 
