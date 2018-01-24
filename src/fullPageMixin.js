@@ -1,12 +1,12 @@
-/*!
- * vue-fullpage.js - fullPageMixin.js
+import * as constants from './constants';
+
+/**
+ * vue-fullpage.js
  * https://github.com/alvarotrigo/vue-fullpage.js
  * @license https://github.com/alvarotrigo/vue-fullpage.js#license
  *
  * Copyright (C) 2018 alvarotrigo.com - A project by Alvaro Trigo
  */
-import * as constants from './constants';
-
 export default {
   data() {
     return {

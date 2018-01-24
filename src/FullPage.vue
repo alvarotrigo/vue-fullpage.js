@@ -1,10 +1,3 @@
-<!--
- * vue-fullpage.js - fullPage.vue
- * https://github.com/alvarotrigo/vue-fullpage.js
- * @license https://github.com/alvarotrigo/vue-fullpage.js#license
- *
- * Copyright (C) 2018 alvarotrigo.com - A project by Alvaro Trigo
--->
 <template>
   <div>
     <slot></slot>
@@ -17,6 +10,13 @@
     camelToKebab,
   } from './helpers';
 
+/**
+ * vue-fullpage.js
+ * https://github.com/alvarotrigo/vue-fullpage.js
+ * @license https://github.com/alvarotrigo/vue-fullpage.js#license
+ *
+ * Copyright (C) 2018 alvarotrigo.com - A project by Alvaro Trigo
+ */
   export default {
     props: {
       options: {

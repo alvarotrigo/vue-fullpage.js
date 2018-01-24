@@ -64,7 +64,7 @@
       return {
         options: {
           afterLoad: this.afterLoad,
-          scrollBar: true,
+          scrollBar: false,
           menu: '#menu',
           navigation: true,
           anchors: ['page1', 'page2', 'page3'],
