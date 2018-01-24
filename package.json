@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config=webpack.config.dev.js",
     "demo1": "webpack --config=webpack.config.js demos/demo1/src/index.js demos/demo1/dist/build.js",
+    "stand-alone": "concurrently 'webpack --config=webpack.config.build.js src/FullPage.vue demos/stand-alone/build.min.js --output-library=fullPage'  'webpack --config=webpack.config.build.js src/fullPageMixin.js demos/stand-alone/mixin.min.js --output-library=fullPageMixin'",
     "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.min.js --output-library=fullPage",
     "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.min.js --output-library=fullPageMixin"
   },
@@ -21,6 +22,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
