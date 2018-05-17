@@ -20,8 +20,9 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 
 ## Installation
 For using of this component you need to include:
-- [fullPage.js library](https://github.com/alvarotrigo/fullPage.js/) with its dependencies
+- [fullPage.js library](https://github.com/alvarotrigo/fullPage.js/) with **its dependencies** (jQuery)
 - Install and register this wrapper like simple Vue.js component.
+- Include fullPage.js files (`jquery.fullpage.js` and `jquery.fullpage.css`)
 
 
 Terminal:
