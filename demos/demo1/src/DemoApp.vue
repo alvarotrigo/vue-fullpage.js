@@ -54,8 +54,6 @@
   import fullPageMixin from './../../../src/fullPageMixin';
 
   export default {
-    mixins: [fullPageMixin],
-
     components: {
       FullPage,
     },

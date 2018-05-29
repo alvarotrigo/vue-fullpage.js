@@ -1,53 +1,133 @@
 {
-  "name": "vue-fullpage.js",
+  "name": "vue-fullpage",
   "version": "0.0.1",
-  "description": "Official Vue.js wrapper for fullPage library",
-  "main": "./src/FullPage.vue",
-  "scripts": {
-    "dev": "webpack-dev-server --config=webpack.config.dev.js",
-    "demo1": "webpack --config=webpack.config.js demos/demo1/src/index.js demos/demo1/dist/build.js",
-    "stand-alone": "concurrently 'webpack --config=webpack.config.build.js src/FullPage.vue demos/stand-alone/build.min.js --output-library=fullPage'  'webpack --config=webpack.config.build.js src/fullPageMixin.js demos/stand-alone/mixin.min.js --output-library=fullPageMixin'",
-    "build": "webpack --config=webpack.config.build.js src/FullPage.vue dist/build.min.js --output-library=fullPage",
-    "mixin": "webpack --config=webpack.config.build.js src/fullPageMixin.js dist/mixin.min.js --output-library=fullPageMixin"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:alvarotrigo/vue-fullpage.js.git"
-  },
-  "dependencies": {
-    "vue": "^2.5.13",
-    "jquery": ">=1.6.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "concurrently": "^3.5.1",
-    "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.11",
-    "html-webpack-plugin": "^2.30.1",
-    "vue-loader": "^13.7.1",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.2"
-  },
-  "keywords": [
-    "fullPage",
-    "VueJS",
-    "fullpage.js",
-    "vue-fullpage",
-    "vue-fullpage.js",
-    "sections",
-    "slides",
-    "carousel",
-    "scrolling",
-    "snap"
+  "description": "Vue wrapper for fullpage.js",
+  "author": "Raphael Owino <ralphowino@gmail.com>",
+  "main": "dist/vue-fullpage.common.js",
+  "module": "dist/vue-fullpage.esm.js",
+  "browser": "dist/vue-fullpage.js",
+  "unpkg": "dist/vue-fullpage.js",
+  "style": "dist/vue-fullpage.css",
+  "files": [
+    "dist",
+    "src"
   ],
-  "bugs": {
-    "url": "https://github.com/alvarotrigo/vue-fullpage.js/issues"
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "yon run build:common && yon run build:browser && yon run build:browser:min",
+    "build:common": "cross-env NODE_ENV=common webpack --config build/webpack.config.common.js --progress --hide-modules",
+    "build:browser:base": "webpack --config build/webpack.config.browser.js --progress --hide-modules",
+    "build:browser": "cross-env NODE_ENV=browser yon run build:browser:base",
+    "build:browser:min": "cross-env NODE_ENV=production yon run build:browser:base -- -p",
+    "build:dll": "webpack --progress --config build/webpack.config.dll.js",
+    "lint": "yon run lint:js && yon run lint:css",
+    "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/*.js build",
+    "lint:js:fix": "yon run lint:js -- --fix",
+    "lint:css": "stylelint src/**/*.{vue,css}",
+    "lint:staged": "lint-staged",
+    "pretest": "yon run lint",
+    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.config.dev.js --open",
+    "dev:coverage": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "prepublish": "yon run build"
   },
-  "homepage": "https://github.com/alvarotrigo/vue-fullpage.js",
-  "author": "Alvaro Trigo",
-  "license": "GNU GPL license v3"
+  "lint-staged": {
+    "*.{vue,jsx,js}": [
+      "eslint --fix"
+    ],
+    "*.{vue,css}": [
+      "stylefmt",
+      "stylelint"
+    ]
+  },
+  "pre-commit": "lint:staged",
+  "devDependencies": {
+    "@storybook/vue": "^3.4.6",
+    "add-asset-html-webpack-plugin": "^2.0.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-istanbul": "^4.1.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.4.0",
+    "babel-preset-env": "^1.4.0",
+    "chai": "^3.5.0",
+    "chai-dom": "^1.4.0",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "eslint-config-vue": "^2.0.0",
+    "eslint-plugin-vue": "^2.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "karma": "^1.7.0",
+    "karma-chai-dom": "^1.1.0",
+    "karma-chrome-launcher": "^2.1.0",
+    "karma-coverage": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-sinon-chai": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-webpack": "^2.0.0",
+    "lint-staged": "^3.4.0",
+    "mocha": "^3.3.0",
+    "mocha-css": "^1.0.1",
+    "null-loader": "^0.1.1",
+    "postcss": "^6.0.0",
+    "postcss-cssnext": "^2.10.0",
+    "pre-commit": "^1.2.0",
+    "rimraf": "^2.6.0",
+    "sinon": "2.2.0",
+    "sinon-chai": "^2.10.0",
+    "style-loader": "^0.17.0",
+    "stylefmt": "^5.3.0",
+    "stylelint": "^7.10.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-processor-html": "^1.0.0",
+    "uppercamelcase": "^3.0.0",
+    "vue": "^2.3.0",
+    "vue-loader": "^12.0.0",
+    "vue-template-compiler": "^2.3.0",
+    "webpack": "^2.5.0",
+    "webpack-bundle-analyzer": "^2.4.0",
+    "webpack-dashboard": "^0.4.0",
+    "webpack-dev-server": "^2.4.0",
+    "webpack-merge": "^4.0.0",
+    "yarn-or-npm": "^2.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.3.0"
+  },
+  "dllPlugin": {
+    "name": "vuePluginTemplateDeps",
+    "include": [
+      "mocha/mocha.js",
+      "style-loader!css-loader!mocha-css",
+      "html-entities",
+      "vue/dist/vue.js",
+      "chai",
+      "core-js/library",
+      "url",
+      "sockjs-client",
+      "vue-style-loader/lib/addStylesClient.js",
+      "events",
+      "ansi-html",
+      "style-loader/addStyles.js"
+    ]
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/mit-license.php"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "fullpage.js": "^2.9.7",
+    "jquery": "^3.3.1"
+  }
 }
