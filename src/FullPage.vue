@@ -87,8 +87,8 @@
           $(sectionSelector + '.active').find(slideSelector).eq(activeSlideIndex).addClass('active');
         }
         $(this.$el).fullpage({
-          ...this.options,
           ...this.events,
+          ...this.options,
         });
       },
     },
