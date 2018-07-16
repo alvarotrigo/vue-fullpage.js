@@ -28,7 +28,7 @@ bower install vue-fullpage.js
 npm install vue-fullpage.js
 ```
 
-###Dependencies
+### Dependencies
 ```shell
 // With bower
 bower install fullpage.js
