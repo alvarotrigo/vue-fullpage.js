@@ -19,12 +19,6 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 8. [License](#license)
 
 ## Installation
-For using of this component you need to include:
-- [fullPage.js library](https://github.com/alvarotrigo/fullPage.js/) with **its dependencies** (jQuery)
-- Install and register this wrapper like simple Vue.js component.
-- Include fullPage.js files (`jquery.fullpage.js` and `jquery.fullpage.css`)
-
-
 Terminal:
 ```shell
 // With bower
@@ -34,6 +28,28 @@ bower install vue-fullpage.js
 npm install vue-fullpage.js
 ```
 
+###Dependencies
+```shell
+// With bower
+bower install fullpage.js
+
+// With npm
+npm install fullpage.js
+```
+
+Add the following links to your index.html head element in your project. These are the dependencies for fullpage.js. Update the versions as you require.
+```shell
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.css">
+```
+
+setup the component to be used in the project in src/main.js
+```shell
+import FullPage from 'vue-fullpage.js';
+
+Vue.component('full-page', FullPage);
+```
 Check out [the license](#license) for commercial projects.
 
 ## Basic usage
@@ -54,8 +70,6 @@ This wrapper creates a `<full-page>` component , which you can use like other Vu
 </template>
 
 <script>
-  import FullPage from 'FullPage';
-
   export default {
     components: {
       FullPage,
