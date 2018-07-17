@@ -20,22 +20,15 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 
 
 ## Installation
-For using of this component you need to include:
-- [fullPage.js library](https://github.com/alvarotrigo/fullPage.js/) with **its dependencies** (jQuery)
-- Install and register this wrapper like simple Vue.js component.
-- Include fullPage.js files (`jquery.fullpage.js` and `jquery.fullpage.css`)
-
 
 Terminal:
-```shell
+```bash
 // With bower
 bower install vue-fullpage.js
 
 // With npm
 npm install --save vue-fullpage.js
 ```
-
-Check out [the license](#license) for commercial projects.
 
 ## License
 
@@ -184,7 +177,7 @@ Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#ca
 Just translate camelCase name of callback to kebab-case and use it ;)
 
 ## Dynamic changes
-vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT automatically watch any DOM changes. If you want vue-fullpage.js to react to DOM changes call `$.fn.fullpage.update();` after making those changes. For example:
+vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT automatically watch any DOM changes. If you want vue-fullpage.js to react to DOM changes call the `update()` method after making those changes. For example:
 
 ```javascript
 //creating the section div
@@ -241,4 +234,4 @@ Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage
 - [Wordpress theme](https://alvarotrigo.com/fullPage/utils/wordpress.html)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - [CSS Easing Animation Tool - Matthew Lein](http://matthewlein.com/ceaser/) (useful to define the `easingcss3` value)
-- [fullPage.js jsDelivr CDN](http://www.jsdelivr.com/#!jquery.fullpage)
+- [fullPage.js cdnJS CDN](https://cdnjs.com/libraries/fullPage.js)
