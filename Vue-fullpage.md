@@ -48,11 +48,14 @@ If you are creating an open source application under a license compatible with t
 
 ```js
 import Vue from 'vue'
-import Vue wrapper for fullpage.js from 'vue-fullpage'
-// You need a specific loader for CSS files like https://github.com/webpack/css-loader
-import 'vue-fullpage/dist/vue-fullpage.css'
+import VueFullPage from 'vue-fullpage'
 
-Vue.use(Vue wrapper for fullpage.js)
+Vue.use(VueFullPage);
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
 ```
 
 ### Browser
@@ -86,8 +89,25 @@ This wrapper creates a `<full-page>` component , which you can use like other Vu
 
 ## Options
 You can use any [options](https://github.com/alvarotrigo/fullPage.js#options) supported by fullPage.js library.
-Just pass options object into this wrapper like Vue.js property. You can see this in the example above.
+Just pass options object into this wrapper like Vue.js property.
 Options object can contain simple [options](https://github.com/alvarotrigo/fullPage.js#options) as well as fullPage.js [callbacks](https://github.com/alvarotrigo/fullPage.js#callbacks).
+
+Example:
+
+```javacript
+new Vue({
+  el: '#app',
+  name: 'app',
+  data() {
+    return {
+      options: {
+        menu: '#menu',
+        anchors: ['page1', 'page2', 'page3'],
+        sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
+      },
+    }
+  },
+```
 
 ## Methods
 fullPage.js contains many [methods](https://github.com/alvarotrigo/fullPage.js#methods).
