@@ -63,11 +63,11 @@ new Vue({
 ```html
 <!-- Include after Vue -->
 <!-- Local files -->
-<link rel="stylesheet" href="vue-fullpage/dist/vue-fullpage.css"></link>
+<link rel="stylesheet" href="fullpage/dist/fullpage.min.css"></link>
 <script src="vue-fullpage/dist/vue-fullpage.js"></script>
 
 <!-- From CDN -->
-<link rel="stylesheet" href="https://unpkg.com/vue-fullpage/dist/vue-fullpage.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.1/fullpage.min.css"></link>
 <script src="https://unpkg.com/vue-fullpage"></script>
 ```
 
