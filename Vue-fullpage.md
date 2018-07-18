@@ -6,7 +6,7 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
-- By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg) and
+- By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg) and [Raphael Owino](https://twitter.com/ralphowino)
 
 ## Table of contents
 1. [Installation](#installation)
@@ -62,13 +62,8 @@ new Vue({
 
 ```html
 <!-- Include after Vue -->
-<!-- Local files -->
-<link rel="stylesheet" href="vue-fullpage/dist/vue-fullpage.css"></link>
-<script src="vue-fullpage/dist/vue-fullpage.js"></script>
-
-<!-- From CDN -->
-<link rel="stylesheet" href="https://unpkg.com/vue-fullpage/dist/vue-fullpage.css"></link>
-<script src="https://unpkg.com/vue-fullpage"></script>
+<link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css"></link>
+<script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.min.js"></script>
 ```
 
 ## Required HTML
