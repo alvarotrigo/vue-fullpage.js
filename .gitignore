@@ -1,4 +1,8 @@
 .DS_Store
-.idea
-bower_components/
-/node_modules
+node_modules/
+demos/webpack/node_modules/
+npm-debug.log
+test/coverage
+dist
+yarn-error.log
+reports
