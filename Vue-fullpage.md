@@ -33,7 +33,7 @@ npm install --save vue-fullpage.js
 ## License
 
 ### Commercial license
-Although vue-fullpage.js is under the MIT license as can be seen on the [LICENSE file](https://github.com/alvarotrigo/vue-fullpage.js/blob/master/LICENSE), notice [fullPage.js library](https://github.com/alvarotrigo/fullPage.js) is under GPLv3. Therefore you'll need to purchase a Commercial License for fullPage.js if you want to use fullPage to develop commercial sites, themes, projects, and applications. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
+Although vue-fullpage.js is under the MIT license as can be seen on the [LICENSE file](https://github.com/alvarotrigo/vue-fullpage.js/blob/master/LICENSE), notice [fullPage.js library](https://github.com/alvarotrigo/fullPage.js) is under GPLv3. Therefore you'll need to purchase a Commercial License for fullPage.js if you want to use fullPage to develop non open sourced sites, themes, projects, and applications. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
 
 ### Open source license
 If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use fullPage under the terms of the GPLv3.
@@ -45,6 +45,8 @@ If you are creating an open source application under a license compatible with t
 ## Usage
 
 ### Bundler (Webpack, Rollup)
+
+You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/webpack/).
 
 ```js
 import Vue from 'vue'
@@ -59,6 +61,8 @@ new Vue({
 ```
 
 ### Browser
+
+You can check a browser stand alone demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/stand-alone/).
 
 ```html
 <!-- Include after Vue -->
