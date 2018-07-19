@@ -25,8 +25,7 @@ export default {
       if (activeSlideIndex > -1) {
         jquery(sectionSelector + '.active').find(slideSelector).eq(activeSlideIndex).addClass('active')
       }
-
-      new fullpage(this.$refs.fullpage, this.options)
+      this.instance = new fullpage(this.$refs.fullpage, this.options)
     },
     destroy () {
       if (typeof window.fullpage_api !== 'undefined' && typeof window.fullpage_api.destroy !== 'undefined') {
@@ -39,6 +38,11 @@ export default {
   },
   beforeDestroy () {
     this.destroy()
+  },
+  data(){
+    return {
+      instance: undefined
+    };
   },
   props: {
     options: {
