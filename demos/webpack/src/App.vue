@@ -27,9 +27,12 @@
             <li>
                 <a class="actions-button" href="#" rel="noopener" @click="toggleScrollbar">Toggle scrollBar</a>
             </li>
+            <li>
+                <a class="actions-button" href="#" rel="noopener" @click="$refs.fp.instance.moveSectionUp()">Move Section Up</a>
+            </li>
         </ul>
 
-        <full-page :options="options" id="fullpage">
+        <full-page :options="options" ref="fp">
             <div class="section">
                 <h3>Section 1</h3>
             </div>
