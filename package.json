@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vue wrapper for fullpage.js",
   "author": "Raphael Owino <ralphowino@gmail.com>",
   "main": "dist/vue-fullpage.common.js",
