@@ -65,8 +65,10 @@ new Vue({
 You can check a browser stand alone demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/stand-alone/).
 
 ```html
-<!-- Include after Vue -->
+<!-- On the page head -->
 <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css"></link>
+
+<!-- Include after Vue (before closing body) -->
 <script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.min.js"></script>
 ```
 
