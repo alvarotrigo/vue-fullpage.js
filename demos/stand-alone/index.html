@@ -34,11 +34,11 @@
             <a class="actions-button" href="#" rel="noopener" @click="toggleScrollbar">Toggle scrollBar</a>
         </li>
         <li>
-            <a class="actions-button" href="#" rel="noopener" @click="$fp.moveSectionUp">Toggle scrollBar</a>
+            <a class="actions-button" href="#" rel="noopener" @click="$refs.fullpage.api.moveSectionDown()">Move down</a>
         </li>
     </ul>
 
-    <full-page ref="fullpage" :options="options" id="fullpage">
+    <full-page ref="fullpage" :options="options" id="fullpage" >
         <div class="section">
             <h3>Section 1</h3>
         </div>

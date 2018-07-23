@@ -14,9 +14,8 @@ window.pepe = new Vue({
     }
   },
   methods: {
-
     afterLoad () {
-      console.log('After load')
+      console.log('After load');
     },
     addSection (e) {
       e.preventDefault()

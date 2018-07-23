@@ -109,7 +109,9 @@ new Vue({
 ```
 
 ## Methods
-You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js.
+You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the a reference `$refs.fullpage.api`.
+ ```
+
 
 Example:
 ```html
@@ -117,11 +119,11 @@ Example:
   <div>
     <full-page ref="fullpage" :options="options">
       <div class="section">
-        <button class="next" @click="moveSectionDown">Next</button>
+        <button class="next" @click="$refs.fullpage.api.moveSectionDown()">Next</button>
         Section 1
       </div>
       <div class="section">
-        <button class="prev" @click="moveSectionUp">Prev</button>
+        <button class="prev" @click="$refs.fullpage.api.moveSectionUp()">Prev</button>
         Section 2
       </div>
     </full-page>

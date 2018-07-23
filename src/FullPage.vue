@@ -5,55 +5,87 @@
 </template>
 
 <script>
-import jquery from 'jquery'
-import fullpage from 'fullpage.js'
+  import fullpage from 'fullpage.js';
+  import * as constants from './constants';
 
-export default {
-  methods: {
-    build () {
-      var slideSelector = this.options.slideSelector ? this.options.slideSelector : '.slide'
-      var sectionSelector = this.options.sectionSelector ? this.options.sectionSelector : '.section'
-      const activeSectionIndex = jquery('.fp-section.active').index()
-      const activeSlideIndex = jquery('.fp-section.active').find('.fp-slide.active').index()
+  function camelToKebab(string) {
+    return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  }
 
-      this.destroy()
+  export default {
+    methods: {
+      build() {
+        var slideSelector = this.options.slideSelector || '.slide';
+        var sectionSelector = this.options.sectionSelector || '.section';
+        let activeSectionIndex = fp_utils.index(document.querySelector(sectionSelector + '.active'));
+        let activeSlide = document.querySelector(sectionSelector + '.active ' + slideSelector + '.active');
+        let activeSlideIndex = activeSlide ? fp_utils.index(activeSlide) : -1;
 
-      if (activeSectionIndex > -1) {
-        jquery(sectionSelector).eq(activeSectionIndex).addClass('active')
-      }
+        this.destroy();
 
-      if (activeSlideIndex > -1) {
-        jquery(sectionSelector + '.active').find(slideSelector).eq(activeSlideIndex).addClass('active')
-      }
+        if (activeSectionIndex > -1) {
+          fp_utils.addClass(document.querySelectorAll(sectionSelector)[activeSectionIndex], 'active');
+        }
 
-      new fullpage(this.$refs.fullpage, this.options)
+        if (activeSlideIndex > -1) {
+          fp_utils.addClass(activeSlide, 'active');
+        }
+
+        this.init();
+      },
+      destroy() {
+        if (typeof fullpage_api !== 'undefined' && typeof fullpage_api.destroy !== 'undefined') {
+          fullpage_api.destroy('all');
+        }
+      },
+      emitEvent(name, args) {
+        // Emit event on Vue way
+        this.$emit.apply(this, [camelToKebab(name), ...args]);
+
+        // Run event's handler with non Vue way
+        if (this.options.hasOwnProperty(name)) {
+          this.options[name].apply(this, args);
+        }
+      },
+      init() {
+        this.api = new fullpage(this.$refs.fullpage, this.options);
+      },
     },
-    destroy () {
-      if (typeof window.fullpage_api !== 'undefined' && typeof window.fullpage_api.destroy !== 'undefined') {
-        window.fullpage_api.destroy('all')
+    mounted() {
+      this.init();
+    },
+
+    beforeDestroy() {
+      this.destroy();
+    },
+    data(){
+      return {
+        events: constants.EVENTS.reduce((eventsHandlers, event) => {
+          return {
+            ...eventsHandlers,
+
+            [event]: (...args) => {
+              this.emitEvent(event, args);
+            }
+          };
+        }, {}),
+        api: undefined
       }
-    }
-  },
-  mounted () {
-    this.build()
-  },
-  beforeDestroy () {
-    this.destroy()
-  },
-  props: {
-    options: {
-      type: Object,
-      required: true
-    }
-  },
-  watch: {
-    options: {
-      deep: true,
-      handler () {
-        this.build()
+    },
+    props: {
+      options: {
+        type: Object,
+        required: true
+      },
+    },
+    watch: {
+      options: {
+        deep: true,
+        handler() {
+          this.build()
+        }
       }
     }
   }
-}
 </script>
 
