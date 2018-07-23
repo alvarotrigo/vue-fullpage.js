@@ -1,5 +1,5 @@
 {
-  "name": "vue-fullpage",
+  "name": "vue-fullpage.js",
   "version": "0.0.2",
   "description": "Vue wrapper for fullpage.js",
   "author": "Raphael Owino <ralphowino@gmail.com>",
@@ -124,7 +124,8 @@
     "url": "http://www.opensource.org/licenses/mit-license.php"
   },
   "browserslist": [
-    "last 2 versions"
+    "last 2 versions",
+    "IE 10"
   ],
   "dependencies": {
     "fullpage.js": "^3.0.1",
