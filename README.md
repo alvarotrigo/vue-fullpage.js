@@ -4,6 +4,8 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
+![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.0.2-brightgreen.svg)
+
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg) and [Raphael Owino](https://twitter.com/ralphowino)
