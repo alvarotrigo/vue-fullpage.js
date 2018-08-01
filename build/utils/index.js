@@ -28,8 +28,8 @@ exports.author = authorName
 exports.version = version
 exports.dllName = dllPlugin.name
 exports.moduleName = uppercamelcase(name)
-exports.name = name
-exports.filename = name + minExt
+exports.name = 'vue-fullpage'
+exports.filename = 'vue-fullpage' + minExt
 exports.banner = `/*!
  * ${name} v${version}
  * (c) ${new Date().getFullYear()} ${authorName}
