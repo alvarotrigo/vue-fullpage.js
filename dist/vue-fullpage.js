@@ -1,6 +1,6 @@
 /*!
- * vue-fullpage.js v0.0.3
- * (c) 2018 Raphael Owino
+ * vue-fullpage.js v0.0.4
+ * (c) 2018 Alvaro Trigo
  * Released under the MIT License.
  */
 
@@ -723,7 +723,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
                 document.addEventListener(eventName, function(e){
                     var target = e.target;
 
-                    if(target && matches(target, SECTION_NAV_SEL + ' a')){
+                    if(target && closest(target, SECTION_NAV_SEL + ' a')){
                         sectionBulletHandler.call(target, e);
                     }
                     else if(matches(target, SECTION_NAV_TOOLTIP_SEL)){
@@ -778,7 +778,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
             //no anchors option? Checking for them in the DOM attributes
             if(!options.anchors.length){
-                var anchors = $(options.sectionSelector+'[data-anchor]');
+                var attrName = '[data-anchor]';
+                var anchors = $(options.sectionSelector.split(',').join(attrName + ',') + attrName, container);
                 if(anchors.length){
                     anchors.forEach(function(item){
                         options.anchors.push(item.getAttribute('data-anchor').toString());
@@ -788,7 +789,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
             //no tooltips option? Checking for them in the DOM attributes
             if(!options.navigationTooltips.length){
-                var tooltips = $(options.sectionSelector+'[data-tooltip]');
+                var attrName = '[data-tooltip]';
+                var tooltips = $(options.sectionSelector.split(',').join(attrName + ',') + attrName, container);
                 if(tooltips.length){
                     tooltips.forEach(function(item){
                         options.navigationTooltips.push(item.getAttribute('data-tooltip').toString());
@@ -2208,7 +2210,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
             preventDefault(e);
 
             /*jshint validthis:true */
-            var indexBullet = index(this.parentNode);
+            var indexBullet = index(closest(this, SECTION_NAV_SEL + ' li'));
             scrollPage($(SECTION_SEL)[indexBullet]);
         }
 
@@ -2216,7 +2218,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
         function slideBulletHandler(e){
             preventDefault(e);
 
-            /*jshint validthis: true */
+            /*jshint validthis:true */
             var slides = $(SLIDES_WRAPPER_SEL, closest(this, SECTION_SEL))[0];
             var destiny = $(SLIDE_SEL, slides)[index(closest(this, 'li'))];
 
@@ -3934,7 +3936,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /**
  * jQuery adapter for fullPage.js 3.0.0
  */
-if(window.jQuery){
+if(window.jQuery && window.fullpage){
     (function ($, fullpage) {
         'use strict';
 
@@ -3954,6 +3956,7 @@ if(window.jQuery){
         };
     })(jQuery, fullpage);
 }
+
 
 /***/ }),
 /* 1 */
