@@ -9,7 +9,9 @@
   "unpkg": "dist/vue-fullpage.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "demos",
+    "build"
   ],
   "scripts": {
     "clean": "rimraf dist",
