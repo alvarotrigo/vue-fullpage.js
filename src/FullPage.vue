@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import fullpage from 'fullpage.js';
+  import fullpage from 'fullpage.js/dist/fullpage.extensions.min';
   import * as constants from './constants';
 
   function camelToKebab(string) {
