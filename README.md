@@ -4,7 +4,7 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.0.4-brightgreen.svg)
+![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.0.5-brightgreen.svg)
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
@@ -68,7 +68,7 @@ You can check a browser stand alone demo [here](https://github.com/alvarotrigo/v
 
 ```html
 <!-- On the page head -->
-<link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css"></link>
+<link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
 
 <!-- Include after Vue (before closing body) -->
 <script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.min.js"></script>
@@ -109,15 +109,15 @@ new Vue({
         sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
       },
     }
-  },
+  }
+});
 ```
 
 ## Methods
 You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the a reference `$refs.fullpage.api`.
- ```
-
 
 Example:
+
 ```html
 <template>
   <div>
@@ -137,12 +137,13 @@ Example:
 
 Similar you can call any method of fullPage.js library directly on Javascript:
 
-```
+```javascript
 fullpage_api.setAllowScrolling(false);
 ```
 
 ## Callbacks
 As mentioned [above](#options) you can pass callbacks through options object:
+
 ```html
 <template>
   <div>
