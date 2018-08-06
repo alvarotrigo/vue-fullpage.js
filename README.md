@@ -97,7 +97,7 @@ Options object can contain simple [options](https://github.com/alvarotrigo/fullP
 
 Example:
 
-```javacript
+```javascript
 new Vue({
   el: '#app',
   name: 'app',
