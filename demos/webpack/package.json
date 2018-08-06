@@ -2,7 +2,7 @@
   "name": "demo",
   "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "Raphael Owino <ralphowino@gmail.com>",
+  "author": "Alvaro Trigo <alvarotrigo@alvarotrigo.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
