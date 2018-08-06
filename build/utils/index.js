@@ -32,8 +32,14 @@ exports.name = 'vue-fullpage'
 exports.filename = 'vue-fullpage' + minExt
 exports.banner = `/*!
  * ${name} v${version}
- * (c) ${new Date().getFullYear()} ${authorName}
- * Released under the MIT License.
+ * https://github.com/alvarotrigo/vue-fullpage.js
+ *
+ * @license vue-fullpage is released under the MIT license but notice
+ * fullPage.js is licensed under GPLv3 for open source use only
+ * or Fullpage Commercial License for commercial use
+ * http://alvarotrigo.com/fullPage/pricing/
+ *
+ * Copyright (C) 2018 http://alvarotrigo.com/vue-fullpage/ - A project by Alvaro Trigo
  */
 `
 
