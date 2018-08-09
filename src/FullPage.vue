@@ -56,7 +56,9 @@
     },
 
     beforeDestroy() {
-      this.destroy();
+      if(typeof this.api !== 'undefined'){
+        this.destroy();
+      }
     },
     data(){
       return {
