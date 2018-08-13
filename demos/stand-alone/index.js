@@ -5,6 +5,7 @@ window.pepe = new Vue({
     return {
       options: {
         afterLoad: this.afterLoad,
+        scrollOverflow: true,
         scrollBar: false,
         menu: '#menu',
         navigation: true,

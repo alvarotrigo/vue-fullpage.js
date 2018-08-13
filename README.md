@@ -52,6 +52,8 @@ You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.j
 
 ```js
 import Vue from 'vue'
+import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
+import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
 import VueFullPage from 'vue-fullpage'
 
 Vue.use(VueFullPage);
@@ -61,6 +63,8 @@ new Vue({
   render: h => h(App)
 });
 ```
+
+Notice that when using the option `scrollOverflow:true` or any [fullPage.js extension](https://alvarotrigo.com/fullPage/extensions/) you'll have to include the file for those features before the `vue-fullpage` component.
 
 ### Browser
 
@@ -94,6 +98,8 @@ This wrapper creates a `<full-page>` component , which you can use like other Vu
 You can use any [options](https://github.com/alvarotrigo/fullPage.js#options) supported by fullPage.js library.
 Just pass options object into this wrapper like Vue.js property.
 Options object can contain simple [options](https://github.com/alvarotrigo/fullPage.js#options) as well as fullPage.js [callbacks](https://github.com/alvarotrigo/fullPage.js#callbacks).
+
+Notice that if you want to make use of the option `scrollOverflow:true`, you'll have to include the scrollOverflow file before vue-fullpage.js, as detailed [above](https://github.com/alvarotrigo/vue-fullpage.js#bundler-webpack-rollup).
 
 Example:
 
