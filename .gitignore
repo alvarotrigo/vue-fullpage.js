@@ -1,6 +1,8 @@
 .DS_Store
 node_modules/
 demos/webpack/node_modules/
+demos/test**
+demos/**/fullpage.scrollHorizontally.min.js
 npm-debug.log
 test/coverage
 yarn-error.log
