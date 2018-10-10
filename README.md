@@ -210,7 +210,7 @@ Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#ca
 Just translate camelCase name of callback to kebab-case and use it ;)
 
 ## Dynamic changes
-vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT automatically watch any DOM changes. If you want vue-fullpage.js to react to DOM changes call the `update()` method after making those changes. For example:
+vue-fullpage.js will watch all changes taking place within the fullpage.js options but will NOT automatically watch any DOM changes. If you want vue-fullpage.js to react to DOM changes call the `build()` method after making those changes. For example:
 
 ```javascript
 //creating the section div
