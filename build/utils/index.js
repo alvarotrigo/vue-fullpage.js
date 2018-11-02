@@ -21,7 +21,7 @@ const {
   dllPlugin
 } = require('../../package.json')
 
-const authorName = author.replace(/\s+<.*/, '')
+const authorName = author.name;
 const minExt = process.env.NODE_ENV === 'production' ? '.min' : ''
 
 exports.author = authorName

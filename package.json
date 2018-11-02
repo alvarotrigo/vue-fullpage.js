@@ -1,8 +1,11 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Vue wrapper for fullpage.js",
-  "author": "Alvaro Trigo <alvarotrigo@alvarotrigo.com>",
+  "author": {
+    "name": "Alvaro Trigo",
+    "email": "alvarotrigo@alvarotrigo.com"
+  },
   "main": "dist/vue-fullpage.common.js",
   "module": "dist/vue-fullpage.esm.js",
   "browser": "dist/vue-fullpage.js",
