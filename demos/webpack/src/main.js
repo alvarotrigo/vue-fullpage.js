@@ -6,7 +6,7 @@ import 'fullpage.js/vendors/scrolloverflow'
 // Optional. When using fullpage extensions
 //import './fullpage.scrollHorizontally.min'
 
-import VueFullPage from 'vue-fullpage.js'
+import VueFullPage from '../../../dist/vue-fullpage.js'
 import App from './App.vue'
 
 Vue.use(VueFullPage)
