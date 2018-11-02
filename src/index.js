@@ -1,4 +1,5 @@
 import FullPage from './FullPage.vue'
+import fullpage from 'fullpage.js/dist/fullpage.extensions.min';
 
 function plugin (Vue) {
   Vue.component('full-page', FullPage)
