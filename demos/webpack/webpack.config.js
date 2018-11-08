@@ -27,7 +27,10 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          filename: './.babelrc'
+        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

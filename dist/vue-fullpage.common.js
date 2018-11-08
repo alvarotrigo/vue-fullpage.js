@@ -1,5 +1,5 @@
 /*!
- * vue-fullpage.js v0.0.8
+ * vue-fullpage.js v0.0.9
  * https://github.com/alvarotrigo/vue-fullpage.js
  *
  * @license vue-fullpage is released under the MIT license but notice
