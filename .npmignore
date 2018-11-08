@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+demos/webpack/node_modules/
+demos/test**
+npm-debug.log
+test/coverage
+yarn-error.log
+reports
