@@ -17,7 +17,7 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 3. [Options](#options)
 4. [Methods](#methods)
 5. [Callbacks](#callbacks)
-6. [Usage with Nuxt.js](#usage-with-nuxt.js)
+6. [Usage with Nuxt.js](#usage-with-nuxtjs)
 7. [Contributing](#contributing)
 8. [Resources](#resources)
 
