@@ -17,8 +17,9 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 3. [Options](#options)
 4. [Methods](#methods)
 5. [Callbacks](#callbacks)
-6. [Contributing](#contributing)
-7. [Resources](#resources)
+6. [Usage with Nuxt.js](#usage-with-nuxtjs)
+7. [Contributing](#contributing)
+8. [Resources](#resources)
 
 
 ## Installation
@@ -258,6 +259,49 @@ new Vue({
         },
     }
 });
+```
+
+## Usage with Nuxt.js
+Before using using Fullpage.js with Nuxt, keep in mind there will always be some drawbacks. Nuxt is a server side rendered framework, thus the browser is not available at render time, something Fullpage relies on for its magic to happen. There are however, ways to go partially around this.
+
+### Defining a Nuxt plugin
+Create a file called `fullpage.js` inside your Nuxt `plugins` folder. Should look something like this:
+
+```
+import Vue from 'vue'
+import Fullpage from 'vue-fullpage.js'
+import 'fullpage.js/dist/fullpage.css'
+
+Vue.use(Fullpage)
+```
+
+Now inside your `nuxt.config.js`, define your fullpage plugin file inside the `plugins` key like so:
+```
+  plugins: [
+    { src: '~/plugins/fullpage', ssr: false }
+  ],
+```
+Note the `ssr:false` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser. 
+
+Opening the browser you will see Fullpage is working.
+
+You will however get a warning in the console saying:
+```
+[Vue warn]: The client-side rendered virtual DOM tree is not matching server-rendered content. This is likely caused by incorrect HTML markup, for example nesting block-level elements inside <p>, or missing <tbody>. Bailing hydration and performing full client-side render.
+```
+This is normal, nuxt did not render Fullpage at server render time, but then on mount in the Browser, Fullpage kicks in, changing the DOM. The good part is the content inside the fullpage component (each section) will be present at server render time, which means search engine crawlers will be able to detect it.
+
+### Using <no-ssr> component
+If you do not want to see that warning and you do not care about search engnes, you can wrap your fullpage component inside a `<no-ssr>` tag like so:
+
+```
+<template>
+  <no-ssr>
+    <full-page :options="options">
+      <div> This content will only be visibe on browser render, not server render </div>
+    </full-page>
+  </no-ssr>
+</template>
 ```
 
 ## Contributing
