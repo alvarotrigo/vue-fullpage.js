@@ -262,9 +262,25 @@ new Vue({
 ```
 
 ## Usage with Nuxt.js
-Before using using Fullpage.js with Nuxt, keep in mind there will always be some drawbacks. Nuxt is a server side rendered framework, thus the browser is not available at render time, something Fullpage relies on for its magic to happen. There are however, ways to go partially around this.
+Before using using Fullpage.js with Nuxt, keep in mind there will always be some drawbacks. Nuxt is a server side rendered framework, thus the browser is not available at render time, something Fullpage relies on for its magic to happen. There are however, ways to go partially around this. There are two setup options: use [nuxt-fullpage.js](https://www.npmjs.com/package/nuxt-fullpage.js) plugin or make such a plugin if needed by your specific requirements.
 
-### Defining a Nuxt plugin
+### Using a nuxt-fullpage.js plugin
+- Add `nuxt-fullpage.js` dependency using yarn or npm to your project
+```bash
+// With npm
+npm install --save nuxt-fullpage.js
+```
+- Add `nuxt-fullpage.js` to `modules` section of `nuxt.config.js`
+```js
+{
+  modules: [
+    'nuxt-fullpage.js',
+ ]
+}
+```
+That's all, you're ready to go. Also you can find additional info about plugin in [docs](https://www.npmjs.com/package/nuxt-fullpage.js)
+
+### Defining your own Nuxt plugin
 Create a file called `fullpage.js` inside your Nuxt `plugins` folder. Should look something like this:
 
 ```
