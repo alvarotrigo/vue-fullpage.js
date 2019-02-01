@@ -35,10 +35,12 @@ npm install --save vue-fullpage.js
 
 ## License
 
-### Commercial license
-Although vue-fullpage.js is under the MIT license as can be seen on the [LICENSE file](https://github.com/alvarotrigo/vue-fullpage.js/blob/master/LICENSE), notice [fullPage.js library](https://github.com/alvarotrigo/fullPage.js) is under GPLv3. Therefore you'll need to purchase a Commercial License for fullPage.js if you want to use fullPage to develop non open sourced sites, themes, projects, and applications. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
+### Non open source license
+
+If you want to use vue-fullpage to develop non open sourced sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. Which means, you won't have to change your whole application's source code to an open source license. [Purchase a Fullpage Commercial License]
 
 ### Open source license
+
 If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use fullPage under the terms of the GPLv3.
 
 **The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification)
