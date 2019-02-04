@@ -124,8 +124,8 @@
     ]
   },
   "license": {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/mit-license.php"
+    "license": "GPL-3.0",
+    "url": "https://www.gnu.org/licenses/gpl-3.0.html"
   },
   "browserslist": [
     "last 2 versions",
