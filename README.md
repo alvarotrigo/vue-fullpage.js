@@ -57,7 +57,7 @@ You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.j
 import Vue from 'vue'
 import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
 import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
-import VueFullPage from 'vue-fullpage.js'
+import {VueFullPage} from 'vue-fullpage.js'
 
 Vue.use(VueFullPage);
 
