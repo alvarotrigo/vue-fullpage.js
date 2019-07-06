@@ -57,6 +57,7 @@
     data () {
       return {
         options: {
+          licenseKey: 'YOUR_KEY_HERE',
           afterLoad: this.afterLoad,
           scrollOverflow: true,
           scrollBar: false,

@@ -115,6 +115,7 @@ new Vue({
   data() {
     return {
       options: {
+        licenseKey: 'YOUR_KEY_HEERE',
         menu: '#menu',
         anchors: ['page1', 'page2', 'page3'],
         sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
@@ -241,6 +242,7 @@ For example, if we want fullPage.js to get updated whenever I change the `scroll
     data() {
       return {
         options: {
+          licenseKey: 'YOUR_KEY_HEERE',
           controlArrows: true,
           scrollBar: true
         },
@@ -256,8 +258,9 @@ new Vue({
     el: '#app',
     data: {
         options: {
-            controlArrows: true,
-            scrollBar: true
+          licenseKey: 'YOUR_KEY_HERE',
+          controlArrows: true,
+          scrollBar: true
         },
     }
 });
