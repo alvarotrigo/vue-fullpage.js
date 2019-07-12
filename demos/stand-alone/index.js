@@ -1,9 +1,10 @@
 window.pepe = new Vue({
   el: '#app',
   name: 'app',
-  data: function(){
+  data: function () {
     return {
       options: {
+        licenseKey: 'YOUR_KEY_HERE',
         afterLoad: this.afterLoad,
         scrollBar: false,
         menu: '#menu',
@@ -14,25 +15,25 @@ window.pepe = new Vue({
     }
   },
   methods: {
-    afterLoad: function() {
-      console.log('After load');
+    afterLoad: function () {
+      console.log('After load')
     },
-    addSection: function(e) {
-      e.preventDefault();
-      var newSectionNumber = document.querySelectorAll('.fp-section').length + 1;
+    addSection: function (e) {
+      e.preventDefault()
+      var newSectionNumber = document.querySelectorAll('.fp-section').length + 1
 
       // creating the section div
-      var section = document.createElement('div');
-      section.className = 'section';
-      section.innerHTML = '<h3>Section' + newSectionNumber + '</h3>';
+      var section = document.createElement('div')
+      section.className = 'section'
+      section.innerHTML = '<h3>Section' + newSectionNumber + '</h3>'
 
       // adding section
-      document.querySelector('#fullpage').appendChild(section);
+      document.querySelector('#fullpage').appendChild(section)
 
       // creating the section menu element
-      var sectionMenuItem = document.createElement('li');
-      sectionMenuItem.setAttribute('data-menuanchor', 'page' + newSectionNumber);
-      sectionMenuItem.innerHTML = '<a href="#page${newSectionNumber}">Section ' + newSectionNumber + '</a>';
+      var sectionMenuItem = document.createElement('li')
+      sectionMenuItem.setAttribute('data-menuanchor', 'page' + newSectionNumber)
+      sectionMenuItem.innerHTML = '<a href="#page${newSectionNumber}">Section ' + newSectionNumber + '</a>'
 
       // adding it to the sections menu
       var sectionsMenuItems = document.querySelector('#menu')
@@ -47,7 +48,7 @@ window.pepe = new Vue({
       // ideally, use an ID element for that element too
       this.$refs.fullpage.build()
     },
-    removeSection: function() {
+    removeSection: function () {
       var sections = document.querySelector('#fullpage').querySelectorAll('.fp-section')
       var lastSection = sections[sections.length - 1]
 
@@ -62,13 +63,12 @@ window.pepe = new Vue({
       var lastItem = sectionsMenuItems[sectionsMenuItems.length - 1]
       lastItem.parentNode.removeChild(lastItem)
     },
-    toggleNavigation: function() {
+    toggleNavigation: function () {
       this.options.navigation = !this.options.navigation
     },
-    toggleScrollbar: function() {
+    toggleScrollbar: function () {
       this.options.scrollBar = !this.options.scrollBar
     }
   }
 })
-
 

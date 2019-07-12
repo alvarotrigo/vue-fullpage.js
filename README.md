@@ -4,7 +4,7 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.3-brightgreen.svg)
+![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.4-brightgreen.svg)
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
@@ -115,6 +115,7 @@ new Vue({
   data() {
     return {
       options: {
+        licenseKey: 'YOUR_KEY_HEERE',
         menu: '#menu',
         anchors: ['page1', 'page2', 'page3'],
         sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
@@ -241,6 +242,7 @@ For example, if we want fullPage.js to get updated whenever I change the `scroll
     data() {
       return {
         options: {
+          licenseKey: 'YOUR_KEY_HEERE',
           controlArrows: true,
           scrollBar: true
         },
@@ -256,8 +258,9 @@ new Vue({
     el: '#app',
     data: {
         options: {
-            controlArrows: true,
-            scrollBar: true
+          licenseKey: 'YOUR_KEY_HERE',
+          controlArrows: true,
+          scrollBar: true
         },
     }
 });
