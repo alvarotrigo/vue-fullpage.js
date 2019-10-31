@@ -53,7 +53,7 @@ function camelToKebab (string) {
       }
     },
     mounted () {
-      !this.delayInit && this.init()
+      !this.skipInit && this.init()
     },
 
     beforeDestroy () {
@@ -80,7 +80,7 @@ function camelToKebab (string) {
         type: Object,
         required: true
       },
-      delayInit: {
+      skipInit: {
         type: Boolean,
         default: false
       }
