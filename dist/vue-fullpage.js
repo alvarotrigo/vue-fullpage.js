@@ -216,11 +216,12 @@ exports.default = {
       }
     },
     init: function init() {
+      // eslint-disable-next-line
       this.api = new _fullpageExtensions2.default(this.$refs.fullpage, this.options);
     }
   },
   mounted: function mounted() {
-    this.init();
+    !this.skipInit && this.init();
   },
   beforeDestroy: function beforeDestroy() {
     if (typeof this.api !== 'undefined') {
@@ -248,6 +249,10 @@ exports.default = {
     options: {
       type: Object,
       required: true
+    },
+    skipInit: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
