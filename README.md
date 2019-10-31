@@ -125,6 +125,26 @@ new Vue({
 });
 ```
 
+### Delayed init
+
+Full-page will init itself automatically on `mount`. This may not work properly when using async components to inside it's sections, as it has no way of knowing when said components are ready and mounted.
+
+Use the `skipInit` prop to stop full-page from initializing itself. You can do it when youself by using a `ref` like:
+
+```html
+<full-page ref="fullpage" :options="options" :skip-init="true">
+```
+
+```js
+methods: {
+  // Called when your components are ready. That is up to you to decide when.
+  componentsReady() {
+    this.$refs.fullpage.init()
+  }
+}
+```
+
+
 ## Methods
 You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the a reference `$refs.fullpage.api`.
 
