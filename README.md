@@ -242,7 +242,7 @@ For example, if we want fullPage.js to get updated whenever I change the `scroll
     data() {
       return {
         options: {
-          licenseKey: 'YOUR_KEY_HEERE',
+          licenseKey: 'YOUR_KEY_HERE',
           controlArrows: true,
           scrollBar: true
         },
