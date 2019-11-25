@@ -4,7 +4,7 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.4-brightgreen.svg)
+![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.5-brightgreen.svg)
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
@@ -125,6 +125,26 @@ new Vue({
 });
 ```
 
+### Delayed init
+
+Full-page will init itself automatically on `mount`. This may not work properly when using async components to inside it's sections, as it has no way of knowing when said components are ready and mounted.
+
+Use the `skipInit` prop to stop full-page from initializing itself. You can do it when youself by using a `ref` like:
+
+```html
+<full-page ref="fullpage" :options="options" :skip-init="true">
+```
+
+```js
+methods: {
+  // Called when your components are ready. That is up to you to decide when.
+  componentsReady() {
+    this.$refs.fullpage.init()
+  }
+}
+```
+
+
 ## Methods
 You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the a reference `$refs.fullpage.api`.
 
@@ -242,7 +262,7 @@ For example, if we want fullPage.js to get updated whenever I change the `scroll
     data() {
       return {
         options: {
-          licenseKey: 'YOUR_KEY_HEERE',
+          licenseKey: 'YOUR_KEY_HERE',
           controlArrows: true,
           scrollBar: true
         },
@@ -299,10 +319,10 @@ Vue.use(Fullpage)
 Now inside your `nuxt.config.js`, define your fullpage plugin file inside the `plugins` key like so:
 ```
   plugins: [
-    { src: '~/plugins/fullpage', ssr: false }
+    { src: '~/plugins/fullpage', mode: 'client' }
   ],
 ```
-Note the `ssr:false` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser. 
+Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser. 
 
 Opening the browser you will see Fullpage is working.
 

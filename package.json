@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Vue wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
@@ -132,6 +132,6 @@
     "IE 10"
   ],
   "dependencies": {
-    "fullpage.js": "^3.0.7"
+    "fullpage.js": "^3.0.8"
   }
 }
