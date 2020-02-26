@@ -7,7 +7,6 @@
     "email": "alvarotrigo@alvarotrigo.com"
   },
   "main": "dist/vue-fullpage.common.js",
-  "module": "dist/vue-fullpage.esm.js",
   "browser": "dist/vue-fullpage.js",
   "unpkg": "dist/vue-fullpage.js",
   "files": [
