@@ -1,16 +1,17 @@
-import FullPage from './FullPage.vue'
-import fullpage from 'fullpage.js/dist/fullpage.extensions.min';
+let FullPage
+
+if (!process.browser) {
+  FullPage = require('./FullPagePlaceholder.vue')
+} else {
+  FullPage = require('./FullPage.vue')
+  // Install by default if using the script tag
+  if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(plugin)
+  }
+}
 
 function plugin (Vue) {
   Vue.component('full-page', FullPage)
-}
-
-// Install by default if using the script tag
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin)
-}
-if (!window.fullpage_api) {
-  window.fullpage = fullpage
 }
 
 export default plugin

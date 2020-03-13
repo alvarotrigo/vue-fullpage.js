@@ -1,12 +1,16 @@
 <template>
-    <div ref="fullpage">
-        <slot></slot>
-    </div>
+  <div ref="fullpage">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-  import fullpage from 'fullpage.js/dist/fullpage.extensions.min'
+import fullpage from 'fullpage.js/dist/fullpage.extensions.min'
 import * as constants from './constants'
+
+if (!window.fullpage_api) {
+  window.fullpage = fullpage
+}
 
 function camelToKebab (string) {
     return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
