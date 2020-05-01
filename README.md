@@ -143,6 +143,16 @@ methods: {
     this.$refs.fullpage.init()
   }
 }
+
+
+```
+### Destroy Only Events
+
+When using transitions between routes, you may need the styles to remain.
+Use the `destroyOnlyEvents` prop to stop full-page from destroying the tags and styles it created.
+
+```html
+<full-page ref="fullpage" :options="options" :destroy-only-events="true">
 ```
 
 
@@ -323,7 +333,7 @@ Now inside your `nuxt.config.js`, define your fullpage plugin file inside the `p
     { src: '~/plugins/fullpage', mode: 'client' }
   ],
 ```
-Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser. 
+Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser.
 
 Opening the browser you will see Fullpage is working.
 

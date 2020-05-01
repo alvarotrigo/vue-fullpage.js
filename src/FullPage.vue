@@ -35,7 +35,11 @@ function camelToKebab (string) {
       },
       destroy () {
         if (typeof fullpage_api !== 'undefined' && typeof fullpage_api.destroy !== 'undefined') {
-          fullpage_api.destroy('all')
+          if (this.destroyOnlyEvents) {
+            fullpage_api.destroy()
+          } else {
+            fullpage_api.destroy('all')
+          }
         }
       },
       emitEvent (name, args) {
@@ -81,6 +85,10 @@ function camelToKebab (string) {
         required: true
       },
       skipInit: {
+        type: Boolean,
+        default: false
+      },
+      destroyOnlyEvents: {
         type: Boolean,
         default: false
       }
