@@ -4,7 +4,7 @@
 Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.5-brightgreen.svg)
+![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.6-brightgreen.svg)
 
 - [Demo online](https://alvarotrigo.com/vue-fullpage/) | [Codepen](https://codepen.io/alvarotrigo/pen/zpQmwq)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
@@ -18,8 +18,9 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 4. [Methods](#methods)
 5. [Callbacks](#callbacks)
 6. [Usage with Nuxt.js](#usage-with-nuxtjs)
-7. [Contributing](#contributing)
-8. [Resources](#resources)
+7. [Usage with Gridsome](#usage-with-gridsome)
+8. [Contributing](#contributing)
+9. [Resources](#resources)
 
 
 ## Installation
@@ -342,6 +343,31 @@ If you do not want to see that warning and you do not care about search engnes, 
       <div> This content will only be visibe on browser render, not server render </div>
     </full-page>
   </no-ssr>
+</template>
+```
+
+## Usage with Gridsome
+Gridsome first renders websites statically with Node.js, which means that the browser environment isn't available at render time. Fullpage requires a browser environment to work, which causes `nuxt build` to fail. You can work around this by only loading Fullpage in the browser, and ignoring it during pre-rendering.
+In your `main.js` file, the exported function exposes an `isClient` variable. You can use it to load Fullpage only when you're in a client environment.
+```js
+export default function(Vue, { isClient }) {
+  if (isClient) {
+    const { default: VueFullPage } = require('vue-fullpage.js')
+    Vue.use(VueFullPage)
+  }
+})
+```
+Then, in your layouts, templates, or pages that use Fullpage, make sure to wrap the code that uses the plugin with the `ClientOnly` component.
+```html
+<template>
+  <Layout>
+    <ClientOnly>
+      <full-page ref="fullpage" :options="options" id="fullpage">
+        <div class="section">First section ...</div>
+        <div class="section">Second section ...</div>
+      </full-page>
+    </ClientOnly>
+  </Layout>
 </template>
 ```
 

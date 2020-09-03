@@ -1,13 +1,12 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Vue wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
     "email": "alvarotrigo@alvarotrigo.com"
   },
   "main": "dist/vue-fullpage.common.js",
-  "module": "dist/vue-fullpage.esm.js",
   "browser": "dist/vue-fullpage.js",
   "unpkg": "dist/vue-fullpage.js",
   "files": [
@@ -132,6 +131,6 @@
     "IE 10"
   ],
   "dependencies": {
-    "fullpage.js": "^3.0.8"
+    "fullpage.js": "^3.0.9"
   }
 }
