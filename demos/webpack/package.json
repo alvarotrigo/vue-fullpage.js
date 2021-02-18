@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "vue": "^2.5.11",
-    "vue-fullpage.js": "^0.1.6"
+    "vue-fullpage.js": "^0.1.7"
   },
   "browserslist": [
     "> 1%",
