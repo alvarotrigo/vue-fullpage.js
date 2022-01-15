@@ -1,3 +1,4 @@
+# Important Notice: vue-fullpage.js will soon support Vue 3. This branch is for development and should not be used in production.
 # Vue-fullpage.js
 ![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
 <p align="center">
@@ -323,7 +324,7 @@ Now inside your `nuxt.config.js`, define your fullpage plugin file inside the `p
     { src: '~/plugins/fullpage', mode: 'client' }
   ],
 ```
-Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser. 
+Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser.
 
 Opening the browser you will see Fullpage is working.
 
