@@ -1,136 +1,51 @@
 {
-  "name": "vue-fullpage.js",
-  "version": "0.1.7",
-  "description": "Vue wrapper for fullpage.js",
+  "name": "vue-fullpage",
+  "version": "0.2.0",
+  "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
     "email": "alvarotrigo@alvarotrigo.com"
   },
-  "main": "dist/vue-fullpage.common.js",
-  "browser": "dist/vue-fullpage.js",
-  "unpkg": "dist/vue-fullpage.js",
   "files": [
     "dist",
-    "src",
-    "demos",
-    "build"
+    "docs",
+    "src"
   ],
+  "main": "./dist/vue-fullpage.umd.js",
+  "module": "./dist/vue-fullpage.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-fullpage.es.js",
+      "require": "./dist/vue-fullpage.umd.js"
+    }
+  },
+  "unpkg": "./dist/vue-fullpage.umd.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "yon run build:common && yon run build:browser && yon run build:browser:min",
-    "build:common": "cross-env NODE_ENV=common webpack --config build/webpack.config.common.js --progress --hide-modules",
-    "build:browser:base": "webpack --config build/webpack.config.browser.js --progress --hide-modules",
-    "build:browser": "cross-env NODE_ENV=browser yon run build:browser:base",
-    "build:browser:min": "cross-env NODE_ENV=production yon run build:browser:base -- -p",
-    "build:dll": "webpack --progress --config build/webpack.config.dll.js",
-    "lint": "yon run lint:js && yon run lint:css",
-    "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/*.js build",
-    "lint:js:fix": "yon run lint:js -- --fix",
-    "lint:css": "stylelint src/**/*.{vue,css}",
-    "lint:staged": "lint-staged",
-    "pretest": "yon run lint",
-    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
-    "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.config.dev.js --open",
-    "dev:coverage": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "prepublish": "yon run build"
-  },
-  "lint-staged": {
-    "*.{vue,jsx,js}": [
-      "eslint --fix"
-    ],
-    "*.{vue,css}": [
-      "stylefmt",
-      "stylelint"
-    ]
-  },
-  "pre-commit": "lint:staged",
-  "devDependencies": {
-    "@storybook/vue": "^3.4.11",
-    "add-asset-html-webpack-plugin": "^2.0.0",
-    "babel-core": "^6.24.0",
-    "babel-eslint": "^7.2.0",
-    "babel-helper-vue-jsx-merge-props": "^2.0.0",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-istanbul": "^4.1.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.4.0",
-    "babel-preset-env": "^1.4.0",
-    "chai": "^3.5.0",
-    "chai-dom": "^1.4.0",
-    "cross-env": "^4.0.0",
-    "css-loader": "^0.28.0",
-    "eslint": "^3.19.0",
-    "eslint-config-vue": "^2.0.0",
-    "eslint-plugin-vue": "^2.0.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "html-webpack-plugin": "^2.28.0",
-    "karma": "^1.7.0",
-    "karma-chai-dom": "^1.1.0",
-    "karma-chrome-launcher": "^2.1.0",
-    "karma-coverage": "^1.1.0",
-    "karma-mocha": "^1.3.0",
-    "karma-sinon-chai": "^1.3.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "^0.0.31",
-    "karma-webpack": "^2.0.0",
-    "lint-staged": "^3.4.0",
-    "mocha": "^3.3.0",
-    "mocha-css": "^1.0.1",
-    "null-loader": "^0.1.1",
-    "postcss": "^6.0.23",
-    "postcss-cssnext": "^2.10.0",
-    "pre-commit": "^1.2.0",
-    "rimraf": "^2.6.0",
-    "sinon": "2.2.0",
-    "sinon-chai": "^2.10.0",
-    "style-loader": "^0.17.0",
-    "stylefmt": "^5.3.0",
-    "stylelint": "^7.10.0",
-    "stylelint-config-standard": "^16.0.0",
-    "stylelint-processor-html": "^1.0.0",
-    "uppercamelcase": "^3.0.0",
-    "vue": "^2.5.17",
-    "vue-loader": "^12.0.0",
-    "vue-template-compiler": "^2.5.17",
-    "webpack": "^2.5.0",
-    "webpack-bundle-analyzer": "^2.4.0",
-    "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "^2.11.3",
-    "webpack-merge": "^4.1.4",
-    "yarn-or-npm": "^2.0.0"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "build:library": "vite build",
+    "analyze": "vite build --config analyze.config.js",
+    "publish:library": "npm publish --access public",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier . --write"
   },
   "peerDependencies": {
-    "vue": "^2.3.0"
+    "vue": "^3.2.26"
   },
-  "dllPlugin": {
-    "name": "vuePluginTemplateDeps",
-    "include": [
-      "mocha/mocha.js",
-      "style-loader!css-loader!mocha-css",
-      "html-entities",
-      "vue/dist/vue.js",
-      "chai",
-      "core-js/library",
-      "url",
-      "sockjs-client",
-      "vue-style-loader/lib/addStylesClient.js",
-      "events",
-      "ansi-html",
-      "style-loader/addStyles.js"
-    ]
-  },
-  "license": {
-    "license": "GPL-3.0",
-    "url": "https://www.gnu.org/licenses/gpl-3.0.html"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "IE 10"
-  ],
   "dependencies": {
-    "fullpage.js": "^3.1.0"
-  }
+    "fullpage.js": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.1",
+    "@vue/compiler-sfc": "^3.2.26",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-vue": "^8.3.0",
+    "prettier": "^2.5.1",
+    "rollup-plugin-visualizer": "^5.5.4",
+    "vite": "^2.7.12",
+    "vitepress": "^0.21.4"
+  },
+  "license": "GPL-3.0"
 }

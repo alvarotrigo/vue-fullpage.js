@@ -6,7 +6,7 @@ export const EVENTS = [
   'afterResponsive',
   'afterSlideLoad',
   'onSlideLeave',
-];
+]
 
 export const METHODS = [
   'moveSectionUp',
@@ -28,4 +28,4 @@ export const METHODS = [
   'setResponsive',
   'responsiveSlidesToSections',
   'responsiveSlidesToSlides',
-];
+]
