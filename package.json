@@ -37,15 +37,15 @@
     "fullpage.js": "^3.1.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.1",
-    "@vue/compiler-sfc": "^3.2.26",
-    "eslint": "^8.6.0",
+    "@vitejs/plugin-vue": "^2.1.0",
+    "@vue/compiler-sfc": "^3.2.29",
+    "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^8.3.0",
     "prettier": "^2.5.1",
     "rollup-plugin-visualizer": "^5.5.4",
-    "vite": "^2.7.12",
-    "vitepress": "^0.21.4"
+    "vite": "^2.7.13",
+    "vitepress": "^0.21.6"
   },
   "license": "GPL-3.0"
 }
