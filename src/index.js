@@ -1,1 +1,7 @@
-export { default as FullPage } from './FullPage.vue'
+import FullPage from'./FullPage.vue'
+
+export default {
+  install (Vue) {
+    Vue.component('FullPage', FullPage)
+  }
+}
