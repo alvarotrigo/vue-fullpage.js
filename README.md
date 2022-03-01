@@ -78,8 +78,6 @@ app.mount('#app')
 
 Notice that when using the option `scrollOverflow:true` or any [fullPage.js extension](https://alvarotrigo.com/fullPage/extensions/) you'll have to include the file for those features before the `vue-fullpage` component.
 
-Also, you'll have to add the fullPage CSS file (`fullpage.min.css`). Is up to you how you add it. You can add it on the HTML page or bundle it with other CSS files, or import it with Javascript.
-
 ### Browser
 
 You can check a browser stand alone demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/stand-alone/).
@@ -88,7 +86,7 @@ You can check a browser stand alone demo [here](https://github.com/alvarotrigo/v
 <!-- On the page head -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/fullpage.js/dist/style.css"
+  href="https://unpkg.com/vue-fullpage.js/dist/style.css"
 />
 
 <!-- Include after Vue (before closing body) -->
