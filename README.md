@@ -62,9 +62,7 @@ npm run start
 
 ## Usage
 
-### Bundler (Webpack, Rollup)
-
-You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/webpack/).
+### Bundler (Vite)
 
 ```js
 import { createApp } from 'vue'
