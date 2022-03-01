@@ -18,14 +18,15 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
 
 1. [Installation](#installation)
 2. [License](#license)
-3. [Usage](#usage)
-4. [Options](#options)
-5. [Methods](#methods)
-6. [Callbacks](#callbacks)
-7. [Usage with Nuxt.js](#usage-with-nuxtjs)
-8. [Usage with Gridsome](#usage-with-gridsome)
-9. [Contributing](#contributing)
-10. [Resources](#resources)
+3. [Example](#example)
+4. [Usage](#usage)
+5. [Options](#options)
+6. [Methods](#methods)
+7. [Callbacks](#callbacks)
+8. [Usage with Nuxt.js](#usage-with-nuxtjs)
+9. [Usage with Gridsome](#usage-with-gridsome)
+10. [Contributing](#contributing)
+11. [Resources](#resources)
 
 ## Installation
 
@@ -49,6 +50,15 @@ If you are creating an open source application under a license compatible with t
 **The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification)
 
 [Read more about fullPage's license](https://alvarotrigo.com/fullPage/pricing/).
+
+## Example
+
+```bash
+// With npm
+cd example/
+npm install
+npm run start
+```
 
 ## Usage
 

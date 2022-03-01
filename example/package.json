@@ -2,8 +2,7 @@
   "name": "example",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "start": "vite",
   },
   "dependencies": {
     "vue": "^3.0.4",
