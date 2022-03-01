@@ -1,6 +1,6 @@
 # Important Notice: vue-fullpage.js will soon support Vue 3. This branch is for development and should not be used in production.
 
-# Vue-fullpage.js
+# Vue-fullpage.js - Official Vue.js 3 wrapper
 
 ![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
 
