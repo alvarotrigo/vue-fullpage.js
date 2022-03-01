@@ -117,9 +117,7 @@ Notice that if you want to make use of the option `scrollOverflow:true`, you'll 
 Example:
 
 ```javascript
-new Vue({
-  el: '#app',
-  name: 'app',
+export default {
   data() {
     return {
       options: {
@@ -129,8 +127,8 @@ new Vue({
         sectionsColor: ['#41b883', '#ff5f45', '#0798ec'],
       },
     }
-  },
-})
+  }
+}
 ```
 
 ### Delayed init
@@ -264,134 +262,27 @@ In order for fullPage.js to get updated after a change in any of the fullPage.js
 
 For example, if we want fullPage.js to get updated whenever I change the `scrollBar` and `controlArrows` options, I'll have to use the following initialisation:
 
-```html
-<script>
-  export default {
-    data() {
-      return {
-        options: {
-          licenseKey: 'YOUR_KEY_HERE',
-          controlArrows: true,
-          scrollBar: true,
-        },
-      }
-    },
-  }
-</script>
-```
-
-Or, if using `new Vue`, use an object instead of a function for the `data` property:
-
-```javascript
-new Vue({
-  el: '#app',
-  data: {
-    options: {
-      licenseKey: 'YOUR_KEY_HERE',
-      controlArrows: true,
-      scrollBar: true,
-    },
-  },
-})
-```
-
-## Usage with Nuxt.js
-
-Before using using Fullpage.js with Nuxt, keep in mind there will always be some drawbacks. Nuxt is a server side rendered framework, thus the browser is not available at render time, something Fullpage relies on for its magic to happen. There are however, ways to go partially around this. There are two setup options: use [nuxt-fullpage.js](https://www.npmjs.com/package/nuxt-fullpage.js) plugin or make such a plugin if needed by your specific requirements.
-
-### Using a nuxt-fullpage.js plugin
-
-- Add `nuxt-fullpage.js` dependency using yarn or npm to your project
-
-```bash
-// With npm
-npm install --save nuxt-fullpage.js
-```
-
-- Add `nuxt-fullpage.js` to `modules` section of `nuxt.config.js`
-
 ```js
-{
-  modules: ['nuxt-fullpage.js']
+export default {
+  data() {
+    return {
+      options: {
+        licenseKey: 'YOUR_KEY_HERE',
+        controlArrows: true,
+        scrollBar: true,
+      },
+    }
+  },
 }
 ```
 
-That's all, you're ready to go. Also you can find additional info about plugin in [docs](https://www.npmjs.com/package/nuxt-fullpage.js)
+## :construction: Usage with Nuxt.js
 
-### Defining your own Nuxt plugin
+TBD
 
-Create a file called `fullpage.js` inside your Nuxt `plugins` folder. Should look something like this:
+## :construction: Usage with Gridsome
 
-```js
-import Vue from 'vue'
-import Fullpage from 'vue-fullpage.js'
-import 'fullpage.js/dist/fullpage.css'
-
-Vue.use(Fullpage)
-```
-
-Now inside your `nuxt.config.js`, define your fullpage plugin file inside the `plugins` key like so:
-
-```
-  plugins: [
-    { src: '~/plugins/fullpage', mode: 'client' }
-  ],
-```
-
-Note the `mode: 'client'` option. Not adding this option will cause errors during render time. This option means Nuxt will not render fullpage on the server, rather skip it and run it in the Browser.
-
-Opening the browser you will see Fullpage is working.
-
-You will however get a warning in the console saying:
-
-```
-[Vue warn]: The client-side rendered virtual DOM tree is not matching server-rendered content. This is likely caused by incorrect HTML markup, for example nesting block-level elements inside <p>, or missing <tbody>. Bailing hydration and performing full client-side render.
-```
-
-This is normal, nuxt did not render Fullpage at server render time, but then on mount in the Browser, Fullpage kicks in, changing the DOM. The good part is the content inside the fullpage component (each section) will be present at server render time, which means search engine crawlers will be able to detect it.
-
-### Using <no-ssr> component
-
-If you do not want to see that warning and you do not care about search engnes, you can wrap your fullpage component inside a `<no-ssr>` tag like so:
-
-```
-<template>
-  <no-ssr>
-    <full-page :options="options">
-      <div> This content will only be visibe on browser render, not server render </div>
-    </full-page>
-  </no-ssr>
-</template>
-```
-
-## Usage with Gridsome
-
-Gridsome first renders websites statically with Node.js, which means that the browser environment isn't available at render time. Fullpage requires a browser environment to work, which causes `nuxt build` to fail. You can work around this by only loading Fullpage in the browser, and ignoring it during pre-rendering.
-In your `main.js` file, the exported function exposes an `isClient` variable. You can use it to load Fullpage only when you're in a client environment.
-
-```js
-export default function(Vue, { isClient }) {
-  if (isClient) {
-    const { default: VueFullPage } = require('vue-fullpage.js')
-    Vue.use(VueFullPage)
-  }
-})
-```
-
-Then, in your layouts, templates, or pages that use Fullpage, make sure to wrap the code that uses the plugin with the `ClientOnly` component.
-
-```html
-<template>
-  <Layout>
-    <ClientOnly>
-      <full-page ref="fullpage" :options="options" id="fullpage">
-        <div class="section">First section ...</div>
-        <div class="section">Second section ...</div>
-      </full-page>
-    </ClientOnly>
-  </Layout>
-</template>
-```
+TBD
 
 ## Contributing
 
