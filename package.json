@@ -21,9 +21,6 @@
   },
   "unpkg": "./dist/vue-fullpage.umd.js",
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "serve": "vitepress serve docs",
     "build:library": "vite build",
     "analyze": "vite build --config analyze.config.js",
     "publish:library": "npm publish --access public",
@@ -44,8 +41,7 @@
     "eslint-plugin-vue": "^8.3.0",
     "prettier": "^2.5.1",
     "rollup-plugin-visualizer": "^5.5.4",
-    "vite": "^2.7.13",
-    "vitepress": "^0.21.6"
+    "vite": "^2.7.13"
   },
   "license": "GPL-3.0"
 }

@@ -5,7 +5,7 @@
 ![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
 
 <p align="center">
-Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
+Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
 ![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.7-brightgreen.svg)
@@ -32,9 +32,6 @@ Official Vue.js wrapper for the <a target="_blank" href="https://github.com/alva
 Terminal:
 
 ```bash
-// With bower
-bower install vue-fullpage.js
-
 // With npm
 npm install --save vue-fullpage.js
 ```
@@ -60,17 +57,15 @@ If you are creating an open source application under a license compatible with t
 You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/webpack/).
 
 ```js
-import Vue from 'vue'
-import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
-import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
-import VueFullPage from 'vue-fullpage.js'
+import { createApp } from 'vue'
+import App from './App.vue'
 
-Vue.use(VueFullPage)
+import 'vue-fullpage.js/dist/style.css'
+import VueFullPage from 'vue-fullpage.js/dist/vue-fullpage.es'
 
-new Vue({
-  el: '#app',
-  render: (h) => h(App),
-})
+const app = createApp(App)
+app.use(VueFullPage)
+app.mount('#app')
 ```
 
 Notice that when using the option `scrollOverflow:true` or any [fullPage.js extension](https://alvarotrigo.com/fullPage/extensions/) you'll have to include the file for those features before the `vue-fullpage` component.
@@ -85,11 +80,11 @@ You can check a browser stand alone demo [here](https://github.com/alvarotrigo/v
 <!-- On the page head -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/fullpage.js/dist/fullpage.min.css"
+  href="https://unpkg.com/fullpage.js/dist/style.css"
 />
 
 <!-- Include after Vue (before closing body) -->
-<script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.min.js"></script>
+<script type="module" src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.es.js"></script>
 ```
 
 ## Required HTML
@@ -321,7 +316,7 @@ That's all, you're ready to go. Also you can find additional info about plugin i
 
 Create a file called `fullpage.js` inside your Nuxt `plugins` folder. Should look something like this:
 
-```
+```js
 import Vue from 'vue'
 import Fullpage from 'vue-fullpage.js'
 import 'fullpage.js/dist/fullpage.css'
