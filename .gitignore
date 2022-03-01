@@ -1,8 +1,8 @@
 # Vite
 node_modules
 .DS_Store
-dist
-dist-ssr
+*/**/dist
+*/**/dist-ssr
 *.local
 
 # Rollup Bundle Visualizer
