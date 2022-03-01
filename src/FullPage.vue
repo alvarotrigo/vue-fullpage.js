@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import fullpage from 'fullpage.js/dist/fullpage.min'
+import 'fullpage.js/dist/fullpage.min.css'
+import fullpage from 'fullpage.js/dist/fullpage.min.js'
 import * as constants from './constants'
 
 export default {
