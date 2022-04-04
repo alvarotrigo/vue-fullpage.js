@@ -55,17 +55,13 @@ If you are creating an open source application under a license compatible with t
 You can check a bundle demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/webpack/).
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
+import App from './App.vue'
 import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
 import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
 import VueFullPage from 'vue-fullpage.js'
 
-Vue.use(VueFullPage);
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
+createApp(App).use(VueFullpage).mount('#app');
 ```
 
 Notice that when using the option `scrollOverflow:true` or any [fullPage.js extension](https://alvarotrigo.com/fullPage/extensions/) you'll have to include the file for those features before the `vue-fullpage` component.
@@ -110,7 +106,7 @@ Notice that if you want to make use of the option `scrollOverflow:true`, you'll 
 Example:
 
 ```javascript
-new Vue({
+defineComponent({
   el: '#app',
   name: 'app',
   data() {
@@ -192,7 +188,9 @@ As mentioned [above](#options) you can pass callbacks through options object:
 </template>
 
 <script>
-  export default {
+  import { defineComponent } from 'vue';
+
+  export default defineComponent({
       data() {
         return {
           options: {
@@ -206,7 +204,7 @@ As mentioned [above](#options) you can pass callbacks through options object:
           console.log("Emitted 'after load' event.");
         }
       }
-    }
+    })
 </script>
 ```
 
@@ -220,13 +218,15 @@ Or you can use the standard approach for event handling of Vue.js:
   </div>
 </template>
 <script>
-  export default {
+  import { defineComponent } from 'vue';
+
+  export default defineComponent({
       methods: {
         afterLoad() {
           ...
         }
       }
-    }
+    })
 </script>
 
 ```
