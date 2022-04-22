@@ -131,6 +131,6 @@
     "IE 10"
   ],
   "dependencies": {
-    "fullpage.js": "^3.1.0"
+    "fullpage.js": "^4.0.5"
   }
 }
