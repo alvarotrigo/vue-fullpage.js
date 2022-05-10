@@ -6,6 +6,10 @@
     "name": "Alvaro Trigo",
     "email": "alvarotrigo@alvarotrigo.com"
   },
+  "contributors": [
+    "JonathanSchndr",
+    "alvarotrigo"
+  ],
   "files": [
     "dist",
     "docs",
