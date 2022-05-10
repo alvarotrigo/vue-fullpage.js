@@ -1,11 +1,15 @@
 {
-  "name": "vue-fullpage",
+  "name": "vue-fullpage.js",
   "version": "0.2.0",
   "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
     "email": "alvarotrigo@alvarotrigo.com"
   },
+  "contributors": [
+    "JonathanSchndr",
+    "alvarotrigo"
+  ],
   "files": [
     "dist",
     "docs",
