@@ -6,7 +6,9 @@
 Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-![fullPage.js version](http://img.shields.io/badge/fullPage.js-v0.1.7-brightgreen.svg)
+<p align="center">
+  <img src="https://img.shields.io/badge/vue--fullpage-v0.2.0-brightgreen.svg" alt="vue-fullpage version" />
+</p>
 
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg) and [Raphael Owino](https://twitter.com/ralphowino)
