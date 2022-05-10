@@ -1,5 +1,7 @@
 ## Running the example
 
+From the example folder:
+
 ```sh
 npm i
 npm start

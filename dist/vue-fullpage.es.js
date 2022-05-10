@@ -32,1013 +32,1530 @@ var fullpage_min$1 = "";
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var fullpage_min = { exports: {} };
 /*!
- * fullPage 3.1.2
- * https://github.com/alvarotrigo/fullPage.js
- *
- * @license GPLv3 for open source use only
- * or Fullpage Commercial License for commercial use
- * http://alvarotrigo.com/fullPage/pricing/
- *
- * Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
- */
+* fullPage 4.0.7
+* https://github.com/alvarotrigo/fullPage.js
+*
+* @license GPLv3 for open source use only
+* or Fullpage Commercial License for commercial use
+* http://alvarotrigo.com/fullPage/pricing/
+*
+* Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
+*/
 (function(module, exports) {
-  !function(e, t, n, o, r) {
-    module.exports = o(t, n);
-  }(commonjsGlobal, window, document, function(zt, jt) {
-    var Pt = "fullpage-wrapper", Dt = "." + Pt, Vt = "fp-responsive", Wt = "fp-notransition", Yt = "fp-destroyed", Ft = "fp-enabled", Ut = "fp-viewing", Xt = "active", Kt = "." + Xt, _t = "fp-completely", $t = "fp-section", qt = "." + $t, Qt = qt + Kt, Gt = "fp-tableCell", Jt = "." + Gt, Zt = "fp-auto-height", en = "fp-normal-scroll", tn = "fp-nav", nn = "#" + tn, on = "fp-tooltip", rn = "fp-slide", ln = "." + rn, an = ln + Kt, sn = "fp-slides", cn = "." + sn, un = "fp-slidesContainer", fn = "." + un, dn = "fp-table", vn = "fp-slidesNav", pn = "." + vn, hn = pn + " a", e = "fp-controlArrow", gn = "." + e, mn = "fp-prev", Sn = gn + ".fp-prev", wn = gn + ".fp-next";
-    function bn(e2, t) {
-      zt.console && zt.console[e2] && zt.console[e2]("fullPage: " + t);
-    }
-    function yn(e2, t) {
-      return (t = 1 < arguments.length ? t : jt) ? t.querySelectorAll(e2) : null;
-    }
-    function En(e2) {
-      e2 = e2 || {};
-      for (var t = 1, n2 = arguments.length; t < n2; ++t) {
-        var o2 = arguments[t];
-        if (o2)
-          for (var r2 in o2)
-            o2.hasOwnProperty(r2) && (Object.prototype.toString.call(o2[r2]) !== "[object Object]" ? e2[r2] = o2[r2] : e2[r2] = En(e2[r2], o2[r2]));
+  !function(n, t) {
+    module.exports = t();
+  }(commonjsGlobal, function() {
+    var n, t, e, o;
+    Array.prototype.find || Object.defineProperty(Array.prototype, "find", { value: function(n2) {
+      if (this == null)
+        throw new TypeError('"this" is null or not defined');
+      var t2 = Object(this), e2 = t2.length >>> 0;
+      if (typeof n2 != "function")
+        throw new TypeError("predicate must be a function");
+      for (var o2 = arguments[1], i2 = 0; i2 < e2; ) {
+        var r2 = t2[i2];
+        if (n2.call(o2, r2, i2, t2))
+          return r2;
+        i2++;
       }
-      return e2;
+    } }), Array.from || (Array.from = (n = Object.prototype.toString, t = function(t2) {
+      return typeof t2 == "function" || n.call(t2) === "[object Function]";
+    }, e = Math.pow(2, 53) - 1, o = function(n2) {
+      var t2 = function(n3) {
+        var t3 = Number(n3);
+        return isNaN(t3) ? 0 : t3 !== 0 && isFinite(t3) ? (t3 > 0 ? 1 : -1) * Math.floor(Math.abs(t3)) : t3;
+      }(n2);
+      return Math.min(Math.max(t2, 0), e);
+    }, function(n2) {
+      var e2 = this, i2 = Object(n2);
+      if (n2 == null)
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      var r2, a2 = arguments.length > 1 ? arguments[1] : void 0;
+      if (a2 !== void 0) {
+        if (!t(a2))
+          throw new TypeError("Array.from: when provided, the second argument must be a function");
+        arguments.length > 2 && (r2 = arguments[2]);
+      }
+      for (var u2, c2 = o(i2.length), l2 = t(e2) ? Object(new e2(c2)) : new Array(c2), f2 = 0; f2 < c2; )
+        u2 = i2[f2], l2[f2] = a2 ? r2 === void 0 ? a2(u2, f2) : a2.call(r2, u2, f2) : u2, f2 += 1;
+      return l2.length = c2, l2;
+    }));
+    var i = window, r = document, a = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/), u = /(Mac|iPhone|iPod|iPad)/i.test(i.navigator.userAgent), c = "ontouchstart" in i || navigator.msMaxTouchPoints > 0 || navigator.maxTouchPoints, l = { test: {}, shared: {} }, f = ["parallax", "scrollOverflowReset", "dragAndMove", "offsetSections", "fadingEffect", "responsiveSlides", "continuousHorizontal", "interlockedSlides", "scrollHorizontally", "resetSliders", "cards", "dropEffect", "waterEffect"];
+    function s(n2, t2) {
+      i.console && i.console[n2] && i.console[n2]("fullPage: " + t2);
     }
-    function Ln(e2, t) {
-      return e2 != null && (e2.classList ? e2.classList.contains(t) : new RegExp("(^| )" + t + "( |$)", "gi").test(e2.className));
+    function v(n2) {
+      return i.getComputedStyle(n2).display !== "none";
     }
-    function xn() {
-      return "innerHeight" in zt ? zt.innerHeight : jt.documentElement.offsetHeight;
+    function d(n2) {
+      return Array.from(n2).filter(function(n3) {
+        return v(n3);
+      });
     }
-    function An() {
-      return zt.innerWidth;
+    function h(n2, t2) {
+      return (t2 = arguments.length > 1 ? t2 : document) ? t2.querySelectorAll(n2) : null;
     }
-    function Tn(e2, t) {
-      var n2;
-      for (n2 in e2 = l(e2), t)
-        if (t.hasOwnProperty(n2) && n2 !== null)
-          for (var o2 = 0; o2 < e2.length; o2++) {
-            e2[o2].style[n2] = t[n2];
-          }
-      return e2;
+    function p(n2) {
+      n2 = n2 || {};
+      for (var t2 = 1, e2 = arguments.length; t2 < e2; ++t2) {
+        var o2 = arguments[t2];
+        if (o2)
+          for (var i2 in o2)
+            o2.hasOwnProperty(i2) && i2 != "__proto__" && i2 != "constructor" && (Object.prototype.toString.call(o2[i2]) !== "[object Object]" ? n2[i2] = o2[i2] : n2[i2] = p(n2[i2], o2[i2]));
+      }
+      return n2;
     }
-    function n(e2, t, n2) {
-      for (var o2 = e2[n2]; o2 && !qn(o2, t); )
-        o2 = o2[n2];
-      return o2;
+    function g(n2, t2) {
+      return n2 != null && n2.classList.contains(t2);
     }
-    function kn(e2, t) {
-      return n(e2, t, "previousElementSibling");
+    function m() {
+      return "innerHeight" in i ? i.innerHeight : r.documentElement.offsetHeight;
     }
-    function On(e2, t) {
-      return n(e2, t, "nextElementSibling");
+    function w() {
+      return i.innerWidth;
     }
-    function Mn(e2) {
-      return e2.previousElementSibling;
+    function b(n2, t2) {
+      var e2;
+      for (e2 in n2 = M(n2), t2)
+        if (t2.hasOwnProperty(e2) && e2 !== null)
+          for (var o2 = 0; o2 < n2.length; o2++)
+            n2[o2].style[e2] = t2[e2];
+      return n2;
     }
-    function Cn(e2) {
-      return e2.nextElementSibling;
+    function y(n2) {
+      return n2.previousElementSibling;
     }
-    function Hn(e2) {
-      return e2[e2.length - 1];
+    function S(n2) {
+      return n2.nextElementSibling;
     }
-    function In(e2, t) {
-      e2 = i(e2) ? e2[0] : e2;
-      for (var n2 = t != null ? yn(t, e2.parentNode) : e2.parentNode.childNodes, o2 = 0, r2 = 0; r2 < n2.length; r2++) {
-        if (n2[r2] == e2)
+    function T(n2, t2) {
+      n2 = A(n2) ? n2[0] : n2;
+      for (var e2 = t2 != null ? h(t2, n2.parentNode) : n2.parentNode.childNodes, o2 = 0, i2 = 0; i2 < e2.length; i2++) {
+        if (e2[i2] == n2)
           return o2;
-        n2[r2].nodeType == 1 && o2++;
+        e2[i2].nodeType == 1 && o2++;
       }
       return -1;
     }
-    function l(e2) {
-      return i(e2) ? e2 : [e2];
+    function M(n2) {
+      return A(n2) ? n2 : [n2];
     }
-    function Bn(e2) {
-      e2 = l(e2);
-      for (var t = 0; t < e2.length; t++)
-        e2[t].style.display = "none";
-      return e2;
+    function x(n2) {
+      n2 = M(n2);
+      for (var t2 = 0; t2 < n2.length; t2++)
+        n2[t2].style.display = "none";
+      return n2;
     }
-    function Rn(e2) {
-      e2 = l(e2);
-      for (var t = 0; t < e2.length; t++)
-        e2[t].style.display = "block";
-      return e2;
+    function k(n2) {
+      n2 = M(n2);
+      for (var t2 = 0; t2 < n2.length; t2++)
+        n2[t2].style.display = "block";
+      return n2;
     }
-    function i(e2) {
-      return Object.prototype.toString.call(e2) === "[object Array]" || Object.prototype.toString.call(e2) === "[object NodeList]";
+    function A(n2) {
+      return Object.prototype.toString.call(n2) === "[object Array]" || Object.prototype.toString.call(n2) === "[object NodeList]";
     }
-    function Nn(e2, t) {
-      e2 = l(e2);
-      for (var n2 = 0; n2 < e2.length; n2++) {
-        var o2 = e2[n2];
-        o2.classList ? o2.classList.add(t) : o2.className += " " + t;
+    function O(n2, t2) {
+      n2 = M(n2);
+      for (var e2 = 0; e2 < n2.length; e2++)
+        n2[e2].classList.add(t2);
+      return n2;
+    }
+    function D(n2, t2) {
+      n2 = M(n2);
+      for (var e2 = t2.split(" "), o2 = 0; o2 < e2.length; o2++) {
+        t2 = e2[o2];
+        for (var i2 = 0; i2 < n2.length; i2++)
+          n2[i2].classList.remove(t2);
       }
-      return e2;
+      return n2;
     }
-    function zn(e2, t) {
-      e2 = l(e2);
-      for (var n2 = t.split(" "), o2 = 0; o2 < n2.length; o2++) {
-        t = n2[o2];
-        for (var r2 = 0; r2 < e2.length; r2++) {
-          var i2 = e2[r2];
-          i2.classList ? i2.classList.remove(t) : i2.className = i2.className.replace(new RegExp("(^|\\b)" + t.split(" ").join("|") + "(\\b|$)", "gi"), " ");
-        }
-      }
-      return e2;
+    function j(n2, t2) {
+      t2.appendChild(n2);
     }
-    function jn(e2, t) {
-      t.appendChild(e2);
-    }
-    function o(e2, t, n2) {
+    function E(n2, t2, e2) {
       var o2;
-      t = t || jt.createElement("div");
-      for (var r2 = 0; r2 < e2.length; r2++) {
-        var i2 = e2[r2];
-        (n2 && !r2 || !n2) && (o2 = t.cloneNode(true), i2.parentNode.insertBefore(o2, i2)), o2.appendChild(i2);
+      t2 = t2 || r.createElement("div");
+      for (var i2 = 0; i2 < n2.length; i2++) {
+        var a2 = n2[i2];
+        (e2 && !i2 || !e2) && (o2 = t2.cloneNode(true), a2.parentNode.insertBefore(o2, a2)), o2.appendChild(a2);
       }
-      return e2;
+      return n2;
     }
-    function Pn(e2, t) {
-      o(e2, t, true);
+    function L(n2, t2) {
+      E(n2, t2, true);
     }
-    function Dn(e2, t) {
-      for (typeof t == "string" && (t = Gn(t)), e2.appendChild(t); e2.firstChild !== t; )
-        t.appendChild(e2.firstChild);
+    function R(n2) {
+      for (var t2 = r.createDocumentFragment(); n2.firstChild; )
+        t2.appendChild(n2.firstChild);
+      n2.parentNode.replaceChild(t2, n2);
     }
-    function Vn(e2) {
-      for (var t = jt.createDocumentFragment(); e2.firstChild; )
-        t.appendChild(e2.firstChild);
-      e2.parentNode.replaceChild(t, e2);
+    function P(n2, t2) {
+      return n2 && n2.nodeType === 1 ? G(n2, t2) ? n2 : P(n2.parentNode, t2) : null;
     }
-    function Wn(e2, t) {
-      return e2 && e2.nodeType === 1 ? qn(e2, t) ? e2 : Wn(e2.parentNode, t) : null;
+    function C(n2, t2) {
+      F(n2, n2.nextSibling, t2);
     }
-    function Yn(e2, t) {
-      r(e2, e2.nextSibling, t);
+    function z(n2, t2) {
+      F(n2, n2, t2);
     }
-    function Fn(e2, t) {
-      r(e2, e2, t);
+    function F(n2, t2, e2) {
+      A(e2) || (typeof e2 == "string" && (e2 = Q(e2)), e2 = [e2]);
+      for (var o2 = 0; o2 < e2.length; o2++)
+        n2.parentNode.insertBefore(e2[o2], t2);
     }
-    function r(e2, t, n2) {
-      i(n2) || (typeof n2 == "string" && (n2 = Gn(n2)), n2 = [n2]);
-      for (var o2 = 0; o2 < n2.length; o2++)
-        e2.parentNode.insertBefore(n2[o2], t);
+    function N(n2) {
+      if (n2 !== void 0 && n2.fitToSection)
+        return r.body.scrollTop;
+      var t2 = r.documentElement;
+      return (i.pageYOffset || t2.scrollTop) - (t2.clientTop || 0);
     }
-    function Un() {
-      var e2 = jt.documentElement;
-      return (zt.pageYOffset || e2.scrollTop) - (e2.clientTop || 0);
-    }
-    function Xn(t) {
-      return Array.prototype.filter.call(t.parentNode.children, function(e2) {
-        return e2 !== t;
+    function B(n2) {
+      return Array.prototype.filter.call(n2.parentNode.children, function(t2) {
+        return t2 !== n2;
       });
     }
-    function Kn(e2) {
-      e2.preventDefault ? e2.preventDefault() : e2.returnValue = false;
+    function I(n2) {
+      n2.preventDefault();
     }
-    function _n(e2) {
-      if (typeof e2 == "function")
+    function H(n2, t2) {
+      return n2.getAttribute(t2);
+    }
+    function W(n2, t2, e2) {
+      r.addEventListener(n2, t2, e2 === "undefined" ? null : e2);
+    }
+    function V(n2, t2, e2) {
+      i.addEventListener(n2, t2, e2 === "undefined" ? null : e2);
+    }
+    function U(n2, t2, e2) {
+      r.removeEventListener(n2, t2, e2 === "undefined" ? null : e2);
+    }
+    function K(n2, t2, e2) {
+      i.removeEventListener(n2, t2, e2 === "undefined" ? null : e2);
+    }
+    function _(n2) {
+      if (typeof n2 == "function")
         return true;
-      var t = Object.prototype.toString(e2);
-      return t === "[object Function]" || t === "[object GeneratorFunction]";
+      var t2 = Object.prototype.toString.call(n2);
+      return t2 === "[object Function]" || t2 === "[object GeneratorFunction]";
     }
-    function $n(e2, t, n2) {
+    function q(n2, t2, e2) {
       var o2;
-      n2 = n2 === void 0 ? {} : n2, typeof zt.CustomEvent == "function" ? o2 = new CustomEvent(t, { detail: n2 }) : (o2 = jt.createEvent("CustomEvent")).initCustomEvent(t, true, true, n2), e2.dispatchEvent(o2);
+      e2 = e2 === void 0 ? {} : e2, typeof i.CustomEvent == "function" ? o2 = new CustomEvent(t2, { detail: e2 }) : (o2 = r.createEvent("CustomEvent")).initCustomEvent(t2, true, true, e2), n2.dispatchEvent(o2);
     }
-    function qn(e2, t) {
-      return (e2.matches || e2.matchesSelector || e2.msMatchesSelector || e2.mozMatchesSelector || e2.webkitMatchesSelector || e2.oMatchesSelector).call(e2, t);
+    function G(n2, t2) {
+      return (n2.matches || n2.t || n2.msMatchesSelector || n2.mozMatchesSelector || n2.webkitMatchesSelector || n2.oMatchesSelector).call(n2, t2);
     }
-    function Qn(e2, t) {
-      if (typeof t == "boolean")
-        for (var n2 = 0; n2 < e2.length; n2++)
-          e2[n2].style.display = t ? "block" : "none";
+    function Y(n2, t2) {
+      if (typeof t2 == "boolean")
+        for (var e2 = 0; e2 < n2.length; e2++)
+          n2[e2].style.display = t2 ? "block" : "none";
+      return n2;
+    }
+    function Q(n2) {
+      var t2 = r.createElement("div");
+      return t2.innerHTML = n2.trim(), t2.firstChild;
+    }
+    function X(n2) {
+      n2 = M(n2);
+      for (var t2 = 0; t2 < n2.length; t2++) {
+        var e2 = n2[t2];
+        e2 && e2.parentElement && e2.parentNode.removeChild(e2);
+      }
+    }
+    function $(n2, t2, e2) {
+      for (var o2 = n2[e2], i2 = []; o2; )
+        (G(o2, t2) || t2 == null) && i2.push(o2), o2 = o2[e2];
+      return i2;
+    }
+    function J(n2, t2) {
+      return $(n2, t2, "nextElementSibling");
+    }
+    function Z(n2, t2) {
+      return $(n2, t2, "previousElementSibling");
+    }
+    function nn(n2) {
+      return n2[n2.length - 1];
+    }
+    function tn(n2, t2) {
+      for (var e2 = 0, o2 = n2.slice(Math.max(n2.length - t2, 1)), i2 = 0; i2 < o2.length; i2++)
+        e2 += o2[i2];
+      return Math.ceil(e2 / t2);
+    }
+    function en(n2, t2) {
+      n2.setAttribute(t2, H(n2, "data-" + t2)), n2.removeAttribute("data-" + t2);
+    }
+    function on(n2) {
+      return on = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(n3) {
+        return typeof n3;
+      } : function(n3) {
+        return n3 && typeof Symbol == "function" && n3.constructor === Symbol && n3 !== Symbol.prototype ? "symbol" : typeof n3;
+      }, on(n2);
+    }
+    i.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = function(n2, t2) {
+      t2 = t2 || window;
+      for (var e2 = 0; e2 < this.length; e2++)
+        n2.call(t2, this[e2], e2, this);
+    }), typeof Object.assign != "function" && Object.defineProperty(Object, "assign", { value: function(n2, t2) {
+      if (n2 == null)
+        throw new TypeError("Cannot convert undefined or null to object");
+      for (var e2 = Object(n2), o2 = 1; o2 < arguments.length; o2++) {
+        var i2 = arguments[o2];
+        if (i2 != null)
+          for (var r2 in i2)
+            Object.prototype.hasOwnProperty.call(i2, r2) && (e2[r2] = i2[r2]);
+      }
       return e2;
+    }, writable: true, o: true }), window.fp_utils = { $: h, deepExtend: p, hasClass: g, getWindowHeight: m, css: b, prev: y, next: S, last: function(n2) {
+      return n2[n2.length - 1];
+    }, index: T, getList: M, hide: x, show: k, isArrayOrList: A, addClass: O, removeClass: D, appendTo: j, wrap: E, wrapAll: L, unwrap: R, closest: P, after: C, before: z, insertBefore: F, getScrollTop: N, siblings: B, preventDefault: I, isFunction: _, trigger: q, matches: G, toggle: Y, createElementFromHTML: Q, remove: X, untilAll: $, nextAll: J, prevAll: Z, showError: s };
+    var rn = { i: {}, u: function(n2, t2) {
+      var e2 = this;
+      return on(this.i[n2]) !== "object" && (this.i[n2] = []), this.i[n2].push(t2), function() {
+        return e2.removeListener(n2, t2);
+      };
+    }, removeListener: function(n2, t2) {
+      if (on(this.i[n2]) === "object") {
+        var e2 = this.i[n2].indexOf(t2);
+        e2 > -1 && this.i[n2].splice(e2, 1);
+      }
+    }, l: function(n2) {
+      for (var t2 = this, e2 = arguments.length, o2 = new Array(e2 > 1 ? e2 - 1 : 0), i2 = 1; i2 < e2; i2++)
+        o2[i2 - 1] = arguments[i2];
+      on(this.i[n2]) === "object" && this.i[n2].forEach(function(n3) {
+        return n3.apply(t2, o2);
+      });
+    }, once: function(n2, t2) {
+      var e2 = this, o2 = this.u(n2, function() {
+        o2();
+        for (var n3 = arguments.length, i2 = new Array(n3), r2 = 0; r2 < n3; r2++)
+          i2[r2] = arguments[r2];
+        t2.apply(e2, i2);
+      });
+    } }, an = { v: 0, h: 0, slides: [], p: [], g: null, S: null, T: false, M: false, A: false, O: false, D: false, j: void 0, L: void 0, R: false, P: true, C: "none", F: "none", N: false, B: false, I: true, H: 0, W: m(), V: false, U: {}, scrollY: 0, scrollX: 0 };
+    function un(n2) {
+      Object.assign(an, n2);
     }
-    function Gn(e2) {
-      var t = jt.createElement("div");
-      return t.innerHTML = e2.trim(), t.firstChild;
+    function cn() {
+      return an;
     }
-    function Jn(e2) {
-      e2 = l(e2);
-      for (var t = 0; t < e2.length; t++) {
-        var n2 = e2[t];
-        n2 && n2.parentElement && n2.parentNode.removeChild(n2);
-      }
+    function ln(n2) {
+      rn.l("onClickOrTouch", { e: n2, target: n2.target });
     }
-    function a(e2, t, n2) {
-      for (var o2 = e2[n2], r2 = []; o2; )
-        (qn(o2, t) || t == null) && r2.push(o2), o2 = o2[n2];
-      return r2;
+    function fn() {
+      ["click", "touchstart"].forEach(function(n2) {
+        U(n2, ln);
+      });
     }
-    function Zn(e2, t) {
-      return a(e2, t, "nextElementSibling");
+    function sn() {
+      un({ I: true });
     }
-    function eo(e2, t) {
-      return a(e2, t, "previousElementSibling");
+    i.state = an, rn.u("bindEvents", function() {
+      ["click", "touchstart"].forEach(function(n2) {
+        W(n2, ln);
+      }), V("focus", sn), rn.u("onDestroy", fn);
+    });
+    var vn = "fullpage-wrapper", dn = "." + vn, hn = "fp-responsive", pn = "fp-notransition", gn = "fp-destroyed", mn = "fp-enabled", wn = "active", bn = ".active", yn = "fp-completely", Sn = "fp-section", Tn = "." + Sn, Mn = ".fp-tableCell", xn = "fp-auto-height", kn = "#fp-nav", An = "fp-slide", On = "." + An, Dn = ".fp-slide.active", jn = "fp-slides", En = ".fp-slides", Ln = "fp-slidesContainer", Rn = "." + Ln, Pn = "fp-table", Cn = "fp-overflow", zn = "." + Cn, Fn = ".fp-slidesNav", Nn = ".fp-slidesNav a", Bn = "fp-controlArrow", In = "." + Bn, Hn = "fp-prev", Wn = ".fp-controlArrow.fp-prev", Vn = ".fp-controlArrow.fp-next", Un = { menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, licenseKey: "", credits: { enabled: true, label: "Made with fullPage.js", position: "right" }, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: true, scrollOverflowReset: false, touchSensitivity: 5, touchWrapper: null, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, allowCorrectDirection: false, scrollOverflowMacStyle: true, controlArrows: true, controlArrowsHTML: ['<div class="fp-arrow"></div>', '<div class="fp-arrow"></div>'], controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", afterLoad: null, beforeLeave: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, onScrollOverflow: null, lazyLoading: true, observer: true }, Kn = null, _n = false, qn = p({}, Un), Gn = null;
+    function Yn(n2) {
+      return Kn;
     }
-    return zt.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = function(e2, t) {
-      t = t || zt;
-      for (var n2 = 0; n2 < this.length; n2++)
-        e2.call(t, this[n2], n2, this);
-    }), zt.fp_utils = { $: yn, deepExtend: En, hasClass: Ln, getWindowHeight: xn, css: Tn, until: n, prevUntil: kn, nextUntil: On, prev: Mn, next: Cn, last: Hn, index: In, getList: l, hide: Bn, show: Rn, isArrayOrList: i, addClass: Nn, removeClass: zn, appendTo: jn, wrap: o, wrapAll: Pn, wrapInner: Dn, unwrap: Vn, closest: Wn, after: Yn, before: Fn, insertBefore: r, getScrollTop: Un, siblings: Xn, preventDefault: Kn, isFunction: _n, trigger: $n, matches: qn, toggle: Qn, createElementFromHTML: Gn, remove: Jn, filter: function(e2, t) {
-      Array.prototype.filter.call(e2, t);
-    }, untilAll: a, nextAll: Zn, prevAll: eo, showError: bn }, function(e2, E) {
-      var n2 = E && new RegExp("([\\d\\w]{8}-){3}[\\d\\w]{8}|^(?=.*?[A-Y])(?=.*?[a-y])(?=.*?[0-8])(?=.*?[#?!@$%^&*-]).{8,}$").test(E.licenseKey) || -1 < jt.domain.indexOf("alvarotrigo.com"), h = yn("html, body"), u = yn("html")[0], L = yn("body")[0];
-      if (!Ln(u, Ft)) {
-        var g = {};
-        E = En({ menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, fitToSectionDelay: 1e3, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: false, scrollOverflowReset: false, scrollOverflowHandler: zt.fp_scrolloverflow ? zt.fp_scrolloverflow.iscrollHandler : null, scrollOverflowOptions: null, touchSensitivity: 5, touchWrapper: typeof e2 == "string" ? yn(e2)[0] : e2, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, controlArrows: true, controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", v2compatible: false, afterLoad: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, lazyLoading: true }, E);
-        var x, i2, c, f, a2 = false, o2 = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/), r2 = "ontouchstart" in zt || 0 < navigator.msMaxTouchPoints || navigator.maxTouchPoints, d = typeof e2 == "string" ? yn(e2)[0] : e2, A = xn(), s = An(), T = false, t = true, k = true, v = [], p = { m: { up: true, down: true, left: true, right: true } };
-        p.k = En({}, p.m);
-        var m, l2, S, w, b, O, M, y, C, H = zt.PointerEvent ? { down: "pointerdown", move: "pointermove" } : { down: "MSPointerDown", move: "MSPointerMove" }, I = { touchmove: "ontouchmove" in zt ? "touchmove" : H.move, touchstart: "ontouchstart" in zt ? "touchstart" : H.down }, B = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]', R = false;
-        try {
-          var N = Object.defineProperty({}, "passive", { get: function() {
-            R = true;
-          } });
-          zt.addEventListener("testPassive", null, N), zt.removeEventListener("testPassive", null, N);
-        } catch (e3) {
-        }
-        var z, j, P, D = En({}, E), V = false, W = true, Y = ["parallax", "scrollOverflowReset", "dragAndMove", "offsetSections", "fadingEffect", "responsiveSlides", "continuousHorizontal", "interlockedSlides", "scrollHorizontally", "resetSliders", "cards", "dropEffect", "waterEffect"];
-        Ct(), zt.fp_easings = En(zt.fp_easings, { easeInOutCubic: function(e3, t2, n3, o3) {
-          return (e3 /= o3 / 2) < 1 ? n3 / 2 * e3 * e3 * e3 + t2 : n3 / 2 * ((e3 -= 2) * e3 * e3 + 2) + t2;
-        } }), d && (g.version = "3.1.1", g.setAutoScrolling = Z, g.setRecordHistory = ee, g.setScrollingSpeed = te, g.setFitToSection = ne, g.setLockAnchors = function(e3) {
-          E.lockAnchors = e3;
-        }, g.setMouseWheelScrolling = oe, g.setAllowScrolling = re, g.setKeyboardScrolling = le, g.moveSectionUp = ae, g.moveSectionDown = se, g.silentMoveTo = ce, g.moveTo = ue, g.moveSlideRight = fe, g.moveSlideLeft = de, g.fitToSection = xe, g.reBuild = ve, g.setResponsive = he, g.getFullpageData = function() {
-          return E;
-        }, g.destroy = function(e3) {
-          Z(false, "internal"), re(true), ie(false), le(false), Nn(d, Yt), [b, w, l2, O, M, C, S, P].forEach(function(e4) {
-            clearTimeout(e4);
-          }), zt.removeEventListener("scroll", Le), zt.removeEventListener("hashchange", qe), zt.removeEventListener("resize", at), jt.removeEventListener("keydown", Ge), jt.removeEventListener("keyup", Je), ["click", "touchstart"].forEach(function(e4) {
-            jt.removeEventListener(e4, ge);
-          }), ["mouseenter", "touchstart", "mouseleave", "touchend"].forEach(function(e4) {
-            jt.removeEventListener(e4, Se, true);
-          }), e3 && (Tt(0), yn("img[data-src], source[data-src], audio[data-src], iframe[data-src]", d).forEach(function(e4) {
-            Ve(e4, "src");
-          }), yn("img[data-srcset]").forEach(function(e4) {
-            Ve(e4, "srcset");
-          }), Jn(yn(nn + ", " + pn + ", " + gn)), Tn(yn(qt), { height: "", "background-color": "", padding: "" }), Tn(yn(ln), { width: "" }), Tn(d, { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), Tn(h, { overflow: "", height: "" }), zn(u, Ft), zn(L, Vt), L.className.split(/\s+/).forEach(function(e4) {
-            e4.indexOf(Ut) === 0 && zn(L, e4);
-          }), yn(qt + ", " + ln).forEach(function(e4) {
-            E.scrollOverflowHandler && E.scrollOverflow && E.scrollOverflowHandler.remove(e4), zn(e4, dn + " " + Xt + " " + _t);
-            var t2 = e4.getAttribute("data-fp-styles");
-            t2 && e4.setAttribute("style", e4.getAttribute("data-fp-styles")), Ln(e4, $t) && !V && e4.removeAttribute("data-anchor");
-          }), ft(d), [Jt, fn, cn].forEach(function(e4) {
-            yn(e4, d).forEach(function(e5) {
-              Vn(e5);
-            });
-          }), Tn(d, { "-webkit-transition": "none", transition: "none" }), zt.scrollTo(0, 0), [$t, rn, un].forEach(function(e4) {
-            zn(yn("." + e4), e4);
-          }));
-        }, g.getActiveSection = function() {
-          return new Rt(yn(Qt)[0]);
-        }, g.getActiveSlide = function() {
-          return je(yn(an, yn(Qt)[0])[0]);
-        }, g.test = { top: "0px", translate3d: "translate3d(0px, 0px, 0px)", translate3dH: function() {
-          for (var e3 = [], t2 = 0; t2 < yn(E.sectionSelector, d).length; t2++)
-            e3.push("translate3d(0px, 0px, 0px)");
-          return e3;
-        }(), left: function() {
-          for (var e3 = [], t2 = 0; t2 < yn(E.sectionSelector, d).length; t2++)
-            e3.push(0);
-          return e3;
-        }(), options: E, setAutoScrolling: Z }, g.shared = { afterRenderActions: Ee, isNormalScrollElement: false }, zt.fullpage_api = g, E.$ && Object.keys(g).forEach(function(e3) {
-          E.$.fn.fullpage[e3] = g[e3];
-        }), E.css3 && (E.css3 = function() {
-          var e3, t2 = jt.createElement("p"), n3 = { webkitTransform: "-webkit-transform", OTransform: "-o-transform", msTransform: "-ms-transform", MozTransform: "-moz-transform", transform: "transform" };
-          for (var o3 in t2.style.display = "block", jt.body.insertBefore(t2, null), n3)
-            t2.style[o3] !== void 0 && (t2.style[o3] = "translate3d(1px,1px,1px)", e3 = zt.getComputedStyle(t2).getPropertyValue(n3[o3]));
-          return jt.body.removeChild(t2), e3 !== void 0 && 0 < e3.length && e3 !== "none";
-        }()), E.scrollBar = E.scrollBar || E.hybrid, function() {
-          if (!E.anchors.length) {
-            var e3 = "[data-anchor]", t2 = yn(E.sectionSelector.split(",").join(e3 + ",") + e3, d);
-            t2.length && t2.length === yn(E.sectionSelector, d).length && (V = true, t2.forEach(function(e4) {
-              E.anchors.push(e4.getAttribute("data-anchor").toString());
-            }));
-          }
-          if (!E.navigationTooltips.length) {
-            var n3 = "[data-tooltip]", o3 = yn(E.sectionSelector.split(",").join(n3 + ",") + n3, d);
-            o3.length && o3.forEach(function(e4) {
-              E.navigationTooltips.push(e4.getAttribute("data-tooltip").toString());
-            });
-          }
-        }(), function() {
-          Tn(d, { height: "100%", position: "relative" }), Nn(d, Pt), Nn(u, Ft), A = xn(), zn(d, Yt), Nn(yn(E.sectionSelector, d), $t), Nn(yn(E.slideSelector, d), rn);
-          for (var e3 = yn(qt), t2 = 0; t2 < e3.length; t2++) {
-            var n3 = t2, o3 = e3[t2], r3 = yn(ln, o3), i3 = r3.length;
-            o3.setAttribute("data-fp-styles", o3.getAttribute("style")), s2 = o3, (c2 = n3) || yn(Qt)[0] != null || Nn(s2, Xt), f = yn(Qt)[0], Tn(s2, { height: A + "px" }), E.paddingTop && Tn(s2, { "padding-top": E.paddingTop }), E.paddingBottom && Tn(s2, { "padding-bottom": E.paddingBottom }), E.sectionsColor[c2] !== void 0 && Tn(s2, { "background-color": E.sectionsColor[c2] }), E.anchors[c2] !== void 0 && s2.setAttribute("data-anchor", E.anchors[c2]), l3 = o3, a3 = n3, E.anchors[a3] !== void 0 && Ln(l3, Xt) && dt(E.anchors[a3], a3), E.menu && E.css3 && Wn(yn(E.menu)[0], Dt) != null && yn(E.menu).forEach(function(e4) {
-              L.appendChild(e4);
-            }), 0 < i3 ? be(o3, r3, i3) : E.verticalCentered && pt(o3);
-          }
-          var l3, a3, s2, c2;
-          E.fixedElements && E.css3 && yn(E.fixedElements).forEach(function(e4) {
-            L.appendChild(e4);
-          }), E.navigation && function() {
-            var e4 = jt.createElement("div");
-            e4.setAttribute("id", tn);
-            var t3 = jt.createElement("ul");
-            e4.appendChild(t3), jn(e4, L);
-            var n4 = yn(nn)[0];
-            Nn(n4, "fp-" + E.navigationPosition), E.showActiveTooltip && Nn(n4, "fp-show-active");
-            for (var o4 = "", r4 = 0; r4 < yn(qt).length; r4++) {
-              var i4 = "";
-              E.anchors.length && (i4 = E.anchors[r4]), o4 += '<li><a href="#' + i4 + '"><span class="fp-sr-only">' + ye(r4, "Section") + "</span><span></span></a>";
-              var l4 = E.navigationTooltips[r4];
-              l4 !== void 0 && l4 !== "" && (o4 += '<div class="' + on + " fp-" + E.navigationPosition + '">' + l4 + "</div>"), o4 += "</li>";
-            }
-            yn("ul", n4)[0].innerHTML = o4, Nn(yn("a", yn("li", yn(nn)[0])[In(yn(Qt)[0], qt)]), Xt);
-          }(), yn('iframe[src*="youtube.com/embed/"]', d).forEach(function(e4) {
-            var t3, n4, o4;
-            n4 = "enablejsapi=1", o4 = (t3 = e4).getAttribute("src"), t3.setAttribute("src", o4 + (/\?/.test(o4) ? "&" : "?") + n4);
-          }), E.scrollOverflow && (m = E.scrollOverflowHandler.init(E));
-        }(), re(true), ie(true), Z(E.autoScrolling, "internal"), ct(), Lt(), jt.readyState === "complete" && $e(), zt.addEventListener("load", $e), E.scrollOverflow || Ee(), function() {
-          for (var e3 = 1; e3 < 4; e3++)
-            C = setTimeout(we, 350 * e3);
-        }(), zt.addEventListener("scroll", Le), zt.addEventListener("hashchange", qe), zt.addEventListener("focus", nt), zt.addEventListener("blur", ot), zt.addEventListener("resize", at), jt.addEventListener("keydown", Ge), jt.addEventListener("keyup", Je), ["click", "touchstart"].forEach(function(e3) {
-          jt.addEventListener(e3, ge);
-        }), E.normalScrollElements && (["mouseenter", "touchstart"].forEach(function(e3) {
-          me(e3, false);
-        }), ["mouseleave", "touchend"].forEach(function(e3) {
-          me(e3, true);
-        })));
-        var F = false, U = 0, X = 0, K = 0, _ = 0, $ = 0, q = new Date().getTime(), Q = 0, G = 0, J = A;
-        return g;
-      }
-      function Z(e3, t2) {
-        e3 || Tt(0), Mt("autoScrolling", e3, t2);
-        var n3 = yn(Qt)[0];
-        if (E.autoScrolling && !E.scrollBar)
-          Tn(h, { overflow: "hidden", height: "100%" }), ee(D.recordHistory, "internal"), Tn(d, { "-ms-touch-action": "none", "touch-action": "none" }), n3 != null && Tt(n3.offsetTop);
-        else if (Tn(h, { overflow: "visible", height: "initial" }), ee(!!E.autoScrolling && D.recordHistory, "internal"), Tn(d, { "-ms-touch-action": "", "touch-action": "" }), n3 != null) {
-          var o3 = Pe(n3.offsetTop);
-          o3.element.scrollTo(0, o3.options);
-        }
-      }
-      function ee(e3, t2) {
-        Mt("recordHistory", e3, t2);
-      }
-      function te(e3, t2) {
-        Mt("scrollingSpeed", e3, t2);
-      }
-      function ne(e3, t2) {
-        Mt("fitToSection", e3, t2);
-      }
-      function oe(e3) {
-        e3 ? (function() {
-          var e4, t2 = "";
-          zt.addEventListener ? e4 = "addEventListener" : (e4 = "attachEvent", t2 = "on");
-          var n3 = "onwheel" in jt.createElement("div") ? "wheel" : jt.onmousewheel !== void 0 ? "mousewheel" : "DOMMouseScroll", o3 = !!R && { passive: false };
-          n3 == "DOMMouseScroll" ? jt[e4](t2 + "MozMousePixelScroll", He, o3) : jt[e4](t2 + n3, He, o3);
-        }(), d.addEventListener("mousedown", Ze), d.addEventListener("mouseup", et)) : (jt.addEventListener ? (jt.removeEventListener("mousewheel", He, false), jt.removeEventListener("wheel", He, false), jt.removeEventListener("MozMousePixelScroll", He, false)) : jt.detachEvent("onmousewheel", He), d.removeEventListener("mousedown", Ze), d.removeEventListener("mouseup", et));
-      }
-      function re(t2, e3) {
-        e3 !== void 0 ? (e3 = e3.replace(/ /g, "").split(",")).forEach(function(e4) {
-          Ot(t2, e4, "m");
-        }) : Ot(t2, "all", "m");
-      }
-      function ie(e3) {
-        e3 ? (oe(true), function() {
-          if (o2 || r2) {
-            E.autoScrolling && (L.removeEventListener(I.touchmove, Te, { passive: false }), L.addEventListener(I.touchmove, Te, { passive: false }));
-            var e4 = E.touchWrapper;
-            e4.removeEventListener(I.touchstart, Me), e4.removeEventListener(I.touchmove, ke, { passive: false }), e4.addEventListener(I.touchstart, Me), e4.addEventListener(I.touchmove, ke, { passive: false });
-          }
-        }()) : (oe(false), function() {
-          if (o2 || r2) {
-            E.autoScrolling && (L.removeEventListener(I.touchmove, ke, { passive: false }), L.removeEventListener(I.touchmove, Te, { passive: false }));
-            var e4 = E.touchWrapper;
-            e4.removeEventListener(I.touchstart, Me), e4.removeEventListener(I.touchmove, ke, { passive: false });
-          }
-        }());
-      }
-      function le(t2, e3) {
-        e3 !== void 0 ? (e3 = e3.replace(/ /g, "").split(",")).forEach(function(e4) {
-          Ot(t2, e4, "k");
-        }) : (Ot(t2, "all", "k"), E.keyboardScrolling = t2);
-      }
-      function ae() {
-        var e3 = kn(yn(Qt)[0], qt);
-        e3 || !E.loopTop && !E.continuousVertical || (e3 = Hn(yn(qt))), e3 != null && Re(e3, null, true);
-      }
-      function se() {
-        var e3 = On(yn(Qt)[0], qt);
-        e3 || !E.loopBottom && !E.continuousVertical || (e3 = yn(qt)[0]), e3 != null && Re(e3, null, false);
-      }
-      function ce(e3, t2) {
-        te(0, "internal"), ue(e3, t2), te(D.scrollingSpeed, "internal");
-      }
-      function ue(e3, t2) {
-        var n3 = mt(e3);
-        t2 !== void 0 ? St(e3, t2) : n3 != null && Re(n3);
-      }
-      function fe(e3) {
-        Ie("right", e3);
-      }
-      function de(e3) {
-        Ie("left", e3);
-      }
-      function ve(e3) {
-        if (!Ln(d, Yt)) {
-          T = true, A = xn(), s = An();
-          for (var t2 = yn(qt), n3 = 0; n3 < t2.length; ++n3) {
-            var o3 = t2[n3], r3 = yn(cn, o3)[0], i3 = yn(ln, o3);
-            E.verticalCentered && Tn(yn(Jt, o3), { height: ht(o3) + "px" }), Tn(o3, { height: A + "px" }), 1 < i3.length && it(r3, yn(an, r3)[0]);
-          }
-          E.scrollOverflow && m.createScrollBarForAll();
-          var l3 = In(yn(Qt)[0], qt);
-          l3 && ce(l3 + 1), T = false, _n(E.afterResize) && e3 && E.afterResize.call(d, zt.innerWidth, zt.innerHeight), _n(E.afterReBuild) && !e3 && E.afterReBuild.call(d);
-        }
-      }
-      function pe() {
-        return Ln(L, Vt);
-      }
-      function he(e3) {
-        var t2 = pe();
-        e3 ? t2 || (Z(false, "internal"), ne(false, "internal"), Bn(yn(nn)), Nn(L, Vt), _n(E.afterResponsive) && E.afterResponsive.call(d, e3), E.scrollOverflow && m.createScrollBarForAll()) : t2 && (Z(D.autoScrolling, "internal"), ne(D.autoScrolling, "internal"), Rn(yn(nn)), zn(L, Vt), _n(E.afterResponsive) && E.afterResponsive.call(d, e3));
-      }
-      function ge(e3) {
-        var t2 = e3.target;
-        t2 && Wn(t2, nn + " a") ? function(e4) {
-          Kn(e4);
-          var t3 = In(Wn(this, nn + " li"));
-          Re(yn(qt)[t3]);
-        }.call(t2, e3) : qn(t2, ".fp-tooltip") ? function() {
-          $n(Mn(this), "click");
-        }.call(t2) : qn(t2, gn) ? function() {
-          var e4 = Wn(this, qt);
-          Ln(this, mn) ? p.m.left && de(e4) : p.m.right && fe(e4);
-        }.call(t2, e3) : qn(t2, hn) || Wn(t2, hn) != null ? function(e4) {
-          Kn(e4);
-          var t3 = yn(cn, Wn(this, qt))[0], n3 = yn(ln, t3)[In(Wn(this, "li"))];
-          it(t3, n3);
-        }.call(t2, e3) : Wn(t2, E.menu + " [data-menuanchor]") && function(e4) {
-          !yn(E.menu)[0] || !E.lockAnchors && E.anchors.length || (Kn(e4), ue(this.getAttribute("data-menuanchor")));
-        }.call(t2, e3);
-      }
-      function me(e3, t2) {
-        jt["fp_" + e3] = t2, jt.addEventListener(e3, Se, true);
-      }
-      function Se(e3) {
-        var t2 = e3.type, o3 = false, r3 = E.scrollOverflow, i3 = t2 === "mouseleave" ? e3.toElement || e3.relatedTarget : e3.target;
-        if (i3 == jt || !i3)
-          return ie(true), void (r3 && E.scrollOverflowHandler.setIscroll(i3, true));
-        t2 === "touchend" && (W = false, setTimeout(function() {
-          W = true;
-        }, 800)), (t2 !== "mouseenter" || W) && (E.normalScrollElements.split(",").forEach(function(e4) {
-          if (!o3) {
-            var t3 = qn(i3, e4), n3 = Wn(i3, e4);
-            (t3 || n3) && (g.shared.isNormalScrollElement || (ie(false), r3 && E.scrollOverflowHandler.setIscroll(i3, false)), g.shared.isNormalScrollElement = true, o3 = true);
-          }
-        }), !o3 && g.shared.isNormalScrollElement && (ie(true), r3 && E.scrollOverflowHandler.setIscroll(i3, true), g.shared.isNormalScrollElement = false));
-      }
-      function we() {
-        var e3 = xn(), t2 = An();
-        A === e3 && s === t2 || (A = e3, s = t2, ve(true));
-      }
-      function be(e3, t2, n3) {
-        var o3 = 100 * n3, r3 = 100 / n3, i3 = jt.createElement("div");
-        i3.className = sn, Pn(t2, i3);
-        var l3, a3, s2 = jt.createElement("div");
-        s2.className = un, Pn(t2, s2), Tn(yn(fn, e3), { width: o3 + "%" }), 1 < n3 && (E.controlArrows && (l3 = e3, a3 = [Gn('<div class="fp-controlArrow fp-prev"></div>'), Gn('<div class="fp-controlArrow fp-next"></div>')], Yn(yn(cn, l3)[0], a3), E.controlArrowColor !== "#fff" && (Tn(yn(wn, l3), { "border-color": "transparent transparent transparent " + E.controlArrowColor }), Tn(yn(Sn, l3), { "border-color": "transparent " + E.controlArrowColor + " transparent transparent" })), E.loopHorizontal || Bn(yn(Sn, l3))), E.slidesNavigation && function(e4, t3) {
-          jn(Gn('<div class="' + vn + '"><ul></ul></div>'), e4);
-          var n4 = yn(pn, e4)[0];
-          Nn(n4, "fp-" + E.slidesNavPosition);
-          for (var o4 = 0; o4 < t3; o4++) {
-            var r4 = yn(ln, e4)[o4];
-            jn(Gn('<li><a href="#"><span class="fp-sr-only">' + ye(o4, "Slide", r4) + "</span><span></span></a></li>"), yn("ul", n4)[0]);
-          }
-          Tn(n4, { "margin-left": "-" + n4.innerWidth / 2 + "px" }), Nn(yn("a", yn("li", n4)[0]), Xt);
-        }(e3, n3)), t2.forEach(function(e4) {
-          Tn(e4, { width: r3 + "%" }), E.verticalCentered && pt(e4);
-        });
-        var c2 = yn(an, e3)[0];
-        c2 != null && (In(yn(Qt), qt) !== 0 || In(yn(Qt), qt) === 0 && In(c2) !== 0) ? At(c2, "internal") : Nn(t2[0], Xt);
-      }
-      function ye(e3, t2, n3) {
-        var o3 = t2 === "Section" ? E.anchors[e3] : n3.getAttribute("data-anchor");
-        return E.navigationTooltips[e3] || o3 || t2 + " " + (e3 + 1);
-      }
-      function Ee() {
-        var e3, t2, n3 = yn(Qt)[0];
-        Nn(n3, _t), Ye(n3), We(), Ue(n3), E.scrollOverflow && E.scrollOverflowHandler.afterLoad(), e3 = Qe(), t2 = mt(e3.section), e3.section && t2 && (t2 === void 0 || In(t2) !== In(f)) || !_n(E.afterLoad) || Ne("afterLoad", { activeSection: n3, element: n3, direction: null, anchorLink: n3.getAttribute("data-anchor"), sectionIndex: In(n3, qt) }), _n(E.afterRender) && Ne("afterRender");
-      }
-      function Le() {
-        var e3, t2, n3, o3, r3, i3;
-        if (!T && (!E.autoScrolling || E.scrollBar)) {
-          var l3 = Un(), a3 = (i3 = U < (r3 = l3) ? "down" : "up", Q = U = r3, i3), s2 = 0, c2 = l3 + xn() / 2, u2 = L.offsetHeight - xn() === l3, f2 = yn(qt);
-          if (u2)
-            s2 = f2.length - 1;
-          else if (l3)
-            for (var d2 = 0; d2 < f2.length; ++d2)
-              f2[d2].offsetTop <= c2 && (s2 = d2);
-          else
-            s2 = 0;
-          if (t2 = a3, n3 = yn(Qt)[0].offsetTop, o3 = n3 + xn(), (t2 != "up" ? n3 <= Un() : o3 >= Un() + xn()) && (Ln(yn(Qt)[0], _t) || (Nn(yn(Qt)[0], _t), zn(Xn(yn(Qt)[0]), _t))), !Ln(e3 = f2[s2], Xt)) {
-            F = true;
-            var v2, p2, h2 = yn(Qt)[0], g2 = In(h2, qt) + 1, m2 = vt(e3), S2 = e3.getAttribute("data-anchor"), w2 = In(e3, qt) + 1, b2 = yn(an, e3)[0], y2 = { activeSection: h2, sectionIndex: w2 - 1, anchorLink: S2, element: e3, leavingSection: g2, direction: m2 };
-            b2 && (p2 = b2.getAttribute("data-anchor"), v2 = In(b2)), k && (Nn(e3, Xt), zn(Xn(e3), Xt), _n(E.onLeave) && Ne("onLeave", y2), _n(E.afterLoad) && Ne("afterLoad", y2), Ke(h2), Ye(e3), Ue(e3), dt(S2, w2 - 1), E.anchors.length && (x = S2), bt(v2, p2, S2)), clearTimeout(O), O = setTimeout(function() {
-              F = false;
-            }, 100);
-          }
-          E.fitToSection && (clearTimeout(M), M = setTimeout(function() {
-            E.fitToSection && yn(Qt)[0].offsetHeight <= A && xe();
-          }, E.fitToSectionDelay));
-        }
-      }
-      function xe() {
-        k && (T = true, Re(yn(Qt)[0]), T = false);
-      }
-      function Ae(e3) {
-        if (p.m[e3]) {
-          var t2 = e3 === "down" ? se : ae;
-          if (E.scrollOverflow) {
-            var n3 = E.scrollOverflowHandler.scrollable(yn(Qt)[0]), o3 = e3 === "down" ? "bottom" : "top";
-            if (n3 != null) {
-              if (!E.scrollOverflowHandler.isScrolled(o3, n3))
-                return true;
-              t2();
-            } else
-              t2();
-          } else
-            t2();
-        }
-      }
-      function Te(e3) {
-        E.autoScrolling && Oe(e3) && p.m.up && Kn(e3);
-      }
-      function ke(e3) {
-        var t2 = Wn(e3.target, qt) || yn(Qt)[0];
-        if (Oe(e3)) {
-          E.autoScrolling && Kn(e3);
-          var n3 = xt(e3);
-          _ = n3.y, $ = n3.x, yn(cn, t2).length && Math.abs(K - $) > Math.abs(X - _) ? !a2 && Math.abs(K - $) > An() / 100 * E.touchSensitivity && ($ < K ? p.m.right && fe(t2) : p.m.left && de(t2)) : E.autoScrolling && k && Math.abs(X - _) > zt.innerHeight / 100 * E.touchSensitivity && (_ < X ? Ae("down") : X < _ && Ae("up"));
-        }
-      }
-      function Oe(e3) {
-        return e3.pointerType === void 0 || e3.pointerType != "mouse";
-      }
-      function Me(e3) {
-        if (E.fitToSection && (z = false), Oe(e3)) {
-          var t2 = xt(e3);
-          X = t2.y, K = t2.x;
-        }
-      }
-      function Ce(e3, t2) {
-        for (var n3 = 0, o3 = e3.slice(Math.max(e3.length - t2, 1)), r3 = 0; r3 < o3.length; r3++)
-          n3 += o3[r3];
-        return Math.ceil(n3 / t2);
-      }
-      function He(e3) {
-        var t2 = new Date().getTime(), n3 = Ln(yn(".fp-completely")[0], en);
-        if (!p.m.down && !p.m.up)
-          return Kn(e3), false;
-        if (E.autoScrolling && !c && !n3) {
-          var o3 = (e3 = e3 || zt.event).wheelDelta || -e3.deltaY || -e3.detail, r3 = Math.max(-1, Math.min(1, o3)), i3 = e3.wheelDeltaX !== void 0 || e3.deltaX !== void 0, l3 = Math.abs(e3.wheelDeltaX) < Math.abs(e3.wheelDelta) || Math.abs(e3.deltaX) < Math.abs(e3.deltaY) || !i3;
-          149 < v.length && v.shift(), v.push(Math.abs(o3)), E.scrollBar && Kn(e3);
-          var a3 = t2 - q;
-          if (q = t2, 200 < a3 && (v = []), k) {
-            var s2 = Ce(v, 10);
-            Ce(v, 70) <= s2 && l3 && Ae(r3 < 0 ? "down" : "up");
-          }
-          return false;
-        }
-        E.fitToSection && (z = false);
-      }
-      function Ie(e3, t2) {
-        var n3 = t2 == null ? yn(Qt)[0] : t2, o3 = yn(cn, n3)[0];
-        if (!(o3 == null || a2 || yn(ln, o3).length < 2)) {
-          var r3 = yn(an, o3)[0], i3 = null;
-          if ((i3 = e3 === "left" ? kn(r3, ln) : On(r3, ln)) == null) {
-            if (!E.loopHorizontal)
-              return;
-            var l3 = Xn(r3);
-            i3 = e3 === "left" ? l3[l3.length - 1] : l3[0];
-          }
-          a2 = !g.test.isTesting, it(o3, i3, e3);
-        }
-      }
-      function Be() {
-        for (var e3 = yn(an), t2 = 0; t2 < e3.length; t2++)
-          At(e3[t2], "internal");
-      }
-      function Re(e3, t2, n3) {
-        if (e3 != null) {
-          var o3, r3, i3, l3, a3, s2, c2, u2, f2, d2 = { element: e3, callback: t2, isMovementUp: n3, dtop: (r3 = (o3 = e3).offsetHeight, i3 = o3.offsetTop, a3 = Q < (l3 = i3), s2 = l3 - A + r3, c2 = E.bigSectionsDestination, A < r3 ? (a3 || c2) && c2 !== "bottom" || (l3 = s2) : (a3 || T && Cn(o3) == null) && (l3 = s2), Q = l3), yMovement: vt(e3), anchorLink: e3.getAttribute("data-anchor"), sectionIndex: In(e3, qt), activeSlide: yn(an, e3)[0], activeSection: yn(Qt)[0], leavingSection: In(yn(Qt), qt) + 1, localIsResizing: T };
-          if (!(d2.activeSection == e3 && !T || E.scrollBar && Un() === d2.dtop && !Ln(e3, Zt))) {
-            if (d2.activeSlide != null && (u2 = d2.activeSlide.getAttribute("data-anchor"), f2 = In(d2.activeSlide)), !d2.localIsResizing) {
-              var v2 = d2.yMovement;
-              if (n3 !== void 0 && (v2 = n3 ? "up" : "down"), d2.direction = v2, _n(E.onLeave) && Ne("onLeave", d2) === false)
-                return;
-            }
-            E.autoScrolling && E.continuousVertical && d2.isMovementUp !== void 0 && (!d2.isMovementUp && d2.yMovement == "up" || d2.isMovementUp && d2.yMovement == "down") && ((p2 = d2).isMovementUp ? Fn(yn(Qt)[0], Zn(p2.activeSection, qt)) : Yn(yn(Qt)[0], eo(p2.activeSection, qt).reverse()), Tt(yn(Qt)[0].offsetTop), Be(), p2.wrapAroundElements = p2.activeSection, p2.dtop = p2.element.offsetTop, p2.yMovement = vt(p2.element), d2 = p2), d2.localIsResizing || Ke(d2.activeSection), E.scrollOverflow && E.scrollOverflowHandler.beforeLeave(), Nn(e3, Xt), zn(Xn(e3), Xt), Ye(e3), E.scrollOverflow && E.scrollOverflowHandler.onLeave(), k = g.test.isTesting, bt(f2, u2, d2.anchorLink, d2.sectionIndex), function(e4) {
-              var t3 = E.scrollingSpeed < 700, n4 = t3 ? 700 : E.scrollingSpeed;
-              if (E.css3 && E.autoScrolling && !E.scrollBar) {
-                var o4 = "translate3d(0px, -" + Math.round(e4.dtop) + "px, 0px)";
-                gt(o4, true), E.scrollingSpeed ? (clearTimeout(w), w = setTimeout(function() {
-                  De(e4), k = !t3;
-                }, E.scrollingSpeed)) : De(e4);
-              } else {
-                var r4 = Pe(e4.dtop);
-                g.test.top = -e4.dtop + "px", Tn(h, { "scroll-behavior": "unset" }), Ht(r4.element, r4.options, E.scrollingSpeed, function() {
-                  E.scrollBar ? setTimeout(function() {
-                    De(e4);
-                  }, 30) : (De(e4), k = !t3);
-                });
-              }
-              t3 && (clearTimeout(P), P = setTimeout(function() {
-                k = true;
-              }, n4));
-            }(d2), x = d2.anchorLink, dt(d2.anchorLink, d2.sectionIndex);
-          }
-        }
-        var p2;
-      }
-      function Ne(e3, t2) {
-        var n3, o3, r3, i3, l3 = (o3 = e3, r3 = t2, (i3 = E.v2compatible ? { afterRender: function() {
-          return [d];
-        }, onLeave: function() {
-          return [r3.activeSection, r3.leavingSection, r3.sectionIndex + 1, r3.direction];
-        }, afterLoad: function() {
-          return [r3.element, r3.anchorLink, r3.sectionIndex + 1];
-        }, afterSlideLoad: function() {
-          return [r3.destiny, r3.anchorLink, r3.sectionIndex + 1, r3.slideAnchor, r3.slideIndex];
-        }, onSlideLeave: function() {
-          return [r3.prevSlide, r3.anchorLink, r3.sectionIndex + 1, r3.prevSlideIndex, r3.direction, r3.slideIndex];
-        } } : { afterRender: function() {
-          return { section: ze(yn(Qt)[0]), slide: je(yn(an, yn(Qt)[0])[0]) };
-        }, onLeave: function() {
-          return { origin: ze(r3.activeSection), destination: ze(r3.element), direction: r3.direction };
-        }, afterLoad: function() {
-          return i3.onLeave();
-        }, afterSlideLoad: function() {
-          return { section: ze(r3.section), origin: je(r3.prevSlide), destination: je(r3.destiny), direction: r3.direction };
-        }, onSlideLeave: function() {
-          return i3.afterSlideLoad();
-        } })[o3]());
-        if (E.v2compatible) {
-          if (E[e3].apply(l3[0], l3.slice(1)) === false)
-            return false;
-        } else if ($n(d, e3, l3), E[e3].apply(l3[Object.keys(l3)[0]], (n3 = l3, Object.keys(n3).map(function(e4) {
-          return n3[e4];
-        }))) === false)
-          return false;
-        return true;
-      }
-      function ze(e3) {
-        return e3 ? new Rt(e3) : null;
-      }
-      function je(e3) {
-        return e3 ? new Nt(e3) : null;
-      }
-      function Pe(e3) {
-        var t2 = {};
-        return E.autoScrolling && !E.scrollBar ? (t2.options = -e3, t2.element = yn(Dt)[0]) : (t2.options = e3, t2.element = zt), t2;
-      }
-      function De(e3) {
-        var t2;
-        (t2 = e3).wrapAroundElements != null && (t2.isMovementUp ? Fn(yn(qt)[0], t2.wrapAroundElements) : Yn(yn(qt)[yn(qt).length - 1], t2.wrapAroundElements), Tt(yn(Qt)[0].offsetTop), Be()), _n(E.afterLoad) && !e3.localIsResizing && Ne("afterLoad", e3), E.scrollOverflow && E.scrollOverflowHandler.afterLoad(), e3.localIsResizing || Ue(e3.element), Nn(e3.element, _t), zn(Xn(e3.element), _t), We(), k = true, _n(e3.callback) && e3.callback();
-      }
-      function Ve(e3, t2) {
-        e3.setAttribute(t2, e3.getAttribute("data-" + t2)), e3.removeAttribute("data-" + t2);
-      }
-      function We() {
-        var e3 = yn(".fp-auto-height")[0] || pe() && yn(".fp-auto-height-responsive")[0];
-        E.lazyLoading && e3 && yn(qt + ":not(" + Kt + ")").forEach(function(e4) {
-          var t2, n3, o3;
-          t2 = e4.getBoundingClientRect(), n3 = t2.top, o3 = t2.bottom, (n3 + 2 < A && 0 < n3 || 2 < o3 && o3 < A) && Ye(e4);
-        });
-      }
-      function Ye(o3) {
-        E.lazyLoading && yn("img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]", _e(o3)).forEach(function(n3) {
-          if (["src", "srcset"].forEach(function(e4) {
-            var t2 = n3.getAttribute("data-" + e4);
-            t2 != null && t2 && (Ve(n3, e4), n3.addEventListener("load", function() {
-              Fe(o3);
-            }));
-          }), qn(n3, "source")) {
-            var e3 = Wn(n3, "video, audio");
-            e3 && (e3.load(), e3.onloadeddata = function() {
-              Fe(o3);
-            });
-          }
-        });
-      }
-      function Fe(e3) {
-        E.scrollOverflow && (clearTimeout(j), j = setTimeout(function() {
-          Ln(L, Vt) || m.createScrollBar(e3);
-        }, 200));
-      }
-      function Ue(e3) {
-        var t2 = _e(e3);
-        yn("video, audio", t2).forEach(function(e4) {
-          e4.hasAttribute("data-autoplay") && typeof e4.play == "function" && e4.play();
-        }), yn('iframe[src*="youtube.com/embed/"]', t2).forEach(function(e4) {
-          e4.hasAttribute("data-autoplay") && Xe(e4), e4.onload = function() {
-            e4.hasAttribute("data-autoplay") && Xe(e4);
-          };
-        });
-      }
-      function Xe(e3) {
-        e3.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
-      }
-      function Ke(e3) {
-        var t2 = _e(e3);
-        yn("video, audio", t2).forEach(function(e4) {
-          e4.hasAttribute("data-keepplaying") || typeof e4.pause != "function" || e4.pause();
-        }), yn('iframe[src*="youtube.com/embed/"]', t2).forEach(function(e4) {
-          /youtube\.com\/embed\//.test(e4.getAttribute("src")) && !e4.hasAttribute("data-keepplaying") && e4.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
-        });
-      }
-      function _e(e3) {
-        var t2 = yn(an, e3);
-        return t2.length && (e3 = t2[0]), e3;
-      }
-      function $e() {
-        var e3 = Qe(), t2 = e3.section, n3 = e3.slide;
-        t2 && (E.animateAnchor ? St(t2, n3) : ce(t2, n3));
-      }
-      function qe() {
-        if (!F && !E.lockAnchors) {
-          var e3 = Qe(), t2 = e3.section, n3 = e3.slide, o3 = x === void 0, r3 = x === void 0 && n3 === void 0 && !a2;
-          t2 && t2.length && (t2 && t2 !== x && !o3 || r3 || !a2 && i2 != n3) && St(t2, n3);
-        }
-      }
-      function Qe() {
-        var e3, t2, n3 = zt.location.hash;
-        if (n3.length) {
-          var o3 = n3.replace("#", "").split("/"), r3 = -1 < n3.indexOf("#/");
-          e3 = r3 ? "/" + o3[1] : decodeURIComponent(o3[0]);
-          var i3 = r3 ? o3[2] : o3[1];
-          i3 && i3.length && (t2 = decodeURIComponent(i3));
-        }
-        return { section: e3, slide: t2 };
-      }
-      function Ge(e3) {
-        clearTimeout(y);
-        var t2 = jt.activeElement, n3 = e3.keyCode;
-        n3 === 9 ? function(e4) {
-          var t3, n4, o3, r3, i3, l3, a3, s2 = e4.shiftKey, c2 = jt.activeElement, u2 = tt(_e(yn(Qt)[0]));
-          function f2(e5) {
-            return Kn(e5), u2[0] ? u2[0].focus() : null;
-          }
-          (t3 = e4, n4 = tt(jt), o3 = n4.indexOf(jt.activeElement), r3 = t3.shiftKey ? o3 - 1 : o3 + 1, i3 = n4[r3], l3 = je(Wn(i3, ln)), a3 = ze(Wn(i3, qt)), l3 || a3) && (c2 ? Wn(c2, Qt + "," + Qt + " " + an) == null && (c2 = f2(e4)) : f2(e4), (!s2 && c2 == u2[u2.length - 1] || s2 && c2 == u2[0]) && Kn(e4));
-        }(e3) : qn(t2, "textarea") || qn(t2, "input") || qn(t2, "select") || t2.getAttribute("contentEditable") === "true" || t2.getAttribute("contentEditable") === "" || !E.keyboardScrolling || !E.autoScrolling || (-1 < [40, 38, 32, 33, 34].indexOf(n3) && Kn(e3), c = e3.ctrlKey, y = setTimeout(function() {
-          !function(e4) {
-            var t3 = e4.shiftKey, n4 = jt.activeElement, o3 = qn(n4, "video") || qn(n4, "audio");
-            if (k || !([37, 39].indexOf(e4.keyCode) < 0))
-              switch (e4.keyCode) {
-                case 38:
-                case 33:
-                  p.k.up && ae();
-                  break;
-                case 32:
-                  if (t3 && p.k.up && !o3) {
-                    ae();
-                    break;
-                  }
-                case 40:
-                case 34:
-                  p.k.down && (e4.keyCode === 32 && o3 || se());
-                  break;
-                case 36:
-                  p.k.up && ue(1);
-                  break;
-                case 35:
-                  p.k.down && ue(yn(qt).length);
-                  break;
-                case 37:
-                  p.k.left && de();
-                  break;
-                case 39:
-                  p.k.right && fe();
-              }
-          }(e3);
-        }, 150));
-      }
-      function Je(e3) {
-        t && (c = e3.ctrlKey);
-      }
-      function Ze(e3) {
-        e3.which == 2 && (G = e3.pageY, d.addEventListener("mousemove", rt));
-      }
-      function et(e3) {
-        e3.which == 2 && d.removeEventListener("mousemove", rt);
-      }
-      function tt(e3) {
-        return [].slice.call(yn(B, e3)).filter(function(e4) {
-          return e4.getAttribute("tabindex") !== "-1" && e4.offsetParent !== null;
-        });
-      }
-      function nt() {
-        t = true;
-      }
-      function ot() {
-        c = t = false;
-      }
-      function rt(e3) {
-        E.autoScrolling && (k && (e3.pageY < G && p.m.up ? ae() : e3.pageY > G && p.m.down && se()), G = e3.pageY);
-      }
-      function it(e3, t2, n3) {
-        var o3, r3, i3 = Wn(e3, qt), l3 = { slides: e3, destiny: t2, direction: n3, destinyPos: { left: t2.offsetLeft }, slideIndex: In(t2), section: i3, sectionIndex: In(i3, qt), anchorLink: i3.getAttribute("data-anchor"), slidesNav: yn(pn, i3)[0], slideAnchor: Et(t2), prevSlide: yn(an, i3)[0], prevSlideIndex: In(yn(an, i3)[0]), localIsResizing: T };
-        l3.xMovement = (o3 = l3.prevSlideIndex, r3 = l3.slideIndex, o3 == r3 ? "none" : r3 < o3 ? "left" : "right"), l3.direction = l3.direction ? l3.direction : l3.xMovement, l3.localIsResizing || (k = false), E.onSlideLeave && !l3.localIsResizing && l3.xMovement !== "none" && _n(E.onSlideLeave) && Ne("onSlideLeave", l3) === false ? a2 = false : (Nn(t2, Xt), zn(Xn(t2), Xt), l3.localIsResizing || (Ke(l3.prevSlide), Ye(t2)), !E.loopHorizontal && E.controlArrows && (Qn(yn(Sn, i3), l3.slideIndex !== 0), Qn(yn(wn, i3), Cn(t2) != null)), Ln(i3, Xt) && !l3.localIsResizing && bt(l3.slideIndex, l3.slideAnchor, l3.anchorLink, l3.sectionIndex), function(e4, t3, n4) {
-          var o4 = t3.destinyPos;
-          if (E.css3) {
-            var r4 = "translate3d(-" + Math.round(o4.left) + "px, 0px, 0px)";
-            g.test.translate3dH[t3.sectionIndex] = r4, Tn(ut(yn(fn, e4)), kt(r4)), b = setTimeout(function() {
-              n4 && lt(t3);
-            }, E.scrollingSpeed);
-          } else
-            g.test.left[t3.sectionIndex] = Math.round(o4.left), Ht(e4, Math.round(o4.left), E.scrollingSpeed, function() {
-              n4 && lt(t3);
-            });
-        }(e3, l3, true));
-      }
-      function lt(e3) {
-        var t2, n3;
-        t2 = e3.slidesNav, n3 = e3.slideIndex, E.slidesNavigation && t2 != null && (zn(yn(Kt, t2), Xt), Nn(yn("a", yn("li", t2)[n3]), Xt)), e3.localIsResizing || (_n(E.afterSlideLoad) && Ne("afterSlideLoad", e3), k = true, Ue(e3.destiny)), a2 = false;
-      }
-      function at() {
-        clearTimeout(l2), l2 = setTimeout(function() {
-          for (var e3 = 0; e3 < 4; e3++)
-            S = setTimeout(st, 200 * e3);
-        }, 200);
-      }
-      function st() {
-        if (T = true, ct(), o2) {
-          var e3 = jt.activeElement;
-          if (!qn(e3, "textarea") && !qn(e3, "input") && !qn(e3, "select")) {
-            var t2 = xn();
-            Math.abs(t2 - J) > 20 * Math.max(J, t2) / 100 && (ve(true), J = t2);
-          }
-        } else
-          we();
-        T = false;
-      }
-      function ct() {
-        var e3 = E.responsive || E.responsiveWidth, t2 = E.responsiveHeight, n3 = e3 && zt.innerWidth < e3, o3 = t2 && zt.innerHeight < t2;
-        e3 && t2 ? he(n3 || o3) : e3 ? he(n3) : t2 && he(o3);
-      }
-      function ut(e3) {
-        var t2 = "all " + E.scrollingSpeed + "ms " + E.easingcss3;
-        return zn(e3, Wt), Tn(e3, { "-webkit-transition": t2, transition: t2 });
-      }
-      function ft(e3) {
-        return Nn(e3, Wt);
-      }
-      function dt(e3, t2) {
-        var n3, o3, r3;
-        n3 = e3, yn(E.menu).forEach(function(e4) {
-          E.menu && e4 != null && (zn(yn(Kt, e4), Xt), Nn(yn('[data-menuanchor="' + n3 + '"]', e4), Xt));
-        }), o3 = e3, r3 = t2, E.navigation && yn(nn)[0] != null && (zn(yn(Kt, yn(nn)[0]), Xt), Nn(o3 ? yn('a[href="#' + o3 + '"]', yn(nn)[0]) : yn("a", yn("li", yn(nn)[0])[r3]), Xt));
-      }
-      function vt(e3) {
-        var t2 = In(yn(Qt)[0], qt), n3 = In(e3, qt);
-        return t2 == n3 ? "none" : n3 < t2 ? "up" : "down";
-      }
-      function pt(e3) {
-        if (!Ln(e3, dn)) {
-          var t2 = jt.createElement("div");
-          t2.className = Gt, t2.style.height = ht(e3) + "px", Nn(e3, dn), Dn(e3, t2);
-        }
-      }
-      function ht(e3) {
-        var t2 = A;
-        if (E.paddingTop || E.paddingBottom) {
-          var n3 = e3;
-          Ln(n3, $t) || (n3 = Wn(e3, qt));
-          var o3 = parseInt(getComputedStyle(n3)["padding-top"]) + parseInt(getComputedStyle(n3)["padding-bottom"]);
-          t2 = A - o3;
-        }
-        return t2;
-      }
-      function gt(e3, t2) {
-        t2 ? ut(d) : ft(d), Tn(d, kt(e3)), g.test.translate3d = e3, setTimeout(function() {
-          zn(d, Wt);
-        }, 10);
-      }
-      function mt(e3) {
-        var t2 = yn(qt + '[data-anchor="' + e3 + '"]', d)[0];
-        if (!t2) {
-          var n3 = e3 !== void 0 ? e3 - 1 : 0;
-          t2 = yn(qt)[n3];
-        }
-        return t2;
-      }
-      function St(e3, t2) {
-        var n3 = mt(e3);
-        if (n3 != null) {
-          var o3, r3, i3, l3 = ((i3 = yn(ln + '[data-anchor="' + (o3 = t2) + '"]', r3 = n3)[0]) == null && (o3 = o3 !== void 0 ? o3 : 0, i3 = yn(ln, r3)[o3]), i3);
-          Et(n3) === x || Ln(n3, Xt) ? wt(l3) : Re(n3, function() {
-            wt(l3);
-          });
-        }
-      }
-      function wt(e3) {
-        e3 != null && it(Wn(e3, cn), e3);
-      }
-      function bt(e3, t2, n3, o3) {
-        var r3 = "";
-        E.anchors.length && !E.lockAnchors && (e3 ? (n3 != null && (r3 = n3), t2 == null && (t2 = e3), yt(r3 + "/" + (i2 = t2))) : (e3 != null && (i2 = t2), yt(n3))), Lt();
-      }
-      function yt(e3) {
-        if (E.recordHistory)
-          location.hash = e3;
-        else if (o2 || r2)
-          zt.history.replaceState(void 0, void 0, "#" + e3);
-        else {
-          var t2 = zt.location.href.split("#")[0];
-          zt.location.replace(t2 + "#" + e3);
-        }
-      }
-      function Et(e3) {
-        if (!e3)
-          return null;
-        var t2 = e3.getAttribute("data-anchor"), n3 = In(e3);
-        return t2 == null && (t2 = n3), t2;
-      }
-      function Lt() {
-        var e3 = yn(Qt)[0], t2 = yn(an, e3)[0], n3 = Et(e3), o3 = Et(t2), r3 = String(n3);
-        t2 && (r3 = r3 + "-" + o3), r3 = r3.replace("/", "-").replace("#", "");
-        var i3 = new RegExp("\\b\\s?" + Ut + "-[^\\s]+\\b", "g");
-        L.className = L.className.replace(i3, ""), Nn(L, Ut + "-" + r3);
-      }
-      function xt(e3) {
-        var t2 = [];
-        return t2.y = e3.pageY !== void 0 && (e3.pageY || e3.pageX) ? e3.pageY : e3.touches[0].pageY, t2.x = e3.pageX !== void 0 && (e3.pageY || e3.pageX) ? e3.pageX : e3.touches[0].pageX, r2 && Oe(e3) && E.scrollBar && e3.touches !== void 0 && (t2.y = e3.touches[0].pageY, t2.x = e3.touches[0].pageX), t2;
-      }
-      function At(e3, t2) {
-        te(0, "internal"), t2 !== void 0 && (T = true), it(Wn(e3, cn), e3), t2 !== void 0 && (T = false), te(D.scrollingSpeed, "internal");
-      }
-      function Tt(e3) {
-        var t2 = Math.round(e3);
-        if (E.css3 && E.autoScrolling && !E.scrollBar)
-          gt("translate3d(0px, -" + t2 + "px, 0px)", false);
-        else if (E.autoScrolling && !E.scrollBar)
-          Tn(d, { top: -t2 + "px" }), g.test.top = -t2 + "px";
-        else {
-          var n3 = Pe(t2);
-          It(n3.element, n3.options);
-        }
-      }
-      function kt(e3) {
-        return { "-webkit-transform": e3, "-moz-transform": e3, "-ms-transform": e3, transform: e3 };
-      }
-      function Ot(t2, e3, n3) {
-        e3 !== "all" ? p[n3][e3] = t2 : Object.keys(p[n3]).forEach(function(e4) {
-          p[n3][e4] = t2;
-        });
-      }
-      function Mt(e3, t2, n3) {
-        E[e3] = t2, n3 !== "internal" && (D[e3] = t2);
-      }
-      function Ct() {
-        var e3 = E.licenseKey, t2 = "font-size: 15px;background:yellow;";
-        n2 ? e3 && e3.length < 20 && (console.warn("%c This website was made using fullPage.js slider. More info on the following website:", t2), console.warn("%c https://alvarotrigo.com/fullPage/", t2)) : (bn("error", "Fullpage.js version 3 has changed its license to GPLv3 and it requires a `licenseKey` option. Read about it here:"), bn("error", "https://github.com/alvarotrigo/fullPage.js#options")), Ln(u, Ft) ? bn("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (E.continuousVertical && (E.loopTop || E.loopBottom) && (E.continuousVertical = false, bn("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !E.scrollOverflow || !E.scrollBar && E.autoScrolling || bn("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !E.continuousVertical || !E.scrollBar && E.autoScrolling || (E.continuousVertical = false, bn("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), E.scrollOverflow && E.scrollOverflowHandler == null && (E.scrollOverflow = false, bn("error", "The option `scrollOverflow:true` requires the file `scrolloverflow.min.js`. Please include it before fullPage.js.")), Y.forEach(function(e4) {
-          E[e4] && bn("warn", "fullpage.js extensions require fullpage.extensions.min.js file instead of the usual fullpage.js. Requested: " + e4);
-        }), E.anchors.forEach(function(t3) {
-          var e4 = [].slice.call(yn("[name]")).filter(function(e5) {
-            return e5.getAttribute("name") && e5.getAttribute("name").toLowerCase() == t3.toLowerCase();
-          }), n3 = [].slice.call(yn("[id]")).filter(function(e5) {
-            return e5.getAttribute("id") && e5.getAttribute("id").toLowerCase() == t3.toLowerCase();
-          });
-          if (n3.length || e4.length) {
-            bn("error", "data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).");
-            var o3 = n3.length ? "id" : "name";
-            (n3.length || e4.length) && bn("error", '"' + t3 + '" is is being used by another element `' + o3 + "` property");
-          }
+    function Qn() {
+      return Gn || Un;
+    }
+    function Xn() {
+      return qn;
+    }
+    function $n(n2, t2, e2) {
+      Gn[n2] = t2, e2 !== "internal" && (qn[n2] = t2);
+    }
+    function Jn() {
+      if (!Qn().anchors.length) {
+        var n2 = h(Qn().sectionSelector.split(",").join("[data-anchor],") + "[data-anchor]", Kn);
+        n2.length && n2.length === h(Qn().sectionSelector, Kn).length && (_n = true, n2.forEach(function(n3) {
+          Qn().anchors.push(H(n3, "data-anchor").toString());
         }));
       }
-      function Ht(t2, n3, o3, r3) {
-        var e3, i3 = (e3 = t2).self != zt && Ln(e3, sn) ? e3.scrollLeft : !E.autoScrolling || E.scrollBar ? Un() : e3.offsetTop, l3 = n3 - i3, a3 = 0;
-        z = true;
-        var s2 = function() {
-          if (z) {
-            var e4 = n3;
-            a3 += 20, o3 && (e4 = zt.fp_easings[E.easing](a3, i3, l3, o3)), It(t2, e4), a3 < o3 ? setTimeout(s2, 20) : r3 !== void 0 && r3();
-          } else
-            a3 < o3 && r3();
-        };
-        s2();
+      if (!Qn().navigationTooltips.length) {
+        var t2 = h(Qn().sectionSelector.split(",").join("[data-tooltip],") + "[data-tooltip]", Kn);
+        t2.length && t2.forEach(function(n3) {
+          Qn().navigationTooltips.push(H(n3, "data-tooltip").toString());
+        });
       }
-      function It(e3, t2) {
-        !E.autoScrolling || E.scrollBar || e3.self != zt && Ln(e3, sn) ? e3.self != zt && Ln(e3, sn) ? e3.scrollLeft = t2 : e3.scrollTo(0, t2) : e3.style.top = t2 + "px";
-      }
-      function Bt(e3, t2) {
-        this.anchor = e3.getAttribute("data-anchor"), this.item = e3, this.index = In(e3, t2), this.isLast = this.index === e3.parentElement.querySelectorAll(t2).length - 1, this.isFirst = !this.index;
-      }
-      function Rt(e3) {
-        Bt.call(this, e3, qt);
-      }
-      function Nt(e3) {
-        Bt.call(this, e3, ln);
-      }
-      Ct();
+    }
+    var Zn = function(n2) {
+      this.anchor = n2.anchor, this.item = n2.item, this.index = n2.index(), this.isLast = this.index === n2.item.parentElement.querySelectorAll(n2.selector).length - 1, this.isFirst = !this.index, this.isActive = n2.isActive;
+    }, nt = function(n2, t2) {
+      this.parent = this.parent || null, this.selector = t2, this.anchor = H(n2, "data-anchor") || Qn().anchors[T(n2, Qn().sectionSelector)], this.item = n2, this.isVisible = v(n2), this.isActive = g(n2, wn), this.K = g(n2, Cn), this._ = t2 === Qn().sectionSelector, this.q = P(n2, Rn) || P(n2, dn), this.index = function() {
+        return this.siblings().indexOf(this);
+      };
     };
-  }), window.jQuery && window.fullpage && function(t, n) {
-    t && n ? t.fn.fullpage = function(e) {
-      e = t.extend({}, e, { $: t });
-      new n(this[0], e);
-    } : window.fp_utils.showError("error", "jQuery is required to use the jQuery fullpage adapter!");
-  }(window.jQuery, window.fullpage);
+    function tt(n2) {
+      return n2.map(function(n3) {
+        return n3.item;
+      });
+    }
+    function et(n2, t2) {
+      return n2.find(function(n3) {
+        return n3.item === t2;
+      });
+    }
+    nt.prototype.siblings = function() {
+      return this._ ? this.isVisible ? an.p : an.G : this.parent ? this.parent.slides : 0;
+    }, nt.prototype.prev = function() {
+      var n2 = this.siblings(), t2 = (this._ ? n2.indexOf(this) : this.parent.slides.indexOf(this)) - 1;
+      return t2 >= 0 ? n2[t2] : null;
+    }, nt.prototype.next = function() {
+      var n2 = this.siblings(), t2 = (this._ ? n2.indexOf(this) : this.parent.slides.indexOf(this)) + 1;
+      return t2 < n2.length ? n2[t2] : null;
+    }, nt.prototype.Y = function() {
+      return this._ ? an.p : an.X;
+    };
+    var ot, it, rt = function(n2) {
+      Zn.call(this, n2);
+    }, at = function(n2) {
+      Zn.call(this, n2);
+    };
+    function ut(n2) {
+      var t2 = h(Dn, n2);
+      return t2.length && (n2 = t2[0]), n2;
+    }
+    function ct(n2) {
+      var t2, e2, o2 = Qn();
+      return o2.autoScrolling && !o2.scrollBar ? (t2 = -n2, e2 = h(dn)[0]) : o2.fitToSection ? (t2 = n2, e2 = r.body) : (t2 = n2, e2 = window), { options: t2, element: e2 };
+    }
+    function lt(n2, t2) {
+      !Qn().autoScrolling || Qn().scrollBar || n2.self != window && g(n2, jn) ? n2.self != window && g(n2, jn) ? n2.scrollLeft = t2 : n2.scrollTo(0, t2) : n2.style.top = t2 + "px";
+    }
+    function ft(n2) {
+      var t2 = "transform " + Qn().scrollingSpeed + "ms " + Qn().easingcss3;
+      return D(n2, pn), b(n2, { "-webkit-transition": t2, transition: t2 });
+    }
+    function st(n2, t2) {
+      var e2 = n2.index(), o2 = T(t2, Tn);
+      return e2 == o2 ? "none" : e2 > o2 ? "up" : "down";
+    }
+    function vt(n2) {
+      return O(n2, pn);
+    }
+    function dt(n2) {
+      return { "-webkit-transform": n2, "-moz-transform": n2, "-ms-transform": n2, transform: n2 };
+    }
+    function ht(n2, t2) {
+      t2 ? ft(Yn()) : vt(Yn()), clearTimeout(ot), b(Yn(), dt(n2)), l.test.J = n2, ot = setTimeout(function() {
+        D(Yn(), pn);
+      }, 10);
+    }
+    function pt(n2) {
+      var t2 = Math.round(n2);
+      if (Qn().css3 && Qn().autoScrolling && !Qn().scrollBar)
+        ht("translate3d(0px, -" + t2 + "px, 0px)", false);
+      else if (Qn().autoScrolling && !Qn().scrollBar)
+        b(Yn(), { top: -t2 + "px" }), l.test.top = -t2 + "px";
+      else {
+        var e2 = ct(t2);
+        lt(e2.element, e2.options);
+      }
+    }
+    function gt(n2, t2) {
+      $n("scrollingSpeed", n2, t2);
+    }
+    function mt() {
+      clearTimeout(it);
+    }
+    function wt(n2, t2, e2, o2) {
+      var a2 = function(n3) {
+        return n3.self != i && g(n3, jn) ? n3.scrollLeft : !Qn().autoScrolling || Qn().scrollBar ? N(Qn()) : n3.offsetTop;
+      }(n2), u2 = t2 - a2, c2 = 0, l2 = false;
+      un({ R: true }), n2 === r.body && b(r.body, { "scroll-snap-type": "none" }), function r2() {
+        if (an.R) {
+          var f2 = t2;
+          c2 += 20, e2 && (f2 = i.fp_easings[Qn().easing](c2, a2, u2, e2)), lt(n2, f2), c2 < e2 ? (clearTimeout(it), it = setTimeout(r2, 20)) : o2 === void 0 || l2 || (o2(), l2 = true);
+        } else
+          c2 < e2 && !l2 && (o2(), l2 = true);
+      }();
+    }
+    function bt(n2) {
+      return n2 && !n2.item ? new rt(new $t(n2)) : n2 ? new rt(n2) : null;
+    }
+    function yt(n2) {
+      return n2 ? new at(n2) : null;
+    }
+    function St(n2, t2) {
+      var e2, o2 = function(n3, t3) {
+        var e3 = { afterRender: function() {
+          return { section: bt(cn().g), Z: yt(cn().g.activeSlide) };
+        }, onLeave: function() {
+          return { origin: bt(t3.items.origin), destination: bt(t3.items.destination), direction: t3.direction, trigger: cn().S };
+        }, afterLoad: function() {
+          return e3.onLeave();
+        }, afterSlideLoad: function() {
+          return { section: bt(t3.items.section), origin: bt(t3.items.origin), destination: bt(t3.items.destination), direction: t3.direction, trigger: cn().S };
+        }, onSlideLeave: function() {
+          return e3.afterSlideLoad();
+        }, beforeLeave: function() {
+          return e3.onLeave();
+        }, onScrollOverflow: function() {
+          return { section: bt(cn().g), Z: yt(cn().g.activeSlide), position: t3.position, direction: t3.direction };
+        } };
+        return e3[n3]();
+      }(n2, t2);
+      return q(Yn(), n2, o2), Qn()[n2].apply(o2[Object.keys(o2)[0]], (e2 = o2, Object.keys(e2).map(function(n3) {
+        return e2[n3];
+      }))) !== false;
+    }
+    function Tt(n2) {
+      var t2 = ut(n2);
+      h("video, audio", t2).forEach(function(n3) {
+        n3.hasAttribute("data-autoplay") && typeof n3.play == "function" && n3.play();
+      }), h('iframe[src*="youtube.com/embed/"]', t2).forEach(function(n3) {
+        n3.hasAttribute("data-autoplay") && Mt(n3), n3.onload = function() {
+          n3.hasAttribute("data-autoplay") && Mt(n3);
+        };
+      });
+    }
+    function Mt(n2) {
+      n2.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+    }
+    function xt(n2) {
+      var t2 = ut(n2);
+      h("video, audio", t2).forEach(function(n3) {
+        n3.hasAttribute("data-keepplaying") || typeof n3.pause != "function" || n3.pause();
+      }), h('iframe[src*="youtube.com/embed/"]', t2).forEach(function(n3) {
+        /youtube\.com\/embed\//.test(H(n3, "src")) && !n3.hasAttribute("data-keepplaying") && n3.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+      });
+    }
+    function kt(n2) {
+      Qn().lazyLoading && h("img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]", ut(n2)).forEach(function(n3) {
+        if (["src", "srcset"].forEach(function(t3) {
+          var e2 = H(n3, "data-" + t3);
+          e2 != null && e2 && (en(n3, t3), n3.addEventListener("load", function() {
+          }));
+        }), G(n3, "source")) {
+          var t2 = P(n3, "video, audio");
+          t2 && (t2.load(), t2.onloadeddata = function() {
+          });
+        }
+      });
+    }
+    l.setScrollingSpeed = gt, rn.u("bindEvents", function() {
+      rn.u("onDestroy", mt);
+    });
+    var At = null, Ot = null, Dt = null;
+    function jt() {
+      var n2 = cn().g.item, t2 = cn().g.activeSlide, e2 = Et(n2), o2 = String(e2);
+      t2 && (o2 = o2 + "-" + Et(t2.item)), o2 = o2.replace("/", "-").replace("#", "");
+      var i2 = new RegExp("\\b\\s?fp-viewing-[^\\s]+\\b", "g");
+      At.className = At.className.replace(i2, ""), O(At, "fp-viewing-" + o2);
+    }
+    function Et(n2) {
+      if (!n2)
+        return null;
+      var t2 = H(n2, "data-anchor"), e2 = T(n2);
+      return t2 == null && (t2 = e2), t2;
+    }
+    function Lt(n2, t2, e2) {
+      var o2 = "";
+      Qn().anchors.length && !Qn().lockAnchors && (n2 ? (e2 != null && (o2 = e2), t2 == null && (t2 = n2), un({ L: t2 }), Rt(o2 + "/" + t2)) : n2 != null ? (un({ L: t2 }), Rt(e2)) : Rt(e2)), jt();
+    }
+    function Rt(n2) {
+      if (Qn().recordHistory)
+        location.hash = n2;
+      else if (a || c)
+        i.history.replaceState(void 0, void 0, "#" + n2);
+      else {
+        var t2 = i.location.href.split("#")[0];
+        i.location.replace(t2 + "#" + n2);
+      }
+    }
+    function Pt(n2, t2, e2) {
+      var o2 = t2 === "Section" ? Qn().anchors[n2] : H(e2, "data-anchor");
+      return encodeURI(Qn().navigationTooltips[n2] || o2 || t2 + " " + (n2 + 1));
+    }
+    function Ct(n2) {
+      I(n2), un({ S: "horizontalNav" });
+      var t2 = P(this, Tn), e2 = h(En, P(this, Tn))[0], o2 = et(cn().p, t2).slides[T(P(this, "li"))];
+      rn.l("landscapeScroll", { slides: e2, destination: o2.item });
+    }
+    var zt, Ft = {};
+    function Nt(n2, t2, e2) {
+      t2 !== "all" ? Ft[e2][t2] = n2 : Object.keys(Ft[e2]).forEach(function(t3) {
+        Ft[e2][t3] = n2;
+      });
+    }
+    function Bt() {
+      return Ft;
+    }
+    function It() {
+      var n2 = P(this, Tn);
+      g(this, Hn) ? Bt().m.left && (un({ S: "slideArrow" }), rn.l("moveSlideLeft", { section: n2 })) : Bt().m.right && (un({ S: "slideArrow" }), rn.l("moveSlideRight", { section: n2 }));
+    }
+    function Ht() {
+      clearTimeout(zt);
+    }
+    function Wt(n2, t2, e2) {
+      var o2, i2, r2 = P(n2, Tn), a2 = cn().p.filter(function(n3) {
+        return n3.item == r2;
+      })[0], u2 = a2.slides.filter(function(n3) {
+        return n3.item == t2;
+      })[0], c2 = { slides: n2, destiny: t2, direction: e2, destinyPos: { left: t2.offsetLeft }, slideIndex: u2.index(), section: r2, sectionIndex: a2.index(), anchorLink: a2.anchor, slidesNav: h(Fn, r2)[0], slideAnchor: u2.anchor, prevSlide: a2.activeSlide.item, prevSlideIndex: a2.activeSlide.index(), items: { section: a2, origin: a2.activeSlide, destination: u2 }, localIsResizing: an.O };
+      c2.nn = (o2 = c2.prevSlideIndex, i2 = c2.slideIndex, o2 == i2 ? "none" : o2 > i2 ? "left" : "right"), c2.direction = c2.direction ? c2.direction : c2.nn, c2.localIsResizing || un({ P: false }), Qn().onSlideLeave && !c2.localIsResizing && c2.nn !== "none" && _(Qn().onSlideLeave) && St("onSlideLeave", c2) === false ? un({ A: false }) : (O(t2, wn), D(B(t2), wn), Gt(), c2.localIsResizing || (xt(c2.prevSlide), kt(t2)), function(n3) {
+        !Qn().loopHorizontal && Qn().controlArrows && (Y(h(Wn, n3.section), n3.slideIndex !== 0), Y(h(Vn, n3.section), S(n3.destiny) != null));
+      }(c2), a2.isActive && !c2.localIsResizing && Lt(c2.slideIndex, c2.slideAnchor, c2.anchorLink), function(n3, t3, e3) {
+        var o3, i3, r3 = t3.destinyPos;
+        if (o3 = t3.slidesNav, i3 = t3.slideIndex, Qn().slidesNavigation && o3 != null && (D(h(bn, o3), wn), O(h("a", h("li", o3)[i3]), wn)), un({ scrollX: Math.round(r3.left) }), Qn().css3) {
+          var a3 = "translate3d(-" + Math.round(r3.left) + "px, 0px, 0px)";
+          l.test.tn[t3.sectionIndex] = a3, b(ft(h(Rn, n3)), dt(a3)), clearTimeout(zt), zt = setTimeout(function() {
+            Ut(t3);
+          }, Qn().scrollingSpeed);
+        } else
+          l.test.left[t3.sectionIndex] = Math.round(r3.left), wt(n3, Math.round(r3.left), Qn().scrollingSpeed, function() {
+            Ut(t3);
+          });
+      }(n2, c2));
+    }
+    function Vt() {
+      clearTimeout(zt);
+    }
+    function Ut(n2) {
+      n2.localIsResizing || (_(Qn().afterSlideLoad) && St("afterSlideLoad", n2), un({ P: true }), Tt(n2.destiny)), un({ A: false });
+    }
+    function Kt(n2, t2) {
+      gt(0, "internal"), t2 !== void 0 && un({ O: true }), Wt(P(n2, En), n2), t2 !== void 0 && un({ O: false }), gt(Xn().scrollingSpeed, "internal");
+    }
+    Ft.m = { up: true, down: true, left: true, right: true }, Ft.k = p({}, Ft.m), rn.u("onClickOrTouch", function(n2) {
+      var t2 = n2.target;
+      (G(t2, In) || P(t2, In)) && It.call(t2, n2);
+    }), l.landscapeScroll = Wt, rn.u("bindEvents", function() {
+      rn.u("onPerformMovement", Ht);
+    });
+    var _t = null, qt = null;
+    function Gt() {
+      an.g = null, an.p.map(function(n2) {
+        var t2 = g(n2.item, wn);
+        n2.isActive = t2, n2.K = g(n2.item, Cn), t2 && (an.g = n2), n2.slides.length && (n2.activeSlide = null, n2.slides.map(function(t3) {
+          var e2 = g(t3.item, wn);
+          t3.K = g(t3.item, Cn), t3.isActive = e2, e2 && (n2.activeSlide = t3);
+        }));
+      }), function() {
+        var n2 = an.g, t2 = !!an.g && an.g.slides.length, e2 = an.g ? an.g.activeSlide : null;
+        if (!n2 && an.p.length && !cn().T && _t) {
+          var o2 = Xt(_t, an.p);
+          o2 && (an.g = o2, an.g.isActive = true, O(an.g.item, wn)), an.g && pt(an.g.item.offsetTop);
+        }
+        if (t2 && !e2 && qt) {
+          var i2 = Xt(qt, an.g.slides);
+          i2 && (an.g.activeSlide = i2, an.g.activeSlide.isActive = true, O(an.g.activeSlide.item, wn)), an.g.activeSlide && Kt(an.g.activeSlide.item, "internal");
+        }
+      }();
+    }
+    function Yt() {
+      var n2 = h(Qn().sectionSelector, Yn()), t2 = d(n2), e2 = Array.from(n2).map(function(n3) {
+        return new $t(n3);
+      }), o2 = e2.filter(function(n3) {
+        return n3.isVisible;
+      }), i2 = o2.reduce(function(n3, t3) {
+        return n3.concat(t3.slides);
+      }, []);
+      _t = Qt(an.g), qt = Qt(an.g ? an.g.activeSlide : null), an.v = t2.length, an.h = o2.reduce(function(n3, t3) {
+        return n3 + t3.slides.length;
+      }, 0), an.p = o2, an.G = e2, an.slides = i2, an.X = an.p.concat(an.slides);
+    }
+    function Qt(n2) {
+      if (!n2)
+        return null;
+      var t2 = n2 ? n2.item : null, e2 = n2._ ? an.G : an.g.en;
+      if (t2) {
+        var o2 = et(e2, t2);
+        return o2 ? o2.index() : null;
+      }
+      return null;
+    }
+    function Xt(n2, t2) {
+      var e2, o2 = n2 - 1, i2 = n2;
+      do {
+        if (e2 = t2[o2] || t2[i2])
+          break;
+        o2 -= 1, i2 += 1;
+      } while (o2 >= 0 || i2 < t2.length);
+      return e2;
+    }
+    var $t = function(n2) {
+      var t2 = this;
+      [].push.call(arguments, Qn().sectionSelector), nt.apply(this, arguments), this.on = h(Qn().slideSelector, n2), this.en = Array.from(this.on).map(function(n3) {
+        return new Jt(n3, t2);
+      }), this.slides = this.en.filter(function(n3) {
+        return n3.isVisible;
+      }), this.activeSlide = this.slides.length ? this.slides.filter(function(n3) {
+        return n3.isActive;
+      })[0] || this.slides[0] : null;
+    };
+    $t.prototype = nt.prototype, $t.prototype.constructor = $t;
+    var Jt = function(n2, t2) {
+      this.parent = t2, nt.call(this, n2, Qn().slideSelector);
+    };
+    function Zt() {
+      O(h(Qn().sectionSelector, Yn()), Sn), O(h(Qn().slideSelector, Yn()), An);
+    }
+    function ne() {
+      q(y(this), "click");
+    }
+    function te() {
+      X(h(kn));
+      var n2 = r.createElement("div");
+      n2.setAttribute("id", "fp-nav");
+      var t2 = r.createElement("ul");
+      n2.appendChild(t2), j(n2, At);
+      var e2 = h(kn)[0];
+      O(e2, "fp-" + Qn().navigationPosition), Qn().showActiveTooltip && O(e2, "fp-show-active");
+      for (var o2 = "", i2 = 0; i2 < cn().p.length; i2++) {
+        var a2 = cn().p[i2], u2 = "";
+        Qn().anchors.length && (u2 = a2.anchor), o2 += '<li><a href="#' + encodeURI(u2) + '"><span class="fp-sr-only">' + Pt(a2.index(), "Section") + "</span><span></span></a>";
+        var c2 = Qn().navigationTooltips[a2.index()];
+        c2 !== void 0 && c2 !== "" && (o2 += '<div class="fp-tooltip fp-' + Qn().navigationPosition + '">' + c2 + "</div>"), o2 += "</li>";
+      }
+      h("ul", e2)[0].innerHTML = o2;
+      var l2 = h("li", h(kn)[0])[cn().g.index()];
+      O(h("a", l2), wn);
+    }
+    function ee(n2) {
+      n2.preventDefault && I(n2), un({ S: "verticalNav" });
+      var t2 = T(P(this, "#fp-nav li"));
+      rn.l("scrollPage", { destination: cn().p[t2] });
+    }
+    function oe(n2, t2) {
+      $n("recordHistory", n2, t2);
+    }
+    function ie(n2, t2) {
+      n2 || pt(0), $n("autoScrolling", n2, t2);
+      var e2 = cn().g.item;
+      if (Qn().autoScrolling && !Qn().scrollBar)
+        b(Dt, { overflow: "hidden", height: "100%" }), D(At, "fp-scrollable"), oe(Xn().recordHistory, "internal"), b(Yn(), { "-ms-touch-action": "none", "touch-action": "none" }), e2 != null && pt(e2.offsetTop);
+      else if (b(Dt, { overflow: "visible", height: "initial" }), O(At, "fp-scrollable"), oe(!!Qn().autoScrolling && Xn().recordHistory, "internal"), b(Yn(), { "-ms-touch-action": "", "touch-action": "" }), e2 != null) {
+        b(Dt, { "scroll-behavior": "unset" });
+        var o2 = ct(e2.offsetTop);
+        o2.element.scrollTo(0, o2.options);
+      }
+    }
+    Jt.prototype = nt.prototype, Jt.prototype.constructor = $t, l.setRecordHistory = oe, l.setAutoScrolling = ie, l.test.setAutoScrolling = ie, l.setFitToSection = ue, l.fitToSection = function() {
+    };
+    var re, ae = "scrollSnapAlign" in (re = r.documentElement.style) || "rn" in re || "an" in re;
+    function ue(n2, t2) {
+      ce(n2), $n("fitToSection", n2, t2);
+    }
+    function ce(n2) {
+      ae && (Qn().fitToSection && (!Qn().autoScrolling || Qn().scrollBar) && n2 ? O : D)(Ot, "fp-snaps");
+    }
+    function le() {
+      var n2 = Qn().responsive || Qn().responsiveWidth, t2 = Qn().responsiveHeight, e2 = n2 && i.innerWidth < n2, o2 = t2 && i.innerHeight < t2;
+      n2 && t2 ? fe(e2 || o2) : n2 ? fe(e2) : t2 && fe(o2);
+    }
+    function fe(n2) {
+      var t2 = se();
+      n2 ? t2 || (ie(false, "internal"), ue(false, "internal"), x(h(kn)), O(At, hn), _(Qn().afterResponsive) && Qn().afterResponsive.call(Yn(), n2)) : t2 && (ie(Xn().autoScrolling, "internal"), ue(Xn().autoScrolling, "internal"), k(h(kn)), D(At, hn), _(Qn().afterResponsive) && Qn().afterResponsive.call(Yn(), n2));
+    }
+    function se() {
+      return g(At, hn);
+    }
+    l.setResponsive = fe, rn.u("bindEvents", function() {
+      i.addEventListener("load", function() {
+        Qn().scrollOverflow && !Qn().scrollBar && (de.un(), de.cn());
+      }), Qn().scrollOverflow && tt(cn().X).forEach(function(n2) {
+        n2.addEventListener("scroll", de.ln), n2.addEventListener("wheel", de.sn), n2.addEventListener("keydown", de.sn), n2.addEventListener("keydown", de.vn);
+      });
+    });
+    var ve, de = { dn: null, hn: null, pn: null, sn: function(n2) {
+      if (!an.P)
+        return I(n2), false;
+    }, cn: function() {
+      r.activeElement === this.dn && this.dn.blur(), h(".fp-overflow.active", cn().g.item)[0] && (this.dn = h(zn, cn().g.item)[0], this.dn.focus());
+    }, un: function() {
+      Qn().scrollOverflowMacStyle && !u && O(At, "fp-scroll-mac"), cn().X.forEach(function(n2) {
+        if (!(g(n2.item, "fp-noscroll") || g(n2.item, xn) || g(n2.item, "fp-auto-height-responsive") && se())) {
+          var t2 = de.gn(n2.item), e2 = de.mn(n2.item);
+          e2 ? (O(t2, Cn), t2.setAttribute("tabindex", "-1")) : (D(t2, Cn), t2.removeAttribute("tabindex")), n2.K = e2;
+        }
+      });
+    }, gn: function(n2) {
+      return h(Dn, n2)[0] || n2;
+    }, wn: function(n2) {
+      return n2._ && n2.activeSlide ? n2.activeSlide.K : n2.K;
+    }, mn: function(n2) {
+      return n2.scrollHeight > i.innerHeight;
+    }, bn: function(n2, t2) {
+      if (!an.P)
+        return false;
+      if (!Qn().scrollOverflow)
+        return true;
+      var e2 = de.gn(t2), o2 = e2.scrollTop, i2 = n2 === "up" && o2 <= 0, r2 = n2 === "down" && e2.scrollHeight <= e2.offsetHeight + o2, a2 = i2 || r2;
+      return a2 || (this.hn = new Date().getTime()), a2;
+    }, yn: function() {
+      this.pn = new Date().getTime();
+      var n2 = this.pn - de.hn, t2 = (a || c) && an.N, e2 = an.B && n2 > 600;
+      return t2 && n2 > 400 || e2;
+    }, ln: (ve = 0, function(n2) {
+      var t2 = n2.target.scrollTop, e2 = an.C !== "none" ? an.C : ve < t2 ? "down" : "up";
+      ve = t2, _(Qn().onScrollOverflow) && St("onScrollOverflow", { position: t2, direction: e2 }), g(n2.target, Cn) && an.P && de.bn(e2, n2.target) && de.yn() && rn.l("onScrollOverflowScrolled", { direction: e2 });
+    }) };
+    function he(n2) {
+      Qn().verticalCentered && (de.wn(n2) || g(n2.item, Pn) || O(n2.item, Pn));
+    }
+    function pe(n2) {
+      var t2 = n2.slides.length, e2 = n2.on, o2 = n2.slides, i2 = 100 * t2, a2 = 100 / t2;
+      if (!h(En, n2.item)[0]) {
+        var u2 = r.createElement("div");
+        u2.className = jn, L(e2, u2);
+        var c2 = r.createElement("div");
+        c2.className = Ln, L(e2, c2);
+      }
+      b(h(Rn, n2.item), { width: i2 + "%" }), t2 > 1 && (Qn().controlArrows && function(n3) {
+        var t3 = n3.item, e3 = [Q(Qn().controlArrowsHTML[0]), Q(Qn().controlArrowsHTML[1])];
+        C(h(En, t3)[0], e3), O(e3, Bn), O(e3[0], Hn), O(e3[1], "fp-next"), Qn().controlArrowColor !== "#fff" && (b(h(Vn, t3), { "border-color": "transparent transparent transparent " + Qn().controlArrowColor }), b(h(Wn, t3), { "border-color": "transparent " + Qn().controlArrowColor + " transparent transparent" })), Qn().loopHorizontal || x(h(Wn, t3));
+      }(n2), Qn().slidesNavigation && function(n3) {
+        var t3 = n3.item, e3 = n3.slides.length;
+        j(Q('<div class="fp-slidesNav"><ul></ul></div>'), t3);
+        var o3 = h(Fn, t3)[0];
+        O(o3, "fp-" + Qn().slidesNavPosition);
+        for (var i3 = 0; i3 < e3; i3++)
+          j(Q('<li><a href="#"><span class="fp-sr-only">' + Pt(i3, "Slide", h(On, t3)[i3]) + "</span><span></span></a></li>"), h("ul", o3)[0]);
+        b(o3, { "margin-left": "-" + o3.innerWidth / 2 + "px" });
+        var r2 = n3.activeSlide ? n3.activeSlide.index() : 0;
+        O(h("a", h("li", o3)[r2]), wn);
+      }(n2)), o2.forEach(function(n3) {
+        b(n3.item, { width: a2 + "%" }), Qn().verticalCentered && he(n3);
+      });
+      var l2 = n2.activeSlide || null;
+      l2 != null && an.g && (an.g.index() !== 0 || an.g.index() === 0 && l2.index() !== 0) ? Kt(l2.item, "internal") : O(e2[0], wn);
+    }
+    var ge, me = null;
+    function we(n2) {
+      var t2 = n2.item, e2 = n2.on.length, o2 = n2.index();
+      !cn().g && n2.isVisible && (O(t2, wn), Gt()), me = cn().g.item, Qn().paddingTop && b(t2, { "padding-top": Qn().paddingTop }), Qn().paddingBottom && b(t2, { "padding-bottom": Qn().paddingBottom }), Qn().sectionsColor[o2] !== void 0 && b(t2, { "background-color": Qn().sectionsColor[o2] }), Qn().anchors[o2] !== void 0 && t2.setAttribute("data-anchor", n2.anchor), e2 || he(n2);
+    }
+    l.getActiveSection = function() {
+      return cn().g;
+    };
+    var be = { attributes: false, subtree: true, childList: true, characterData: true };
+    function ye() {
+      return d(h(Qn().slideSelector, Yn())).length !== cn().h;
+    }
+    function Se(n2) {
+      var t2 = ye();
+      (ye() || d(h(Qn().sectionSelector, Yn())).length !== cn().v) && !an.V && (Qn().observer && ge && ge.disconnect(), Yt(), Gt(), Qn().anchors = [], X(h(kn)), Zt(), Jn(), Qn().navigation && te(), t2 && (X(h(Fn)), X(h(In))), cn().p.forEach(function(n3) {
+        n3.slides.length ? t2 && pe(n3) : we(n3);
+      })), Qn().observer && ge && ge.observe(h(dn)[0], be);
+    }
+    rn.u("bindEvents", function() {
+      var n2, t2, e2;
+      Qn().observer && "MutationObserver" in window && (n2 = h(dn)[0], t2 = be, (e2 = new MutationObserver(Se)).observe(n2, t2), ge = e2), rn.u("contentChanged", Se);
+    }), l.Sn = Se;
+    var Te = function() {
+      var n2 = false;
+      try {
+        var t2 = Object.defineProperty({}, "passive", { get: function() {
+          n2 = true;
+        } });
+        V("testPassive", null, t2), K("testPassive", null, t2);
+      } catch (n3) {
+      }
+      return function() {
+        return n2;
+      };
+    }();
+    function Me() {
+      return !!Te() && { passive: false };
+    }
+    new Date().getTime();
+    var xe, ke, Ae, Oe, De, je, Ee = (ke = new Date().getTime(), function(n2, t2) {
+      var e2 = new Date().getTime(), o2 = n2 === "wheel" ? Qn().scrollingSpeed : 100;
+      return e2 - ke >= o2 && (xe = t2(), ke = e2), xe === void 0 || xe;
+    }), Le = (De = new Date().getTime(), je = [], { Tn: function(n2) {
+      var t2 = (n2 = n2 || i.event).wheelDelta || -n2.deltaY || -n2.detail, e2 = Math.max(-1, Math.min(1, t2)), o2 = n2.wheelDeltaX !== void 0 || n2.deltaX !== void 0;
+      Ae = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !o2;
+      var r2 = new Date().getTime();
+      Oe = e2 < 0 ? "down" : "up", je.length > 149 && je.shift(), je.push(Math.abs(t2));
+      var a2 = r2 - De;
+      De = r2, a2 > 200 && (je = []);
+    }, Mn: function() {
+      var n2 = tn(je, 10) >= tn(je, 70);
+      return !!je.length && n2 && Ae;
+    }, xn: function() {
+      return Oe;
+    } });
+    function Re() {
+      var n2 = Qn().css3 ? N(Qn()) + m() : nn(cn().p).item.offsetTop + nn(cn().p).item.offsetHeight, t2 = ct(n2);
+      l.test.top = -n2 + "px", b(r.body, { "scroll-snap-type": "none" }), b(Dt, { "scroll-behavior": "unset" }), un({ P: false }), wt(t2.element, t2.options, Qn().scrollingSpeed, function() {
+        setTimeout(function() {
+          un({ T: true }), un({ P: true });
+        }, 30);
+      });
+    }
+    function Pe() {
+      Yn().getBoundingClientRect().bottom >= 0 && Ce();
+    }
+    function Ce() {
+      var n2 = ct(nn(cn().p).item.offsetTop);
+      un({ P: false }), wt(n2.element, n2.options, Qn().scrollingSpeed, function() {
+        un({ P: true }), un({ T: false }), un({ kn: false });
+      });
+    }
+    var ze, Fe, Ne, Be, Ie, He = (ze = false, Fe = {}, Ne = {}, function(n2, t2, e2) {
+      switch (n2) {
+        case "set":
+          Fe[t2] = new Date().getTime(), Ne[t2] = e2;
+          break;
+        case "isNewKeyframe":
+          var o2 = new Date().getTime();
+          ze = o2 - Fe[t2] > Ne[t2];
+      }
+      return ze;
+    });
+    function We() {
+      var n2 = h(".fp-auto-height")[0] || se() && h(".fp-auto-height-responsive")[0];
+      Qn().lazyLoading && n2 && h(".fp-section:not(.active)").forEach(function(n3) {
+        var t2, e2, o2, i2, r2;
+        e2 = (t2 = n3.getBoundingClientRect()).top, o2 = t2.bottom, i2 = e2 + 2 < an.W && e2 > 0, r2 = o2 > 2 && o2 < an.W, (i2 || r2) && kt(n3);
+      });
+    }
+    function Ve(n2, t2) {
+      var e2;
+      e2 = n2, Qn().menu && Qn().menu.length && h(Qn().menu).forEach(function(n3) {
+        n3 != null && (D(h(bn, n3), wn), O(h('[data-menuanchor="' + e2 + '"]', n3), wn));
+      }), function(n3, t3) {
+        var e3 = h(kn)[0];
+        Qn().navigation && e3 != null && e3.style.display !== "none" && (D(h(bn, e3), wn), O(n3 ? h('a[href="#' + n3 + '"]', e3) : h("a", h("li", e3)[t3]), wn));
+      }(n2, t2);
+    }
+    function Ue(n2, t2) {
+      if (_(Qn().beforeLeave))
+        return Ee(cn().S, function() {
+          return St(n2, t2);
+        });
+    }
+    function Ke(n2, t2, e2) {
+      var o2 = n2.item;
+      if (o2 != null) {
+        var i2, r2, a2 = function(n3) {
+          var t3 = n3.offsetHeight, e3 = n3.offsetTop, o3 = e3, i3 = e3 > an.H, r3 = o3 - m() + t3, a3 = Qn().bigSectionsDestination;
+          return t3 > m() ? (i3 || a3) && a3 !== "bottom" || (o3 = r3) : (i3 || an.O && S(n3) == null) && (o3 = r3), un({ H: o3 }), o3;
+        }(o2), u2 = { element: o2, callback: t2, isMovementUp: e2, dtop: a2, yMovement: st(cn().g, o2), anchorLink: n2.anchor, sectionIndex: n2.index(), activeSlide: n2.activeSlide ? n2.activeSlide.item : null, leavingSection: cn().g.index() + 1, localIsResizing: an.O, items: { origin: cn().g, destination: n2 }, direction: null };
+        if (!(cn().g.item == o2 && !an.O || Qn().scrollBar && N(Qn()) === u2.dtop && !g(o2, xn))) {
+          if (u2.activeSlide != null && (i2 = H(u2.activeSlide, "data-anchor"), r2 = T(u2.activeSlide, null)), !u2.localIsResizing) {
+            var c2 = u2.yMovement;
+            if (e2 !== void 0 && (c2 = e2 ? "up" : "down"), u2.direction = c2, _(Qn().beforeLeave) && Ue("beforeLeave", u2) === false)
+              return;
+            if (_(Qn().onLeave) && !St("onLeave", u2))
+              return;
+          }
+          Qn().autoScrolling && Qn().continuousVertical && u2.isMovementUp !== void 0 && (!u2.isMovementUp && u2.yMovement == "up" || u2.isMovementUp && u2.yMovement == "down") && (u2 = function(n3) {
+            un({ V: true });
+            var t3 = cn().g.item;
+            return n3.isMovementUp ? z(t3, J(t3, Tn)) : C(t3, Z(t3, Tn).reverse()), pt(cn().g.item.offsetTop), function() {
+              for (var n4 = h(Dn), t4 = 0; t4 < n4.length; t4++)
+                Kt(n4[t4], "internal");
+            }(), n3.An = t3, n3.dtop = n3.element.offsetTop, n3.yMovement = st(cn().g, n3.element), n3;
+          }(u2)), u2.localIsResizing || xt(cn().g.item), O(o2, wn), D(B(o2), wn), Gt(), kt(o2), un({ P: l.test.On }), Lt(r2, i2, u2.anchorLink), function(n3) {
+            var t3 = Qn().scrollingSpeed < 700, e3 = t3 ? 700 : Qn().scrollingSpeed;
+            if (un({ C: "none", scrollY: Math.round(n3.dtop) }), rn.l("onPerformMovement"), Qn().css3 && Qn().autoScrolling && !Qn().scrollBar)
+              ht("translate3d(0px, -" + Math.round(n3.dtop) + "px, 0px)", true), Qn().scrollingSpeed ? (clearTimeout(Be), Be = setTimeout(function() {
+                _e(n3), un({ P: !t3 || l.test.On });
+              }, Qn().scrollingSpeed)) : _e(n3);
+            else {
+              var o3 = ct(n3.dtop);
+              l.test.top = -n3.dtop + "px", b(Dt, { "scroll-behavior": "unset" }), clearTimeout(Be), wt(o3.element, o3.options, Qn().scrollingSpeed, function() {
+                Qn().scrollBar ? Be = setTimeout(function() {
+                  _e(n3);
+                }, 30) : (_e(n3), un({ P: !t3 || l.test.On }));
+              });
+            }
+            t3 && (clearTimeout(Ie), Ie = setTimeout(function() {
+              un({ P: true });
+            }, e3));
+          }(u2), un({ j: u2.anchorLink }), Ve(u2.anchorLink, u2.sectionIndex);
+        }
+      }
+    }
+    function _e(n2) {
+      Qn().fitToSection && g(h(".fp-section.active")[0], xn) && b(r.body, { "scroll-snap-type": "none" }), un({ T: false }), function(n3) {
+        n3.An != null && (n3.isMovementUp ? z(h(Tn)[0], n3.An) : C(h(Tn)[cn().p.length - 1], n3.An), pt(cn().g.item.offsetTop), function() {
+          for (var n4 = h(Dn), t2 = 0; t2 < n4.length; t2++)
+            Kt(n4[t2], "internal");
+        }(), un({ V: false }));
+      }(n2), _(Qn().afterLoad) && !n2.localIsResizing && St("afterLoad", n2), Gt(), n2.localIsResizing || Tt(n2.element), O(n2.element, yn), D(B(n2.element), yn), We(), de.cn(), un({ P: true }), _(n2.callback) && n2.callback();
+    }
+    function qe() {
+      var n2 = cn().g.next();
+      n2 || !Qn().loopBottom && !Qn().continuousVertical || (n2 = cn().p[0]), n2 != null ? Ke(n2, null, false) : Yn().scrollHeight < At.scrollHeight && rn.l("scrollBeyondFullpage");
+    }
+    function Ge() {
+      var n2 = cn().g.prev();
+      n2 || !Qn().loopTop && !Qn().continuousVertical || (n2 = nn(cn().p)), n2 != null && Ke(n2, null, true);
+    }
+    l.moveTo = moveTo, l.getScrollY = function() {
+      return an.scrollY;
+    }, rn.u("onDestroy", function() {
+      clearTimeout(Be), clearTimeout(Ie);
+    }), l.moveSectionDown = qe, l.moveSectionUp = Ge;
+    var Ye = 0;
+    function Qe(n2) {
+      Qn().autoScrolling && (an.P && (n2.pageY < Ye && Bt().m.up ? Ge() : n2.pageY > Ye && Bt().m.down && qe()), Ye = n2.pageY);
+    }
+    function Xe(n2) {
+      if (Bt().m[n2]) {
+        var t2 = n2 === "down" ? qe : Ge;
+        Qn().scrollOverflow && de.wn(cn().g) ? de.bn(n2, cn().g.item) && de.yn() && t2() : t2();
+      }
+    }
+    var $e, Je, Ze, no = 0, to = 0, eo = 0, oo = 0, io = (i.PointerEvent && (Ze = { down: "pointerdown", move: "pointermove" }), Ze), ro = { Dn: "ontouchmove" in window ? "touchmove" : io.move, jn: "ontouchstart" in window ? "touchstart" : io.down };
+    function ao(n2) {
+      var t2 = P(n2.target, Tn) || cn().g.item, e2 = de.wn(cn().g);
+      if (uo(n2)) {
+        un({ N: true, B: false }), Qn().autoScrolling && (!e2 || e2 && !an.P) && I(n2);
+        var o2 = fo(n2);
+        eo = o2.y, oo = o2.x;
+        var r2 = Math.abs(no - eo) > i.innerHeight / 100 * Qn().touchSensitivity, a2 = Math.abs(to - oo) > w() / 100 * Qn().touchSensitivity, u2 = h(En, t2).length && Math.abs(to - oo) > Math.abs(no - eo), c2 = no > eo ? "down" : "up";
+        un({ C: u2 ? to > oo ? "right" : "left" : c2 }), u2 ? !an.A && a2 && (to > oo ? Bt().m.right && rn.l("moveSlideRight", { section: t2 }) : Bt().m.left && rn.l("moveSlideLeft", { section: t2 })) : Qn().autoScrolling && an.P && r2 && Xe(c2);
+      }
+    }
+    function uo(n2) {
+      return n2.pointerType === void 0 || n2.pointerType != "mouse";
+    }
+    function co(n2) {
+      if (Qn().fitToSection && un({ R: false }), uo(n2)) {
+        var t2 = fo(n2);
+        no = t2.y, to = t2.x;
+      }
+      V("touchend", lo);
+    }
+    function lo() {
+      K("touchend", lo), un({ N: false });
+    }
+    function fo(n2) {
+      var t2 = {};
+      return t2.y = n2.pageY !== void 0 && (n2.pageY || n2.pageX) ? n2.pageY : n2.touches[0].pageY, t2.x = n2.pageX !== void 0 && (n2.pageY || n2.pageX) ? n2.pageX : n2.touches[0].pageX, c && uo(n2) && Qn().scrollBar && n2.touches !== void 0 && (t2.y = n2.touches[0].pageY, t2.x = n2.touches[0].pageX), t2;
+    }
+    function so(n2) {
+      Qn().autoScrolling && uo(n2) && Bt().m.up && (an.P || I(n2));
+    }
+    function vo(n2, t2) {
+      var e2 = t2 == null ? cn().g.item : t2, o2 = et(an.p, e2), i2 = h(En, e2)[0];
+      if (!(i2 == null || an.A || o2.slides.length < 2)) {
+        var r2 = o2.activeSlide, a2 = n2 === "left" ? r2.prev() : r2.next();
+        if (!a2) {
+          if (!Qn().loopHorizontal)
+            return;
+          a2 = n2 === "left" ? nn(o2.slides) : o2.slides[0];
+        }
+        un({ A: !l.test.On }), Wt(i2, a2.item, n2);
+      }
+    }
+    function ho(n2) {
+      vo("left", n2);
+    }
+    function po(n2) {
+      vo("right", n2);
+    }
+    function go(n2) {
+      var t2 = cn().p.filter(function(t3) {
+        return t3.anchor === n2;
+      })[0];
+      if (!t2) {
+        var e2 = n2 !== void 0 ? n2 - 1 : 0;
+        t2 = cn().p[e2];
+      }
+      return t2;
+    }
+    function mo(n2) {
+      n2 != null && Wt(P(n2, En), n2);
+    }
+    function wo(n2, t2) {
+      var e2 = go(n2);
+      if (e2 != null) {
+        var o2 = function(n3, t3) {
+          var e3 = t3.slides.filter(function(t4) {
+            return t4.anchor === n3;
+          })[0];
+          return e3 == null && (n3 = n3 !== void 0 ? n3 : 0, e3 = t3.slides[n3]), e3 ? e3.item : null;
+        }(t2, e2);
+        e2.anchor === an.j || g(e2.item, wn) ? mo(o2) : Ke(e2, function() {
+          mo(o2);
+        });
+      }
+    }
+    function bo(n2, t2) {
+      var e2 = go(n2);
+      t2 !== void 0 ? wo(n2, t2) : e2 != null && Ke(e2);
+    }
+    function yo() {
+      clearTimeout(Je), U("keydown", To), U("keyup", Mo);
+    }
+    function So() {
+      var n2 = r.activeElement;
+      return G(n2, "textarea") || G(n2, "input") || G(n2, "select") || H(n2, "contentEditable") == "true" || H(n2, "contentEditable") == "";
+    }
+    function To(n2) {
+      clearTimeout(Je);
+      var t2 = n2.keyCode, e2 = [37, 39].indexOf(t2) > -1, o2 = Qn().autoScrolling || e2;
+      t2 === 9 ? function(n3) {
+        var t3 = n3.shiftKey, e3 = r.activeElement, o3 = ko(ut(cn().g.item));
+        function i2(n4) {
+          return I(n4), o3[0] ? o3[0].focus() : null;
+        }
+        (function(n4) {
+          var t4 = ko(r), e4 = t4.indexOf(r.activeElement), o4 = t4[n4.shiftKey ? e4 - 1 : e4 + 1], i3 = P(o4, On), a2 = P(o4, Tn);
+          return !i3 && !a2;
+        })(n3) || (e3 ? P(e3, ".fp-section.active,.fp-section.active .fp-slide.active") == null && (e3 = i2(n3)) : i2(n3), (!t3 && e3 == o3[o3.length - 1] || t3 && e3 == o3[0]) && I(n3));
+      }(n2) : !So() && Qn().keyboardScrolling && o2 && ($e = n2.ctrlKey, Je = setTimeout(function() {
+        !function(n3) {
+          var t3 = n3.shiftKey, e3 = r.activeElement, o3 = G(e3, "video") || G(e3, "audio"), i2 = de.bn("up", cn().g.item), a2 = de.bn("down", cn().g.item), u2 = [37, 39].indexOf(n3.keyCode) > -1;
+          if (Oo(n3), an.P || u2)
+            switch (un({ S: "keydown" }), n3.keyCode) {
+              case 38:
+              case 33:
+                Bt().k.up && i2 && (an.T ? rn.l("onKeyDown", { e: n3 }) : Ge());
+                break;
+              case 32:
+                if (t3 && Bt().k.up && !o3 && i2) {
+                  Ge();
+                  break;
+                }
+              case 40:
+              case 34:
+                if (Bt().k.down && a2) {
+                  if (an.T)
+                    return;
+                  n3.keyCode === 32 && o3 || qe();
+                }
+                break;
+              case 36:
+                Bt().k.up && bo(1);
+                break;
+              case 35:
+                Bt().k.down && bo(cn().p.length);
+                break;
+              case 37:
+                Bt().k.left && ho();
+                break;
+              case 39:
+                Bt().k.right && po();
+            }
+        }(n2);
+      }, 0));
+    }
+    function Mo(n2) {
+      an.I && ($e = n2.ctrlKey);
+    }
+    function xo() {
+      un({ I: false }), $e = false;
+    }
+    function ko(n2) {
+      return [].slice.call(h('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]', n2)).filter(function(n3) {
+        return H(n3, "tabindex") !== "-1" && n3.offsetParent !== null;
+      });
+    }
+    function Ao(n2) {
+      So() || Oo(n2);
+    }
+    function Oo(n2) {
+      (function(n3) {
+        return [40, 38, 32, 33, 34].indexOf(n3.keyCode) > -1 && !an.T;
+      })(n2) && !P(n2.target, zn) && n2.preventDefault();
+    }
+    l.moveSlideLeft = ho, l.moveSlideRight = po, l.moveTo = bo, rn.u("bindEvents", function() {
+      V("blur", xo), W("keydown", To), At.addEventListener("keydown", Ao), W("keyup", Mo), rn.u("onDestroy", yo);
+    });
+    var Do = new Date().getTime(), jo = [];
+    function Eo(n2) {
+      n2 ? (function() {
+        var n3, t2 = "";
+        i.addEventListener ? n3 = "addEventListener" : (n3 = "attachEvent", t2 = "on");
+        var e2 = "onwheel" in r.createElement("div") ? "wheel" : r.onmousewheel !== void 0 ? "mousewheel" : "DOMMouseScroll", o2 = Me();
+        e2 == "DOMMouseScroll" ? r[n3](t2 + "MozMousePixelScroll", Lo, o2) : r[n3](t2 + e2, Lo, o2);
+      }(), Yn().addEventListener("mousedown", Ro), Yn().addEventListener("mouseup", Po)) : (r.addEventListener ? (U("mousewheel", Lo, false), U("wheel", Lo, false), U("MozMousePixelScroll", Lo, false)) : r.detachEvent("onmousewheel", Lo), Yn().removeEventListener("mousedown", Ro), Yn().removeEventListener("mouseup", Po));
+    }
+    function Lo(n2) {
+      var t2 = new Date().getTime(), e2 = g(h(".fp-completely")[0], "fp-normal-scroll"), o2 = function(n3, t3) {
+        new Date().getTime();
+        var e3 = cn().T && n3.getBoundingClientRect().bottom >= 0 && Le.xn() === "up", o3 = cn().kn;
+        if (o3)
+          return I(t3), false;
+        if (cn().T) {
+          if (e3) {
+            var i2;
+            if (!(o3 || He("isNewKeyframe", "beyondFullpage") && Le.Mn()))
+              return (i2 = ct(nn(cn().p).item.offsetTop + nn(cn().p).item.offsetHeight)).element.scrollTo(0, i2.options), un({ kn: false }), I(t3), false;
+            if (Le.Mn())
+              return e3 = false, un({ kn: true }), un({ S: "wheel" }), Ce(), I(t3), false;
+          } else
+            He("set", "beyondFullpage", 1e3);
+          if (!o3 && !e3)
+            return true;
+        }
+      }(Yn(), n2);
+      if (an.B || un({ N: false, B: true, C: "none" }), !Bt().m.down && !Bt().m.up)
+        return I(n2), false;
+      if (o2)
+        return true;
+      if (o2 === false)
+        return I(n2), false;
+      if (Qn().autoScrolling && !$e && !e2) {
+        var r2 = (n2 = n2 || i.event).wheelDelta || -n2.deltaY || -n2.detail, a2 = Math.max(-1, Math.min(1, r2)), u2 = n2.wheelDeltaX !== void 0 || n2.deltaX !== void 0, c2 = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !u2, l2 = a2 < 0 ? "down" : a2 > 0 ? "up" : "none";
+        jo.length > 149 && jo.shift(), jo.push(Math.abs(r2)), Qn().scrollBar && I(n2);
+        var f2 = t2 - Do;
+        return Do = t2, f2 > 200 && (jo = []), un({ F: l2 }), an.P && tn(jo, 10) >= tn(jo, 70) && c2 && (un({ S: "wheel" }), Xe(a2 < 0 ? "down" : "up")), false;
+      }
+      Qn().fitToSection && un({ R: false });
+    }
+    function Ro(n2) {
+      var t2;
+      n2.which == 2 && (t2 = n2.pageY, Ye = t2, Yn().addEventListener("mousemove", Qe));
+    }
+    function Po(n2) {
+      n2.which == 2 && Yn().removeEventListener("mousemove", Qe);
+    }
+    function Co(n2) {
+      n2 ? (Eo(true), function() {
+        if (a || c) {
+          Qn().autoScrolling && (At.removeEventListener(ro.Dn, so, { passive: false }), At.addEventListener(ro.Dn, so, { passive: false }));
+          var n3 = Qn().touchWrapper;
+          n3.removeEventListener(ro.jn, co), n3.removeEventListener(ro.Dn, ao, { passive: false }), n3.addEventListener(ro.jn, co), n3.addEventListener(ro.Dn, ao, { passive: false });
+        }
+      }()) : (Eo(false), function() {
+        if (a || c) {
+          Qn().autoScrolling && (At.removeEventListener(ro.Dn, ao, { passive: false }), At.removeEventListener(ro.Dn, so, { passive: false }));
+          var n3 = Qn().touchWrapper;
+          n3.removeEventListener(ro.jn, co), n3.removeEventListener(ro.Dn, ao, { passive: false });
+        }
+      }());
+    }
+    l.setMouseWheelScrolling = Eo;
+    var zo = true;
+    function Fo() {
+      ["mouseenter", "touchstart", "mouseleave", "touchend"].forEach(function(n2) {
+        U(n2, Bo, true);
+      });
+    }
+    function No(n2, t2) {
+      document["fp_" + n2] = t2, W(n2, Bo, true);
+    }
+    function Bo(n2) {
+      var t2 = n2.type, e2 = false, o2 = t2 === "mouseleave" ? n2.toElement || n2.relatedTarget : n2.target;
+      o2 != document && o2 ? (t2 === "touchend" && (zo = false, setTimeout(function() {
+        zo = true;
+      }, 800)), (t2 !== "mouseenter" || zo) && (Qn().normalScrollElements.split(",").forEach(function(n3) {
+        if (!e2) {
+          var t3 = G(o2, n3), i2 = P(o2, n3);
+          (t3 || i2) && (l.shared.En || Co(false), l.shared.En = true, e2 = true);
+        }
+      }), !e2 && l.shared.En && (Co(true), l.shared.En = false))) : Co(true);
+    }
+    function Io(n2, t2) {
+      gt(0, "internal"), bo(n2, t2), gt(Xn().scrollingSpeed, "internal");
+    }
+    rn.u("bindEvents", function() {
+      Qn().normalScrollElements && (["mouseenter", "touchstart"].forEach(function(n2) {
+        No(n2, false);
+      }), ["mouseleave", "touchend"].forEach(function(n2) {
+        No(n2, true);
+      })), rn.u("onDestroy", Fo);
+    }), l.silentMoveTo = Io;
+    var Ho, Wo = m(), Vo = w(), Uo = false;
+    function Ko() {
+      clearTimeout(Ho), K("resize", _o);
+    }
+    function _o() {
+      Uo || (Qn().autoScrolling && !Qn().scrollBar || !Qn().fitToSection) && Go(m()), Uo = true, clearTimeout(Ho), Ho = setTimeout(function() {
+        !function() {
+          if (un({ O: true }), Go(""), !Qn().fitToSection || Qn().autoScrolling || an.T || function() {
+            if (!Qn().autoScrolling || Qn().scrollBar) {
+              var n3 = 0.01 * i.innerHeight;
+              r.documentElement.style.setProperty("--vh", "".concat(n3, "px"));
+            }
+          }(), rn.l("contentChanged"), Gt(), le(), a) {
+            var n2 = r.activeElement;
+            if (!G(n2, "textarea") && !G(n2, "input") && !G(n2, "select")) {
+              var t2 = m();
+              Math.abs(t2 - Wo) > 20 * Math.max(Wo, t2) / 100 && (qo(true), Wo = t2);
+            }
+          } else
+            e2 = m(), o2 = w(), an.W === e2 && Vo === o2 || (un({ W: e2 }), Vo = o2, qo(true));
+          var e2, o2;
+          un({ O: false });
+        }(), Uo = false;
+      }, 400);
+    }
+    function qo(n2) {
+      if (!g(Yn(), gn)) {
+        un({ O: true, W: m(), Ln: w() });
+        for (var t2 = cn().p, e2 = 0; e2 < t2.length; ++e2) {
+          var o2 = t2[e2], r2 = h(En, o2.item)[0];
+          o2.slides.length > 1 && Wt(r2, o2.activeSlide.item);
+        }
+        Qn().scrollOverflow && de.un();
+        var a2 = cn().g.index();
+        an.T || a2 && Io(a2 + 1), un({ O: false }), _(Qn().afterResize) && n2 && Qn().afterResize.call(Yn(), i.innerWidth, i.innerHeight), _(Qn().afterReBuild) && !n2 && Qn().afterReBuild.call(Yn()), q(Yn(), "afterRebuild");
+      }
+    }
+    function Go(n2) {
+      var t2 = n2 === "" ? "" : n2 + "px";
+      cn().p.forEach(function(n3) {
+        b(n3.item, { height: t2 });
+      });
+    }
+    function Yo() {
+      var n2, t2, e2 = i.location.hash;
+      if (e2.length) {
+        var o2 = e2.replace("#", "").split("/"), r2 = e2.indexOf("#/") > -1;
+        n2 = r2 ? "/" + o2[1] : decodeURIComponent(o2[0]);
+        var a2 = r2 ? o2[2] : o2[1];
+        a2 && a2.length && (t2 = decodeURIComponent(a2));
+      }
+      return { section: n2, Z: t2 };
+    }
+    function Qo() {
+      K("hashchange", Xo);
+    }
+    function Xo() {
+      if (!an.D && !Qn().lockAnchors) {
+        var n2 = Yo(), t2 = n2.section, e2 = n2.Z, o2 = an.j === void 0, i2 = an.j === void 0 && e2 === void 0 && !an.A;
+        t2 && t2.length && (t2 && t2 !== an.j && !o2 || i2 || !an.A && an.L != e2) && rn.l("onScrollPageAndSlide", { Rn: t2, slideAnchor: e2 });
+      }
+    }
+    function $o(n2) {
+      var t2 = n2.target;
+      P(t2, Qn().menu + " [data-menuanchor]") && Jo.call(t2, n2);
+    }
+    function Jo(n2) {
+      un({ S: "menu" }), !h(Qn().menu)[0] || !Qn().lockAnchors && Qn().anchors.length || (I(n2), rn.l("onMenuClick", { anchor: H(this, "data-menuanchor") }));
+    }
+    function Zo(n2) {
+      var t2 = n2.target;
+      t2 && P(t2, "#fp-nav a") ? ee.call(t2, n2.e) : G(t2, ".fp-tooltip") ? ne.call(t2) : (G(t2, Nn) || P(t2, Nn) != null) && Ct.call(t2, n2.e);
+    }
+    l.reBuild = qo, rn.u("bindEvents", function() {
+      V("resize", _o), rn.u("onDestroy", Ko);
+    }), l.setLockAnchors = function(n2) {
+      Qn().lockAnchors = n2;
+    }, rn.u("bindEvents", function() {
+      V("hashchange", Xo), rn.u("onDestroy", Qo);
+    }), rn.u("bindEvents", function() {
+      W("wheel", Le.Tn, Me()), rn.u("scrollBeyondFullpage", Re), rn.u("onKeyDown", Pe);
+    }), rn.u("bindEvents", function() {
+      rn.u("onClickOrTouch", $o);
+    }), rn.u("bindEvents", function() {
+      rn.u("onClickOrTouch", Zo);
+    });
+    var ni, ti = 0;
+    function ei(n2) {
+      var t2, e2, o2, i2, a2;
+      if (!an.O && cn().g && (nn(cn().p), !cn().T && !cn().kn && (!Qn().autoScrolling || Qn().scrollBar))) {
+        var u2 = N(Qn()), c2 = function(n3) {
+          var t3 = n3 > ti ? "down" : "up";
+          return ti = n3, un({ H: n3 }), t3;
+        }(u2), l2 = 0, f2 = u2 + m() / 2, s2 = At.scrollHeight - m() === u2, v2 = cn().p;
+        if (un({ scrollY: u2 }), s2)
+          l2 = v2.length - 1;
+        else if (u2)
+          for (var d2 = 0; d2 < v2.length; ++d2)
+            v2[d2].item.offsetTop <= f2 && (l2 = d2);
+        else
+          l2 = 0;
+        if (o2 = c2, i2 = cn().g.item.offsetTop, a2 = i2 + m(), (o2 == "up" ? a2 >= N(Qn()) + m() : i2 <= N(Qn())) && (g(cn().g.item, yn) || (O(cn().g.item, yn), D(B(cn().g.item), yn))), e2 = (t2 = v2[l2]).item, !t2.isActive) {
+          un({ D: true });
+          var h2, p2, w2 = cn().g.item, y2 = cn().g.index() + 1, S2 = st(cn().g, e2), T2 = t2.anchor, M2 = t2.index() + 1, x2 = t2.activeSlide, k2 = { g: w2, sectionIndex: M2 - 1, anchorLink: T2, element: e2, leavingSection: y2, direction: S2, items: { origin: cn().g, destination: t2 } };
+          x2 && (p2 = x2.anchor, h2 = x2.index()), an.P && (O(e2, wn), D(B(e2), wn), _(Qn().beforeLeave) && Ue("beforeLeave", k2), _(Qn().onLeave) && St("onLeave", k2), _(Qn().afterLoad) && St("afterLoad", k2), xt(w2), kt(e2), Tt(e2), Ve(T2, M2 - 1), Qn().anchors.length && un({ j: T2 }), Lt(h2, p2, T2), Gt()), Qn().fitToSection && (clearTimeout(ni), ni = setTimeout(function() {
+            un({ D: false }), an.p.filter(function(n3) {
+              var t3 = n3.item.getBoundingClientRect();
+              return Math.round(t3.bottom) === Math.round(m()) || Math.round(t3.top) === 0;
+            }).length || b(r.body, { "scroll-snap-type": "y mandatory" });
+          }, 300));
+        }
+      }
+    }
+    function oi(n2, t2) {
+      t2 !== void 0 ? (t2 = t2.replace(/ /g, "").split(",")).forEach(function(t3) {
+        Nt(n2, t3, "k");
+      }) : (Nt(n2, "all", "k"), Qn().keyboardScrolling = n2);
+    }
+    function ii(n2) {
+      var t2 = n2.index();
+      Qn().anchors[t2] !== void 0 && n2.isActive && Ve(Qn().anchors[t2], t2), Qn().menu && Qn().css3 && P(h(Qn().menu)[0], dn) != null && h(Qn().menu).forEach(function(n3) {
+        At.appendChild(n3);
+      });
+    }
+    function ri() {
+      b(function(n3, t3) {
+        var e3 = [n3];
+        do {
+          n3 = n3.parentNode, e3.push(n3);
+        } while (!G(n3, "body"));
+        return e3;
+      }(Yn()), { height: "100%", position: "relative" }), O(Yn(), vn), O(Ot, mn), un({ W: m() }), D(Yn(), gn), Zt();
+      for (var n2 = cn().G, t2 = 0; t2 < n2.length; t2++) {
+        var e2 = n2[t2], o2 = e2.on;
+        e2.item.setAttribute("data-fp-styles", H(e2.item, "style")), we(e2), ii(e2), o2.length > 0 && pe(e2);
+      }
+      Qn().fixedElements && Qn().css3 && h(Qn().fixedElements).forEach(function(n3) {
+        At.appendChild(n3);
+      }), Qn().navigation && te(), h('iframe[src*="youtube.com/embed/"]', Yn()).forEach(function(n3) {
+        var t3, e3;
+        e3 = H(t3 = n3, "src"), t3.setAttribute("src", e3 + (/\?/.test(e3) ? "&" : "?") + "enablejsapi=1");
+      });
+    }
+    function ai() {
+      var n2, t2, e2 = cn().g, o2 = cn().g.item;
+      O(o2, yn), kt(o2), We(), Tt(o2), t2 = go((n2 = Yo()).section), n2.section && t2 && (t2 === void 0 || t2.index() !== T(me)) || !_(Qn().afterLoad) || St("afterLoad", { g: o2, element: o2, direction: null, anchorLink: e2.anchor, sectionIndex: e2.index(), items: { origin: cn().g, destination: cn().g } }), _(Qn().afterRender) && St("afterRender");
+    }
+    function ui(n2, t2) {
+      t2 !== void 0 ? (t2 = t2.replace(/ /g, "").split(",")).forEach(function(t3) {
+        Nt(n2, t3, "m");
+      }) : Nt(n2, "all", "m");
+    }
+    function ci() {
+      var n2 = Yo(), t2 = n2.section, e2 = n2.Z;
+      t2 && (Qn().animateAnchor ? wo(t2, e2) : Io(t2, e2));
+    }
+    function li() {
+      var n2 = Qn().licenseKey;
+      Qn() && an.Pn || r.domain.indexOf("alvarotrigo.com") > -1 ? n2 && n2.length : (s("error", "Fullpage.js requires a `licenseKey` option. Read about it on the following URL:"), s("error", "https://github.com/alvarotrigo/fullPage.js#options")), g(Ot, mn) ? s("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (Qn().continuousVertical && (Qn().loopTop || Qn().loopBottom) && (Qn().continuousVertical = false, s("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !Qn().scrollOverflow || !Qn().scrollBar && Qn().autoScrolling || s("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !Qn().continuousVertical || !Qn().scrollBar && Qn().autoScrolling || (Qn().continuousVertical = false, s("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), f.forEach(function(n3) {
+        Qn()[n3] && s("warn", "fullpage.js extensions require fullpage.extensions.min.js file instead of the usual fullpage.js. Requested: " + n3);
+      }), Qn().anchors.forEach(function(n3) {
+        var t2 = [].slice.call(h("[name]")).filter(function(t3) {
+          return H(t3, "name") && H(t3, "name").toLowerCase() == n3.toLowerCase();
+        }), e2 = [].slice.call(h("[id]")).filter(function(t3) {
+          return H(t3, "id") && H(t3, "id").toLowerCase() == n3.toLowerCase();
+        });
+        if (e2.length || t2.length) {
+          s("error", "data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).");
+          var o2 = e2.length ? "id" : "name";
+          (e2.length || t2.length) && s("error", '"' + n3 + '" is is being used by another element `' + o2 + "` property");
+        }
+      }));
+    }
+    function fi(n2, t2) {
+      var e2;
+      if (At = h("body")[0], Ot = h("html")[0], Dt = h("html, body"), !g(Ot, mn))
+        return e2 = typeof n2 == "string" ? h(n2)[0] : n2, Un.touchWrapper = e2, function(n3) {
+          Gn = p({}, Un, n3), qn = Object.assign({}, Gn);
+        }(t2), function(n3) {
+          Kn = n3;
+        }(typeof n2 == "string" ? h(n2)[0] : n2), rn.l("onInitialise"), li(), l.getFullpageData = function() {
+          return { options: Qn() };
+        }, l.version = "4.0.7", l.test = Object.assign(l.test, { top: "0px", J: "translate3d(0px, 0px, 0px)", tn: function() {
+          for (var n3 = [], t3 = 0; t3 < h(Qn().sectionSelector, Yn()).length; t3++)
+            n3.push("translate3d(0px, 0px, 0px)");
+          return n3;
+        }(), left: function() {
+          for (var n3 = [], t3 = 0; t3 < h(Qn().sectionSelector, Yn()).length; t3++)
+            n3.push(0);
+          return n3;
+        }(), options: Qn(), setAutoScrolling: null }), l.shared = Object.assign(l.shared, { Cn: null, En: false }), i.fullpage_api = l, Yn() && (rn.l("beforeInit"), Yt(), Gt(), Qn().scrollBar = Qn().scrollBar || Qn().hybrid, Jn(), ri(), ce(true), ui(true), Co(true), ie(Qn().autoScrolling, "internal"), le(), jt(), r.readyState === "complete" && ci(), V("load", ci), ai(), Yt(), Gt(), rn.l("bindEvents")), i.fullpage_api;
+      li();
+    }
+    return rn.u("onDestroy", function() {
+      clearTimeout(ni), clearTimeout(void 0);
+    }), rn.u("bindEvents", function() {
+      V("scroll", ei), r.body.addEventListener("scroll", ei), rn.u("onScrollPageAndSlide", function(n2) {
+        wo(n2.Rn, n2.slideAnchor);
+      }), rn.u("onMenuClick", function(n2) {
+        bo(n2.anchor, void 0);
+      }), rn.u("onScrollOverflowScrolled", function(n2) {
+        (n2.direction === "down" ? qe : Ge)();
+      }), rn.u("scrollPage", function(n2) {
+        Ke(n2.destination);
+      });
+    }), rn.u("onDestroy", function() {
+      K("scroll", ei);
+    }), l.getActiveSlide = function() {
+      return yt(cn().g.activeSlide);
+    }, l.getScrollX = function() {
+      return an.scrollX;
+    }, rn.u("bindEvents", function() {
+      rn.u("onDestroy", Vt), rn.u("landscapeScroll", function(n2) {
+        Wt(n2.slides, n2.destination);
+      }), rn.u("moveSlideRight", function(n2) {
+        po(n2.section);
+      }), rn.u("moveSlideLeft", function(n2) {
+        ho(n2.section);
+      });
+    }), rn.u("bindEvents", function() {
+      var n2 = Qn().credits.position, t2 = ["left", "right"].indexOf(n2) > -1 ? "".concat(n2, ": 0;") : "", e2 = '\n        <div class="fp-watermark" style="'.concat(t2, '">\n            <a href="https://alvarotrigo.com/fullPage/" \n                rel="nofollow noopener" \n                target="_blank" \n                style="text-decoration:none; color: #000;">\n                    ').concat(Qn().credits.label, "\n            </a>\n        </div>\n    "), o2 = nn(an.p), i2 = Qn().credits.enabled && !an.Pn;
+      o2 && o2.item && i2 && o2.item.insertAdjacentHTML("beforeend", e2);
+    }), function() {
+      rn.u("onInitialise", function() {
+        var t3, u2;
+        un({ Pn: (Qn().licenseKey, t3 = Qn().licenseKey, u2 = function(t4) {
+          var e3 = parseInt("514").toString(16);
+          if (!t4 || t4.length < 29 || t4.split(n2[0]).length === 4)
+            return null;
+          var o3 = ["Each", "for"][i2()]().join(""), u3 = t4[["split"]]("-"), c2 = [];
+          u3[o3](function(n3, t5) {
+            if (t5 < 4) {
+              var o4 = function(n4) {
+                var t6 = n4[n4.length - 1], e4 = ["NaN", "is"][i2()]().join("");
+                return window[e4](t6) ? r2(t6) : function(n5) {
+                  return n5 - wn.length;
+                }(t6);
+              }(n3);
+              c2.push(o4);
+              var a3 = r2(n3[o4]);
+              if (t5 === 1) {
+                var u4 = ["pa", "dS", "t", "art"].join("");
+                a3 = a3.toString()[u4](2, "0");
+              }
+              e3 += a3, t5 !== 0 && t5 !== 1 || (e3 += "-");
+            }
+          });
+          var l2 = 0, f2 = "";
+          return t4.split("-").forEach(function(n3, t5) {
+            if (t5 < 4) {
+              for (var e4 = 0, o4 = 0; o4 < 4; o4++)
+                o4 !== c2[t5] && (e4 += Math.abs(r2(n3[o4])), isNaN(n3[o4]) || l2++);
+              var i3 = a2(e4);
+              f2 += i3;
+            }
+          }), f2 += a2(l2), { zn: new Date(e3 + "T00:00"), Fn: e3.split("-")[2] === 8 * (wn.length - 2) + "", Nn: f2 };
+        }(t3), u2 && (Qn().credits && u2 && e2 <= u2.zn && u2.Nn === t3.split(n2[0])[4] || function(n3) {
+          var t4 = o2[i2()]().join("");
+          return n3 && t4.indexOf(n3) === 0 && n3.length === t4.length;
+        }(t3) || u2.Fn) || false) });
+      });
+      var n2 = ["-"], t2 = "2022-4-9".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), o2 = ["se", "licen", "-", "v3", "l", "gp"];
+      function i2() {
+        return [["re", "verse"].join("")]["".length];
+      }
+      function r2(n3) {
+        return n3 ? isNaN(n3) ? n3.charCodeAt(0) - 72 : n3 : "";
+      }
+      function a2(n3) {
+        var t3 = 72 + n3;
+        return t3 > 90 && t3 < 97 && (t3 += 15), String.fromCharCode(t3).toUpperCase();
+      }
+    }(), l.setKeyboardScrolling = oi, l.shared.Cn = ai, l.setAllowScrolling = ui, l.destroy = function(n2) {
+      ie(false, "internal"), ui(true), Co(false), oi(false), O(Yn(), gn), rn.l("onDestroy"), n2 && (pt(0), h("img[data-src], source[data-src], audio[data-src], iframe[data-src]", Yn()).forEach(function(n3) {
+        en(n3, "src");
+      }), h("img[data-srcset]").forEach(function(n3) {
+        en(n3, "srcset");
+      }), X(h("#fp-nav, .fp-slidesNav, .fp-controlArrow")), b(tt(cn().p), { height: "", "background-color": "", padding: "" }), b(tt(cn().slides), { width: "" }), b(Yn(), { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), b(Dt, { overflow: "", height: "" }), D(Ot, mn), D(At, hn), At.className.split(/\s+/).forEach(function(n3) {
+        n3.indexOf("fp-viewing") === 0 && D(At, n3);
+      }), tt(cn().X).forEach(function(n3) {
+        Qn().scrollOverflow && D(n3, Cn), D(n3, "fp-table active " + yn), H(n3, "data-fp-styles") && n3.setAttribute("style", H(n3, "data-fp-styles")), g(n3, Sn) && !_n && n3.removeAttribute("data-anchor");
+      }), vt(Yn()), [Mn, Rn, En].forEach(function(n3) {
+        h(n3, Yn()).forEach(function(n4) {
+          R(n4);
+        });
+      }), b(Yn(), { "-webkit-transition": "none", transition: "none" }), i.scrollTo(0, 0), [Sn, An, Ln].forEach(function(n3) {
+        D(h("." + n3), n3);
+      }));
+    }, i.fp_easings = p(i.fp_easings, { easeInOutCubic: function(n2, t2, e2, o2) {
+      return (n2 /= o2 / 2) < 1 ? e2 / 2 * n2 * n2 * n2 + t2 : e2 / 2 * ((n2 -= 2) * n2 * n2 + 2) + t2;
+    } }), i.jQuery && function(n2, t2) {
+      n2 && t2 ? n2.fn.fullpage = function(e2) {
+        e2 = n2.extend({}, e2, { $: n2 }), new t2(this[0], e2), Object.keys(l).forEach(function(n3) {
+          Qn().$.fn.fullpage[n3] = l[n3];
+        });
+      } : s("error", "jQuery is required to use the jQuery fullpage adapter!");
+    }(i.jQuery, fi), fi;
+  });
 })(fullpage_min);
 var fullpage = fullpage_min.exports;
 const EVENTS = [
