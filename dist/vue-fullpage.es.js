@@ -17,6 +17,16 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+/*!
+* vue-fullpage 0.2.0
+* https://github.com/alvarotrigo/vue-fullpage.js
+*
+* @license GPLv3 for open source use only
+* or Fullpage Commercial License for commercial use
+* http://alvarotrigo.com/fullPage/pricing/
+*
+* Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
+*/
 import { openBlock, createElementBlock, renderSlot } from "vue";
 var fullpage_min$1 = "";
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};

@@ -1,4 +1,13 @@
-var Go=Object.defineProperty,Jo=Object.defineProperties;var jo=Object.getOwnPropertyDescriptors;var Ao=Object.getOwnPropertySymbols;var zo=Object.prototype.hasOwnProperty,Eo=Object.prototype.propertyIsEnumerable;var Oo=(P,V,G)=>V in P?Go(P,V,{enumerable:!0,configurable:!0,writable:!0,value:G}):P[V]=G,ko=(P,V)=>{for(var G in V||(V={}))zo.call(V,G)&&Oo(P,G,V[G]);if(Ao)for(var G of Ao(V))Eo.call(V,G)&&Oo(P,G,V[G]);return P},Mo=(P,V)=>Jo(P,jo(V));(function(P,V){typeof exports=="object"&&typeof module!="undefined"?module.exports=V(require("vue")):typeof define=="function"&&define.amd?define(["vue"],V):(P=typeof globalThis!="undefined"?globalThis:P||self,P["vue-fullpage"]=V(P.Vue))})(this,function(P){"use strict";var V="",G=typeof globalThis!="undefined"?globalThis:typeof window!="undefined"?window:typeof global!="undefined"?global:typeof self!="undefined"?self:{},ln={exports:{}};/*!
+var Go=Object.defineProperty,Jo=Object.defineProperties;var jo=Object.getOwnPropertyDescriptors;var Ao=Object.getOwnPropertySymbols;var zo=Object.prototype.hasOwnProperty,Eo=Object.prototype.propertyIsEnumerable;var Oo=(P,V,G)=>V in P?Go(P,V,{enumerable:!0,configurable:!0,writable:!0,value:G}):P[V]=G,ko=(P,V)=>{for(var G in V||(V={}))zo.call(V,G)&&Oo(P,G,V[G]);if(Ao)for(var G of Ao(V))Eo.call(V,G)&&Oo(P,G,V[G]);return P},Mo=(P,V)=>Jo(P,jo(V));/*!
+* vue-fullpage 0.2.0
+* https://github.com/alvarotrigo/vue-fullpage.js
+*
+* @license GPLv3 for open source use only
+* or Fullpage Commercial License for commercial use
+* http://alvarotrigo.com/fullPage/pricing/
+*
+* Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
+*/(function(P,V){typeof exports=="object"&&typeof module!="undefined"?module.exports=V(require("vue")):typeof define=="function"&&define.amd?define(["vue"],V):(P=typeof globalThis!="undefined"?globalThis:P||self,P["vue-fullpage"]=V(P.Vue))})(this,function(P){"use strict";var V="",G=typeof globalThis!="undefined"?globalThis:typeof window!="undefined"?window:typeof global!="undefined"?global:typeof self!="undefined"?self:{},ln={exports:{}};/*!
  * fullPage 3.1.2
  * https://github.com/alvarotrigo/fullPage.js
  *
