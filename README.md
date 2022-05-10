@@ -38,15 +38,15 @@ npm install --save vue-fullpage.js
 
 ## License
 
-### Non open source license
+## License
 
-If you want to use vue-fullpage to develop non open sourced sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. Which means, you won't have to change your whole application's source code to an open source license. [Purchase a Fullpage Commercial License](https://alvarotrigo.com/fullPage/pricing/).
+### Commercial license
+If you want to use fullPage to develop non open sourced sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. Which means, you won't have to change your whole application source code to an open source license. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
 
 ### Open source license
-
 If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use fullPage under the terms of the GPLv3.
 
-**The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification)
+**You will have to provide a prominent notice that fullPage.js is in use. The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification).
 
 [Read more about fullPage's license](https://alvarotrigo.com/fullPage/pricing/).
 
@@ -291,5 +291,7 @@ Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage
 
 - [Wordpress theme](https://alvarotrigo.com/fullPage/utils/wordpress.html)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
+- [WordPress Plugin for Elementor](https://alvarotrigo.com/fullPage/wordpress-plugin-elementor/)
+- [WordPress Plugin for Gutenberg](https://alvarotrigo.com/fullPage/wordpress-plugin-gutenberg/)
 - [CSS Easing Animation Tool - Matthew Lein](http://matthewlein.com/ceaser/) (useful to define the `easingcss3` value)
 - [fullPage.js cdnJS CDN](https://cdnjs.com/libraries/fullPage.js)
