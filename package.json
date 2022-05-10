@@ -21,9 +21,9 @@
   },
   "unpkg": "./dist/vue-fullpage.umd.js",
   "scripts": {
-    "build:library": "vite build",
+    "build": "vite build",
     "analyze": "vite build --config analyze.config.js",
-    "publish:library": "npm publish --access public",
+    "publish": "npm publish --access public",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier . --write"
   },
