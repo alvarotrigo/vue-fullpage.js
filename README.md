@@ -41,10 +41,10 @@ npm install --save vue-fullpage.js
 ## License
 
 ### Commercial license
-If you want to use fullPage to develop non open sourced sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. Which means, you won't have to change your whole application source code to an open source license. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
+If you want to use fullPage to develop nonopen sourced sites, themes, projects, and applications, the Commercial license is the appropriate license. With this option, your source code is kept proprietary. This means, you won't have to change your whole application source code to an open-source license. [[Purchase a Fullpage Commercial License]](https://alvarotrigo.com/fullPage/pricing/)
 
 ### Open source license
-If you are creating an open source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use fullPage under the terms of the GPLv3.
+If you are creating an open-source application under a license compatible with the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html), you may use fullPage under the terms of the GPLv3.
 
 **You will have to provide a prominent notice that fullPage.js is in use. The credit comments in the JavaScript and CSS files should be kept intact** (even after combination or minification).
 
@@ -79,7 +79,7 @@ Notice that when using the option `scrollOverflow:true` or any [fullPage.js exte
 
 ### Browser
 
-You can check a browser stand alone demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/stand-alone/).
+You can check a browser stand-alone demo [here](https://github.com/alvarotrigo/vue-fullpage.js/tree/master/demos/stand-alone/).
 
 ```html
 <!-- On the page head -->
@@ -108,7 +108,7 @@ This wrapper creates a `<full-page>` component , which you can use like other Vu
 ## Options
 
 You can use any [options](https://github.com/alvarotrigo/fullPage.js#options) supported by fullPage.js library.
-Just pass options object into this wrapper like Vue.js property.
+Just pass the options object into this wrapper like Vue.js property.
 Options object can contain simple [options](https://github.com/alvarotrigo/fullPage.js#options) as well as fullPage.js [callbacks](https://github.com/alvarotrigo/fullPage.js#callbacks).
 
 Notice that if you want to make use of the option `scrollOverflow:true`, you'll have to include the scrollOverflow file before vue-fullpage.js, as detailed [above](https://github.com/alvarotrigo/vue-fullpage.js#bundler-webpack-rollup).
@@ -132,7 +132,7 @@ export default {
 
 ### Delayed init
 
-Full-page will init itself automatically on `mount`. This may not work properly when using async components to inside it's sections, as it has no way of knowing when said components are ready and mounted.
+Full-page will init itself automatically on `mount`. This may not work properly when using async components inside its sections, as it has no way of knowing when said components are ready and mounted.
 
 Use the `skipInit` prop to stop full-page from initializing itself. You can do it when youself by using a `ref` like:
 
@@ -151,7 +151,7 @@ methods: {
 
 ## Methods
 
-You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the a reference `$refs.fullpage.api`.
+You can make use of any of the [methods](https://github.com/alvarotrigo/fullPage.js#methods) provided by fullPage.js by accessing the instance object via the reference `$refs.fullpage.api`.
 
 Example:
 
@@ -234,7 +234,7 @@ Or you can use the standard approach for event handling of Vue.js:
 </script>
 ```
 
-Similar you can handle any [event](https://github.com/alvarotrigo/fullPage.js#callbacks) of fullPage.js library.
+Similarly, you can handle any [event](https://github.com/alvarotrigo/fullPage.js#callbacks) of the fullPage.js library.
 Just translate camelCase name of callback to kebab-case and use it ;)
 
 ## Dynamic changes
@@ -257,7 +257,7 @@ vm.$refs.fullpage.build()
 this.$refs.fullpage.build()
 ```
 
-In order for fullPage.js to get updated after a change in any of the fullPage.js options, you'll have to make sure to use such option in the initialisation.
+In order for fullPage.js to get updated after a change in any of the fullPage.js options, you'll have to make sure to use such an option in the initialization.
 
 For example, if we want fullPage.js to get updated whenever I change the `scrollBar` and `controlArrows` options, I'll have to use the following initialisation:
 
@@ -275,9 +275,9 @@ export default {
 }
 ```
 
-## :construction: Usage with Nuxt.js
+## Usage with Nuxt.js
 
-TBD
+Use the [nuxt-fullpage](https://github.com/alvarotrigo/nuxt-fullpage) module in order to use Nuxt with vue-fullpage.js.
 
 ## :construction: Usage with Gridsome
 
