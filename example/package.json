@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "vite"
+  },
+  "dependencies": {
+    "vue": "^3.0.4",
+    "vue-fullpage.js": "^0.2.0"
+  },
+  "devDependencies": {
+    "vite": "^1.0.0-rc.13",
+    "@vue/compiler-sfc": "^3.0.4"
+  }
+}

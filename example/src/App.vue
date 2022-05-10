@@ -29,7 +29,7 @@
             </li>
         </ul>
 
-        <full-page :options="options" id="fullpage">
+        <full-page :options="options" id="fullpage" ref="fullpage">
             <div class="section">
                 <h3>Section 1</h3>
             </div>
@@ -77,7 +77,7 @@
       addSection (e) {
         e.preventDefault()
         var newSectionNumber = document.querySelectorAll('.fp-section').length + 1
-
+        
         // creating the section div
         var section = document.createElement('div')
         section.className = 'section'
@@ -104,6 +104,7 @@
         // ideally, use an ID element for that element too
         this.$refs.fullpage.build()
       },
+
       removeSection () {
         var sections = document.querySelector('#fullpage').querySelectorAll('.fp-section')
         var lastSection = sections[sections.length - 1]
@@ -112,16 +113,18 @@
         lastSection.parentNode.removeChild(lastSection)
 
         // removing the last anchor
-        this.options.anchors.pop()
+        this.options.anchors.pop();
 
         // removing the last item on the sections menu
         var sectionsMenuItems = document.querySelectorAll('#menu li')
         var lastItem = sectionsMenuItems[sectionsMenuItems.length - 1]
         lastItem.parentNode.removeChild(lastItem)
       },
+
       toggleNavigation () {
         this.options.navigation = !this.options.navigation
       },
+      
       toggleScrollbar () {
         console.log('Changing scrollbar...')
         this.options.scrollBar = !this.options.scrollBar
@@ -131,18 +134,14 @@
 </script>
 
 <style>
-
-
     ul {
         list-style-type: none;
         padding: 0;
     }
-
     li {
         display: inline-block;
         margin: 0 10px;
     }
-
     a {
         color: #42b983;
     }
