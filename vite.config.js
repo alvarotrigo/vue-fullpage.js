@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 const licenseContent = `/*!
-* vue-fullpage 0.2.2
+* vue-fullpage 0.2.3
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
@@ -20,6 +20,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'vue-fullpage',
+      fileName: 'vue-fullpage'
     },
     rollupOptions: {
       external: ['vue'],
