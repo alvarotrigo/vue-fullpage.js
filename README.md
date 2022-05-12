@@ -7,7 +7,9 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
 </p>
 
 <p align="center">
+
   [![npm version][npm-version-src]][npm-version-href]
+  
 </p>
 
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
