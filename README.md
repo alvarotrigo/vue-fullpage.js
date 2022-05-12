@@ -300,3 +300,4 @@ Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/vue-fullpage.js/latest.svg
+[npm-version-href]: https://www.npmjs.com/package/vue-fullpage.js
