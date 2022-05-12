@@ -7,7 +7,7 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/vue--fullpage-v0.2.0-brightgreen.svg" alt="vue-fullpage version" />
+  [![npm version][npm-version-src]][npm-version-href]
 </p>
 
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
@@ -295,3 +295,8 @@ Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage
 - [WordPress Plugin for Gutenberg](https://alvarotrigo.com/fullPage/wordpress-plugin-gutenberg/)
 - [CSS Easing Animation Tool - Matthew Lein](http://matthewlein.com/ceaser/) (useful to define the `easingcss3` value)
 - [fullPage.js cdnJS CDN](https://cdnjs.com/libraries/fullPage.js)
+
+
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/vue-fullpage.js/latest.svg
