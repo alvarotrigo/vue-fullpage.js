@@ -1,5 +1,5 @@
 var er=Object.defineProperty,tr=Object.defineProperties;var nr=Object.getOwnPropertyDescriptors;var di=Object.getOwnPropertySymbols;var or=Object.prototype.hasOwnProperty,ir=Object.prototype.propertyIsEnumerable;var pi=(B,N,X)=>N in B?er(B,N,{enumerable:!0,configurable:!0,writable:!0,value:X}):B[N]=X,vi=(B,N)=>{for(var X in N||(N={}))or.call(N,X)&&pi(B,X,N[X]);if(di)for(var X of di(N))ir.call(N,X)&&pi(B,X,N[X]);return B},hi=(B,N)=>tr(B,nr(N));/*!
-* vue-fullpage 0.2.1
+* vue-fullpage 0.2.2
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
