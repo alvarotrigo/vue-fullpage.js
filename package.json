@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
