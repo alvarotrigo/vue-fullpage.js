@@ -21,6 +21,10 @@
     ".": {
       "import": "./dist/vue-fullpage.es.js",
       "require": "./dist/vue-fullpage.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "unpkg": "./dist/vue-fullpage.umd.js",
