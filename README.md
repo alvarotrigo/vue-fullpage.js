@@ -13,21 +13,30 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
 </div>
 
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
-- By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg) and [Raphael Owino](https://twitter.com/ralphowino)
+- By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg), [Raphael Owino](https://twitter.com/ralphowino) and [Jonathan Schneider](https://github.com/JonathanSchndr/).
 
 ## Table of contents
 
-1. [Installation](#installation)
-2. [License](#license)
-3. [Example](#example)
-4. [Usage](#usage)
-5. [Options](#options)
-6. [Methods](#methods)
-7. [Callbacks](#callbacks)
-8. [Usage with Nuxt.js](#usage-with-nuxtjs)
-9. [Usage with Gridsome](#usage-with-gridsome)
-10. [Contributing](#contributing)
-11. [Resources](#resources)
+- [Vue-fullpage.js - Official Vue.js 3 wrapper](#vue-fullpagejs---official-vuejs-3-wrapper)
+  - [Table of contents](#table-of-contents)
+  - [Installation](#installation)
+  - [License](#license)
+    - [Commercial license](#commercial-license)
+    - [Open source license](#open-source-license)
+  - [Example](#example)
+  - [Usage](#usage)
+    - [Bundler (Vite)](#bundler-vite)
+    - [Browser](#browser)
+  - [Required HTML](#required-html)
+  - [Options](#options)
+    - [Delayed init](#delayed-init)
+  - [Methods](#methods)
+  - [Callbacks](#callbacks)
+  - [Dynamic changes](#dynamic-changes)
+  - [Usage with Nuxt.js](#usage-with-nuxtjs)
+  - [:construction: Usage with Gridsome](#construction-usage-with-gridsome)
+  - [Contributing](#contributing)
+- [Resources](#resources)
 
 ## Installation
 
@@ -37,8 +46,6 @@ Terminal:
 // With npm
 npm install --save vue-fullpage.js
 ```
-
-## License
 
 ## License
 
@@ -70,7 +77,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import 'vue-fullpage.js/dist/style.css'
-import VueFullPage from 'vue-fullpage.js/dist/vue-fullpage.es'
+import VueFullPage from 'vue-fullpage.js'
 
 const app = createApp(App)
 app.use(VueFullPage)
