@@ -52,6 +52,10 @@
 </template>
 
 <script>
+
+// Optional. When using fullpage extensions
+// import './fullpage.scrollHorizontally.min'
+
   export default {
     name: 'app',
     data () {
