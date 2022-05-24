@@ -6,7 +6,7 @@
 
 <script>
 import 'fullpage.js/dist/fullpage.min.css'
-import fullpage from 'fullpage.js/dist/fullpage.min.js'
+import fullpage from 'fullpage.js/dist/fullpage.extensions.min.js'
 import * as constants from './constants'
 
 export default {
