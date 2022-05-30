@@ -2,11 +2,12 @@
   "name": "example",
   "version": "0.0.1",
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "vue": "^3.0.4",
-    "vue-fullpage.js": "^0.2.4"
+    "vue-fullpage.js": "^0.2.5"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.4",
