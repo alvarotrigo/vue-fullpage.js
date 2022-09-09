@@ -7,10 +7,11 @@
   },
   "dependencies": {
     "vue": "^3.0.4",
-    "vue-fullpage.js": "^0.2.6"
+    "vue-fullpage.js": "^0.2.7"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.4",
     "vite": "^1.0.0-rc.13"
-  }
+  },
+  "license": "GPL-3.0"
 }
