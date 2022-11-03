@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 /*!
-* vue-fullpage 0.2.7
+* vue-fullpage 0.2.8
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
@@ -32,7 +32,7 @@ var fullpage_min = "";
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var fullpage_extensions_min = { exports: {} };
 /*!
-* fullPage 4.0.11
+* fullPage 4.0.12
 * https://github.com/alvarotrigo/fullPage.js
 *
 * @license GPLv3 for open source use only
@@ -108,10 +108,10 @@ var fullpage_extensions_min = { exports: {} };
     function g(n2, t2) {
       return n2 != null && n2.classList.contains(t2);
     }
-    function m() {
+    function w() {
       return "innerHeight" in o ? o.innerHeight : r.documentElement.offsetHeight;
     }
-    function w() {
+    function m() {
       return o.innerWidth;
     }
     function b(n2, t2) {
@@ -164,13 +164,13 @@ var fullpage_extensions_min = { exports: {} };
     function E(n2) {
       return Object.prototype.toString.call(n2) === "[object Array]" || Object.prototype.toString.call(n2) === "[object NodeList]";
     }
-    function D(n2, t2) {
+    function k(n2, t2) {
       n2 = A(n2);
       for (var e2 = 0; e2 < n2.length; e2++)
         n2[e2].classList.add(t2);
       return n2;
     }
-    function k(n2, t2) {
+    function R(n2, t2) {
       n2 = A(n2);
       for (var e2 = t2.split(" "), i2 = 0; i2 < e2.length; i2++) {
         t2 = e2[i2];
@@ -182,7 +182,7 @@ var fullpage_extensions_min = { exports: {} };
     function j(n2, t2) {
       t2.appendChild(n2);
     }
-    function L(n2, t2, e2) {
+    function z(n2, t2, e2) {
       var i2;
       t2 = t2 || r.createElement("div");
       for (var o2 = 0; o2 < n2.length; o2++) {
@@ -191,10 +191,10 @@ var fullpage_extensions_min = { exports: {} };
       }
       return n2;
     }
-    function R(n2, t2) {
-      L(n2, t2, true);
+    function D(n2, t2) {
+      z(n2, t2, true);
     }
-    function z(n2, t2) {
+    function L(n2, t2) {
       for (typeof t2 == "string" && (t2 = K(t2)), n2.appendChild(t2); n2.firstChild !== t2; )
         t2.appendChild(n2.firstChild);
     }
@@ -203,36 +203,36 @@ var fullpage_extensions_min = { exports: {} };
         t2.appendChild(n2.firstChild);
       n2.parentNode.replaceChild(t2, n2);
     }
-    function C(n2, t2) {
-      return n2 && n2.nodeType === 1 ? Q(n2, t2) ? n2 : C(n2.parentNode, t2) : null;
-    }
     function N(n2, t2) {
-      I(n2, n2.nextSibling, t2);
+      return n2 && n2.nodeType === 1 ? Q(n2, t2) ? n2 : N(n2.parentNode, t2) : null;
     }
     function H(n2, t2) {
-      I(n2, n2, t2);
+      W(n2, n2.nextSibling, t2);
     }
-    function I(n2, t2, e2) {
+    function C(n2, t2) {
+      W(n2, n2, t2);
+    }
+    function W(n2, t2, e2) {
       E(e2) || (typeof e2 == "string" && (e2 = K(e2)), e2 = [e2]);
       for (var i2 = 0; i2 < e2.length; i2++)
         n2.parentNode.insertBefore(e2[i2], t2);
     }
-    function W() {
+    function I() {
       var n2 = r.documentElement;
       return (o.pageYOffset || n2.scrollTop) - (n2.clientTop || 0);
     }
-    function B(n2) {
+    function F(n2) {
       return Array.prototype.filter.call(n2.parentNode.children, function(t2) {
         return t2 !== n2;
       });
     }
-    function F(n2) {
+    function V(n2) {
       n2.preventDefault();
     }
-    function V(n2, t2) {
+    function Z(n2, t2) {
       return n2.getAttribute(t2);
     }
-    function Z(n2, t2, e2) {
+    function B(n2, t2, e2) {
       r.addEventListener(n2, t2, e2 === "undefined" ? null : e2);
     }
     function G(n2, t2, e2) {
@@ -302,7 +302,7 @@ var fullpage_extensions_min = { exports: {} };
       return Math.ceil(e2 / t2);
     }
     function ln(n2, t2) {
-      n2.setAttribute(t2, V(n2, "data-" + t2)), n2.removeAttribute("data-" + t2);
+      n2.setAttribute(t2, Z(n2, "data-" + t2)), n2.removeAttribute("data-" + t2);
     }
     function un(n2, t2) {
       var e2 = [n2];
@@ -325,8 +325,8 @@ var fullpage_extensions_min = { exports: {} };
             Object.prototype.hasOwnProperty.call(o2, r2) && (e2[r2] = o2[r2]);
       }
       return e2;
-    }, writable: true, i: true }), window.fp_utils = { $: p, deepExtend: h, hasClass: g, getWindowHeight: m, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: D, removeClass: k, appendTo: j, wrap: L, wrapAll: R, wrapInner: z, unwrap: P, closest: C, after: N, before: H, insertBefore: I, getScrollTop: W, siblings: B, preventDefault: F, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, showError: f };
-    var cn = Object.freeze({ __proto__: null, showError: f, isVisible: d, getVisible: v, $: p, deepExtend: h, hasClass: g, getWindowHeight: m, o: w, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: D, removeClass: k, appendTo: j, wrap: L, wrapAll: R, wrapInner: z, unwrap: P, closest: C, after: N, before: H, insertBefore: I, getScrollTop: W, siblings: B, preventDefault: F, l: V, u: Z, v: G, p: Y, h: U, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, toArray: on, g: rn, S: an, M: ln, T: un });
+    }, writable: true, i: true }), window.fp_utils = { $: p, deepExtend: h, hasClass: g, getWindowHeight: w, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: k, removeClass: R, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: P, closest: N, after: H, before: C, insertBefore: W, getScrollTop: I, siblings: F, preventDefault: V, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, showError: f };
+    var cn = Object.freeze({ __proto__: null, showError: f, isVisible: d, getVisible: v, $: p, deepExtend: h, hasClass: g, getWindowHeight: w, o: m, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: k, removeClass: R, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: P, closest: N, after: H, before: C, insertBefore: W, getScrollTop: I, siblings: F, preventDefault: V, l: Z, u: B, v: G, p: Y, h: U, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, toArray: on, g: rn, S: an, M: ln, T: un });
     function sn(n2) {
       return sn = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(n3) {
         return typeof n3;
@@ -344,7 +344,7 @@ var fullpage_extensions_min = { exports: {} };
         var e2 = this.A[n2].indexOf(t2);
         e2 > -1 && this.A[n2].splice(e2, 1);
       }
-    }, D: function(n2) {
+    }, R: function(n2) {
       for (var t2 = this, e2 = arguments.length, i2 = new Array(e2 > 1 ? e2 - 1 : 0), o2 = 1; o2 < e2; o2++)
         i2[o2 - 1] = arguments[o2];
       sn(this.A[n2]) === "object" && this.A[n2].forEach(function(n3) {
@@ -357,117 +357,82 @@ var fullpage_extensions_min = { exports: {} };
           o2[r2] = arguments[r2];
         t2.apply(e2, o2);
       });
-    } }, dn = { j: 0, L: 0, slides: [], R: [], P: null, C: null, N: false, H: false, I: false, W: false, B: false, F: void 0, V: void 0, Z: false, canScroll: true, G: "none", Y: "none", U: false, X: false, _: true, J: 0, K: m(), q: false, nn: {} };
+    } }, dn = { j: 0, D: 0, slides: [], L: [], P: null, N: null, H: false, C: false, W: false, I: false, F: false, V: void 0, Z: void 0, B: false, canScroll: true, G: "none", Y: "none", U: false, X: false, _: true, J: 0, K: w(), q: false, nn: {} };
     function vn(n2) {
       Object.assign(dn, n2);
     }
     function pn() {
       return dn;
     }
-    function hn(n2) {
-      fn.D("onClickOrTouch", { e: n2, target: n2.target });
+    o.state = dn;
+    var hn = "onAfterRenderNoAnchor", gn = "onClickOrTouch", wn = "moveSlideLeft", mn = "moveSlideRight", bn = "onInitialise", Sn = "bindEvents", yn = "onDestroy", Mn = "contentChanged", Tn = "onScrollOverflowScrolled", An = "onScrollPageAndSlide", xn = "onKeyDown", On = "onMenuClick", En = "scrollPage", kn = "landscapeScroll", Rn = "scrollBeyondFullpage", jn = "onPerformMovement", zn = "afterSectionLoads", Dn = "afterSlideLoads";
+    function Ln(n2) {
+      fn.R(gn, { e: n2, target: n2.target });
     }
-    function gn() {
+    function Pn() {
       ["click", "touchstart"].forEach(function(n2) {
-        Y(n2, hn);
+        Y(n2, Ln);
       });
     }
-    function mn() {
+    function Nn() {
       vn({ _: true });
     }
-    o.state = dn, fn.O("bindEvents", function() {
+    fn.O(Sn, function() {
       ["click", "touchstart"].forEach(function(n2) {
-        Z(n2, hn);
-      }), G("focus", mn), fn.O("onDestroy", gn);
+        B(n2, Ln);
+      }), G("focus", Nn), fn.O(yn, Pn);
     });
-    var wn = "fullpage-wrapper", bn = "." + wn, Sn = "fp-responsive", yn = "fp-notransition", Mn = "fp-destroyed", Tn = "fp-enabled", An = "active", xn = ".active", On = "fp-completely", En = "fp-section", Dn = "." + En, kn = ".fp-tableCell", jn = "#fp-nav", Ln = "fp-slide", Rn = "." + Ln, zn = ".fp-slide.active", Pn = "fp-slides", Cn = ".fp-slides", Nn = "fp-slidesContainer", Hn = "." + Nn, In = "fp-table", Wn = "fp-overflow", Bn = "." + Wn, Fn = "fp-is-overflow", Vn = ".fp-slidesNav", Zn = ".fp-slidesNav a", Gn = "fp-controlArrow", Yn = "." + Gn, Un = "fp-prev", Xn = ".fp-controlArrow.fp-prev", _n = ".fp-controlArrow.fp-next", Qn = { menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, licenseKey: "", credits: { enabled: true, label: "Made with fullPage.js", position: "right" }, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, tn: 600, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: true, scrollOverflowReset: false, touchSensitivity: 5, touchWrapper: null, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, allowCorrectDirection: false, scrollOverflowMacStyle: true, controlArrows: true, controlArrowsHTML: ['<div class="fp-arrow"></div>', '<div class="fp-arrow"></div>'], controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", afterLoad: null, beforeLeave: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, onScrollOverflow: null, lazyLoading: true, observer: true }, Jn = null, Kn = false, qn = h({}, Qn), $n = null;
-    function nt(n2) {
-      return Jn;
+    var Hn = "fullpage-wrapper", Cn = "." + Hn, Wn = "fp-responsive", In = "fp-notransition", Fn = "fp-destroyed", Vn = "fp-enabled", Zn = "active", Bn = ".active", Gn = "fp-completely", Yn = "fp-section", Un = "." + Yn, Xn = ".fp-tableCell", _n = "#fp-nav", Qn = "fp-slide", Jn = "." + Qn, Kn = ".fp-slide.active", qn = "fp-slides", $n = ".fp-slides", nt = "fp-slidesContainer", tt = "." + nt, et = "fp-table", it = "fp-overflow", ot = "." + it, rt = "fp-is-overflow", at = ".fp-slidesNav", lt = ".fp-slidesNav a", ut = "fp-controlArrow", ct = "." + ut, st = "fp-prev", ft = ".fp-controlArrow.fp-prev", dt = ".fp-controlArrow.fp-next", vt = { menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, licenseKey: "", credits: { enabled: true, label: "Made with fullPage.js", position: "right" }, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, tn: 600, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: true, scrollOverflowReset: false, touchSensitivity: 5, touchWrapper: null, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, allowCorrectDirection: false, scrollOverflowMacStyle: true, controlArrows: true, controlArrowsHTML: ['<div class="fp-arrow"></div>', '<div class="fp-arrow"></div>'], controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", afterLoad: null, beforeLeave: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, onScrollOverflow: null, lazyLoading: true, observer: true }, pt = null, ht = false, gt = h({}, vt), wt = null;
+    function mt(n2) {
+      return pt;
     }
-    function tt() {
-      return $n || Qn;
+    function bt() {
+      return wt || vt;
     }
-    function et() {
-      return qn;
+    function St() {
+      return gt;
     }
-    function it(n2, t2, e2) {
-      $n[n2] = t2, e2 !== "internal" && (qn[n2] = t2);
+    function yt(n2, t2, e2) {
+      wt[n2] = t2, e2 !== "internal" && (gt[n2] = t2);
     }
-    function ot() {
-      if (!tt().anchors.length) {
-        var n2 = p(tt().sectionSelector.split(",").join("[data-anchor],") + "[data-anchor]", Jn);
-        n2.length && n2.length === p(tt().sectionSelector, Jn).length && (Kn = true, n2.forEach(function(n3) {
-          tt().anchors.push(V(n3, "data-anchor").toString());
+    function Mt() {
+      if (!bt().anchors.length) {
+        var n2 = p(bt().sectionSelector.split(",").join("[data-anchor],") + "[data-anchor]", pt);
+        n2.length && n2.length === p(bt().sectionSelector, pt).length && (ht = true, n2.forEach(function(n3) {
+          bt().anchors.push(Z(n3, "data-anchor").toString());
         }));
       }
-      if (!tt().navigationTooltips.length) {
-        var t2 = p(tt().sectionSelector.split(",").join("[data-tooltip],") + "[data-tooltip]", Jn);
+      if (!bt().navigationTooltips.length) {
+        var t2 = p(bt().sectionSelector.split(",").join("[data-tooltip],") + "[data-tooltip]", pt);
         t2.length && t2.forEach(function(n3) {
-          tt().navigationTooltips.push(V(n3, "data-tooltip").toString());
+          bt().navigationTooltips.push(Z(n3, "data-tooltip").toString());
         });
       }
     }
-    var rt = function(n2) {
-      this.anchor = n2.anchor, this.item = n2.item, this.index = n2.index(), this.isLast = this.index === n2.item.parentElement.querySelectorAll(n2.selector).length - 1, this.isFirst = !this.index, this.isActive = n2.isActive;
-    }, at = function(n2, t2) {
-      this.parent = this.parent || null, this.selector = t2, this.anchor = V(n2, "data-anchor") || tt().anchors[T(n2, tt().sectionSelector)], this.item = n2, this.isVisible = d(n2), this.isActive = g(n2, An), this.en = g(n2, Wn) || p(Bn, n2)[0] != null, this.on = t2 === tt().sectionSelector, this.container = C(n2, Hn) || C(n2, bn), this.index = function() {
-        return this.siblings().indexOf(this);
-      };
-    };
-    function lt(n2) {
-      return n2.map(function(n3) {
-        return n3.item;
-      });
-    }
-    function ut(n2, t2) {
-      return n2.find(function(n3) {
-        return n3.item === t2;
-      });
-    }
-    at.prototype.siblings = function() {
-      return this.on ? this.isVisible ? dn.R : dn.rn : this.parent ? this.parent.slides : 0;
-    }, at.prototype.prev = function() {
-      var n2 = this.siblings(), t2 = (this.on ? n2.indexOf(this) : this.parent.slides.indexOf(this)) - 1;
-      return t2 >= 0 ? n2[t2] : null;
-    }, at.prototype.next = function() {
-      var n2 = this.siblings(), t2 = (this.on ? n2.indexOf(this) : this.parent.slides.indexOf(this)) + 1;
-      return t2 < n2.length ? n2[t2] : null;
-    }, at.prototype.prevPanel = function() {
-      return this.prev() || (this.parent ? this.parent.prev() : null);
-    }, at.prototype.nextPanel = function() {
-      return this.next() || (this.parent ? this.parent.next() : null);
-    }, at.prototype.an = function() {
-      return this.on ? dn.R : dn.ln;
-    };
-    var ct, st = function(n2) {
-      rt.call(this, n2);
-    }, ft = function(n2) {
-      rt.call(this, n2);
-    };
-    function dt(n2) {
+    function Tt(n2) {
       return window["fp_" + n2 + "Extension"] !== void 0;
     }
-    function vt(n2) {
-      var t2 = tt();
+    function At(n2) {
+      var t2 = bt();
       return t2[n2] !== null && Object.prototype.toString.call(t2[n2]) === "[object Array]" ? t2[n2].length && s[n2] : t2[n2] && s[n2];
     }
-    function pt(n2, t2, e2) {
-      if (vt(n2))
+    function xt(n2, t2, e2) {
+      if (At(n2))
         return X(s[n2][t2]) ? s[n2][t2](e2) : s[n2][t2];
     }
-    function ht() {
-      return pt("dragAndMove", "isAnimating");
+    function Ot() {
+      return xt("dragAndMove", "isAnimating");
     }
-    function gt() {
-      return pt("dragAndMove", "isGrabbing");
+    function Et() {
+      return xt("dragAndMove", "isGrabbing");
     }
-    function mt(n2) {
-      return tt().offsetSections && s.offsetSections ? Math.round(pt("offsetSections", "getWindowHeight", n2)) : m();
+    function kt(n2) {
+      return bt().offsetSections && s.offsetSections ? Math.round(xt("offsetSections", "getWindowHeight", n2)) : w();
     }
-    function wt(n2, t2) {
+    function Rt(n2, t2) {
       n2.insertBefore(t2, n2.firstChild);
     }
-    function bt(n2) {
+    function jt(n2) {
       var t2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       function e2(n3) {
         var e3, i3, o2, r2, a2, l2, u2 = "", c2 = 0;
@@ -491,155 +456,193 @@ var fullpage_extensions_min = { exports: {} };
         return i2(n3);
       }(e2(n2));
     }
-    function St(n2) {
-      var t2 = p(zn, n2);
-      return t2.length && (n2 = t2[0]), n2;
-    }
-    function yt(n2) {
-      return n2 ? n2.activeSlide ? n2.activeSlide : n2 : null;
-    }
-    function Mt(n2) {
-      var t2, e2, i2 = tt();
-      return i2.autoScrolling && !i2.scrollBar ? (t2 = -n2, e2 = p(bn)[0]) : (t2 = n2, e2 = window), { options: t2, element: e2 };
-    }
-    function Tt(n2, t2) {
-      !tt().autoScrolling || tt().scrollBar || n2.self != window && g(n2, Pn) ? n2.self != window && g(n2, Pn) ? n2.scrollLeft = t2 : n2.scrollTo(0, t2) : n2.style.top = t2 + "px";
-    }
-    function At(n2) {
-      var t2 = "transform " + tt().scrollingSpeed + "ms " + tt().easingcss3;
-      return k(n2, yn), b(n2, { "-webkit-transition": t2, transition: t2 });
-    }
-    function xt(n2, t2) {
-      var e2 = n2.index(), i2 = T(t2, Dn);
-      return e2 == i2 ? "none" : e2 > i2 ? "up" : "down";
-    }
-    function Ot(n2) {
-      return D(n2, yn);
-    }
-    function Et(n2) {
-      return { "-webkit-transform": n2, "-moz-transform": n2, "-ms-transform": n2, transform: n2 };
-    }
-    function Dt(n2, t2) {
-      t2 ? At(nt()) : Ot(nt()), clearTimeout(ct), b(nt(), Et(n2)), s.test.un = n2, ct = setTimeout(function() {
-        k(nt(), yn);
-      }, 10);
-    }
-    function kt(n2) {
-      var t2 = Math.round(n2);
-      if (tt().css3 && tt().autoScrolling && !tt().scrollBar)
-        Dt("translate3d(0px, -" + t2 + "px, 0px)", false);
-      else if (tt().autoScrolling && !tt().scrollBar)
-        b(nt(), { top: -t2 + "px" }), s.test.top = -t2 + "px";
-      else {
-        var e2 = Mt(t2);
-        Tt(e2.element, e2.options);
-      }
-    }
-    function jt(n2, t2) {
-      t2 !== "internal" && pt("fadingEffect", "update", n2), pt("cards", "update_", n2), it("scrollingSpeed", n2, t2);
-    }
-    o.fp_utils = o.fp_utils || {}, Object.assign(o.fp_utils, { prependTo: wt, toggleClass: function(n2, t2, e2) {
+    o.fp_utils = o.fp_utils || {}, Object.assign(o.fp_utils, { prependTo: Rt, toggleClass: function(n2, t2, e2) {
       if (n2.classList && e2 == null)
         n2.classList.toggle(t2);
       else {
         var i2 = g(n2, t2);
-        i2 && e2 == null || !e2 ? k(n2, t2) : (!i2 && e2 == null || e2) && D(n2, t2);
+        i2 && e2 == null || !e2 ? R(n2, t2) : (!i2 && e2 == null || e2) && k(n2, t2);
       }
-    } }), s.setScrollingSpeed = jt;
-    var Lt, Rt = null, zt = null, Pt = null;
-    function Ct(n2, t2, e2, i2) {
+    } });
+    var zt = function(n2) {
+      this.anchor = n2.anchor, this.item = n2.item, this.index = n2.index(), this.isLast = this.index === n2.item.parentElement.querySelectorAll(n2.selector).length - 1, this.isFirst = !this.index, this.isActive = n2.isActive;
+    }, Dt = function(n2, t2) {
+      this.parent = this.parent || null, this.selector = t2, this.anchor = Z(n2, "data-anchor") || bt().anchors[T(n2, bt().sectionSelector)], this.item = n2, this.isVisible = d(n2), this.isActive = g(n2, Zn), this.en = g(n2, it) || p(ot, n2)[0] != null, this.on = t2 === bt().sectionSelector, this.container = N(n2, tt) || N(n2, Cn), this.index = function() {
+        return this.siblings().indexOf(this);
+      };
+    };
+    function Lt(n2) {
+      return n2.map(function(n3) {
+        return n3.item;
+      });
+    }
+    function Pt(n2, t2) {
+      return n2.find(function(n3) {
+        return n3.item === t2;
+      });
+    }
+    Dt.prototype.siblings = function() {
+      return this.on ? this.isVisible ? dn.L : dn.rn : this.parent ? this.parent.slides : 0;
+    }, Dt.prototype.prev = function() {
+      var n2 = this.siblings(), t2 = (this.on ? n2.indexOf(this) : this.parent.slides.indexOf(this)) - 1;
+      return t2 >= 0 ? n2[t2] : null;
+    }, Dt.prototype.next = function() {
+      var n2 = this.siblings(), t2 = (this.on ? n2.indexOf(this) : this.parent.slides.indexOf(this)) + 1;
+      return t2 < n2.length ? n2[t2] : null;
+    }, Dt.prototype.prevPanel = function() {
+      return this === this.prev() ? this.parent ? this.parent.prev() : null : this.prev() || (this.parent ? this.parent.prev() : null);
+    }, Dt.prototype.nextPanel = function() {
+      return this === this.next() ? this.parent ? this.parent.next() : null : this.next() || (this.parent ? this.parent.next() : null);
+    }, Dt.prototype.an = function() {
+      return this.on ? dn.L : dn.ln;
+    };
+    var Nt, Ht = function(n2) {
+      zt.call(this, n2);
+    }, Ct = function(n2) {
+      zt.call(this, n2);
+    };
+    function Wt(n2) {
+      var t2 = p(Kn, n2);
+      return t2.length && (n2 = t2[0]), n2;
+    }
+    function It(n2) {
+      return n2 ? n2.activeSlide ? n2.activeSlide : n2 : null;
+    }
+    function Ft(n2) {
+      var t2, e2, i2 = bt();
+      return i2.autoScrolling && !i2.scrollBar ? (t2 = -n2, e2 = p(Cn)[0]) : (t2 = n2, e2 = window), { options: t2, element: e2 };
+    }
+    function Vt(n2, t2) {
+      !bt().autoScrolling || bt().scrollBar || n2.self != window && g(n2, qn) ? n2.self != window && g(n2, qn) ? n2.scrollLeft = t2 : n2.scrollTo(0, t2) : n2.style.top = t2 + "px";
+    }
+    function Zt(n2) {
+      var t2 = "transform " + bt().scrollingSpeed + "ms " + bt().easingcss3;
+      return R(n2, In), b(n2, { "-webkit-transition": t2, transition: t2 });
+    }
+    function Bt(n2, t2) {
+      var e2 = n2.index(), i2 = T(t2, Un);
+      return e2 == i2 ? "none" : e2 > i2 ? "up" : "down";
+    }
+    function Gt(n2) {
+      return k(n2, In);
+    }
+    function Yt(n2) {
+      return { "-webkit-transform": n2, "-moz-transform": n2, "-ms-transform": n2, transform: n2 };
+    }
+    function Ut(n2, t2) {
+      t2 ? Zt(mt()) : Gt(mt()), clearTimeout(Nt), b(mt(), Yt(n2)), s.test.un = n2, Nt = setTimeout(function() {
+        R(mt(), In);
+      }, 10);
+    }
+    function Xt(n2) {
+      var t2 = Math.round(n2);
+      if (bt().css3 && bt().autoScrolling && !bt().scrollBar)
+        Ut("translate3d(0px, -" + t2 + "px, 0px)", false);
+      else if (bt().autoScrolling && !bt().scrollBar)
+        b(mt(), { top: -t2 + "px" }), s.test.top = -t2 + "px";
+      else {
+        var e2 = Ft(t2);
+        Vt(e2.element, e2.options);
+      }
+    }
+    function _t(n2, t2) {
+      t2 !== "internal" && xt("fadingEffect", "update", n2), xt("cards", "update_", n2), yt("scrollingSpeed", n2, t2);
+    }
+    s.setScrollingSpeed = _t;
+    var Qt, Jt = null, Kt = null, qt = null;
+    function $t(n2, t2, e2, i2) {
       var r2, a2 = function(n3) {
-        return n3.self != o && g(n3, Pn) ? n3.scrollLeft : !tt().autoScrolling || tt().scrollBar ? W() : n3.offsetTop;
-      }(n2), l2 = t2 - a2, u2 = false, c2 = dn.Z;
-      vn({ Z: true }), Lt && window.cancelAnimationFrame(Lt), Lt = function(s2) {
+        return n3.self != o && g(n3, qn) ? n3.scrollLeft : !bt().autoScrolling || bt().scrollBar ? I() : n3.offsetTop;
+      }(n2), l2 = t2 - a2, u2 = false, c2 = dn.B;
+      vn({ B: true }), Qt && window.cancelAnimationFrame(Qt), Qt = function(s2) {
         r2 || (r2 = s2);
         var f2 = Math.floor(s2 - r2);
-        if (dn.Z) {
+        if (dn.B) {
           var d2 = t2;
-          e2 && (d2 = o.fp_easings[tt().easing](f2, a2, l2, e2)), f2 <= e2 && Tt(n2, d2), f2 < e2 ? window.requestAnimationFrame(Lt) : i2 === void 0 || u2 || (i2(), vn({ Z: false }), u2 = true);
+          e2 && (d2 = o.fp_easings[bt().easing](f2, a2, l2, e2)), f2 <= e2 && Vt(n2, d2), f2 < e2 ? window.requestAnimationFrame(Qt) : i2 === void 0 || u2 || (i2(), vn({ B: false }), u2 = true);
         } else
-          u2 || c2 || (i2(), vn({ Z: false }), u2 = true);
-      }, window.requestAnimationFrame(Lt);
+          u2 || c2 || (i2(), vn({ B: false }), u2 = true);
+      }, window.requestAnimationFrame(Qt);
     }
-    function Nt(n2) {
-      return n2 && !n2.item ? new st(new Ze(n2)) : n2 ? new st(n2) : null;
+    function ne(n2) {
+      return n2 && !n2.item ? new Ht(new ui(n2)) : n2 ? new Ht(n2) : null;
     }
-    function Ht(n2) {
-      return n2 ? new ft(n2) : null;
+    function te(n2) {
+      return n2 ? new Ct(n2) : null;
     }
-    function It(n2, t2) {
+    function ee(n2, t2) {
       var e2 = function(n3, t3) {
         var e3 = { afterRender: function() {
-          return { section: Nt(pn().P), cn: Ht(pn().P.activeSlide) };
+          return { section: ne(pn().P), cn: te(pn().P.activeSlide) };
         }, onLeave: function() {
-          return { origin: Nt(t3.items.origin), destination: Nt(t3.items.destination), direction: t3.direction, trigger: pn().C };
+          return { origin: ne(t3.items.origin), destination: ne(t3.items.destination), direction: t3.direction, trigger: pn().N };
         }, afterLoad: function() {
           return e3.onLeave();
         }, afterSlideLoad: function() {
-          return { section: Nt(t3.items.section), origin: Nt(t3.items.origin), destination: Nt(t3.items.destination), direction: t3.direction, trigger: pn().C };
+          return { section: ne(t3.items.section), origin: ne(t3.items.origin), destination: ne(t3.items.destination), direction: t3.direction, trigger: pn().N };
         }, onSlideLeave: function() {
           return e3.afterSlideLoad();
         }, beforeLeave: function() {
           return e3.onLeave();
         }, onScrollOverflow: function() {
-          return { section: Nt(pn().P), cn: Ht(pn().P.activeSlide), position: t3.position, direction: t3.direction };
+          return { section: ne(pn().P), cn: te(pn().P.activeSlide), position: t3.position, direction: t3.direction };
         } };
         return e3[n3]();
       }(n2, t2);
-      return _(nt(), n2, e2), tt()[n2].apply(e2[Object.keys(e2)[0]], on(e2)) !== false;
+      return _(mt(), n2, e2), bt()[n2].apply(e2[Object.keys(e2)[0]], on(e2)) !== false;
     }
-    function Wt(n2) {
-      var t2 = St(n2);
+    function ie(n2) {
+      var t2 = Wt(n2);
       p("video, audio", t2).forEach(function(n3) {
         n3.hasAttribute("data-autoplay") && typeof n3.play == "function" && n3.play();
       }), p('iframe[src*="youtube.com/embed/"]', t2).forEach(function(n3) {
-        n3.hasAttribute("data-autoplay") && Bt(n3), n3.onload = function() {
-          n3.hasAttribute("data-autoplay") && Bt(n3);
+        n3.hasAttribute("data-autoplay") && oe(n3), n3.onload = function() {
+          n3.hasAttribute("data-autoplay") && oe(n3);
         };
       });
     }
-    function Bt(n2) {
+    function oe(n2) {
       n2.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
     }
-    function Ft(n2) {
-      var t2 = St(n2);
+    function re(n2) {
+      var t2 = Wt(n2);
       p("video, audio", t2).forEach(function(n3) {
         n3.hasAttribute("data-keepplaying") || typeof n3.pause != "function" || n3.pause();
       }), p('iframe[src*="youtube.com/embed/"]', t2).forEach(function(n3) {
-        /youtube\.com\/embed\//.test(V(n3, "src")) && !n3.hasAttribute("data-keepplaying") && n3.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+        /youtube\.com\/embed\//.test(Z(n3, "src")) && !n3.hasAttribute("data-keepplaying") && n3.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
       });
     }
-    function Vt(n2) {
-      tt().lazyLoading && p("img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]", St(n2)).forEach(function(n3) {
+    function ae(n2) {
+      bt().lazyLoading && p("img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]", Wt(n2)).forEach(function(n3) {
         if (["src", "srcset"].forEach(function(t3) {
-          var e2 = V(n3, "data-" + t3);
+          var e2 = Z(n3, "data-" + t3);
           e2 != null && e2 && (ln(n3, t3), n3.addEventListener("load", function() {
           }));
         }), Q(n3, "source")) {
-          var t2 = C(n3, "video, audio");
+          var t2 = N(n3, "video, audio");
           t2 && (t2.load(), t2.onloadeddata = function() {
           });
         }
       });
     }
-    function Zt() {
-      var n2 = pn().P.item, t2 = pn().P.activeSlide, e2 = Gt(n2), i2 = String(e2);
-      t2 && (i2 = i2 + "-" + Gt(t2.item)), i2 = i2.replace("/", "-").replace("#", "");
+    function le() {
+      var n2 = pn().P.item, t2 = pn().P.activeSlide, e2 = ue(n2), i2 = String(e2);
+      t2 && (i2 = i2 + "-" + ue(t2.item)), i2 = i2.replace("/", "-").replace("#", "");
       var o2 = new RegExp("\\b\\s?fp-viewing-[^\\s]+\\b", "g");
-      Rt.className = Rt.className.replace(o2, ""), D(Rt, "fp-viewing-" + i2);
+      Jt.className = Jt.className.replace(o2, ""), k(Jt, "fp-viewing-" + i2);
     }
-    function Gt(n2) {
+    function ue(n2) {
       if (!n2)
         return null;
-      var t2 = V(n2, "data-anchor"), e2 = T(n2);
+      var t2 = Z(n2, "data-anchor"), e2 = T(n2);
       return t2 == null && (t2 = e2), t2;
     }
-    function Yt(n2, t2, e2) {
+    function ce(n2, t2, e2) {
       var i2 = "";
-      tt().anchors.length && !tt().lockAnchors && (n2 ? (e2 != null && (i2 = e2), t2 == null && (t2 = n2), vn({ V: t2 }), Ut(i2 + "/" + t2)) : n2 != null ? (vn({ V: t2 }), Ut(e2)) : Ut(e2)), Zt();
+      bt().anchors.length && !bt().lockAnchors && (n2 ? (e2 != null && (i2 = e2), t2 == null && (t2 = n2), vn({ Z: t2 }), se(i2 + "/" + t2)) : n2 != null ? (vn({ Z: t2 }), se(e2)) : se(e2)), le();
     }
-    function Ut(n2) {
-      if (tt().recordHistory)
+    function se(n2) {
+      if (bt().recordHistory)
         location.hash = n2;
       else if (a || u)
         o.history.replaceState(void 0, void 0, "#" + n2);
@@ -648,331 +651,329 @@ var fullpage_extensions_min = { exports: {} };
         o.location.replace(t2 + "#" + n2);
       }
     }
-    function Xt(n2, t2, e2) {
-      var i2 = t2 === "Section" ? tt().anchors[n2] : V(e2, "data-anchor");
-      return encodeURI(tt().navigationTooltips[n2] || i2 || t2 + " " + (n2 + 1));
+    function fe(n2, t2, e2) {
+      var i2 = t2 === "Section" ? bt().anchors[n2] : Z(e2, "data-anchor");
+      return encodeURI(bt().navigationTooltips[n2] || i2 || t2 + " " + (n2 + 1));
     }
-    function _t(n2) {
-      F(n2), vn({ C: "horizontalNav" });
-      var t2 = C(this, Dn), e2 = p(Cn, C(this, Dn))[0], i2 = ut(pn().R, t2).slides[T(C(this, "li"))];
-      fn.D("landscapeScroll", { slides: e2, destination: i2.item });
+    function de(n2) {
+      V(n2), vn({ N: "horizontalNav" });
+      var t2 = N(this, Un), e2 = p($n, N(this, Un))[0], i2 = Pt(pn().L, t2).slides[T(N(this, "li"))];
+      fn.R(kn, { slides: e2, destination: i2.item });
     }
-    var Qt, Jt = {};
-    function Kt(n2, t2, e2) {
-      t2 !== "all" ? Jt[e2][t2] = n2 : Object.keys(Jt[e2]).forEach(function(t3) {
-        Jt[e2][t3] = n2;
+    var ve, pe = {};
+    function he(n2, t2, e2) {
+      t2 !== "all" ? pe[e2][t2] = n2 : Object.keys(pe[e2]).forEach(function(t3) {
+        pe[e2][t3] = n2;
       });
     }
-    function qt() {
-      return Jt;
+    function ge() {
+      return pe;
     }
-    function $t() {
-      var n2 = C(this, Dn);
-      g(this, Un) ? qt().m.left && (vn({ C: "slideArrow" }), fn.D("moveSlideLeft", { section: n2 })) : qt().m.right && (vn({ C: "slideArrow" }), fn.D("moveSlideRight", { section: n2 }));
+    function we() {
+      var n2 = N(this, Un);
+      g(this, st) ? ge().m.left && (vn({ N: "slideArrow" }), fn.R(wn, { section: n2 })) : ge().m.right && (vn({ N: "slideArrow" }), fn.R(mn, { section: n2 }));
     }
-    function ne(n2) {
-      !tt().loopHorizontal && tt().controlArrows && (J(p(Xn, n2.section), n2.slideIndex !== 0), J(p(_n, n2.section), y(n2.destiny) != null));
+    function me(n2) {
+      !bt().loopHorizontal && bt().controlArrows && (J(p(ft, n2.section), n2.slideIndex !== 0), J(p(dt, n2.section), y(n2.destiny) != null));
     }
-    function te() {
-      clearTimeout(Qt);
+    function be() {
+      clearTimeout(ve), vn({ W: false });
     }
-    function ee(n2, t2, e2) {
-      var i2 = C(n2, Dn), o2 = pn().R.filter(function(n3) {
+    function Se(n2, t2, e2) {
+      var i2 = N(n2, Un), o2 = pn().L.filter(function(n3) {
         return n3.item == i2;
       })[0], r2 = o2.slides.filter(function(n3) {
         return n3.item == t2;
-      })[0], a2 = { slides: n2, destiny: t2, direction: e2, destinyPos: { left: t2.offsetLeft }, slideIndex: r2.index(), section: i2, sectionIndex: o2.index(), anchorLink: o2.anchor, slidesNav: p(Vn, i2)[0], slideAnchor: r2.anchor, prevSlide: o2.activeSlide.item, prevSlideIndex: o2.activeSlide.index(), items: { section: o2, origin: o2.activeSlide, destination: r2 }, localIsResizing: dn.W };
-      a2.xMovement = oe(a2.prevSlideIndex, a2.slideIndex), a2.direction = a2.direction ? a2.direction : a2.xMovement, a2.localIsResizing || vn({ canScroll: false }), pt("parallax", "applyHorizontal", a2), pt("cards", "apply", a2), pt("dropEffect", "apply", a2), pt("waterEffect", "apply", a2), tt().onSlideLeave && !a2.localIsResizing && a2.xMovement !== "none" && X(tt().onSlideLeave) && It("onSlideLeave", a2) === false ? vn({ I: false }) : (vt("dropEffect") && tt().dropEffect || (D(t2, An), k(B(t2), An)), We(), a2.localIsResizing || (Ft(a2.prevSlide), Vt(t2)), ne(a2), o2.isActive && !a2.localIsResizing && Yt(a2.slideIndex, a2.slideAnchor, a2.anchorLink), pt("continuousHorizontal", "apply", a2), gt() ? ae(a2) : ie(n2, a2, true), tt().interlockedSlides && s.interlockedSlides && (vt("continuousHorizontal") && e2 !== void 0 && e2 !== a2.xMovement || pt("interlockedSlides", "apply", a2)));
+      })[0], a2 = { slides: n2, destiny: t2, direction: e2, destinyPos: { left: t2.offsetLeft }, slideIndex: r2.index(), section: i2, sectionIndex: o2.index(), anchorLink: o2.anchor, slidesNav: p(at, i2)[0], slideAnchor: r2.anchor, prevSlide: o2.activeSlide.item, prevSlideIndex: o2.activeSlide.index(), items: { section: o2, origin: o2.activeSlide, destination: r2 }, localIsResizing: dn.I };
+      a2.xMovement = Me(a2.prevSlideIndex, a2.slideIndex), a2.direction = a2.direction ? a2.direction : a2.xMovement, a2.localIsResizing || vn({ canScroll: false }), xt("parallax", "applyHorizontal", a2), xt("cards", "apply", a2), xt("dropEffect", "apply", a2), xt("waterEffect", "apply", a2), bt().onSlideLeave && !a2.localIsResizing && a2.xMovement !== "none" && X(bt().onSlideLeave) && ee("onSlideLeave", a2) === false ? vn({ W: false }) : (At("dropEffect") && bt().dropEffect || (k(t2, Zn), R(F(t2), Zn)), oi(), a2.localIsResizing || (re(a2.prevSlide), ae(t2)), me(a2), o2.isActive && !a2.localIsResizing && ce(a2.slideIndex, a2.slideAnchor, a2.anchorLink), xt("continuousHorizontal", "apply", a2), Et() ? Ae(a2) : ye(n2, a2, true), bt().interlockedSlides && s.interlockedSlides && (At("continuousHorizontal") && e2 !== void 0 && e2 !== a2.xMovement || xt("interlockedSlides", "apply", a2)));
     }
-    function ie(n2, t2, e2) {
+    function ye(n2, t2, e2) {
       var i2, o2, r2 = t2.destinyPos;
-      if (i2 = t2.slidesNav, o2 = t2.slideIndex, tt().slidesNavigation && i2 != null && (k(p(xn, i2), An), D(p("a", p("li", i2)[o2]), An)), vn({ scrollX: Math.round(r2.left) }), tt().css3) {
+      if (i2 = t2.slidesNav, o2 = t2.slideIndex, bt().slidesNavigation && i2 != null && (R(p(Bn, i2), Zn), k(p("a", p("li", i2)[o2]), Zn)), vn({ scrollX: Math.round(r2.left) }), bt().css3) {
         var a2 = "translate3d(-" + Math.round(r2.left) + "px, 0px, 0px)";
-        s.test.sn[t2.sectionIndex] = a2, vt("dragAndMove") && t2.dn !== void 0 || At(p(Hn, n2)), b(p(Hn, n2), Et(a2)), vt("interlockedSlides") || clearTimeout(Qt), Qt = setTimeout(function() {
-          e2 && ae(t2);
-        }, tt().scrollingSpeed);
+        s.test.sn[t2.sectionIndex] = a2, At("dragAndMove") && t2.dn !== void 0 || Zt(p(tt, n2)), b(p(tt, n2), Yt(a2)), At("interlockedSlides") || clearTimeout(ve), ve = setTimeout(function() {
+          e2 && Ae(t2);
+        }, bt().scrollingSpeed);
       } else
-        s.test.left[t2.sectionIndex] = Math.round(r2.left), Ct(n2, Math.round(r2.left), tt().scrollingSpeed, function() {
-          e2 && ae(t2);
+        s.test.left[t2.sectionIndex] = Math.round(r2.left), $t(n2, Math.round(r2.left), bt().scrollingSpeed, function() {
+          e2 && Ae(t2);
         });
     }
-    function oe(n2, t2) {
+    function Me(n2, t2) {
       return n2 == t2 ? "none" : n2 > t2 ? "left" : "right";
     }
-    function re() {
-      clearTimeout(Qt);
+    function Te() {
+      clearTimeout(ve);
     }
-    function ae(n2) {
-      pt("continuousHorizontal", "afterSlideLoads", n2), n2.localIsResizing || (pt("parallax", "afterSlideLoads"), pt("scrollOverflowReset", "setPrevious", n2.prevSlide), pt("scrollOverflowReset", "reset"), X(tt().afterSlideLoad) && It("afterSlideLoad", n2), vn({ canScroll: true }), Wt(n2.destiny), fn.D("afterSlideLoads", n2)), vn({ I: false }), pt("interlockedSlides", "interlockedSlides", n2);
+    function Ae(n2) {
+      xt("continuousHorizontal", "afterSlideLoads", n2), n2.localIsResizing || (xt("parallax", "afterSlideLoads"), xt("scrollOverflowReset", "setPrevious", n2.prevSlide), xt("scrollOverflowReset", "reset"), X(bt().afterSlideLoad) && ee("afterSlideLoad", n2), vn({ canScroll: true }), ie(n2.destiny), fn.R(Dn, n2)), vn({ W: false }), xt("interlockedSlides", "interlockedSlides", n2);
     }
-    function le(n2, t2) {
-      jt(0, "internal"), t2 !== void 0 && vn({ W: true }), ee(C(n2, Cn), n2), t2 !== void 0 && vn({ W: false }), jt(et().scrollingSpeed, "internal");
+    function xe(n2, t2) {
+      _t(0, "internal"), t2 !== void 0 && vn({ I: true }), Se(N(n2, $n), n2), t2 !== void 0 && vn({ I: false }), _t(St().scrollingSpeed, "internal");
     }
-    function ue(n2, t2) {
-      it("recordHistory", n2, t2);
+    function Oe(n2, t2) {
+      yt("recordHistory", n2, t2);
     }
-    function ce(n2, t2) {
-      n2 || kt(0), it("autoScrolling", n2, t2);
+    function Ee(n2, t2) {
+      n2 || Xt(0), yt("autoScrolling", n2, t2);
       var e2 = pn().P.item;
-      if (tt().autoScrolling && !tt().scrollBar)
-        b(Pt, { overflow: "hidden", height: "100%" }), k(Rt, "fp-scrollable"), ue(et().recordHistory, "internal"), b(nt(), { "-ms-touch-action": "none", "touch-action": "none" }), e2 != null && kt(e2.offsetTop);
-      else if (b(Pt, { overflow: "visible", height: "initial" }), D(Rt, "fp-scrollable"), ue(!!tt().autoScrolling && et().recordHistory, "internal"), b(nt(), { "-ms-touch-action": "", "touch-action": "" }), Ot(nt()), e2 != null) {
-        var i2 = Mt(e2.offsetTop);
+      if (bt().autoScrolling && !bt().scrollBar)
+        b(qt, { overflow: "hidden", height: "100%" }), R(Jt, "fp-scrollable"), Oe(St().recordHistory, "internal"), b(mt(), { "-ms-touch-action": "none", "touch-action": "none" }), e2 != null && Xt(e2.offsetTop);
+      else if (b(qt, { overflow: "visible", height: "initial" }), k(Jt, "fp-scrollable"), Oe(!!bt().autoScrolling && St().recordHistory, "internal"), b(mt(), { "-ms-touch-action": "", "touch-action": "" }), Gt(mt()), e2 != null) {
+        var i2 = Ft(e2.offsetTop);
         i2.element.scrollTo(0, i2.options);
       }
-      _(nt(), "setAutoScrolling", n2);
+      _(mt(), "setAutoScrolling", n2);
     }
-    function se() {
-      for (var n2 = p(zn), t2 = 0; t2 < n2.length; t2++)
-        le(n2[t2], "internal");
+    function ke() {
+      for (var n2 = p(Kn), t2 = 0; t2 < n2.length; t2++)
+        xe(n2[t2], "internal");
     }
-    function fe() {
-      var n2 = p(".fp-auto-height")[0] || Le() && p(".fp-auto-height-responsive")[0];
-      tt().lazyLoading && n2 && p(".fp-section:not(.active)").forEach(function(n3) {
+    function Re() {
+      var n2 = p(".fp-auto-height")[0] || Qe() && p(".fp-auto-height-responsive")[0];
+      bt().lazyLoading && n2 && p(".fp-section:not(.active)").forEach(function(n3) {
         var t2, e2, i2, o2, r2;
-        e2 = (t2 = n3.getBoundingClientRect()).top, i2 = t2.bottom, o2 = e2 + 2 < dn.K && e2 > 0, r2 = i2 > 2 && i2 < dn.K, (o2 || r2) && Vt(n3);
+        e2 = (t2 = n3.getBoundingClientRect()).top, i2 = t2.bottom, o2 = e2 + 2 < dn.K && e2 > 0, r2 = i2 > 2 && i2 < dn.K, (o2 || r2) && ae(n3);
       });
     }
-    function de() {
+    function je() {
       _(S(this), "click");
     }
-    function ve() {
-      q(p(jn));
+    function ze() {
+      q(p(_n));
       var n2 = r.createElement("div");
       n2.setAttribute("id", "fp-nav");
       var t2 = r.createElement("ul");
-      n2.appendChild(t2), j(n2, Rt);
-      var e2 = p(jn)[0];
-      D(e2, "fp-" + tt().navigationPosition), tt().showActiveTooltip && D(e2, "fp-show-active");
-      for (var i2 = "", o2 = 0; o2 < pn().R.length; o2++) {
-        var a2 = pn().R[o2], l2 = "";
-        tt().anchors.length && (l2 = a2.anchor), i2 += '<li><a href="#' + encodeURI(l2) + '"><span class="fp-sr-only">' + Xt(a2.index(), "Section") + "</span><span></span></a>";
-        var u2 = tt().navigationTooltips[a2.index()];
-        u2 !== void 0 && u2 !== "" && (i2 += '<div class="fp-tooltip fp-' + tt().navigationPosition + '">' + u2 + "</div>"), i2 += "</li>";
+      n2.appendChild(t2), j(n2, Jt);
+      var e2 = p(_n)[0];
+      k(e2, "fp-" + bt().navigationPosition), bt().showActiveTooltip && k(e2, "fp-show-active");
+      for (var i2 = "", o2 = 0; o2 < pn().L.length; o2++) {
+        var a2 = pn().L[o2], l2 = "";
+        bt().anchors.length && (l2 = a2.anchor), i2 += '<li><a href="#' + encodeURI(l2) + '"><span class="fp-sr-only">' + fe(a2.index(), "Section") + "</span><span></span></a>";
+        var u2 = bt().navigationTooltips[a2.index()];
+        u2 !== void 0 && u2 !== "" && (i2 += '<div class="fp-tooltip fp-' + bt().navigationPosition + '">' + u2 + "</div>"), i2 += "</li>";
       }
       p("ul", e2)[0].innerHTML = i2;
-      var c2 = p("li", p(jn)[0])[pn().P.index()];
-      D(p("a", c2), An);
+      var c2 = p("li", p(_n)[0])[pn().P.index()];
+      k(p("a", c2), Zn);
     }
-    function pe(n2) {
-      n2.preventDefault && F(n2), vn({ C: "verticalNav" });
-      var t2 = T(C(this, "#fp-nav li"));
-      fn.D("scrollPage", { destination: pn().R[t2] });
+    function De(n2) {
+      n2.preventDefault && V(n2), vn({ N: "verticalNav" });
+      var t2 = T(N(this, "#fp-nav li"));
+      fn.R(En, { destination: pn().L[t2] });
     }
-    function he(n2, t2) {
+    function Le(n2, t2) {
       var e2;
-      e2 = n2, tt().menu && tt().menu.length && p(tt().menu).forEach(function(n3) {
-        n3 != null && (k(p(xn, n3), An), D(p('[data-menuanchor="' + e2 + '"]', n3), An));
+      e2 = n2, bt().menu && bt().menu.length && p(bt().menu).forEach(function(n3) {
+        n3 != null && (R(p(Bn, n3), Zn), k(p('[data-menuanchor="' + e2 + '"]', n3), Zn));
       }), function(n3, t3) {
-        var e3 = p(jn)[0];
-        tt().navigation && e3 != null && e3.style.display !== "none" && (k(p(xn, e3), An), D(n3 ? p('a[href="#' + n3 + '"]', e3) : p("a", p("li", e3)[t3]), An));
+        var e3 = p(_n)[0];
+        bt().navigation && e3 != null && e3.style.display !== "none" && (R(p(Bn, e3), Zn), k(n3 ? p('a[href="#' + n3 + '"]', e3) : p("a", p("li", e3)[t3]), Zn));
       }(n2, t2);
     }
-    Jt.m = { up: true, down: true, left: true, right: true }, Jt.k = h({}, Jt.m), fn.O("onClickOrTouch", function(n2) {
+    pe.m = { up: true, down: true, left: true, right: true }, pe.k = h({}, pe.m), fn.O(gn, function(n2) {
       var t2 = n2.target;
-      (Q(t2, Yn) || C(t2, Yn)) && $t.call(t2, n2);
-    }), s.landscapeScroll = ee, fn.O("bindEvents", function() {
-      fn.O("onPerformMovement", te);
-    }), s.setRecordHistory = ue, s.setAutoScrolling = ce, s.test.setAutoScrolling = ce, new Date().getTime();
-    var ge, me, we, be, Se, ye, Me = (me = true, we = new Date().getTime(), be = !o.fullpage_api, function(n2, t2) {
-      var e2 = new Date().getTime(), i2 = n2 === "wheel" ? tt().scrollingSpeed : 100;
-      return me = be || e2 - we >= i2, be = !o.fullpage_api, me && (ge = t2(), we = e2), ge === void 0 || ge;
+      (Q(t2, ct) || N(t2, ct)) && we.call(t2, n2);
+    }), s.landscapeScroll = Se, fn.O(Sn, function() {
+      fn.O(jn, be);
+    }), s.setRecordHistory = Oe, s.setAutoScrolling = Ee, s.test.setAutoScrolling = Ee, new Date().getTime();
+    var Pe, Ne, He, Ce, We, Ie, Fe = (Ne = true, He = new Date().getTime(), Ce = !o.fullpage_api, function(n2, t2) {
+      var e2 = new Date().getTime(), i2 = n2 === "wheel" ? bt().scrollingSpeed : 100;
+      return Ne = Ce || e2 - He >= i2, Ce = !o.fullpage_api, Ne && (Pe = t2(), He = e2), Pe === void 0 || Pe;
     });
-    function Te(n2, t2) {
-      if (X(tt().beforeLeave))
-        return Me(pn().C, function() {
-          return It(n2, t2);
+    function Ve(n2, t2) {
+      if (X(bt().beforeLeave))
+        return Fe(pn().N, function() {
+          return ee(n2, t2);
         });
     }
-    function Ae(n2, t2, e2) {
+    function Ze(n2, t2, e2) {
       var i2 = n2.item;
       if (i2 != null) {
-        var o2, r2, a2 = { element: i2, callback: t2, isMovementUp: e2, dtop: xe(i2), yMovement: xt(pn().P, i2), anchorLink: n2.anchor, sectionIndex: n2.index(), activeSlide: n2.activeSlide ? n2.activeSlide.item : null, leavingSection: pn().P.index() + 1, localIsResizing: dn.W, items: { origin: pn().P, destination: n2 }, direction: null };
-        if (!(pn().P.item == i2 && !dn.W || tt().scrollBar && W() === a2.dtop && !g(i2, "fp-auto-height"))) {
-          if (a2.activeSlide != null && (o2 = V(a2.activeSlide, "data-anchor"), r2 = T(a2.activeSlide, null)), !a2.localIsResizing) {
+        var o2, r2, a2 = { element: i2, callback: t2, isMovementUp: e2, dtop: Be(i2), yMovement: Bt(pn().P, i2), anchorLink: n2.anchor, sectionIndex: n2.index(), activeSlide: n2.activeSlide ? n2.activeSlide.item : null, leavingSection: pn().P.index() + 1, localIsResizing: dn.I, items: { origin: pn().P, destination: n2 }, direction: null };
+        if (!(pn().P.item == i2 && !dn.I || bt().scrollBar && I() === a2.dtop && !g(i2, "fp-auto-height"))) {
+          if (a2.activeSlide != null && (o2 = Z(a2.activeSlide, "data-anchor"), r2 = T(a2.activeSlide, null)), !a2.localIsResizing) {
             var l2 = a2.yMovement;
-            if (e2 !== void 0 && (l2 = e2 ? "up" : "down"), a2.direction = l2, dt("dropEffect") && s.dropEffect.onLeave_(a2), dt("waterEffect") && s.waterEffect.onLeave_(a2), X(tt().beforeLeave) && Te("beforeLeave", a2) === false)
+            if (e2 !== void 0 && (l2 = e2 ? "up" : "down"), a2.direction = l2, Tt("dropEffect") && s.dropEffect.onLeave_(a2), Tt("waterEffect") && s.waterEffect.onLeave_(a2), X(bt().beforeLeave) && Ve("beforeLeave", a2) === false)
               return;
-            if (X(tt().onLeave) && !It("onLeave", a2))
+            if (X(bt().onLeave) && !ee("onLeave", a2))
               return;
           }
-          pt("parallax", "apply", a2), pt("cards", "apply", a2), pt("dropEffect", "apply", a2), pt("waterEffect", "apply", a2), tt().autoScrolling && tt().continuousVertical && a2.isMovementUp !== void 0 && (!a2.isMovementUp && a2.yMovement == "up" || a2.isMovementUp && a2.yMovement == "down") && (a2 = function(n3) {
+          xt("parallax", "apply", a2), xt("cards", "apply", a2), xt("dropEffect", "apply", a2), xt("waterEffect", "apply", a2), bt().autoScrolling && bt().continuousVertical && a2.isMovementUp !== void 0 && (!a2.isMovementUp && a2.yMovement == "up" || a2.isMovementUp && a2.yMovement == "down") && (a2 = function(n3) {
             vn({ q: true });
             var t3 = pn().P.item;
-            return n3.isMovementUp ? H(t3, tn(t3, Dn)) : N(t3, en(t3, Dn).reverse()), kt(pn().P.item.offsetTop), se(), n3.vn = t3, n3.dtop = n3.element.offsetTop, n3.yMovement = xt(pn().P, n3.element), n3.leavingSection = n3.items.origin.index() + 1, n3.sectionIndex = n3.items.destination.index(), _(nt(), "onContinuousVertical", n3), n3;
-          }(a2)), pt("scrollOverflowReset", "setPrevious", pn().P.item), a2.localIsResizing || Ft(pn().P.item), vt("dropEffect") && tt().dropEffect || (D(i2, An), k(B(i2), An)), We(), Vt(i2), vn({ canScroll: s.test.pn }), Yt(r2, o2, a2.anchorLink), function(n3) {
-            var t3 = tt().scrollingSpeed < 700, e3 = t3 ? 700 : tt().scrollingSpeed;
-            if (vn({ G: "none", scrollY: Math.round(n3.dtop) }), fn.D("onPerformMovement"), tt().css3 && tt().autoScrolling && !tt().scrollBar)
-              Dt("translate3d(0px, -" + Math.round(n3.dtop) + "px, 0px)", true), vt("waterEffect") && se(), tt().scrollingSpeed ? (clearTimeout(Se), Se = setTimeout(function() {
-                Oe(n3), vn({ canScroll: !t3 || s.test.pn });
-              }, tt().scrollingSpeed)) : Oe(n3);
+            return n3.isMovementUp ? C(t3, tn(t3, Un)) : H(t3, en(t3, Un).reverse()), Xt(pn().P.item.offsetTop), ke(), n3.vn = t3, n3.dtop = n3.element.offsetTop, n3.yMovement = Bt(pn().P, n3.element), n3.leavingSection = n3.items.origin.index() + 1, n3.sectionIndex = n3.items.destination.index(), _(mt(), "onContinuousVertical", n3), n3;
+          }(a2)), xt("scrollOverflowReset", "setPrevious", pn().P.item), a2.localIsResizing || re(pn().P.item), At("dropEffect") && bt().dropEffect || (k(i2, Zn), R(F(i2), Zn)), oi(), ae(i2), vn({ canScroll: s.test.pn }), ce(r2, o2, a2.anchorLink), function(n3) {
+            var t3 = bt().scrollingSpeed < 700, e3 = t3 ? 700 : bt().scrollingSpeed;
+            if (vn({ G: "none", scrollY: Math.round(n3.dtop) }), fn.R(jn), bt().css3 && bt().autoScrolling && !bt().scrollBar)
+              Ut("translate3d(0px, -" + Math.round(n3.dtop) + "px, 0px)", true), At("waterEffect") && ke(), bt().scrollingSpeed ? (clearTimeout(We), We = setTimeout(function() {
+                Ge(n3), vn({ canScroll: !t3 || s.test.pn });
+              }, bt().scrollingSpeed)) : Ge(n3);
             else {
-              var i3 = Mt(n3.dtop);
-              s.test.top = -n3.dtop + "px", clearTimeout(Se), Ct(i3.element, i3.options, tt().scrollingSpeed, function() {
-                tt().scrollBar ? Se = setTimeout(function() {
-                  Oe(n3);
-                }, 30) : (Oe(n3), vn({ canScroll: !t3 || s.test.pn }));
+              var i3 = Ft(n3.dtop);
+              s.test.top = -n3.dtop + "px", clearTimeout(We), $t(i3.element, i3.options, bt().scrollingSpeed, function() {
+                bt().scrollBar ? We = setTimeout(function() {
+                  Ge(n3);
+                }, 30) : (Ge(n3), vn({ canScroll: !t3 || s.test.pn }));
               });
             }
-            t3 && (clearTimeout(ye), ye = setTimeout(function() {
+            t3 && (clearTimeout(Ie), Ie = setTimeout(function() {
               vn({ canScroll: true });
             }, e3));
-          }(a2), vn({ F: a2.anchorLink }), he(a2.anchorLink, function(n3) {
+          }(a2), vn({ V: a2.anchorLink }), Le(a2.anchorLink, function(n3) {
             return n3.vn != null ? n3.isMovementUp ? dn.j - 1 : 0 : n3.sectionIndex;
           }(a2));
         }
       }
     }
-    function xe(n2) {
-      var t2 = n2.offsetHeight, e2 = n2.offsetTop, i2 = e2, o2 = vt("dragAndMove") && pt("dragAndMove", "isGrabbing") ? pt("dragAndMove", "isScrollingDown") : e2 > dn.J, r2 = i2 - m() + t2, a2 = tt().bigSectionsDestination;
-      return t2 > m() ? (o2 || a2) && a2 !== "bottom" || (i2 = r2) : (o2 || dn.W && y(n2) == null) && (i2 = r2), vt("offsetSections") && (i2 = s.offsetSections.getSectionPosition_(o2, i2, n2)), vn({ J: i2 }), i2;
+    function Be(n2) {
+      var t2 = n2.offsetHeight, e2 = n2.offsetTop, i2 = e2, o2 = At("dragAndMove") && xt("dragAndMove", "isGrabbing") ? xt("dragAndMove", "isScrollingDown") : e2 > dn.J, r2 = i2 - w() + t2, a2 = bt().bigSectionsDestination;
+      return t2 > w() ? (o2 || a2) && a2 !== "bottom" || (i2 = r2) : (o2 || dn.I && y(n2) == null) && (i2 = r2), At("offsetSections") && (i2 = s.offsetSections.getSectionPosition_(o2, i2, n2)), vn({ J: i2 }), i2;
     }
-    function Oe(n2) {
-      vn({ N: false }), function(n3) {
-        n3.vn != null && (n3.isMovementUp ? H(p(Dn)[0], n3.vn) : N(p(Dn)[pn().R.length - 1], n3.vn), kt(pn().P.item.offsetTop), function() {
-          for (var n4 = p(zn), t2 = 0; t2 < n4.length; t2++)
-            le(n4[t2], "internal");
+    function Ge(n2) {
+      vn({ H: false }), function(n3) {
+        n3.vn != null && (n3.isMovementUp ? C(p(Un)[0], n3.vn) : H(p(Un)[pn().L.length - 1], n3.vn), Xt(pn().P.item.offsetTop), function() {
+          for (var n4 = p(Kn), t2 = 0; t2 < n4.length; t2++)
+            xe(n4[t2], "internal");
         }(), n3.sectionIndex = n3.items.destination.index(), n3.leavingSection = n3.items.origin.index() + 1, vn({ q: false }));
-      }(n2), X(tt().afterLoad) && !n2.localIsResizing && It("afterLoad", n2), pt("parallax", "afterLoad"), pt("waterEffect", "afterLoad"), pt("dropEffect", "afterLoad"), pt("scrollOverflowReset", "reset"), pt("resetSliders", "apply", n2), We(), n2.localIsResizing || Wt(n2.element), D(n2.element, On), k(B(n2.element), On), fe(), Ne.hn(), vn({ canScroll: true }), fn.D("afterSectionLoads", n2), X(n2.callback) && n2.callback();
+      }(n2), X(bt().afterLoad) && !n2.localIsResizing && ee("afterLoad", n2), xt("parallax", "afterLoad"), xt("waterEffect", "afterLoad"), xt("dropEffect", "afterLoad"), xt("scrollOverflowReset", "reset"), xt("resetSliders", "apply", n2), oi(), n2.localIsResizing || ie(n2.element), k(n2.element, Gn), R(F(n2.element), Gn), Re(), ti.hn(), vn({ canScroll: true }), fn.R(zn, n2), X(n2.callback) && n2.callback();
     }
-    function Ee(n2, t2) {
-      it("fitToSection", n2, t2);
+    function Ye(n2, t2) {
+      yt("fitToSection", n2, t2);
     }
-    function De() {
-      dn.canScroll && (vn({ W: true }), Ae(dn.P), vn({ W: false }));
+    function Ue() {
+      dn.canScroll && (vn({ I: true }), Ze(dn.P), vn({ I: false }));
     }
-    function ke() {
-      var n2 = tt().responsive || tt().responsiveWidth, t2 = tt().responsiveHeight, e2 = n2 && o.innerWidth < n2, i2 = t2 && o.innerHeight < t2;
-      n2 && t2 ? je(e2 || i2) : n2 ? je(e2) : t2 && je(i2);
+    function Xe() {
+      var n2 = bt().responsive || bt().responsiveWidth, t2 = bt().responsiveHeight, e2 = n2 && o.innerWidth < n2, i2 = t2 && o.innerHeight < t2;
+      n2 && t2 ? _e(e2 || i2) : n2 ? _e(e2) : t2 && _e(i2);
     }
-    function je(n2) {
-      var t2 = Le();
-      n2 ? t2 || (ce(false, "internal"), Ee(false, "internal"), x(p(jn)), D(Rt, Sn), X(tt().afterResponsive) && tt().afterResponsive.call(nt(), n2), pt("responsiveSlides", "toSections"), _(nt(), "afterResponsive", n2)) : t2 && (ce(et().autoScrolling, "internal"), Ee(et().autoScrolling, "internal"), O(p(jn)), k(Rt, Sn), X(tt().afterResponsive) && tt().afterResponsive.call(nt(), n2), pt("responsiveSlides", "toSlides"), _(nt(), "afterResponsive", n2));
+    function _e(n2) {
+      var t2 = Qe();
+      n2 ? t2 || (Ee(false, "internal"), Ye(false, "internal"), x(p(_n)), k(Jt, Wn), X(bt().afterResponsive) && bt().afterResponsive.call(mt(), n2), xt("responsiveSlides", "toSections"), _(mt(), "afterResponsive", n2)) : t2 && (Ee(St().autoScrolling, "internal"), Ye(St().autoScrolling, "internal"), O(p(_n)), R(Jt, Wn), X(bt().afterResponsive) && bt().afterResponsive.call(mt(), n2), xt("responsiveSlides", "toSlides"), _(mt(), "afterResponsive", n2));
     }
-    function Le() {
-      return g(Rt, Sn);
+    function Qe() {
+      return g(Jt, Wn);
     }
-    function Re(n2) {
-      tt().verticalCentered && (!tt().scrollOverflow && Ne.gn(n2.item) || Ne.mn(n2) || g(n2.item, In) || D(n2.item, In));
+    function Je(n2) {
+      bt().verticalCentered && (!bt().scrollOverflow && ti.gn(n2.item) || ti.wn(n2) || g(n2.item, et) || k(n2.item, et));
     }
     s.moveTo = moveTo, s.getScrollY = function() {
       return dn.scrollY;
-    }, fn.O("onDestroy", function() {
-      clearTimeout(Se), clearTimeout(ye);
-    }), s.setFitToSection = Ee, s.fitToSection = De, s.setResponsive = je;
-    var ze = null;
-    function Pe(n2) {
-      var t2 = n2.item, e2 = n2.wn.length, i2 = n2.index();
-      !pn().P && n2.isVisible && (D(t2, An), We()), ze = pn().P.item, vt("offsetSections") && b(t2, { height: mt(t2) + "px" }), tt().paddingTop && b(t2, { "padding-top": tt().paddingTop }), tt().paddingBottom && b(t2, { "padding-bottom": tt().paddingBottom }), tt().sectionsColor[i2] !== void 0 && b(t2, { "background-color": tt().sectionsColor[i2] }), tt().anchors[i2] !== void 0 && t2.setAttribute("data-anchor", n2.anchor), e2 || Re(n2);
+    }, fn.O(yn, function() {
+      clearTimeout(We), clearTimeout(Ie);
+    }), s.setFitToSection = Ye, s.fitToSection = Ue, s.setResponsive = _e;
+    var Ke = null;
+    function qe(n2) {
+      var t2 = n2.item, e2 = n2.mn.length, i2 = n2.index();
+      !pn().P && n2.isVisible && (k(t2, Zn), oi()), Ke = pn().P.item, At("offsetSections") && b(t2, { height: kt(t2) + "px" }), bt().paddingTop && b(t2, { "padding-top": bt().paddingTop }), bt().paddingBottom && b(t2, { "padding-bottom": bt().paddingBottom }), bt().sectionsColor[i2] !== void 0 && b(t2, { "background-color": bt().sectionsColor[i2] }), bt().anchors[i2] !== void 0 && t2.setAttribute("data-anchor", n2.anchor), e2 || Je(n2);
+    }
+    function $e() {
+      bt().scrollOverflow && !bt().scrollBar && (ti.bn(), ti.hn());
     }
     s.getActiveSection = function() {
       return pn().P;
-    }, fn.O("bindEvents", function() {
-      o.addEventListener("load", function() {
-        tt().scrollOverflow && !tt().scrollBar && (Ne.bn(), Ne.hn());
-      });
+    }, fn.O(Sn, function() {
+      fn.O(hn, $e), fn.O(Dn, ti.hn);
     });
-    var Ce, Ne = { Sn: null, yn: null, Mn: null, Tn: function(n2) {
+    var ni, ti = { Sn: null, yn: null, Mn: null, Tn: function(n2) {
       if (!dn.canScroll)
-        return F(n2), false;
+        return V(n2), false;
     }, hn: function() {
-      r.activeElement === this.Sn && this.Sn.blur();
-      var n2 = Ne.An(pn().P.item);
-      !n2 || a || u || (this.Sn = n2, this.Sn.focus());
+      if (bt().scrollOverflow) {
+        r.activeElement === this.Sn && this.Sn.blur();
+        var n2 = ti.An(pn().P.item);
+        !n2 || a || u || (this.Sn = n2, this.Sn.focus());
+      }
     }, bn: function() {
-      tt().scrollOverflowMacStyle && !l && D(Rt, "fp-scroll-mac"), pn().ln.forEach(function(n2) {
-        if (!(n2.slides && n2.slides.length || g(n2.item, "fp-auto-height-responsive") && Le())) {
-          var t2, e2 = St(n2.item), i2 = Ne.gn(n2.item), o2 = (t2 = n2).on ? t2 : t2.parent;
+      bt().scrollOverflowMacStyle && !l && k(Jt, "fp-scroll-mac"), pn().ln.forEach(function(n2) {
+        if (!(n2.slides && n2.slides.length || g(n2.item, "fp-auto-height-responsive") && Qe())) {
+          var t2, e2 = Wt(n2.item), i2 = ti.gn(n2.item), o2 = (t2 = n2).on ? t2 : t2.parent;
           if (c) {
             var r2 = i2 ? "addClass" : "removeClass";
-            cn[r2](o2.item, Fn), cn[r2](n2.item, Fn);
+            cn[r2](o2.item, rt), cn[r2](n2.item, rt);
           } else
-            D(o2.item, Fn), D(n2.item, Fn);
-          n2.en || (Ne.xn(e2), Ne.On(e2)), n2.en = true;
+            k(o2.item, rt), k(n2.item, rt);
+          n2.en || (ti.xn(e2), ti.On(e2)), n2.en = true;
         }
       });
     }, On: function(n2) {
-      Ne.An(n2).addEventListener("scroll", Ne.En), n2.addEventListener("wheel", Ne.Tn, { passive: false }), n2.addEventListener("keydown", Ne.Tn, { passive: false });
+      ti.An(n2).addEventListener("scroll", ti.En), n2.addEventListener("wheel", ti.Tn, { passive: false }), n2.addEventListener("keydown", ti.Tn, { passive: false });
     }, xn: function(n2) {
       var t2 = document.createElement("div");
-      t2.className = Wn, z(n2, t2), t2.setAttribute("tabindex", "-1");
-    }, Dn: function(n2) {
-      var t2 = p(Bn, n2)[0];
+      t2.className = it, L(n2, t2), t2.setAttribute("tabindex", "-1");
+    }, kn: function(n2) {
+      var t2 = p(ot, n2)[0];
       t2 && (P(t2), n2.removeAttribute("tabindex"));
     }, An: function(n2) {
-      var t2 = St(n2);
-      return p(Bn, t2)[0] || t2;
+      var t2 = Wt(n2);
+      return p(ot, t2)[0] || t2;
     }, en: function(n2) {
-      return g(n2, Wn) || p(Bn, n2)[0] != null;
-    }, mn: function(n2) {
+      return g(n2, it) || p(ot, n2)[0] != null;
+    }, wn: function(n2) {
       return n2.on && n2.activeSlide ? n2.activeSlide.en : n2.en;
     }, gn: function(n2) {
-      return Ne.An(n2).scrollHeight > o.innerHeight;
-    }, kn: function(n2, t2) {
+      return ti.An(n2).scrollHeight > o.innerHeight;
+    }, Rn: function(n2, t2) {
       if (!dn.canScroll)
         return false;
-      var e2 = Ne.An(t2);
-      if (!tt().scrollOverflow || !g(e2, Wn) || g(St(t2), "fp-noscroll"))
+      var e2 = ti.An(t2);
+      if (!bt().scrollOverflow || !g(e2, it) || g(Wt(t2), "fp-noscroll"))
         return true;
       var i2 = c ? 1 : 0, o2 = e2.scrollTop, r2 = n2 === "up" && o2 <= 0, a2 = n2 === "down" && e2.scrollHeight <= Math.ceil(e2.offsetHeight + o2) + i2, l2 = r2 || a2;
       return l2 || (this.yn = new Date().getTime()), l2;
     }, jn: function() {
       this.Mn = new Date().getTime();
-      var n2 = this.Mn - Ne.yn, t2 = (a || u) && dn.U, e2 = dn.X && n2 > 600;
+      var n2 = this.Mn - ti.yn, t2 = (a || u) && dn.U, e2 = dn.X && n2 > 600;
       return t2 && n2 > 400 || e2;
-    }, En: (Ce = 0, function(n2) {
-      var t2 = n2.target.scrollTop, e2 = dn.G !== "none" ? dn.G : Ce < t2 ? "down" : "up";
-      Ce = t2, X(tt().onScrollOverflow) && It("onScrollOverflow", { position: t2, direction: e2 }), g(n2.target, Wn) && dn.canScroll && Ne.kn(e2, n2.target) && Ne.jn() && fn.D("onScrollOverflowScrolled", { direction: e2 });
-    }) }, He = null, Ie = null;
-    function We() {
-      dn.P = null, dn.R.map(function(n2) {
-        var t2 = g(n2.item, An);
-        n2.isActive = t2, n2.en = Ne.en(n2.item), t2 && (dn.P = n2), n2.slides.length && (n2.activeSlide = null, n2.slides.map(function(t3) {
-          var e2 = g(t3.item, An);
-          t3.en = Ne.en(n2.item), t3.isActive = e2, e2 && (n2.activeSlide = t3);
+    }, En: (ni = 0, function(n2) {
+      var t2 = n2.target.scrollTop, e2 = dn.G !== "none" ? dn.G : ni < t2 ? "down" : "up";
+      ni = t2, X(bt().onScrollOverflow) && ee("onScrollOverflow", { position: t2, direction: e2 }), g(n2.target, it) && dn.canScroll && ti.Rn(e2, n2.target) && ti.jn() && fn.R(Tn, { direction: e2 });
+    }) }, ei = null, ii = null;
+    function oi() {
+      dn.P = null, dn.L.map(function(n2) {
+        var t2 = g(n2.item, Zn);
+        n2.isActive = t2, n2.en = ti.en(n2.item), t2 && (dn.P = n2), n2.slides.length && (n2.activeSlide = null, n2.slides.map(function(t3) {
+          var e2 = g(t3.item, Zn);
+          t3.en = ti.en(n2.item), t3.isActive = e2, e2 && (n2.activeSlide = t3);
         }));
       }), function() {
         var n2 = dn.P, t2 = !!dn.P && dn.P.slides.length, e2 = dn.P ? dn.P.activeSlide : null;
-        if (!n2 && dn.R.length && !pn().N)
-          if (vt("responsiveSlides") && pt("responsiveSlides", "areSlidesSections"))
-            vn({ P: dn.ln.filter(function(n3) {
-              return n3.item === p(Dn);
-            })[0] });
-          else {
-            if (He) {
-              var i2 = Ve(He, dn.R);
-              i2 && (dn.P = i2, dn.P.isActive = true, D(dn.P.item, An)), dn.P && kt(dn.P.item.offsetTop);
-            }
-            if (t2 && !e2 && Ie) {
-              var o2 = Ve(Ie, dn.P.slides);
-              o2 && (dn.P.activeSlide = o2, dn.P.activeSlide.isActive = true, D(dn.P.activeSlide.item, An)), dn.P.activeSlide && le(dn.P.activeSlide.item, "internal");
-            }
+        if (!n2 && dn.L.length && !pn().H) {
+          if (ei) {
+            var i2 = li(ei, dn.L);
+            i2 && (dn.P = i2, dn.P.isActive = true, k(dn.P.item, Zn)), dn.P && Xt(dn.P.item.offsetTop);
           }
-      }(), _(nt(), "onUpdateStateDone");
+          if (t2 && !e2 && ii) {
+            var o2 = li(ii, dn.P.slides);
+            o2 && (dn.P.activeSlide = o2, dn.P.activeSlide.isActive = true, k(dn.P.activeSlide.item, Zn)), dn.P.activeSlide && xe(dn.P.activeSlide.item, "internal");
+          }
+        }
+      }(), _(mt(), "onUpdateStateDone");
     }
-    function Be() {
-      var n2 = p(tt().sectionSelector, nt()), t2 = v(n2), e2 = Array.from(n2).map(function(n3) {
-        return new Ze(n3);
+    function ri() {
+      var n2 = p(bt().sectionSelector + ", " + Un, mt()), t2 = v(n2), e2 = Array.from(n2).map(function(n3) {
+        return new ui(n3);
       }), i2 = e2.filter(function(n3) {
         return n3.isVisible;
       }), o2 = i2.reduce(function(n3, t3) {
         return n3.concat(t3.slides);
       }, []);
-      He = Fe(dn.P), Ie = Fe(dn.P ? dn.P.activeSlide : null), dn.j = t2.length, dn.L = i2.reduce(function(n3, t3) {
+      ei = ai(dn.P), ii = ai(dn.P ? dn.P.activeSlide : null), dn.j = t2.length, dn.D = i2.reduce(function(n3, t3) {
         return n3 + t3.slides.length;
-      }, 0), dn.R = i2, dn.rn = e2, dn.slides = o2, dn.ln = dn.R.concat(dn.slides);
+      }, 0), dn.L = i2, dn.rn = e2, dn.slides = o2, dn.ln = dn.L.concat(dn.slides);
     }
-    function Fe(n2) {
+    function ai(n2) {
       if (!n2)
         return null;
-      var t2 = n2 ? n2.item : null, e2 = n2.on ? dn.rn : dn.P.Ln;
+      var t2 = n2 ? n2.item : null, e2 = n2.on ? dn.rn : dn.P.zn;
       if (t2) {
-        var i2 = ut(e2, t2);
+        var i2 = Pt(e2, t2);
         return i2 ? i2.index() : null;
       }
       return null;
     }
-    function Ve(n2, t2) {
+    function li(n2, t2) {
       var e2, i2 = n2 - 1, o2 = n2;
       do {
         if (e2 = t2[i2] || t2[o2])
@@ -981,66 +982,66 @@ var fullpage_extensions_min = { exports: {} };
       } while (i2 >= 0 || o2 < t2.length);
       return e2;
     }
-    var Ze = function(n2) {
+    var ui = function(n2) {
       var t2 = this;
-      [].push.call(arguments, tt().sectionSelector), at.apply(this, arguments), this.wn = p(tt().slideSelector, n2), this.Ln = Array.from(this.wn).map(function(n3) {
-        return new Ye(n3, t2);
-      }), this.slides = this.Ln.filter(function(n3) {
+      [].push.call(arguments, bt().sectionSelector), Dt.apply(this, arguments), this.mn = p(bt().slideSelector, n2), this.zn = Array.from(this.mn).map(function(n3) {
+        return new si(n3, t2);
+      }), this.slides = this.zn.filter(function(n3) {
         return n3.isVisible;
       }), this.activeSlide = this.slides.length ? this.slides.filter(function(n3) {
         return n3.isActive;
       })[0] || this.slides[0] : null;
     };
-    Ze.prototype = at.prototype, Ze.prototype.constructor = Ze;
-    var Ge, Ye = function(n2, t2) {
-      this.parent = t2, at.call(this, n2, tt().slideSelector);
+    ui.prototype = Dt.prototype, ui.prototype.constructor = ui;
+    var ci, si = function(n2, t2) {
+      this.parent = t2, Dt.call(this, n2, bt().slideSelector);
     };
-    function Ue() {
-      D(p(tt().sectionSelector, nt()), En), D(p(tt().slideSelector, nt()), Ln);
+    function fi() {
+      k(p(bt().sectionSelector, mt()), Yn), k(p(bt().slideSelector, mt()), Qn);
     }
-    function Xe(n2) {
-      var t2 = n2.slides.length, e2 = n2.wn, i2 = n2.slides, o2 = 100 * t2, a2 = 100 / t2;
-      if (!p(Cn, n2.item)[0]) {
+    function di(n2) {
+      var t2 = n2.slides.length, e2 = n2.mn, i2 = n2.slides, o2 = 100 * t2, a2 = 100 / t2;
+      if (!p($n, n2.item)[0]) {
         var l2 = r.createElement("div");
-        l2.className = Pn, R(e2, l2);
+        l2.className = qn, D(e2, l2);
         var u2 = r.createElement("div");
-        u2.className = Nn, R(e2, u2);
+        u2.className = nt, D(e2, u2);
       }
-      b(p(Hn, n2.item), { width: o2 + "%" }), t2 > 1 && (tt().controlArrows && function(n3) {
-        var t3 = n3.item, e3 = [K(tt().controlArrowsHTML[0]), K(tt().controlArrowsHTML[1])];
-        N(p(Cn, t3)[0], e3), D(e3, Gn), D(e3[0], Un), D(e3[1], "fp-next"), tt().controlArrowColor !== "#fff" && (b(p(_n, t3), { "border-color": "transparent transparent transparent " + tt().controlArrowColor }), b(p(Xn, t3), { "border-color": "transparent " + tt().controlArrowColor + " transparent transparent" })), tt().loopHorizontal || x(p(Xn, t3));
-      }(n2), tt().slidesNavigation && function(n3) {
+      b(p(tt, n2.item), { width: o2 + "%" }), t2 > 1 && (bt().controlArrows && function(n3) {
+        var t3 = n3.item, e3 = [K(bt().controlArrowsHTML[0]), K(bt().controlArrowsHTML[1])];
+        H(p($n, t3)[0], e3), k(e3, ut), k(e3[0], st), k(e3[1], "fp-next"), bt().controlArrowColor !== "#fff" && (b(p(dt, t3), { "border-color": "transparent transparent transparent " + bt().controlArrowColor }), b(p(ft, t3), { "border-color": "transparent " + bt().controlArrowColor + " transparent transparent" })), bt().loopHorizontal || x(p(ft, t3));
+      }(n2), bt().slidesNavigation && function(n3) {
         var t3 = n3.item, e3 = n3.slides.length;
         j(K('<div class="fp-slidesNav"><ul></ul></div>'), t3);
-        var i3 = p(Vn, t3)[0];
-        D(i3, "fp-" + tt().slidesNavPosition);
+        var i3 = p(at, t3)[0];
+        k(i3, "fp-" + bt().slidesNavPosition);
         for (var o3 = 0; o3 < e3; o3++)
-          j(K('<li><a href="#"><span class="fp-sr-only">' + Xt(o3, "Slide", p(Rn, t3)[o3]) + "</span><span></span></a></li>"), p("ul", i3)[0]);
+          j(K('<li><a href="#"><span class="fp-sr-only">' + fe(o3, "Slide", p(Jn, t3)[o3]) + "</span><span></span></a></li>"), p("ul", i3)[0]);
         b(i3, { "margin-left": "-" + i3.innerWidth / 2 + "px" });
         var r2 = n3.activeSlide ? n3.activeSlide.index() : 0;
-        D(p("a", p("li", i3)[r2]), An);
+        k(p("a", p("li", i3)[r2]), Zn);
       }(n2)), i2.forEach(function(n3) {
-        b(n3.item, { width: a2 + "%" }), tt().verticalCentered && Re(n3);
+        b(n3.item, { width: a2 + "%" }), bt().verticalCentered && Je(n3);
       });
-      var c2 = vt("responsiveSlides") ? null : n2.activeSlide || null;
-      c2 != null && dn.P && (dn.P.index() !== 0 || dn.P.index() === 0 && c2.index() !== 0) ? (le(c2.item, "internal"), D(c2.item, "fp-initial")) : D(e2[0], An);
+      var c2 = At("responsiveSlides") ? null : n2.activeSlide || null;
+      c2 != null && dn.P && (dn.P.index() !== 0 || dn.P.index() === 0 && c2.index() !== 0) ? (xe(c2.item, "internal"), k(c2.item, "fp-initial")) : k(e2[0], Zn);
     }
-    Ye.prototype = at.prototype, Ye.prototype.constructor = Ze;
-    var _e = { attributes: false, subtree: true, childList: true, characterData: true };
-    function Qe() {
-      return v(p(tt().slideSelector, nt())).length !== pn().L;
+    si.prototype = Dt.prototype, si.prototype.constructor = ui;
+    var vi = { attributes: false, subtree: true, childList: true, characterData: true };
+    function pi() {
+      return xt("responsiveSlides", "isResponsiveSlidesChanging") || v(p(bt().slideSelector, mt())).length !== pn().D;
     }
-    function Je(n2) {
-      var t2 = Qe();
-      (Qe() || v(p(tt().sectionSelector, nt())).length !== pn().j) && !dn.q && (tt().observer && Ge && Ge.disconnect(), Be(), We(), tt().anchors = [], q(p(jn)), Ue(), ot(), tt().navigation && ve(), t2 && (q(p(Vn)), q(p(Yn))), pn().R.forEach(function(n3) {
-        n3.slides.length ? t2 && Xe(n3) : Pe(n3);
-      })), tt().observer && Ge && p(bn)[0] && Ge.observe(p(bn)[0], _e);
+    function hi(n2) {
+      var t2 = pi();
+      (pi() || xt("responsiveSlides", "isResponsiveSlidesChanging") || v(p(bt().sectionSelector, mt())).length !== pn().j) && !dn.q && (bt().observer && ci && ci.disconnect(), ri(), oi(), bt().anchors = [], q(p(_n)), fi(), Mt(), bt().navigation && ze(), t2 && (q(p(at)), q(p(ct))), pn().L.forEach(function(n3) {
+        n3.slides.length ? t2 && di(n3) : qe(n3);
+      })), bt().observer && ci && p(Cn)[0] && ci.observe(p(Cn)[0], vi);
     }
-    fn.O("bindEvents", function() {
+    fn.O(Sn, function() {
       var n2, t2, e2;
-      tt().observer && "MutationObserver" in window && p(bn)[0] && (n2 = p(bn)[0], t2 = _e, (e2 = new MutationObserver(Je)).observe(n2, t2), Ge = e2), fn.O("contentChanged", Je);
-    }), s.Rn = Je;
-    var Ke = function() {
+      bt().observer && "MutationObserver" in window && p(Cn)[0] && (n2 = p(Cn)[0], t2 = vi, (e2 = new MutationObserver(hi)).observe(n2, t2), ci = e2), fn.O(Mn, hi);
+    }), s.Dn = hi;
+    var gi = function() {
       var n2 = false;
       try {
         var t2 = Object.defineProperty({}, "passive", { get: function() {
@@ -1053,139 +1054,137 @@ var fullpage_extensions_min = { exports: {} };
         return n2;
       };
     }();
-    function qe() {
-      return !!Ke() && { passive: false };
+    function wi() {
+      return !!gi() && { passive: false };
     }
-    var $e, ni, ti, ei, ii = (ti = new Date().getTime(), ei = [], { zn: function(n2) {
+    var mi, bi, Si, yi, Mi = (Si = new Date().getTime(), yi = [], { Ln: function(n2) {
       var t2 = (n2 = n2 || o.event).wheelDelta || -n2.deltaY || -n2.detail, e2 = Math.max(-1, Math.min(1, t2)), i2 = n2.wheelDeltaX !== void 0 || n2.deltaX !== void 0;
-      $e = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !i2;
+      mi = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !i2;
       var r2 = new Date().getTime();
-      ni = e2 < 0 ? "down" : "up", ei.length > 149 && ei.shift(), ei.push(Math.abs(t2));
-      var a2 = r2 - ti;
-      ti = r2, a2 > 200 && (ei = []);
+      bi = e2 < 0 ? "down" : "up", yi.length > 149 && yi.shift(), yi.push(Math.abs(t2));
+      var a2 = r2 - Si;
+      Si = r2, a2 > 200 && (yi = []);
     }, Pn: function() {
-      var n2 = an(ei, 10) >= an(ei, 70);
-      return !!ei.length && n2 && $e;
-    }, Cn: function() {
-      return ni;
+      var n2 = an(yi, 10) >= an(yi, 70);
+      return !!yi.length && n2 && mi;
+    }, Nn: function() {
+      return bi;
     } });
-    function oi() {
-      var n2 = tt().css3 ? W() + m() : rn(pn().R).item.offsetTop + rn(pn().R).item.offsetHeight, t2 = Mt(n2);
-      s.test.top = -n2 + "px", vn({ canScroll: false }), Ct(t2.element, t2.options, tt().scrollingSpeed, function() {
+    function Ti() {
+      var n2 = bt().css3 ? I() + w() : rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight, t2 = Ft(n2);
+      s.test.top = -n2 + "px", vn({ canScroll: false }), $t(t2.element, t2.options, bt().scrollingSpeed, function() {
         setTimeout(function() {
-          vn({ N: true }), vn({ canScroll: true });
+          vn({ H: true }), vn({ canScroll: true });
         }, 30);
       });
     }
-    function ri() {
-      nt().getBoundingClientRect().bottom >= 0 && ai();
+    function Ai() {
+      mt().getBoundingClientRect().bottom >= 0 && xi();
     }
-    function ai() {
-      var n2 = Mt(rn(pn().R).item.offsetTop);
-      vn({ canScroll: false }), Ct(n2.element, n2.options, tt().scrollingSpeed, function() {
-        vn({ canScroll: true }), vn({ N: false }), vn({ Nn: false });
+    function xi() {
+      var n2 = Ft(rn(pn().L).item.offsetTop);
+      vn({ canScroll: false }), $t(n2.element, n2.options, bt().scrollingSpeed, function() {
+        vn({ canScroll: true }), vn({ H: false }), vn({ Hn: false });
       });
     }
-    var li, ui, ci, si = (li = false, ui = {}, ci = {}, function(n2, t2, e2) {
+    var Oi, Ei, ki, Ri = (Oi = false, Ei = {}, ki = {}, function(n2, t2, e2) {
       switch (n2) {
         case "set":
-          ui[t2] = new Date().getTime(), ci[t2] = e2;
+          Ei[t2] = new Date().getTime(), ki[t2] = e2;
           break;
         case "isNewKeyframe":
           var i2 = new Date().getTime();
-          li = i2 - ui[t2] > ci[t2];
+          Oi = i2 - Ei[t2] > ki[t2];
       }
-      return li;
+      return Oi;
     });
-    function fi() {
+    function ji() {
       var n2 = pn().P.next();
-      n2 || !tt().loopBottom && !tt().continuousVertical || (n2 = pn().R[0]), n2 != null ? Ae(n2, null, false) : nt().scrollHeight < Rt.scrollHeight && fn.D("scrollBeyondFullpage");
+      n2 || !bt().loopBottom && !bt().continuousVertical || (n2 = pn().L[0]), n2 != null ? Ze(n2, null, false) : mt().scrollHeight < Jt.scrollHeight && fn.R(Rn);
     }
-    function di() {
+    function zi() {
       var n2 = pn().P.prev();
-      n2 || !tt().loopTop && !tt().continuousVertical || (n2 = rn(pn().R)), n2 != null && Ae(n2, null, true);
+      n2 || !bt().loopTop && !bt().continuousVertical || (n2 = rn(pn().L)), n2 != null && Ze(n2, null, true);
     }
-    s.moveSectionDown = fi, s.moveSectionUp = di;
-    var vi = 0;
-    function pi(n2) {
-      tt().autoScrolling && (dn.canScroll && (n2.pageY < vi && qt().m.up ? di() : n2.pageY > vi && qt().m.down && fi()), vi = n2.pageY);
+    s.moveSectionDown = ji, s.moveSectionUp = zi;
+    var Di = 0;
+    function Li(n2) {
+      bt().autoScrolling && (dn.canScroll && (n2.pageY < Di && ge().m.up ? zi() : n2.pageY > Di && ge().m.down && ji()), Di = n2.pageY);
     }
-    function hi(n2) {
-      if (qt().m[n2]) {
-        var t2 = n2 === "down" ? fi : di;
-        vt("scrollHorizontally") && (t2 = pt("scrollHorizontally", "getScrollSection", { type: n2, scrollSection: t2 })), tt().scrollOverflow && Ne.mn(pn().P) ? Ne.kn(n2, pn().P.item) && Ne.jn() && t2() : t2();
+    function Pi(n2) {
+      if (ge().m[n2]) {
+        var t2 = n2 === "down" ? ji : zi;
+        At("scrollHorizontally") && (t2 = xt("scrollHorizontally", "getScrollSection", { type: n2, scrollSection: t2 })), bt().scrollOverflow && ti.wn(pn().P) ? ti.Rn(n2, pn().P.item) && ti.jn() && t2() : t2();
       }
     }
-    var gi, mi, wi, bi = 0, Si = 0, yi = 0, Mi = 0, Ti = ji(), Ai = { Hn: "ontouchmove" in window ? "touchmove" : Ti ? Ti.move : null, In: "ontouchstart" in window ? "touchstart" : Ti ? Ti.down : null };
-    function xi(n2) {
-      var t2 = C(n2.target, Dn) || pn().P.item, e2 = Ne.mn(pn().P);
-      if (Oi(n2)) {
-        vn({ U: true, X: false }), tt().autoScrolling && (!e2 || e2 && !dn.canScroll) && F(n2);
-        var i2 = ki(n2);
-        yi = i2.y, Mi = i2.x;
-        var r2 = Math.abs(bi - yi) > o.innerHeight / 100 * tt().touchSensitivity, a2 = Math.abs(Si - Mi) > w() / 100 * tt().touchSensitivity, l2 = p(Cn, t2).length && Math.abs(Si - Mi) > Math.abs(bi - yi), u2 = bi > yi ? "down" : "up";
-        vn({ G: l2 ? Si > Mi ? "right" : "left" : u2 }), l2 ? !dn.I && a2 && (Si > Mi ? qt().m.right && fn.D("moveSlideRight", { section: t2 }) : qt().m.left && fn.D("moveSlideLeft", { section: t2 })) : tt().autoScrolling && dn.canScroll && r2 && hi(u2);
+    var Ni, Hi, Ci, Wi = 0, Ii = 0, Fi = 0, Vi = 0, Zi = Qi(), Bi = { Cn: "ontouchmove" in window ? "touchmove" : Zi ? Zi.move : null, Wn: "ontouchstart" in window ? "touchstart" : Zi ? Zi.down : null };
+    function Gi(n2) {
+      var t2 = N(n2.target, Un) || pn().P.item, e2 = ti.wn(pn().P);
+      if (Yi(n2)) {
+        vn({ U: true, X: false }), bt().autoScrolling && e2 && !dn.canScroll && V(n2);
+        var i2 = _i(n2);
+        Fi = i2.y, Vi = i2.x;
+        var r2 = Math.abs(Wi - Fi) > o.innerHeight / 100 * bt().touchSensitivity, a2 = Math.abs(Ii - Vi) > m() / 100 * bt().touchSensitivity, l2 = p($n, t2).length && Math.abs(Ii - Vi) > Math.abs(Wi - Fi), u2 = Wi > Fi ? "down" : "up";
+        vn({ G: l2 ? Ii > Vi ? "right" : "left" : u2 }), l2 ? !dn.W && a2 && (Ii > Vi ? ge().m.right && fn.R(mn, { section: t2 }) : ge().m.left && fn.R(wn, { section: t2 })) : bt().autoScrolling && dn.canScroll && r2 && Pi(u2);
       }
     }
-    function Oi(n2) {
+    function Yi(n2) {
       return n2.pointerType === void 0 || n2.pointerType != "mouse";
     }
-    function Ei(n2) {
-      if (tt().fitToSection && vn({ Z: false }), Oi(n2)) {
-        var t2 = ki(n2);
-        bi = t2.y, Si = t2.x;
+    function Ui(n2) {
+      if (bt().fitToSection && vn({ B: false }), Yi(n2)) {
+        var t2 = _i(n2);
+        Wi = t2.y, Ii = t2.x;
       }
-      G("touchend", Di);
+      G("touchend", Xi);
     }
-    function Di() {
-      U("touchend", Di), vn({ U: false });
+    function Xi() {
+      U("touchend", Xi), vn({ U: false });
     }
-    function ki(n2) {
+    function _i(n2) {
       var t2 = {};
-      return t2.y = n2.pageY !== void 0 && (n2.pageY || n2.pageX) ? n2.pageY : n2.touches[0].pageY, t2.x = n2.pageX !== void 0 && (n2.pageY || n2.pageX) ? n2.pageX : n2.touches[0].pageX, u && Oi(n2) && tt().scrollBar && n2.touches !== void 0 && (t2.y = n2.touches[0].pageY, t2.x = n2.touches[0].pageX), t2;
+      return t2.y = n2.pageY !== void 0 && (n2.pageY || n2.pageX) ? n2.pageY : n2.touches[0].pageY, t2.x = n2.pageX !== void 0 && (n2.pageY || n2.pageX) ? n2.pageX : n2.touches[0].pageX, u && Yi(n2) && bt().scrollBar && n2.touches !== void 0 && (t2.y = n2.touches[0].pageY, t2.x = n2.touches[0].pageX), t2;
     }
-    function ji() {
+    function Qi() {
       var n2;
       return o.PointerEvent && (n2 = { down: "pointerdown", move: "pointermove" }), n2;
     }
-    function Li(n2) {
-      tt().autoScrolling && Oi(n2) && qt().m.up && (dn.canScroll || F(n2));
+    function Ji(n2) {
+      bt().autoScrolling && Yi(n2) && ge().m.up && (dn.canScroll || V(n2));
     }
-    function Ri(n2, t2) {
-      var e2 = t2 == null ? pn().P.item : t2, i2 = ut(dn.R, e2), o2 = p(Cn, e2)[0];
-      if (!(o2 == null || ht() || dn.I || i2.slides.length < 2)) {
+    function Ki(n2, t2) {
+      var e2 = t2 == null ? pn().P.item : t2, i2 = Pt(dn.L, e2), o2 = p($n, e2)[0];
+      if (!(o2 == null || Ot() || dn.W || i2.slides.length < 2)) {
         var r2 = i2.activeSlide, a2 = n2 === "left" ? r2.prev() : r2.next();
         if (!a2) {
-          if (!tt().loopHorizontal)
+          if (!bt().loopHorizontal)
             return;
           a2 = n2 === "left" ? rn(i2.slides) : i2.slides[0];
         }
-        vn({ I: !s.test.pn }), ee(o2, a2.item, n2);
+        vn({ W: !s.test.pn }), Se(o2, a2.item, n2);
       }
     }
-    function zi(n2) {
-      Ri("left", n2);
+    function qi(n2) {
+      Ki("left", n2);
     }
-    function Pi(n2) {
-      Ri("right", n2);
+    function $i(n2) {
+      Ki("right", n2);
     }
-    function Ci(n2) {
-      if (vt("responsiveSlides") && pt("responsiveSlides", "areSlidesSections"))
-        return ut(dn.R, pt("responsiveSlides", "getSectionByAnchor", n2));
-      var t2 = pn().R.filter(function(t3) {
+    function no(n2) {
+      var t2 = pn().L.filter(function(t3) {
         return t3.anchor === n2;
       })[0];
       if (!t2) {
         var e2 = n2 !== void 0 ? n2 - 1 : 0;
-        t2 = pn().R[e2];
+        t2 = pn().L[e2];
       }
       return t2;
     }
-    function Ni(n2) {
-      n2 != null && ee(C(n2, Cn), n2);
+    function to(n2) {
+      n2 != null && Se(N(n2, $n), n2);
     }
-    function Hi(n2, t2) {
-      var e2 = Ci(n2);
+    function eo(n2, t2) {
+      var e2 = no(n2);
       if (e2 != null) {
         var i2 = function(n3, t3) {
           var e3 = t3.slides.filter(function(t4) {
@@ -1193,258 +1192,258 @@ var fullpage_extensions_min = { exports: {} };
           })[0];
           return e3 == null && (n3 = n3 !== void 0 ? n3 : 0, e3 = t3.slides[n3]), e3 ? e3.item : null;
         }(t2, e2);
-        e2.anchor === dn.F || g(e2.item, An) ? Ni(i2) : Ae(e2, function() {
-          Ni(i2);
+        e2.anchor === dn.V || g(e2.item, Zn) ? to(i2) : Ze(e2, function() {
+          to(i2);
         });
       }
     }
-    function Ii(n2, t2) {
-      var e2 = Ci(n2);
-      t2 !== void 0 ? Hi(n2, t2) : e2 != null && Ae(e2);
+    function io(n2, t2) {
+      var e2 = no(n2);
+      t2 !== void 0 ? eo(n2, t2) : e2 != null && Ze(e2);
     }
-    function Wi() {
-      clearTimeout(mi), Y("keydown", Bi), Y("keyup", Fi);
+    function oo() {
+      clearTimeout(Hi), Y("keydown", ro), Y("keyup", ao);
     }
-    function Bi(n2) {
-      clearTimeout(mi);
-      var t2, e2 = n2.keyCode, i2 = [37, 39].indexOf(e2) > -1, o2 = tt().autoScrolling || tt().fitToSection || i2;
+    function ro(n2) {
+      clearTimeout(Hi);
+      var t2, e2 = n2.keyCode, i2 = [37, 39].indexOf(e2) > -1, o2 = bt().autoScrolling || bt().fitToSection || i2;
       e2 === 9 ? function(n3) {
-        var t3 = n3.shiftKey, e3 = r.activeElement, i3 = Ui(St(pn().P.item));
+        var t3 = n3.shiftKey, e3 = r.activeElement, i3 = fo(Wt(pn().P.item));
         function o3(n4) {
-          return F(n4), i3[0] ? i3[0].focus() : null;
+          return V(n4), i3[0] ? i3[0].focus() : null;
         }
         if (!function(n4) {
-          var t4 = Ui(r), e4 = t4.indexOf(r.activeElement), i4 = t4[n4.shiftKey ? e4 - 1 : e4 + 1], o4 = C(i4, Rn), a3 = C(i4, Dn);
+          var t4 = fo(r), e4 = t4.indexOf(r.activeElement), i4 = t4[n4.shiftKey ? e4 - 1 : e4 + 1], o4 = N(i4, Jn), a3 = N(i4, Un);
           return !o4 && !a3;
         }(n3)) {
-          e3 ? C(e3, ".fp-section.active,.fp-section.active .fp-slide.active") == null && (e3 = o3(n3)) : o3(n3);
+          e3 ? N(e3, ".fp-section.active,.fp-section.active .fp-slide.active") == null && (e3 = o3(n3)) : o3(n3);
           var a2 = e3 == i3[0], l2 = e3 == i3[i3.length - 1], u2 = t3 && a2;
           if (u2 || !t3 && l2) {
-            F(n3);
+            V(n3);
             var c2 = function(n4) {
-              var t4, e4 = n4 ? "prevPanel" : "nextPanel", i4 = [], o4 = yt((dn.P && dn.P.activeSlide ? dn.P.activeSlide : dn.P)[e4]());
+              var t4, e4 = n4 ? "prevPanel" : "nextPanel", i4 = [], o4 = It((dn.P && dn.P.activeSlide ? dn.P.activeSlide : dn.P)[e4]());
               do {
-                (i4 = Ui(o4.item)).length && (t4 = { Wn: o4, Bn: i4[n4 ? i4.length - 1 : 0] }), o4 = yt(o4[e4]());
+                (i4 = fo(o4.item)).length && (t4 = { In: o4, Fn: i4[n4 ? i4.length - 1 : 0] }), o4 = It(o4[e4]());
               } while (o4 && i4.length === 0);
               return t4;
-            }(u2), s2 = c2 ? c2.Wn : null;
+            }(u2), s2 = c2 ? c2.In : null;
             if (s2) {
               var f2 = s2.on ? s2 : s2.parent;
-              fn.D("onScrollPageAndSlide", { Fn: f2.index() + 1, slideAnchor: s2.on ? 0 : s2.index() }), wi = c2.Bn, F(n3);
+              fn.R(An, { Vn: f2.index() + 1, slideAnchor: s2.on ? 0 : s2.index() }), Ci = c2.Fn, V(n3);
             }
           }
         }
-      }(n2) : Q(t2 = r.activeElement, "textarea") || Q(t2, "input") || Q(t2, "select") || V(t2, "contentEditable") == "true" || V(t2, "contentEditable") == "" || !tt().keyboardScrolling || !o2 || (gi = n2.ctrlKey, mi = setTimeout(function() {
+      }(n2) : Q(t2 = r.activeElement, "textarea") || Q(t2, "input") || Q(t2, "select") || Z(t2, "contentEditable") == "true" || Z(t2, "contentEditable") == "" || !bt().keyboardScrolling || !o2 || (Ni = n2.ctrlKey, Hi = setTimeout(function() {
         !function(n3) {
-          var t3 = n3.shiftKey, e3 = r.activeElement, i3 = Q(e3, "video") || Q(e3, "audio"), o3 = Ne.kn("up", pn().P.item), a2 = Ne.kn("down", pn().P.item), l2 = [37, 39].indexOf(n3.keyCode) > -1;
+          var t3 = n3.shiftKey, e3 = r.activeElement, i3 = Q(e3, "video") || Q(e3, "audio"), o3 = ti.Rn("up", pn().P.item), a2 = ti.Rn("down", pn().P.item), l2 = [37, 39].indexOf(n3.keyCode) > -1;
           if (function(n4) {
             (function(n5) {
-              return [40, 38, 32, 33, 34].indexOf(n5.keyCode) > -1 && !dn.N;
-            })(n4) && !C(n4.target, Bn) && n4.preventDefault();
+              return [40, 38, 32, 33, 34].indexOf(n5.keyCode) > -1 && !dn.H;
+            })(n4) && !N(n4.target, ot) && n4.preventDefault();
           }(n3), dn.canScroll || l2)
-            switch (vn({ C: "keydown" }), n3.keyCode) {
+            switch (vn({ N: "keydown" }), n3.keyCode) {
               case 38:
               case 33:
-                qt().k.up && o3 && (dn.N ? fn.D("onKeyDown", { e: n3 }) : di());
+                ge().k.up && o3 && (dn.H ? fn.R(xn, { e: n3 }) : zi());
                 break;
               case 32:
-                if (t3 && qt().k.up && !i3 && o3) {
-                  di();
+                if (t3 && ge().k.up && !i3 && o3) {
+                  zi();
                   break;
                 }
               case 40:
               case 34:
-                if (qt().k.down && a2) {
-                  if (dn.N)
+                if (ge().k.down && a2) {
+                  if (dn.H)
                     return;
-                  n3.keyCode === 32 && i3 || fi();
+                  n3.keyCode === 32 && i3 || ji();
                 }
                 break;
               case 36:
-                qt().k.up && Ii(1);
+                ge().k.up && io(1);
                 break;
               case 35:
-                qt().k.down && Ii(pn().R.length);
+                ge().k.down && io(pn().L.length);
                 break;
               case 37:
-                qt().k.left && zi();
+                ge().k.left && qi();
                 break;
               case 39:
-                qt().k.right && Pi();
+                ge().k.right && $i();
             }
         }(n2);
       }, 0));
     }
-    function Fi(n2) {
-      dn._ && (gi = n2.ctrlKey);
+    function ao(n2) {
+      dn._ && (Ni = n2.ctrlKey);
     }
-    function Vi() {
-      vn({ _: false }), gi = false;
+    function lo() {
+      vn({ _: false }), Ni = false;
     }
-    function Zi(n2) {
-      Yi();
+    function uo(n2) {
+      so();
     }
-    function Gi(n2) {
-      C(wi, Rn) && !C(wi, zn) || Yi();
+    function co(n2) {
+      N(Ci, Jn) && !N(Ci, Kn) || so();
     }
-    function Yi() {
-      wi && (wi.focus(), wi = null);
+    function so() {
+      Ci && (Ci.focus(), Ci = null);
     }
-    function Ui(n2) {
+    function fo(n2) {
       return [].slice.call(p('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]', n2)).filter(function(n3) {
-        return V(n3, "tabindex") !== "-1" && n3.offsetParent !== null;
+        return Z(n3, "tabindex") !== "-1" && n3.offsetParent !== null;
       });
     }
-    s.moveSlideLeft = zi, s.moveSlideRight = Pi, s.moveTo = Ii, fn.O("bindEvents", function() {
-      G("blur", Vi), Z("keydown", Bi), Z("keyup", Fi), fn.O("onDestroy", Wi), fn.O("afterSlideLoads", Zi), fn.O("afterSectionLoads", Gi);
+    s.moveSlideLeft = qi, s.moveSlideRight = $i, s.moveTo = io, fn.O(Sn, function() {
+      G("blur", lo), B("keydown", ro), B("keyup", ao), fn.O(yn, oo), fn.O(Dn, uo), fn.O(zn, co);
     });
-    var Xi = new Date().getTime(), _i = [];
-    function Qi(n2) {
+    var vo = new Date().getTime(), po = [];
+    function ho(n2) {
       n2 ? (function() {
         var n3, t2 = "";
         o.addEventListener ? n3 = "addEventListener" : (n3 = "attachEvent", t2 = "on");
-        var e2 = "onwheel" in r.createElement("div") ? "wheel" : r.onmousewheel !== void 0 ? "mousewheel" : "DOMMouseScroll", i2 = qe();
-        e2 == "DOMMouseScroll" ? r[n3](t2 + "MozMousePixelScroll", Ji, i2) : r[n3](t2 + e2, Ji, i2);
-      }(), nt().addEventListener("mousedown", Ki), nt().addEventListener("mouseup", qi)) : (r.addEventListener ? (Y("mousewheel", Ji, false), Y("wheel", Ji, false), Y("MozMousePixelScroll", Ji, false)) : r.detachEvent("onmousewheel", Ji), nt().removeEventListener("mousedown", Ki), nt().removeEventListener("mouseup", qi));
+        var e2 = "onwheel" in r.createElement("div") ? "wheel" : r.onmousewheel !== void 0 ? "mousewheel" : "DOMMouseScroll", i2 = wi();
+        e2 == "DOMMouseScroll" ? r[n3](t2 + "MozMousePixelScroll", go, i2) : r[n3](t2 + e2, go, i2);
+      }(), mt().addEventListener("mousedown", wo), mt().addEventListener("mouseup", mo)) : (r.addEventListener ? (Y("mousewheel", go, false), Y("wheel", go, false), Y("MozMousePixelScroll", go, false)) : r.detachEvent("onmousewheel", go), mt().removeEventListener("mousedown", wo), mt().removeEventListener("mouseup", mo));
     }
-    function Ji(n2) {
+    function go(n2) {
       var t2 = new Date().getTime(), e2 = g(p(".fp-completely")[0], "fp-normal-scroll"), i2 = function(n3, t3) {
         new Date().getTime();
-        var e3 = pn().N && n3.getBoundingClientRect().bottom >= 0 && ii.Cn() === "up", i3 = pn().Nn;
+        var e3 = pn().H && n3.getBoundingClientRect().bottom >= 0 && Mi.Nn() === "up", i3 = pn().Hn;
         if (i3)
-          return F(t3), false;
-        if (pn().N) {
+          return V(t3), false;
+        if (pn().H) {
           if (e3) {
             var o2;
-            if (!(i3 || si("isNewKeyframe", "beyondFullpage") && ii.Pn()))
-              return (o2 = Mt(rn(pn().R).item.offsetTop + rn(pn().R).item.offsetHeight)).element.scrollTo(0, o2.options), vn({ Nn: false }), F(t3), false;
-            if (ii.Pn())
-              return e3 = false, vn({ Nn: true }), vn({ C: "wheel" }), ai(), F(t3), false;
+            if (!(i3 || Ri("isNewKeyframe", "beyondFullpage") && Mi.Pn()))
+              return (o2 = Ft(rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight)).element.scrollTo(0, o2.options), vn({ Hn: false }), V(t3), false;
+            if (Mi.Pn())
+              return e3 = false, vn({ Hn: true }), vn({ N: "wheel" }), xi(), V(t3), false;
           } else
-            si("set", "beyondFullpage", 1e3);
+            Ri("set", "beyondFullpage", 1e3);
           if (!i3 && !e3)
             return true;
         }
-      }(nt(), n2);
-      if (dn.X || vn({ U: false, X: true, G: "none" }), !qt().m.down && !qt().m.up)
-        return F(n2), false;
+      }(mt(), n2);
+      if (dn.X || vn({ U: false, X: true, G: "none" }), !ge().m.down && !ge().m.up)
+        return V(n2), false;
       if (i2)
         return true;
       if (i2 === false)
-        return F(n2), false;
-      if (tt().autoScrolling && !gi && !e2) {
+        return V(n2), false;
+      if (bt().autoScrolling && !Ni && !e2) {
         var r2 = (n2 = n2 || o.event).wheelDelta || -n2.deltaY || -n2.detail, a2 = Math.max(-1, Math.min(1, r2)), l2 = n2.wheelDeltaX !== void 0 || n2.deltaX !== void 0, u2 = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !l2, c2 = a2 < 0 ? "down" : a2 > 0 ? "up" : "none";
-        _i.length > 149 && _i.shift(), _i.push(Math.abs(r2)), tt().scrollBar && F(n2);
-        var s2 = t2 - Xi;
-        return Xi = t2, s2 > 200 && (_i = []), vn({ Y: c2 }), dn.canScroll && !ht() && an(_i, 10) >= an(_i, 70) && u2 && (vn({ C: "wheel" }), hi(a2 < 0 ? "down" : "up")), false;
+        po.length > 149 && po.shift(), po.push(Math.abs(r2)), bt().scrollBar && V(n2);
+        var s2 = t2 - vo;
+        return vo = t2, s2 > 200 && (po = []), vn({ Y: c2 }), dn.canScroll && !Ot() && an(po, 10) >= an(po, 70) && u2 && (vn({ N: "wheel" }), Pi(a2 < 0 ? "down" : "up")), false;
       }
-      tt().fitToSection && vn({ Z: false });
+      bt().fitToSection && vn({ B: false });
     }
-    function Ki(n2) {
+    function wo(n2) {
       var t2;
-      n2.which == 2 && (t2 = n2.pageY, vi = t2, nt().addEventListener("mousemove", pi));
+      n2.which == 2 && (t2 = n2.pageY, Di = t2, mt().addEventListener("mousemove", Li));
     }
-    function qi(n2) {
-      n2.which == 2 && nt().removeEventListener("mousemove", pi);
+    function mo(n2) {
+      n2.which == 2 && mt().removeEventListener("mousemove", Li);
     }
-    function $i(n2) {
-      n2 ? (Qi(true), function() {
-        if (Ai.Hn && (a || u) && (!vt("dragAndMove") || tt().dragAndMove === "mouseonly")) {
-          tt().autoScrolling && (Rt.removeEventListener(Ai.Hn, Li, { passive: false }), Rt.addEventListener(Ai.Hn, Li, { passive: false }));
-          var n3 = tt().touchWrapper;
-          n3.removeEventListener(Ai.In, Ei), n3.removeEventListener(Ai.Hn, xi, { passive: false }), n3.addEventListener(Ai.In, Ei), n3.addEventListener(Ai.Hn, xi, { passive: false });
+    function bo(n2) {
+      n2 ? (ho(true), function() {
+        if (Bi.Cn && (a || u) && (!At("dragAndMove") || bt().dragAndMove === "mouseonly")) {
+          bt().autoScrolling && (Jt.removeEventListener(Bi.Cn, Ji, { passive: false }), Jt.addEventListener(Bi.Cn, Ji, { passive: false }));
+          var n3 = bt().touchWrapper;
+          n3.removeEventListener(Bi.Wn, Ui), n3.removeEventListener(Bi.Cn, Gi, { passive: false }), n3.addEventListener(Bi.Wn, Ui), n3.addEventListener(Bi.Cn, Gi, { passive: false });
         }
-      }()) : (Qi(false), function() {
-        if (Ai.Hn && (a || u)) {
-          tt().autoScrolling && (Rt.removeEventListener(Ai.Hn, xi, { passive: false }), Rt.removeEventListener(Ai.Hn, Li, { passive: false }));
-          var n3 = tt().touchWrapper;
-          n3.removeEventListener(Ai.In, Ei), n3.removeEventListener(Ai.Hn, xi, { passive: false });
+      }()) : (ho(false), function() {
+        if (Bi.Cn && (a || u)) {
+          bt().autoScrolling && (Jt.removeEventListener(Bi.Cn, Gi, { passive: false }), Jt.removeEventListener(Bi.Cn, Ji, { passive: false }));
+          var n3 = bt().touchWrapper;
+          n3.removeEventListener(Bi.Wn, Ui), n3.removeEventListener(Bi.Cn, Gi, { passive: false });
         }
       }());
     }
-    s.setMouseWheelScrolling = Qi;
-    var no = true;
-    function to() {
+    s.setMouseWheelScrolling = ho;
+    var So = true;
+    function yo() {
       ["mouseenter", "touchstart", "mouseleave", "touchend"].forEach(function(n2) {
-        Y(n2, io, true);
+        Y(n2, To, true);
       });
     }
-    function eo(n2, t2) {
-      document["fp_" + n2] = t2, Z(n2, io, true);
+    function Mo(n2, t2) {
+      document["fp_" + n2] = t2, B(n2, To, true);
     }
-    function io(n2) {
+    function To(n2) {
       var t2 = n2.type, e2 = false, i2 = t2 === "mouseleave" ? n2.toElement || n2.relatedTarget : n2.target;
-      i2 != document && i2 ? (t2 === "touchend" && (no = false, setTimeout(function() {
-        no = true;
-      }, 800)), (t2 !== "mouseenter" || no) && (tt().normalScrollElements.split(",").forEach(function(n3) {
+      i2 != document && i2 ? (t2 === "touchend" && (So = false, setTimeout(function() {
+        So = true;
+      }, 800)), (t2 !== "mouseenter" || So) && (bt().normalScrollElements.split(",").forEach(function(n3) {
         if (!e2) {
-          var t3 = Q(i2, n3), o2 = C(i2, n3);
-          (t3 || o2) && (s.shared.Vn || $i(false), s.shared.Vn = true, e2 = true);
+          var t3 = Q(i2, n3), o2 = N(i2, n3);
+          (t3 || o2) && (s.shared.Zn || bo(false), s.shared.Zn = true, e2 = true);
         }
-      }), !e2 && s.shared.Vn && ($i(true), s.shared.Vn = false))) : $i(true);
+      }), !e2 && s.shared.Zn && (bo(true), s.shared.Zn = false))) : bo(true);
     }
-    function oo(n2, t2) {
-      jt(0, "internal"), Ii(n2, t2), jt(et().scrollingSpeed, "internal");
+    function Ao(n2, t2) {
+      _t(0, "internal"), io(n2, t2), _t(St().scrollingSpeed, "internal");
     }
-    fn.O("bindEvents", function() {
-      tt().normalScrollElements && (["mouseenter", "touchstart"].forEach(function(n2) {
-        eo(n2, false);
+    fn.O(Sn, function() {
+      bt().normalScrollElements && (["mouseenter", "touchstart"].forEach(function(n2) {
+        Mo(n2, false);
       }), ["mouseleave", "touchend"].forEach(function(n2) {
-        eo(n2, true);
-      })), fn.O("onDestroy", to);
-    }), s.silentMoveTo = oo;
-    var ro, ao, lo = m(), uo = w(), co = false;
-    function so() {
-      clearTimeout(ro), clearTimeout(ao), U("resize", fo);
+        Mo(n2, true);
+      })), fn.O(yn, yo);
+    }), s.silentMoveTo = Ao;
+    var xo, Oo, Eo = w(), ko = m(), Ro = false;
+    function jo() {
+      clearTimeout(xo), clearTimeout(Oo), U("resize", zo);
     }
-    function fo() {
-      co || (tt().autoScrolling && !tt().scrollBar || !tt().fitToSection) && po(m()), function() {
+    function zo() {
+      Ro || (bt().autoScrolling && !bt().scrollBar || !bt().fitToSection) && Lo(w()), function() {
         if (a)
           for (var n2 = 0; n2 < 4; n2++)
-            ao = setTimeout(function() {
+            Oo = setTimeout(function() {
               window.requestAnimationFrame(function() {
-                tt().autoScrolling && !tt().scrollBar && (vn({ W: true }), oo(dn.P.index() + 1), vn({ W: false }));
+                bt().autoScrolling && !bt().scrollBar && (vn({ I: true }), Ao(dn.P.index() + 1), vn({ I: false }));
               });
             }, 200 * n2);
-      }(), co = true, clearTimeout(ro), ro = setTimeout(function() {
+      }(), Ro = true, clearTimeout(xo), xo = setTimeout(function() {
         !function() {
-          if (vn({ W: true }), po(""), _(nt(), "onResize"), tt().autoScrolling || dn.N || function() {
-            if (!tt().autoScrolling || tt().scrollBar) {
+          if (vn({ I: true }), Lo(""), _(mt(), "onResize"), bt().autoScrolling || dn.H || function() {
+            if (!bt().autoScrolling || bt().scrollBar) {
               var n3 = 0.01 * o.innerHeight;
               r.documentElement.style.setProperty("--vh", "".concat(n3, "px"));
             }
-          }(), fn.D("contentChanged"), We(), ke(), a) {
+          }(), fn.R(Mn), oi(), Xe(), a) {
             var n2 = r.activeElement;
             if (!Q(n2, "textarea") && !Q(n2, "input") && !Q(n2, "select")) {
-              var t2 = m();
-              Math.abs(t2 - lo) > 20 * Math.max(lo, t2) / 100 && (vo(true), lo = t2);
+              var t2 = w();
+              Math.abs(t2 - Eo) > 20 * Math.max(Eo, t2) / 100 && (Do(true), Eo = t2);
             }
           } else
-            e2 = m(), i2 = w(), dn.K === e2 && uo === i2 || (vn({ K: e2 }), uo = i2, vo(true));
+            e2 = w(), i2 = m(), dn.K === e2 && ko === i2 || (vn({ K: e2 }), ko = i2, Do(true));
           var e2, i2;
-          _(nt(), "onResizeEnds"), vn({ W: false });
-        }(), co = false;
+          _(mt(), "onResizeEnds"), vn({ I: false });
+        }(), Ro = false;
       }, 400);
     }
-    function vo(n2) {
-      if (!g(nt(), Mn)) {
-        vn({ W: true, K: m(), Zn: w() });
-        for (var t2 = pn().R, e2 = 0; e2 < t2.length; ++e2) {
-          var i2 = t2[e2], r2 = p(Cn, i2.item)[0], a2 = i2.slides;
-          vt("offsetSections") && b(i2.item, { height: mt(i2.item) + "px" }), a2.length > 1 && ee(r2, i2.activeSlide.item);
+    function Do(n2) {
+      if (!g(mt(), Fn)) {
+        vn({ I: true, K: w(), Bn: m() });
+        for (var t2 = pn().L, e2 = 0; e2 < t2.length; ++e2) {
+          var i2 = t2[e2], r2 = p($n, i2.item)[0], a2 = i2.slides;
+          At("offsetSections") && b(i2.item, { height: kt(i2.item) + "px" }), a2.length > 1 && Se(r2, i2.activeSlide.item);
         }
-        tt().scrollOverflow && Ne.bn();
-        var l2 = pt("responsiveSlides", "getActiveIndex") || pn().P.index();
-        dn.N || !l2 || vt("fadingEffect") || vt("dropEffect") || vt("waterEffect") || oo(l2 + 1), vn({ W: false }), X(tt().afterResize) && n2 && tt().afterResize.call(nt(), o.innerWidth, o.innerHeight), X(tt().afterReBuild) && !n2 && tt().afterReBuild.call(nt()), _(nt(), "afterRebuild");
+        bt().scrollOverflow && ti.bn();
+        var l2 = pn().P.index();
+        dn.H || !l2 || At("fadingEffect") || At("dropEffect") || At("waterEffect") || Ao(l2 + 1), vn({ I: false }), X(bt().afterResize) && n2 && bt().afterResize.call(mt(), o.innerWidth, o.innerHeight), X(bt().afterReBuild) && !n2 && bt().afterReBuild.call(mt()), _(mt(), "afterRebuild");
       }
     }
-    function po(n2) {
-      pn().R.forEach(function(t2) {
-        var e2 = n2 === "" ? "" : mt(t2.item) + "px";
+    function Lo(n2) {
+      pn().L.forEach(function(t2) {
+        var e2 = n2 === "" ? "" : kt(t2.item) + "px";
         b(t2.item, { height: e2 });
       });
     }
-    function ho() {
+    function Po() {
       var n2, t2, e2 = o.location.hash;
       if (e2.length) {
         var i2 = e2.replace("#", "").split("/"), r2 = e2.indexOf("#/") > -1;
@@ -1454,145 +1453,145 @@ var fullpage_extensions_min = { exports: {} };
       }
       return { section: n2, cn: t2 };
     }
-    function go() {
-      U("hashchange", mo);
+    function No() {
+      U("hashchange", Ho);
     }
-    function mo() {
-      if (!dn.B && !tt().lockAnchors) {
-        var n2 = ho(), t2 = n2.section, e2 = n2.cn, i2 = dn.F === void 0, o2 = dn.F === void 0 && e2 === void 0 && !dn.I;
-        t2 && t2.length && (t2 && t2 !== dn.F && !i2 || o2 && !ht() || !dn.I && dn.V != e2 && !ht()) && fn.D("onScrollPageAndSlide", { Fn: t2, slideAnchor: e2 });
+    function Ho() {
+      if (!dn.F && !bt().lockAnchors) {
+        var n2 = Po(), t2 = n2.section, e2 = n2.cn, i2 = dn.V === void 0, o2 = dn.V === void 0 && e2 === void 0 && !dn.W;
+        t2 && t2.length && (t2 && t2 !== dn.V && !i2 || o2 && !Ot() || !dn.W && dn.Z != e2 && !Ot()) && fn.R(An, { Vn: t2, slideAnchor: e2 });
       }
     }
-    function wo(n2) {
+    function Co(n2) {
       var t2 = n2.target;
-      C(t2, tt().menu + " [data-menuanchor]") && bo.call(t2, n2);
+      N(t2, bt().menu + " [data-menuanchor]") && Wo.call(t2, n2);
     }
-    function bo(n2) {
-      vn({ C: "menu" }), !p(tt().menu)[0] || !tt().lockAnchors && tt().anchors.length || (F(n2), fn.D("onMenuClick", { anchor: V(this, "data-menuanchor") }));
+    function Wo(n2) {
+      vn({ N: "menu" }), !p(bt().menu)[0] || !bt().lockAnchors && bt().anchors.length || (V(n2), fn.R(On, { anchor: Z(this, "data-menuanchor") }));
     }
-    function So(n2) {
+    function Io(n2) {
       var t2 = n2.target;
-      t2 && C(t2, "#fp-nav a") ? pe.call(t2, n2.e) : Q(t2, ".fp-tooltip") ? de.call(t2) : (Q(t2, Zn) || C(t2, Zn) != null) && _t.call(t2, n2.e);
+      t2 && N(t2, "#fp-nav a") ? De.call(t2, n2.e) : Q(t2, ".fp-tooltip") ? je.call(t2) : (Q(t2, lt) || N(t2, lt) != null) && de.call(t2, n2.e);
     }
-    s.reBuild = vo, fn.O("bindEvents", function() {
-      fo(), G("resize", fo), fn.O("onDestroy", so);
+    s.reBuild = Do, fn.O(Sn, function() {
+      zo(), G("resize", zo), fn.O(yn, jo);
     }), s.setLockAnchors = function(n2) {
-      tt().lockAnchors = n2;
-    }, fn.O("bindEvents", function() {
-      G("hashchange", mo), fn.O("onDestroy", go);
-    }), fn.O("bindEvents", function() {
-      Z("wheel", ii.zn, qe()), fn.O("scrollBeyondFullpage", oi), fn.O("onKeyDown", ri);
-    }), fn.O("bindEvents", function() {
-      fn.O("onClickOrTouch", wo);
-    }), fn.O("bindEvents", function() {
-      fn.O("onClickOrTouch", So);
+      bt().lockAnchors = n2;
+    }, fn.O(Sn, function() {
+      G("hashchange", Ho), fn.O(yn, No);
+    }), fn.O(Sn, function() {
+      B("wheel", Mi.Ln, wi()), fn.O(Rn, Ti), fn.O(xn, Ai);
+    }), fn.O(Sn, function() {
+      fn.O(gn, Co);
+    }), fn.O(Sn, function() {
+      fn.O(gn, Io);
     });
-    var yo, Mo, To = 0;
-    function Ao(n2) {
+    var Fo, Vo, Zo = 0;
+    function Bo(n2) {
       var t2, e2, i2, o2, r2;
-      if (_(nt(), "onScroll"), !dn.W && pn().P && (rn(pn().R), !pn().N && !pn().Nn && (!tt().autoScrolling || tt().scrollBar || vt("dragAndMove")) && !gt())) {
-        var a2 = vt("dragAndMove") ? Math.abs(pt("dragAndMove", "getCurrentScroll")) : W(), l2 = function(n3) {
-          var t3 = n3 > To ? "down" : "up";
-          return To = n3, vn({ J: n3 }), t3;
-        }(a2), u2 = 0, c2 = a2 + m() / 2, s2 = (vt("dragAndMove") ? pt("dragAndMove", "getDocumentHeight") : Rt.scrollHeight - m()) === a2, f2 = (pt("responsiveSlides", "areSlidesSections") ? pt("responsiveSlides", "panels") : null) || pn().R;
+      if (_(mt(), "onScroll"), !dn.I && pn().P && (rn(pn().L), !pn().H && !pn().Hn && (!bt().autoScrolling || bt().scrollBar || At("dragAndMove")) && !Et())) {
+        var a2 = At("dragAndMove") ? Math.abs(xt("dragAndMove", "getCurrentScroll")) : I(), l2 = function(n3) {
+          var t3 = n3 > Zo ? "down" : "up";
+          return Zo = n3, vn({ J: n3 }), t3;
+        }(a2), u2 = 0, c2 = a2 + w() / 2, s2 = (At("dragAndMove") ? xt("dragAndMove", "getDocumentHeight") : Jt.scrollHeight - w()) === a2, f2 = pn().L;
         if (vn({ scrollY: a2 }), s2)
           u2 = f2.length - 1;
         else if (a2)
           for (var d2 = 0; d2 < f2.length; ++d2)
-            (C(f2[d2].item, Dn) || f2[d2].item).offsetTop <= c2 && (u2 = d2);
+            (N(f2[d2].item, Un) || f2[d2].item).offsetTop <= c2 && (u2 = d2);
         else
           u2 = 0;
-        if (i2 = l2, o2 = pn().P.item.offsetTop, r2 = o2 + m(), (i2 == "up" ? r2 >= W() + m() : o2 <= W()) && (g(pn().P.item, On) || (D(pn().P.item, On), k(B(pn().P.item), On))), e2 = (t2 = f2[u2]).item, !pt("responsiveSlides", "isCurrentSectionActive", u2) && !t2.isActive) {
-          vn({ B: true });
-          var v2, p2, h2 = pn().P.item, w2 = pn().P.index() + 1, b2 = xt(pn().P, e2), S2 = pt("responsiveSlides", "getSectionAnchor", t2) || t2.anchor, y2 = t2.index() + 1, M2 = t2.activeSlide, T2 = { P: h2, sectionIndex: y2 - 1, anchorLink: S2, element: e2, leavingSection: w2, direction: b2, items: { origin: pn().P, destination: t2 } };
+        if (i2 = l2, o2 = pn().P.item.offsetTop, r2 = o2 + w(), (i2 == "up" ? r2 >= I() + w() : o2 <= I()) && (g(pn().P.item, Gn) || (k(pn().P.item, Gn), R(F(pn().P.item), Gn))), e2 = (t2 = f2[u2]).item, !t2.isActive) {
+          vn({ F: true });
+          var v2, p2, h2 = pn().P.item, m2 = pn().P.index() + 1, b2 = Bt(pn().P, e2), S2 = t2.anchor, y2 = t2.index() + 1, M2 = t2.activeSlide, T2 = { P: h2, sectionIndex: y2 - 1, anchorLink: S2, element: e2, leavingSection: m2, direction: b2, items: { origin: pn().P, destination: t2 } };
           if (M2 && (p2 = M2.anchor, v2 = M2.index()), dn.canScroll)
-            k(f2.filter(function(n3) {
+            R(f2.filter(function(n3) {
               return n3.index() !== t2.index();
             }).map(function(n3) {
               return n3.item;
-            }), An), D(e2, An), pt("parallax", "afterLoad"), X(tt().beforeLeave) && Te("beforeLeave", T2), X(tt().onLeave) && It("onLeave", T2), X(tt().afterLoad) && It("afterLoad", T2), pt("resetSliders", "apply", { localIsResizing: dn.W, leavingSection: w2 }), Ft(h2), Vt(e2), Wt(e2), he(S2, y2 - 1), tt().anchors.length && vn({ F: S2 }), Yt(v2, p2, S2), We();
-          clearTimeout(yo), yo = setTimeout(function() {
-            vn({ B: false });
+            }), Zn), k(e2, Zn), xt("parallax", "afterLoad"), X(bt().beforeLeave) && Ve("beforeLeave", T2), X(bt().onLeave) && ee("onLeave", T2), X(bt().afterLoad) && ee("afterLoad", T2), xt("resetSliders", "apply", { localIsResizing: dn.I, leavingSection: m2 }), re(h2), ae(e2), ie(e2), Le(S2, y2 - 1), bt().anchors.length && vn({ V: S2 }), ce(v2, p2, S2), oi();
+          clearTimeout(Fo), Fo = setTimeout(function() {
+            vn({ F: false });
           }, 100);
         }
-        tt().fitToSection && dn.canScroll && (clearTimeout(Mo), Mo = setTimeout(function() {
-          dn.R.filter(function(n3) {
+        bt().fitToSection && dn.canScroll && (clearTimeout(Vo), Vo = setTimeout(function() {
+          dn.L.filter(function(n3) {
             var t3 = n3.item.getBoundingClientRect();
-            return Math.round(t3.bottom) === Math.round(m()) || Math.round(t3.top) === 0;
-          }).length || De();
-        }, tt().tn));
+            return Math.round(t3.bottom) === Math.round(w()) || Math.round(t3.top) === 0;
+          }).length || Ue();
+        }, bt().tn));
       }
     }
-    function xo(n2, t2) {
+    function Go(n2, t2) {
       t2 !== void 0 ? (t2 = t2.replace(/ /g, "").split(",")).forEach(function(t3) {
-        Kt(n2, t3, "k");
-      }) : (Kt(n2, "all", "k"), tt().keyboardScrolling = n2);
+        he(n2, t3, "k");
+      }) : (he(n2, "all", "k"), bt().keyboardScrolling = n2);
     }
-    function Oo(n2) {
+    function Yo(n2) {
       var t2 = n2.index();
-      tt().anchors[t2] !== void 0 && n2.isActive && he(tt().anchors[t2], t2), tt().menu && tt().css3 && C(p(tt().menu)[0], bn) != null && p(tt().menu).forEach(function(n3) {
-        Rt.appendChild(n3);
+      bt().anchors[t2] !== void 0 && n2.isActive && Le(bt().anchors[t2], t2), bt().menu && bt().css3 && N(p(bt().menu)[0], Cn) != null && p(bt().menu).forEach(function(n3) {
+        Jt.appendChild(n3);
       });
     }
-    function Eo() {
+    function Uo() {
       var n2, t2, e2 = pn().P, i2 = pn().P.item;
-      D(i2, On), Vt(i2), fe(), Wt(i2), t2 = Ci((n2 = ho()).section), n2.section && t2 && (t2 === void 0 || t2.index() !== T(ze)) || !X(tt().afterLoad) || It("afterLoad", { P: i2, element: i2, direction: null, anchorLink: e2.anchor, sectionIndex: e2.index(), items: { origin: pn().P, destination: pn().P } }), X(tt().afterRender) && It("afterRender"), _(nt(), "afterRender");
+      k(i2, Gn), ae(i2), Re(), ie(i2), t2 = no((n2 = Po()).section), n2.section && t2 && (t2 === void 0 || t2.index() !== T(Ke)) || !X(bt().afterLoad) || ee("afterLoad", { P: i2, element: i2, direction: null, anchorLink: e2.anchor, sectionIndex: e2.index(), items: { origin: pn().P, destination: pn().P } }), X(bt().afterRender) && ee("afterRender"), _(mt(), "afterRender");
     }
-    function Do(n2, t2) {
+    function Xo(n2, t2) {
       t2 !== void 0 ? (t2 = t2.replace(/ /g, "").split(",")).forEach(function(t3) {
-        Kt(n2, t3, "m");
-      }) : Kt(n2, "all", "m"), _(nt(), "setAllowScrolling", { value: n2, Gn: t2 });
+        he(n2, t3, "m");
+      }) : he(n2, "all", "m"), _(mt(), "setAllowScrolling", { value: n2, Gn: t2 });
     }
-    function ko() {
-      var n2 = ho(), t2 = n2.section, e2 = n2.cn;
-      t2 && (tt().animateAnchor ? Hi(t2, e2) : oo(t2, e2));
+    function _o() {
+      var n2 = Po(), t2 = n2.section, e2 = n2.cn;
+      t2 ? bt().animateAnchor ? eo(t2, e2) : Ao(t2, e2) : fn.R(hn, null);
     }
-    fn.O("onDestroy", function() {
-      clearTimeout(yo), clearTimeout(Mo);
-    }), fn.O("bindEvents", function() {
-      G("scroll", Ao), r.body.addEventListener("scroll", Ao), fn.O("onScrollPageAndSlide", function(n2) {
-        Hi(n2.Fn, n2.slideAnchor);
-      }), fn.O("onMenuClick", function(n2) {
-        Ii(n2.anchor, void 0);
-      }), fn.O("onScrollOverflowScrolled", function(n2) {
-        (n2.direction === "down" ? fi : di)();
-      }), fn.O("scrollPage", function(n2) {
-        Ae(n2.destination);
+    fn.O(yn, function() {
+      clearTimeout(Fo), clearTimeout(Vo);
+    }), fn.O(Sn, function() {
+      G("scroll", Bo), r.body.addEventListener("scroll", Bo), fn.O(An, function(n2) {
+        eo(n2.Vn, n2.slideAnchor);
+      }), fn.O(On, function(n2) {
+        io(n2.anchor, void 0);
+      }), fn.O(Tn, function(n2) {
+        (n2.direction === "down" ? ji : zi)();
+      }), fn.O(En, function(n2) {
+        Ze(n2.destination);
       });
-    }), fn.O("onDestroy", function() {
-      U("scroll", Ao);
+    }), fn.O(yn, function() {
+      U("scroll", Bo);
     }), s.getActiveSlide = function() {
-      return Ht(pn().P.activeSlide);
+      return te(pn().P.activeSlide);
     }, s.getScrollX = function() {
       return dn.scrollX;
-    }, fn.O("bindEvents", function() {
-      fn.O("onDestroy", re), fn.O("landscapeScroll", function(n2) {
-        ee(n2.slides, n2.destination);
-      }), fn.O("moveSlideRight", function(n2) {
-        Pi(n2.section);
-      }), fn.O("moveSlideLeft", function(n2) {
-        zi(n2.section);
+    }, fn.O(Sn, function() {
+      fn.O(yn, Te), fn.O(kn, function(n2) {
+        Se(n2.slides, n2.destination);
+      }), fn.O(mn, function(n2) {
+        $i(n2.section);
+      }), fn.O(wn, function(n2) {
+        qi(n2.section);
       });
-    }), fn.O("bindEvents", function() {
-      var n2 = tt().credits.position, t2 = ["left", "right"].indexOf(n2) > -1 ? "".concat(n2, ": 0;") : "", e2 = '\n        <div class="fp-watermark" style="'.concat(t2, '">\n            <a href="https://alvarotrigo.com/fullPage/" \n                rel="nofollow noopener" \n                target="_blank" \n                style="text-decoration:none; color: #000;">\n                    ').concat(tt().credits.label, "\n            </a>\n        </div>\n    "), i2 = rn(dn.R), o2 = tt().credits.enabled && !dn.Yn;
+    }), fn.O(Sn, function() {
+      var n2 = bt().credits.position, t2 = ["left", "right"].indexOf(n2) > -1 ? "".concat(n2, ": 0;") : "", e2 = '\n        <div class="fp-watermark" style="'.concat(t2, '">\n            <a href="https://alvarotrigo.com/fullPage/" \n                rel="nofollow noopener" \n                target="_blank" \n                style="text-decoration:none; color: #000;">\n                    ').concat(bt().credits.label, "\n            </a>\n        </div>\n    "), i2 = rn(dn.L), o2 = !dn.Yn || bt().credits.enabled;
       i2 && i2.item && o2 && i2.item.insertAdjacentHTML("beforeend", e2);
     }), function() {
-      fn.O("onInitialise", function() {
-        var t3, l2;
-        vn({ Yn: (tt().licenseKey, t3 = tt().licenseKey, l2 = function(t4) {
+      fn.O(bn, function() {
+        var t3, l2, u2;
+        vn({ Yn: (bt().licenseKey, t3 = bt().licenseKey, l2 = function(t4) {
           var e3 = parseInt("514").toString(16);
           if (!t4 || t4.length < 29 || t4.split(n2[0]).length === 4)
             return null;
-          var i3 = ["Each", "for"][o2()]().join(""), l3 = t4[["split"]]("-"), u2 = [];
+          var i3 = ["Each", "for"][o2()]().join(""), l3 = t4[["split"]]("-"), u3 = [];
           l3[i3](function(n3, t5) {
             if (t5 < 4) {
               var i4 = function(n4) {
                 var t6 = n4[n4.length - 1], e4 = ["NaN", "is"][o2()]().join("");
                 return window[e4](t6) ? r2(t6) : function(n5) {
-                  return n5 - An.length;
+                  return n5 - Zn.length;
                 }(t6);
               }(n3);
-              u2.push(i4);
+              u3.push(i4);
               var a3 = r2(n3[i4]);
               if (t5 === 1) {
                 var l4 = ["pa", "dS", "t", "art"].join("");
@@ -1605,17 +1604,17 @@ var fullpage_extensions_min = { exports: {} };
           return t4.split("-").forEach(function(n3, t5) {
             if (t5 < 4) {
               for (var e4 = 0, i4 = 0; i4 < 4; i4++)
-                i4 !== u2[t5] && (e4 += Math.abs(r2(n3[i4])), isNaN(n3[i4]) || c2++);
+                i4 !== u3[t5] && (e4 += Math.abs(r2(n3[i4])), isNaN(n3[i4]) || c2++);
               var o3 = a2(e4);
               s2 += o3;
             }
-          }), s2 += a2(c2), { Un: new Date(e3 + "T00:00"), Xn: e3.split("-")[2] === 8 * (An.length - 2) + "", _n: s2 };
-        }(t3), l2 && (tt().credits && l2 && e2 <= l2.Un && l2._n === t3.split(n2[0])[4] || function(n3) {
+          }), s2 += a2(c2), { Un: new Date(e3 + "T00:00"), Xn: e3.split("-")[2] === 8 * (Zn.length - 2) + "", _n: s2 };
+        }(t3), u2 = function(n3) {
           var t4 = i2[o2()]().join("");
           return n3 && t4.indexOf(n3) === 0 && n3.length === t4.length;
-        }(t3) || l2.Xn) || false) });
+        }(t3), (l2 || u2) && (bt().credits && l2 && e2 <= l2.Un && l2._n === t3.split(n2[0])[4] || u2 || l2.Xn) || false) });
       });
-      var n2 = ["-"], t2 = "2022-8-8".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
+      var n2 = ["-"], t2 = "2022-9-25".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
       function o2() {
         return [["re", "verse"].join("")]["".length];
       }
@@ -1626,16 +1625,16 @@ var fullpage_extensions_min = { exports: {} };
         var t3 = 72 + n3;
         return t3 > 90 && t3 < 97 && (t3 += 15), String.fromCharCode(t3).toUpperCase();
       }
-    }(), s.setKeyboardScrolling = xo, s.shared.Qn = Eo, s.setAllowScrolling = Do;
-    var jo = {};
-    function Lo() {
-      return jo;
+    }(), s.setKeyboardScrolling = Go, s.shared.Qn = Uo, s.setAllowScrolling = Xo;
+    var Qo = {};
+    function Jo() {
+      return Qo;
     }
-    var Ro, zo, Po, Co, No = !g(Rt, bt("OHNsd3AtZnVsbHBhZ2UtanM5T20="));
-    function Ho(n2) {
-      if (zo = r.createElement("div"), Ro = bt("MTIzPGRpdj48YSBocmVmPSJodHRwOi8vYWx2YXJvdHJpZ28uY29tL2Z1bGxQYWdlL2V4dGVuc2lvbnMvIiBzdHlsZT0iY29sb3I6ICNmZmYgIWltcG9ydGFudDsgdGV4dC1kZWNvcmF0aW9uOm5vbmUgIWltcG9ydGFudDsiPlVubGljZW5zZWQgZnVsbFBhZ2UuanMgRXh0ZW5zaW9uPC9hPjwvZGl2PjEyMw=="), No || (Ro = Ro.replace("extensions/", "").replace("Extension", "")), zo.innerHTML = Ro, zo = zo.firstChild, "MutationObserver" in window && new MutationObserver(Wo).observe(r.body, { childList: true, subtree: false }), (!No || vt(n2) && s[n2]) && (!function(n3) {
-        var t3 = Lo()[n3] !== void 0 && Lo()[n3].length, e2 = [], i2 = false;
-        return E(Lo()[n3]) ? e2 = Lo()[n3] : e2.push(Lo()[n3]), e2.forEach(function(e3) {
+    var Ko, qo, $o, nr, tr = !g(Jt, jt("OHNsd3AtZnVsbHBhZ2UtanM5T20="));
+    function er(n2) {
+      if (qo = r.createElement("div"), Ko = jt("MTIzPGRpdj48YSBocmVmPSJodHRwOi8vYWx2YXJvdHJpZ28uY29tL2Z1bGxQYWdlL2V4dGVuc2lvbnMvIiBzdHlsZT0iY29sb3I6ICNmZmYgIWltcG9ydGFudDsgdGV4dC1kZWNvcmF0aW9uOm5vbmUgIWltcG9ydGFudDsiPlVubGljZW5zZWQgZnVsbFBhZ2UuanMgRXh0ZW5zaW9uPC9hPjwvZGl2PjEyMw=="), tr || (Ko = Ko.replace("extensions/", "").replace("Extension", "")), qo.innerHTML = Ko, qo = qo.firstChild, "MutationObserver" in window && new MutationObserver(or).observe(r.body, { childList: true, subtree: false }), (!tr || At(n2) && s[n2]) && (!function(n3) {
+        var t3 = Jo()[n3] !== void 0 && Jo()[n3].length, e2 = [], i2 = false;
+        return E(Jo()[n3]) ? e2 = Jo()[n3] : e2.push(Jo()[n3]), e2.forEach(function(e3) {
           var o2 = function() {
             if (r.domain.length) {
               for (var n4 = r.domain.replace(/^(www\.)/, "").split("."); n4.length > 2; )
@@ -1643,59 +1642,59 @@ var fullpage_extensions_min = { exports: {} };
               return n4.join(".").replace(/(^\.*)|(\.*$)/g, "");
             }
             return "";
-          }(), a2 = ["MTM0bG9jYWxob3N0MjM0", "MTM0MC4xMjM0", "MTM0anNoZWxsLm5ldDIzNA==", "UDdDQU5ZNlNN", "NTY3YnVuZGxlNzg5", "NTU1S2V5Nzc3"], l2 = bt(a2[0]), u2 = bt(a2[1]), c2 = bt(a2[2]), s2 = bt(a2[3]), f2 = bt(a2[4]), d2 = bt(a2[5]), v2 = tt()[f2 + d2] !== void 0;
+          }(), a2 = ["MTM0bG9jYWxob3N0MjM0", "MTM0MC4xMjM0", "MTM0anNoZWxsLm5ldDIzNA==", "UDdDQU5ZNlNN", "NTY3YnVuZGxlNzg5", "NTU1S2V5Nzc3"], l2 = jt(a2[0]), u2 = jt(a2[1]), c2 = jt(a2[2]), s2 = jt(a2[3]), f2 = jt(a2[4]), d2 = jt(a2[5]), v2 = bt()[f2 + d2] !== void 0;
           t3 = t3 || v2;
           var p2 = [l2, u2, c2].indexOf(o2) < 0 && o2.length !== 0;
           if (!t3 && !v2 && p2)
             return false;
-          var h2 = t3 ? bt(e3) : "";
+          var h2 = t3 ? jt(e3) : "";
           h2 = h2.split("_"), console.log("---pepe------"), console.log(h2);
-          var g2 = h2.length > 1 && h2[1].indexOf(n3, h2[1].length - n3.length) > -1, m2 = h2.length > 1 && h2[1].toLowerCase().indexOf(f2) > -1, w2 = h2[0].indexOf(o2, h2[0].length - o2.length) < 0, b2 = g2 || m2;
-          i2 = i2 || !(w2 && p2 && s2 != h2[0]) && b2 || !p2;
+          var g2 = h2.length > 1 && h2[1].indexOf(n3, h2[1].length - n3.length) > -1, w2 = h2.length > 1 && h2[1].toLowerCase().indexOf(f2) > -1, m2 = h2[0].indexOf(o2, h2[0].length - o2.length) < 0, b2 = g2 || w2;
+          i2 = i2 || !(m2 && p2 && s2 != h2[0]) && b2 || !p2;
         }), i2;
-      }(n2) || !No)) {
-        Io();
-        var t2 = bt("MzQ1c2V0SW50ZXJ2YWwxMjM=");
-        window[t2](Io, 2e3);
+      }(n2) || !tr)) {
+        ir();
+        var t2 = jt("MzQ1c2V0SW50ZXJ2YWwxMjM=");
+        window[t2](ir, 2e3);
       }
     }
-    function Io() {
-      zo && (Co || (Math.random() < 0.5 ? wt(Rt, zo) : j(zo, Rt), Co = true), zo.setAttribute("style", bt("MTIzei1pbmRleDo5OTk5OTk5O3Bvc2l0aW9uOmZpeGVkO3RvcDoyMHB4O2JvdHRvbTphdXRvO2xlZnQ6MjBweDtyaWdodDphdXRvO2JhY2tncm91bmQ6cmVkO3BhZGRpbmc6N3B4IDE1cHg7Zm9udC1zaXplOjE0cHg7Zm9udC1mYW1pbHk6YXJpYWw7Y29sb3I6I2ZmZjtkaXNwbGF5OmlubGluZS1ibG9jazt0cmFuc2Zvcm06dHJhbnNsYXRlM2QoMCwwLDApO29wYWNpdHk6MTtoZWlnaHQ6YXV0bzt3aWR0aDphdXRvO3pvb206MTttYXJnaW46YXV0bztib3JkZXI6bm9uZTt2aXNpYmlsaXR5OnZpc2libGU7Y2xpcC1wYXRoOm5vbmU7MTIz").replace(/;/g, bt("MTIzICFpbXBvcnRhbnQ7MzQ1"))));
+    function ir() {
+      qo && (nr || (Math.random() < 0.5 ? Rt(Jt, qo) : j(qo, Jt), nr = true), qo.setAttribute("style", jt("MTIzei1pbmRleDo5OTk5OTk5O3Bvc2l0aW9uOmZpeGVkO3RvcDoyMHB4O2JvdHRvbTphdXRvO2xlZnQ6MjBweDtyaWdodDphdXRvO2JhY2tncm91bmQ6cmVkO3BhZGRpbmc6N3B4IDE1cHg7Zm9udC1zaXplOjE0cHg7Zm9udC1mYW1pbHk6YXJpYWw7Y29sb3I6I2ZmZjtkaXNwbGF5OmlubGluZS1ibG9jazt0cmFuc2Zvcm06dHJhbnNsYXRlM2QoMCwwLDApO29wYWNpdHk6MTtoZWlnaHQ6YXV0bzt3aWR0aDphdXRvO3pvb206MTttYXJnaW46YXV0bztib3JkZXI6bm9uZTt2aXNpYmlsaXR5OnZpc2libGU7Y2xpcC1wYXRoOm5vbmU7MTIz").replace(/;/g, jt("MTIzICFpbXBvcnRhbnQ7MzQ1"))));
     }
-    function Wo(n2) {
+    function or(n2) {
       n2.forEach(function(n3) {
-        if (n3.removedNodes[0] && n3.removedNodes[0].isEqualNode(zo)) {
-          clearTimeout(Po);
-          var t2 = bt("bDIwc2V0VGltZW91dDAzbA==");
-          Po = window[t2](Bo, 900);
+        if (n3.removedNodes[0] && n3.removedNodes[0].isEqualNode(qo)) {
+          clearTimeout($o);
+          var t2 = jt("bDIwc2V0VGltZW91dDAzbA==");
+          $o = window[t2](rr, 900);
         }
       });
     }
-    function Bo() {
-      Co = false;
+    function rr() {
+      nr = false;
     }
-    function Fo() {
-      Be(), We(), tt().scrollBar = tt().scrollBar || tt().hybrid, ot(), function() {
-        b(un(nt(), "body"), { height: "100%", position: "relative" }), D(nt(), wn), D(zt, Tn), vn({ K: m() }), k(nt(), Mn), Ue(), pt("parallax", "init");
+    function ar() {
+      ri(), oi(), bt().scrollBar = bt().scrollBar || bt().hybrid, Mt(), function() {
+        b(un(mt(), "body"), { height: "100%", position: "relative" }), k(mt(), Hn), k(Kt, Vn), vn({ K: w() }), R(mt(), Fn), fi(), xt("parallax", "init");
         for (var n2 = pn().rn, t2 = 0; t2 < n2.length; t2++) {
-          var e2 = n2[t2], i2 = e2.wn;
-          e2.item.setAttribute("data-fp-styles", V(e2.item, "style")), Pe(e2), Oo(e2), i2.length > 0 && Xe(e2);
+          var e2 = n2[t2], i2 = e2.mn;
+          e2.item.setAttribute("data-fp-styles", Z(e2.item, "style")), qe(e2), Yo(e2), i2.length > 0 && di(e2);
         }
-        tt().fixedElements && tt().css3 && p(tt().fixedElements).forEach(function(n3) {
-          Rt.appendChild(n3);
-        }), tt().navigation && ve(), p('iframe[src*="youtube.com/embed/"]', nt()).forEach(function(n3) {
+        bt().fixedElements && bt().css3 && p(bt().fixedElements).forEach(function(n3) {
+          Jt.appendChild(n3);
+        }), bt().navigation && ze(), p('iframe[src*="youtube.com/embed/"]', mt()).forEach(function(n3) {
           var t3, e3;
-          e3 = V(t3 = n3, "src"), t3.setAttribute("src", e3 + (/\?/.test(e3) ? "&" : "?") + "enablejsapi=1");
-        }), pt("fadingEffect", "apply"), pt("waterEffect", "init"), pt("dropEffect", "init"), pt("cards", "init"), tt().scrollOverflow && Ne.bn();
-      }(), Do(true), $i(true), ce(tt().autoScrolling, "internal"), ke(), Zt(), r.readyState === "complete" && ko(), G("load", ko), Eo(), No || Ho("l"), Be(), We();
+          e3 = Z(t3 = n3, "src"), t3.setAttribute("src", e3 + (/\?/.test(e3) ? "&" : "?") + "enablejsapi=1");
+        }), xt("fadingEffect", "apply"), xt("waterEffect", "init"), xt("dropEffect", "init"), xt("cards", "init"), bt().scrollOverflow && ti.bn();
+      }(), Xo(true), bo(true), Ee(bt().autoScrolling, "internal"), Xe(), le(), r.readyState === "complete" && _o(), G("load", _o), Uo(), tr || er("l"), ri(), oi();
     }
-    function Vo() {
-      var n2 = tt().licenseKey, t2 = "font-size: 15px;background:yellow;";
-      tt().licenseKey.trim() === "" ? (f("error", "Fullpage.js requires a `licenseKey` option. Read about it on the following URL:"), f("error", "https://github.com/alvarotrigo/fullPage.js#options")) : tt() && dn.Yn || r.domain.indexOf("alvarotrigo.com") > -1 ? n2 && n2.length < 20 && (console.warn("%c This website was made using fullPage.js slider. More info on the following website:", t2), console.warn("%c https://alvarotrigo.com/fullPage/", t2)) : (f("error", "Incorrect `licenseKey`. Get one for fullPage.js version 4 here:"), f("error", "https://alvarotrigo.com/fullPage/pricing")), g(zt, Tn) ? f("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (tt().continuousVertical && (tt().loopTop || tt().loopBottom) && (tt().continuousVertical = false, f("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !tt().scrollOverflow || !tt().scrollBar && tt().autoScrolling || f("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !tt().continuousVertical || !tt().scrollBar && tt().autoScrolling || (tt().continuousVertical = false, f("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), tt().anchors.forEach(function(n3) {
+    function lr() {
+      var n2 = bt().licenseKey, t2 = "font-size: 15px;background:yellow;";
+      bt().licenseKey.trim() === "" ? (f("error", "Fullpage.js requires a `licenseKey` option. Read about it on the following URL:"), f("error", "https://github.com/alvarotrigo/fullPage.js#options")) : bt() && dn.Yn || r.domain.indexOf("alvarotrigo.com") > -1 ? n2 && n2.length < 20 && (console.warn("%c This website was made using fullPage.js slider. More info on the following website:", t2), console.warn("%c https://alvarotrigo.com/fullPage/", t2)) : (f("error", "Incorrect `licenseKey`. Get one for fullPage.js version 4 here:"), f("error", "https://alvarotrigo.com/fullPage/pricing")), g(Kt, Vn) ? f("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (bt().continuousVertical && (bt().loopTop || bt().loopBottom) && (bt().continuousVertical = false, f("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !bt().scrollOverflow || !bt().scrollBar && bt().autoScrolling || f("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !bt().continuousVertical || !bt().scrollBar && bt().autoScrolling || (bt().continuousVertical = false, f("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), bt().anchors.forEach(function(n3) {
         var t3 = [].slice.call(p("[name]")).filter(function(t4) {
-          return V(t4, "name") && V(t4, "name").toLowerCase() == n3.toLowerCase();
+          return Z(t4, "name") && Z(t4, "name").toLowerCase() == n3.toLowerCase();
         }), e2 = [].slice.call(p("[id]")).filter(function(t4) {
-          return V(t4, "id") && V(t4, "id").toLowerCase() == n3.toLowerCase();
+          return Z(t4, "id") && Z(t4, "id").toLowerCase() == n3.toLowerCase();
         });
         if (e2.length || t3.length) {
           f("error", "data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).");
@@ -1704,62 +1703,62 @@ var fullpage_extensions_min = { exports: {} };
         }
       }));
     }
-    function Zo() {
-      return { options: tt(), internals: { container: nt(), canScroll: dn.canScroll, isScrollAllowed: qt(), getDestinationPosition: xe, isTouch: u, c: Ho, getXmovement: oe, removeAnimation: Ot, getTransforms: Et, lazyLoad: Vt, addAnimation: At, performHorizontalMove: ie, landscapeScroll: ee, silentLandscapeScroll: le, keepSlidesPosition: se, silentScroll: kt, styleSlides: Xe, styleSection: Pe, scrollHandler: Ao, getEventsPage: ki, getMSPointer: ji, isReallyTouch: Oi, usingExtension: vt, toggleControlArrows: ne, touchStartHandler: Ei, touchMoveHandler: xi, nullOrSection: Nt, items: { SectionPanel: Ze, SlidePanel: Ye, Item: at }, getVisible: v, getState: pn, updateState: We, getPanels: function() {
+    function ur() {
+      return { options: bt(), internals: { container: mt(), canScroll: dn.canScroll, isScrollAllowed: ge(), getDestinationPosition: Be, isTouch: u, c: er, getXmovement: Me, removeAnimation: Gt, getTransforms: Yt, lazyLoad: ae, addAnimation: Zt, performHorizontalMove: ye, landscapeScroll: Se, silentLandscapeScroll: xe, keepSlidesPosition: ke, silentScroll: Xt, styleSlides: di, styleSection: qe, scrollHandler: Bo, getEventsPage: _i, getMSPointer: Qi, isReallyTouch: Yi, usingExtension: At, toggleControlArrows: me, touchStartHandler: Ui, touchMoveHandler: Gi, nullOrSection: ne, items: { SectionPanel: ui, SlidePanel: si, Item: Dt }, getVisible: v, getState: pn, updateState: oi, updateStructuralState: ri, getPanels: function() {
         return dn.ln;
       }, getSections: function() {
-        return dn.R;
+        return dn.L;
       }, setActiveSection: function(n2) {
         dn.P = n2;
       } } };
     }
-    function Go(n2) {
-      var t2 = ["NTY3YnVuZGxlNzg5", "NTU1S2V5Nzc3"], e2 = bt(t2[0]), i2 = bt(t2[1]), o2 = tt()[e2 + i2] !== void 0, r2 = "fp_" + n2 + "Extension";
-      Lo()[n2] = o2 ? tt()[e2 + i2] : tt()[n2 + i2], s[n2] = window[r2] !== void 0 ? new window[r2]() : null, s[n2] && s[n2].c(n2);
+    function cr(n2) {
+      var t2 = ["NTY3YnVuZGxlNzg5", "NTU1S2V5Nzc3"], e2 = jt(t2[0]), i2 = jt(t2[1]), o2 = bt()[e2 + i2] !== void 0, r2 = "fp_" + n2 + "Extension";
+      Jo()[n2] = o2 ? bt()[e2 + i2] : bt()[n2 + i2], s[n2] = window[r2] !== void 0 ? new window[r2]() : null, s[n2] && s[n2].c(n2);
     }
-    function Yo(n2, t2) {
+    function sr(n2, t2) {
       var e2;
-      if (Rt = p("body")[0], zt = p("html")[0], Pt = p("html, body"), !g(zt, Tn))
-        return e2 = typeof n2 == "string" ? p(n2)[0] : n2, Qn.touchWrapper = e2, function(n3) {
-          $n = h({}, Qn, n3), qn = Object.assign({}, $n);
+      if (Jt = p("body")[0], Kt = p("html")[0], qt = p("html, body"), !g(Kt, Vn))
+        return e2 = typeof n2 == "string" ? p(n2)[0] : n2, vt.touchWrapper = e2, function(n3) {
+          wt = h({}, vt, n3), gt = Object.assign({}, wt);
         }(t2), function(n3) {
-          Jn = n3;
-        }(typeof n2 == "string" ? p(n2)[0] : n2), fn.D("onInitialise"), Vo(), s.getFullpageData = Zo, s.version = "4.0.11", s.test = Object.assign(s.test, { top: "0px", un: "translate3d(0px, 0px, 0px)", sn: function() {
-          for (var n3 = [], t3 = 0; t3 < p(tt().sectionSelector, nt()).length; t3++)
+          pt = n3;
+        }(typeof n2 == "string" ? p(n2)[0] : n2), fn.R(bn), lr(), s.getFullpageData = ur, s.version = "4.0.12", s.test = Object.assign(s.test, { top: "0px", un: "translate3d(0px, 0px, 0px)", sn: function() {
+          for (var n3 = [], t3 = 0; t3 < p(bt().sectionSelector, mt()).length; t3++)
             n3.push("translate3d(0px, 0px, 0px)");
           return n3;
         }(), left: function() {
-          for (var n3 = [], t3 = 0; t3 < p(tt().sectionSelector, nt()).length; t3++)
+          for (var n3 = [], t3 = 0; t3 < p(bt().sectionSelector, mt()).length; t3++)
             n3.push(0);
           return n3;
-        }(), options: tt(), setAutoScrolling: null }), s.shared = Object.assign(s.shared, { Qn: null, Vn: false }), o.fullpage_api = s, o.fullpage_extensions = true, nt() && (fn.D("beforeInit"), Go("continuousHorizontal"), Go("scrollHorizontally"), Go("resetSliders"), Go("interlockedSlides"), Go("responsiveSlides"), Go("fadingEffect"), Go("dragAndMove"), Go("offsetSections"), Go("scrollOverflowReset"), Go("parallax"), Go("cards"), Go("dropEffect"), Go("waterEffect"), pt("dragAndMove", "init"), pt("responsiveSlides", "init"), Fo(), fn.D("bindEvents"), pt("dragAndMove", "turnOffTouch")), o.fullpage_api;
-      Vo();
+        }(), options: bt(), setAutoScrolling: null }), s.shared = Object.assign(s.shared, { Qn: null, Zn: false }), o.fullpage_api = s, o.fullpage_extensions = true, mt() && (fn.R("beforeInit"), cr("continuousHorizontal"), cr("scrollHorizontally"), cr("resetSliders"), cr("interlockedSlides"), cr("responsiveSlides"), cr("fadingEffect"), cr("dragAndMove"), cr("offsetSections"), cr("scrollOverflowReset"), cr("parallax"), cr("cards"), cr("dropEffect"), cr("waterEffect"), xt("dragAndMove", "init"), xt("responsiveSlides", "init"), ar(), fn.R(Sn), xt("dragAndMove", "turnOffTouch")), o.fullpage_api;
+      lr();
     }
     return s.destroy = function(n2) {
-      _(nt(), "destroy", n2), ce(false, "internal"), Do(true), $i(false), xo(false), D(nt(), Mn), fn.D("onDestroy"), pt("dragAndMove", "destroy"), n2 && (kt(0), p("img[data-src], source[data-src], audio[data-src], iframe[data-src]", nt()).forEach(function(n3) {
+      _(mt(), "destroy", n2), Ee(false, "internal"), Xo(true), bo(false), Go(false), k(mt(), Fn), fn.R(yn), xt("dragAndMove", "destroy"), n2 && (Xt(0), p("img[data-src], source[data-src], audio[data-src], iframe[data-src]", mt()).forEach(function(n3) {
         ln(n3, "src");
       }), p("img[data-srcset]").forEach(function(n3) {
         ln(n3, "srcset");
-      }), q(p("#fp-nav, .fp-slidesNav, .fp-controlArrow")), b(lt(pn().R), { height: "", "background-color": "", padding: "" }), b(lt(pn().slides), { width: "" }), b(nt(), { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), b(Pt, { overflow: "", height: "" }), k(zt, Tn), k(Rt, Sn), Rt.className.split(/\s+/).forEach(function(n3) {
-        n3.indexOf("fp-viewing") === 0 && k(Rt, n3);
-      }), lt(pn().ln).forEach(function(n3) {
-        tt().scrollOverflow && Ne.Dn(n3), k(n3, "fp-table active " + On), V(n3, "data-fp-styles") && n3.setAttribute("style", V(n3, "data-fp-styles")), g(n3, En) && !Kn && n3.removeAttribute("data-anchor");
-      }), Ot(nt()), [kn, Hn, Cn].forEach(function(n3) {
-        p(n3, nt()).forEach(function(n4) {
+      }), q(p("#fp-nav, .fp-slidesNav, .fp-controlArrow")), b(Lt(pn().L), { height: "", "background-color": "", padding: "" }), b(Lt(pn().slides), { width: "" }), b(mt(), { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), b(qt, { overflow: "", height: "" }), R(Kt, Vn), R(Jt, Wn), Jt.className.split(/\s+/).forEach(function(n3) {
+        n3.indexOf("fp-viewing") === 0 && R(Jt, n3);
+      }), Lt(pn().ln).forEach(function(n3) {
+        bt().scrollOverflow && ti.kn(n3), R(n3, "fp-table active " + Gn), Z(n3, "data-fp-styles") && n3.setAttribute("style", Z(n3, "data-fp-styles")), g(n3, Yn) && !ht && n3.removeAttribute("data-anchor");
+      }), Gt(mt()), [Xn, tt, $n].forEach(function(n3) {
+        p(n3, mt()).forEach(function(n4) {
           P(n4);
         });
-      }), b(nt(), { "-webkit-transition": "none", transition: "none" }), o.scrollTo(0, 0), [En, Ln, Nn].forEach(function(n3) {
-        k(p("." + n3), n3);
+      }), b(mt(), { "-webkit-transition": "none", transition: "none" }), o.scrollTo(0, 0), [Yn, Qn, nt].forEach(function(n3) {
+        R(p("." + n3), n3);
       }));
     }, o.fp_easings = h(o.fp_easings, { easeInOutCubic: function(n2, t2, e2, i2) {
       return (n2 /= i2 / 2) < 1 ? e2 / 2 * n2 * n2 * n2 + t2 : e2 / 2 * ((n2 -= 2) * n2 * n2 + 2) + t2;
     } }), o.jQuery && function(n2, t2) {
       n2 && t2 ? n2.fn.fullpage = function(e2) {
         e2 = n2.extend({}, e2, { $: n2 }), new t2(this[0], e2), Object.keys(s).forEach(function(n3) {
-          tt().$.fn.fullpage[n3] = s[n3];
+          bt().$.fn.fullpage[n3] = s[n3];
         });
       } : f("error", "jQuery is required to use the jQuery fullpage adapter!");
-    }(o.jQuery, Yo), Yo;
+    }(o.jQuery, sr), sr;
   });
 })(fullpage_extensions_min);
 var fullpage = fullpage_extensions_min.exports;
