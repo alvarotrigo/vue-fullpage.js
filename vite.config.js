@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 const licenseContent = `/*!
-* vue-fullpage 0.2.8
+* vue-fullpage 0.2.9
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
