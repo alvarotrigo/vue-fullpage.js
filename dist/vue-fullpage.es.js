@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 /*!
-* vue-fullpage 0.2.9
+* vue-fullpage 0.2.10
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
@@ -32,7 +32,7 @@ var fullpage_min = "";
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var fullpage_extensions_min = { exports: {} };
 /*!
-* fullPage 4.0.14
+* fullPage 4.0.15
 * https://github.com/alvarotrigo/fullPage.js
 *
 * @license GPLv3 for open source use only
@@ -221,12 +221,12 @@ var fullpage_extensions_min = { exports: {} };
       var n2 = r.documentElement;
       return (o.pageYOffset || n2.scrollTop) - (n2.clientTop || 0);
     }
-    function V(n2) {
+    function F(n2) {
       return Array.prototype.filter.call(n2.parentNode.children, function(t2) {
         return t2 !== n2;
       });
     }
-    function F(n2) {
+    function V(n2) {
       n2.preventDefault();
     }
     function Z(n2, t2) {
@@ -325,8 +325,8 @@ var fullpage_extensions_min = { exports: {} };
             Object.prototype.hasOwnProperty.call(o2, r2) && (e2[r2] = o2[r2]);
       }
       return e2;
-    }, writable: true, i: true }), window.fp_utils = { $: p, deepExtend: h, hasClass: g, getWindowHeight: m, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: R, removeClass: k, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: N, closest: P, after: C, before: H, insertBefore: W, getScrollTop: I, siblings: V, preventDefault: F, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, showError: f };
-    var cn = Object.freeze({ __proto__: null, showError: f, isVisible: d, getVisible: v, $: p, deepExtend: h, hasClass: g, getWindowHeight: m, o: w, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: R, removeClass: k, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: N, closest: P, after: C, before: H, insertBefore: W, getScrollTop: I, siblings: V, preventDefault: F, l: Z, u: B, v: G, p: Y, h: U, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, toArray: on, g: rn, S: an, M: ln, T: un });
+    }, writable: true, i: true }), window.fp_utils = { $: p, deepExtend: h, hasClass: g, getWindowHeight: m, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: R, removeClass: k, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: N, closest: P, after: C, before: H, insertBefore: W, getScrollTop: I, siblings: F, preventDefault: V, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, showError: f };
+    var cn = Object.freeze({ __proto__: null, showError: f, isVisible: d, getVisible: v, $: p, deepExtend: h, hasClass: g, getWindowHeight: m, o: w, css: b, prev: S, next: y, last: M, index: T, getList: A, hide: x, show: O, isArrayOrList: E, addClass: R, removeClass: k, appendTo: j, wrap: z, wrapAll: D, wrapInner: L, unwrap: N, closest: P, after: C, before: H, insertBefore: W, getScrollTop: I, siblings: F, preventDefault: V, l: Z, u: B, v: G, p: Y, h: U, isFunction: X, trigger: _, matches: Q, toggle: J, createElementFromHTML: K, remove: q, filter: $, untilAll: nn, nextAll: tn, prevAll: en, toArray: on, g: rn, S: an, M: ln, T: un });
     function sn(n2) {
       return sn = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(n3) {
         return typeof n3;
@@ -357,7 +357,7 @@ var fullpage_extensions_min = { exports: {} };
           o2[r2] = arguments[r2];
         t2.apply(e2, o2);
       });
-    } }, dn = { j: 0, D: 0, slides: [], L: [], N: null, P: null, C: false, H: false, W: false, I: false, V: false, F: void 0, Z: void 0, B: false, canScroll: true, G: "none", Y: "none", U: false, X: false, _: true, J: 0, K: m(), q: false, nn: {} };
+    } }, dn = { j: 0, D: 0, slides: [], L: [], N: null, P: null, C: false, H: false, W: false, I: false, F: false, V: void 0, Z: void 0, B: false, canScroll: true, G: "none", Y: "none", U: false, X: false, _: true, J: 0, K: m(), q: false, nn: {} };
     function vn(n2) {
       Object.assign(dn, n2);
     }
@@ -382,7 +382,7 @@ var fullpage_extensions_min = { exports: {} };
         B(n2, Ln);
       }), G("focus", Pn), fn.O(yn, Nn);
     });
-    var Cn = "fullpage-wrapper", Hn = "." + Cn, Wn = "fp-responsive", In = "fp-notransition", Vn = "fp-destroyed", Fn = "fp-enabled", Zn = "active", Bn = ".active", Gn = "fp-completely", Yn = "fp-section", Un = "." + Yn, Xn = ".fp-tableCell", _n = "#fp-nav", Qn = "fp-slide", Jn = "." + Qn, Kn = ".fp-slide.active", qn = "fp-slides", $n = ".fp-slides", nt = "fp-slidesContainer", tt = "." + nt, et = "fp-table", it = "fp-overflow", ot = "." + it, rt = "fp-is-overflow", at = ".fp-slidesNav", lt = ".fp-slidesNav a", ut = "fp-controlArrow", ct = "." + ut, st = "fp-prev", ft = ".fp-controlArrow.fp-prev", dt = ".fp-controlArrow.fp-next", vt = { menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, licenseKey: "", credits: { enabled: true, label: "Made with fullPage.js", position: "right" }, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, tn: 600, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: true, scrollOverflowReset: false, touchSensitivity: 5, touchWrapper: null, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, allowCorrectDirection: false, scrollOverflowMacStyle: true, controlArrows: true, controlArrowsHTML: ['<div class="fp-arrow"></div>', '<div class="fp-arrow"></div>'], controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", afterLoad: null, beforeLeave: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, onScrollOverflow: null, lazyLoading: true, observer: true }, pt = null, ht = false, gt = h({}, vt), mt = null;
+    var Cn = "fullpage-wrapper", Hn = "." + Cn, Wn = "fp-responsive", In = "fp-notransition", Fn = "fp-destroyed", Vn = "fp-enabled", Zn = "active", Bn = ".active", Gn = "fp-completely", Yn = "fp-section", Un = "." + Yn, Xn = ".fp-tableCell", _n = "#fp-nav", Qn = "fp-slide", Jn = "." + Qn, Kn = ".fp-slide.active", qn = "fp-slides", $n = ".fp-slides", nt = "fp-slidesContainer", tt = "." + nt, et = "fp-table", it = "fp-overflow", ot = "." + it, rt = "fp-is-overflow", at = ".fp-slidesNav", lt = ".fp-slidesNav a", ut = "fp-controlArrow", ct = "." + ut, st = "fp-prev", ft = ".fp-controlArrow.fp-prev", dt = ".fp-controlArrow.fp-next", vt = { menu: false, anchors: [], lockAnchors: false, navigation: false, navigationPosition: "right", navigationTooltips: [], showActiveTooltip: false, slidesNavigation: false, slidesNavPosition: "bottom", scrollBar: false, hybrid: false, licenseKey: "", credits: { enabled: true, label: "Made with fullPage.js", position: "right" }, css3: true, scrollingSpeed: 700, autoScrolling: true, fitToSection: true, tn: 600, easing: "easeInOutCubic", easingcss3: "ease", loopBottom: false, loopTop: false, loopHorizontal: true, continuousVertical: false, continuousHorizontal: false, scrollHorizontally: false, interlockedSlides: false, dragAndMove: false, offsetSections: false, resetSliders: false, fadingEffect: false, normalScrollElements: null, scrollOverflow: true, scrollOverflowReset: false, touchSensitivity: 5, touchWrapper: null, bigSectionsDestination: null, keyboardScrolling: true, animateAnchor: true, recordHistory: true, allowCorrectDirection: false, scrollOverflowMacStyle: true, controlArrows: true, controlArrowsHTML: ['<div class="fp-arrow"></div>', '<div class="fp-arrow"></div>'], controlArrowColor: "#fff", verticalCentered: true, sectionsColor: [], paddingTop: 0, paddingBottom: 0, fixedElements: null, responsive: 0, responsiveWidth: 0, responsiveHeight: 0, responsiveSlides: false, parallax: false, parallaxOptions: { type: "reveal", percentage: 62, property: "translate" }, cards: false, cardsOptions: { perspective: 100, fadeContent: true, fadeBackground: true }, sectionSelector: ".section", slideSelector: ".slide", afterLoad: null, beforeLeave: null, onLeave: null, afterRender: null, afterResize: null, afterReBuild: null, afterSlideLoad: null, onSlideLeave: null, afterResponsive: null, onScrollOverflow: null, lazyLoading: true, observer: true }, pt = null, ht = false, gt = h({}, vt), mt = null;
     function wt(n2) {
       return pt;
     }
@@ -512,11 +512,11 @@ var fullpage_extensions_min = { exports: {} };
     function It(n2) {
       return n2 ? n2.activeSlide ? n2.activeSlide : n2 : null;
     }
-    function Vt(n2) {
+    function Ft(n2) {
       var t2, e2, i2 = bt();
       return i2.autoScrolling && !i2.scrollBar ? (t2 = -n2, e2 = p(Hn)[0]) : (t2 = n2, e2 = window), { options: t2, element: e2 };
     }
-    function Ft(n2, t2) {
+    function Vt(n2, t2) {
       !bt().autoScrolling || bt().scrollBar || n2.self != window && g(n2, qn) ? n2.self != window && g(n2, qn) ? n2.scrollLeft = t2 : n2.scrollTo(0, t2) : n2.style.top = t2 + "px";
     }
     function Zt(n2) {
@@ -545,8 +545,8 @@ var fullpage_extensions_min = { exports: {} };
       else if (bt().autoScrolling && !bt().scrollBar)
         b(wt(), { top: -t2 + "px" }), s.test.top = -t2 + "px";
       else {
-        var e2 = Vt(t2);
-        Ft(e2.element, e2.options);
+        var e2 = Ft(t2);
+        Vt(e2.element, e2.options);
       }
     }
     function _t(n2, t2) {
@@ -563,7 +563,7 @@ var fullpage_extensions_min = { exports: {} };
         var f2 = Math.floor(s2 - r2);
         if (dn.B) {
           var d2 = t2;
-          e2 && (d2 = o.fp_easings[bt().easing](f2, a2, l2, e2)), f2 <= e2 && Ft(n2, d2), f2 < e2 ? window.requestAnimationFrame(Qt) : i2 === void 0 || u2 || (i2(), vn({ B: false }), u2 = true);
+          e2 && (d2 = o.fp_easings[bt().easing](f2, a2, l2, e2)), f2 <= e2 && Vt(n2, d2), f2 < e2 ? window.requestAnimationFrame(Qt) : i2 === void 0 || u2 || (i2(), vn({ B: false }), u2 = true);
         } else
           u2 || c2 || (i2(), vn({ B: false }), u2 = true);
       }, window.requestAnimationFrame(Qt);
@@ -660,7 +660,7 @@ var fullpage_extensions_min = { exports: {} };
       return encodeURI(bt().navigationTooltips[n2] || i2 || t2 + " " + (n2 + 1));
     }
     function de(n2) {
-      F(n2), vn({ P: "horizontalNav" });
+      V(n2), vn({ P: "horizontalNav" });
       var t2 = P(this, Un), e2 = p($n, P(this, Un))[0], i2 = Nt(pn().L, t2).slides[T(P(this, "li"))];
       fn.R(Rn, { slides: e2, destination: i2.item });
     }
@@ -689,7 +689,7 @@ var fullpage_extensions_min = { exports: {} };
       })[0], r2 = o2.slides.filter(function(n3) {
         return n3.item == t2;
       })[0], a2 = { slides: n2, destiny: t2, direction: e2, destinyPos: { left: t2.offsetLeft }, slideIndex: r2.index(), section: i2, sectionIndex: o2.index(), anchorLink: o2.anchor, slidesNav: p(at, i2)[0], slideAnchor: r2.anchor, prevSlide: o2.activeSlide.item, prevSlideIndex: o2.activeSlide.index(), items: { section: o2, origin: o2.activeSlide, destination: r2 }, localIsResizing: dn.I };
-      a2.xMovement = Me(a2.prevSlideIndex, a2.slideIndex), a2.direction = a2.direction ? a2.direction : a2.xMovement, a2.localIsResizing || vn({ canScroll: false }), xt("parallax", "applyHorizontal", a2), xt("cards", "apply", a2), xt("dropEffect", "apply", a2), xt("waterEffect", "apply", a2), bt().onSlideLeave && !a2.localIsResizing && a2.xMovement !== "none" && X(bt().onSlideLeave) && ee("onSlideLeave", a2) === false ? vn({ W: false }) : (At("dropEffect") && bt().dropEffect || (R(t2, Zn), k(V(t2), Zn)), oi(), a2.localIsResizing || (re(a2.prevSlide), ae(t2)), we(a2), o2.isActive && !a2.localIsResizing && ce(a2.slideIndex, a2.slideAnchor, a2.anchorLink), xt("continuousHorizontal", "apply", a2), Et() ? Ae(a2) : ye(n2, a2, true), bt().interlockedSlides && s.interlockedSlides && (At("continuousHorizontal") && e2 !== void 0 && e2 !== a2.xMovement || xt("interlockedSlides", "apply", a2)));
+      a2.xMovement = Me(a2.prevSlideIndex, a2.slideIndex), a2.direction = a2.direction ? a2.direction : a2.xMovement, a2.localIsResizing || vn({ canScroll: false }), xt("parallax", "applyHorizontal", a2), xt("cards", "apply", a2), xt("dropEffect", "apply", a2), xt("waterEffect", "apply", a2), bt().onSlideLeave && !a2.localIsResizing && a2.xMovement !== "none" && X(bt().onSlideLeave) && ee("onSlideLeave", a2) === false ? vn({ W: false }) : (At("dropEffect") && bt().dropEffect || (R(t2, Zn), k(F(t2), Zn)), oi(), a2.localIsResizing || (re(a2.prevSlide), ae(t2)), we(a2), o2.isActive && !a2.localIsResizing && ce(a2.slideIndex, a2.slideAnchor, a2.anchorLink), xt("continuousHorizontal", "apply", a2), Et() ? Ae(a2) : ye(n2, a2, true), bt().interlockedSlides && s.interlockedSlides && (At("continuousHorizontal") && e2 !== void 0 && e2 !== a2.xMovement || xt("interlockedSlides", "apply", a2)));
     }
     function ye(n2, t2, e2) {
       var i2, o2, r2 = t2.destinyPos;
@@ -724,7 +724,7 @@ var fullpage_extensions_min = { exports: {} };
       if (bt().autoScrolling && !bt().scrollBar)
         b(qt, { overflow: "hidden", height: "100%" }), k(Jt, "fp-scrollable"), Oe(St().recordHistory, "internal"), b(wt(), { "-ms-touch-action": "none", "touch-action": "none" }), e2 != null && Xt(e2.offsetTop);
       else if (b(qt, { overflow: "visible", height: "initial" }), R(Jt, "fp-scrollable"), Oe(!!bt().autoScrolling && St().recordHistory, "internal"), b(wt(), { "-ms-touch-action": "", "touch-action": "" }), Gt(wt()), e2 != null) {
-        var i2 = Vt(e2.offsetTop);
+        var i2 = Ft(e2.offsetTop);
         i2.element.scrollTo(0, i2.options);
       }
       _(wt(), "setAutoScrolling", n2);
@@ -762,7 +762,7 @@ var fullpage_extensions_min = { exports: {} };
       R(p("a", c2), Zn);
     }
     function De(n2) {
-      n2.preventDefault && F(n2), vn({ P: "verticalNav" });
+      n2.preventDefault && V(n2), vn({ P: "verticalNav" });
       var t2 = T(P(this, "#fp-nav li"));
       fn.R(En, { destination: pn().L[t2] });
     }
@@ -781,13 +781,13 @@ var fullpage_extensions_min = { exports: {} };
     }), s.landscapeScroll = Se, fn.O(Sn, function() {
       fn.O(jn, be);
     }), s.setRecordHistory = Oe, s.setAutoScrolling = Ee, s.test.setAutoScrolling = Ee, new Date().getTime();
-    var Ne, Pe, Ce, He, We, Ie, Ve = (Pe = true, Ce = new Date().getTime(), He = !o.fullpage_api, function(n2, t2) {
+    var Ne, Pe, Ce, He, We, Ie, Fe = (Pe = true, Ce = new Date().getTime(), He = !o.fullpage_api, function(n2, t2) {
       var e2 = new Date().getTime(), i2 = n2 === "wheel" ? bt().scrollingSpeed : 100;
       return Pe = He || e2 - Ce >= i2, He = !o.fullpage_api, Pe && (Ne = t2(), Ce = e2), Ne === void 0 || Ne;
     });
-    function Fe(n2, t2) {
+    function Ve(n2, t2) {
       if (X(bt().beforeLeave))
-        return Ve(pn().P, function() {
+        return Fe(pn().P, function() {
           return ee(n2, t2);
         });
     }
@@ -798,7 +798,7 @@ var fullpage_extensions_min = { exports: {} };
         if (!(pn().N.item == i2 && !dn.I || bt().scrollBar && I() === a2.dtop && !g(i2, "fp-auto-height"))) {
           if (a2.activeSlide != null && (o2 = Z(a2.activeSlide, "data-anchor"), r2 = T(a2.activeSlide, null)), !a2.localIsResizing) {
             var l2 = a2.yMovement;
-            if (e2 !== void 0 && (l2 = e2 ? "up" : "down"), a2.direction = l2, Tt("dropEffect") && s.dropEffect.onLeave_(a2), Tt("waterEffect") && s.waterEffect.onLeave_(a2), X(bt().beforeLeave) && Fe("beforeLeave", a2) === false)
+            if (e2 !== void 0 && (l2 = e2 ? "up" : "down"), a2.direction = l2, Tt("dropEffect") && s.dropEffect.onLeave_(a2), Tt("waterEffect") && s.waterEffect.onLeave_(a2), X(bt().beforeLeave) && Ve("beforeLeave", a2) === false)
               return;
             if (X(bt().onLeave) && !ee("onLeave", a2))
               return;
@@ -807,14 +807,14 @@ var fullpage_extensions_min = { exports: {} };
             vn({ q: true });
             var t3 = pn().N.item;
             return n3.isMovementUp ? H(t3, tn(t3, Un)) : C(t3, en(t3, Un).reverse()), Xt(pn().N.item.offsetTop), Re(), n3.vn = t3, n3.dtop = n3.element.offsetTop, n3.yMovement = Bt(pn().N, n3.element), n3.leavingSection = n3.items.origin.index() + 1, n3.sectionIndex = n3.items.destination.index(), _(wt(), "onContinuousVertical", n3), n3;
-          }(a2)), xt("scrollOverflowReset", "setPrevious", pn().N.item), a2.localIsResizing || re(pn().N.item), At("dropEffect") && bt().dropEffect || (R(i2, Zn), k(V(i2), Zn)), oi(), ae(i2), vn({ canScroll: s.test.pn }), ce(r2, o2, a2.anchorLink), function(n3) {
+          }(a2)), xt("scrollOverflowReset", "setPrevious", pn().N.item), a2.localIsResizing || re(pn().N.item), At("dropEffect") && bt().dropEffect || (R(i2, Zn), k(F(i2), Zn)), oi(), ae(i2), vn({ canScroll: s.test.pn }), ce(r2, o2, a2.anchorLink), function(n3) {
             var t3 = bt().scrollingSpeed < 700, e3 = t3 ? 700 : bt().scrollingSpeed;
             if (vn({ G: "none", scrollY: Math.round(n3.dtop) }), fn.R(jn), bt().css3 && bt().autoScrolling && !bt().scrollBar)
               Ut("translate3d(0px, -" + Math.round(n3.dtop) + "px, 0px)", true), At("waterEffect") && Re(), bt().scrollingSpeed ? (clearTimeout(We), We = setTimeout(function() {
                 Ge(n3), vn({ canScroll: !t3 || s.test.pn });
               }, bt().scrollingSpeed)) : Ge(n3);
             else {
-              var i3 = Vt(n3.dtop);
+              var i3 = Ft(n3.dtop);
               s.test.top = -n3.dtop + "px", clearTimeout(We), $t(i3.element, i3.options, bt().scrollingSpeed, function() {
                 bt().scrollBar ? We = setTimeout(function() {
                   Ge(n3);
@@ -824,7 +824,7 @@ var fullpage_extensions_min = { exports: {} };
             t3 && (clearTimeout(Ie), Ie = setTimeout(function() {
               vn({ canScroll: true });
             }, e3));
-          }(a2), vn({ F: a2.anchorLink }), Le(a2.anchorLink, function(n3) {
+          }(a2), vn({ V: a2.anchorLink }), Le(a2.anchorLink, function(n3) {
             return n3.vn != null ? n3.isMovementUp ? dn.j - 1 : 0 : n3.sectionIndex;
           }(a2));
         }
@@ -840,7 +840,7 @@ var fullpage_extensions_min = { exports: {} };
           for (var n4 = p(Kn), t2 = 0; t2 < n4.length; t2++)
             xe(n4[t2], "internal");
         }(), n3.sectionIndex = n3.items.destination.index(), n3.leavingSection = n3.items.origin.index() + 1, vn({ q: false }));
-      }(n2), X(bt().afterLoad) && !n2.localIsResizing && ee("afterLoad", n2), xt("parallax", "afterLoad"), xt("waterEffect", "afterLoad"), xt("dropEffect", "afterLoad"), xt("scrollOverflowReset", "reset"), xt("resetSliders", "apply", n2), oi(), n2.localIsResizing || ie(n2.element), R(n2.element, Gn), k(V(n2.element), Gn), ke(), ti.hn(), vn({ canScroll: true }), fn.R(zn, n2), X(n2.callback) && n2.callback();
+      }(n2), X(bt().afterLoad) && !n2.localIsResizing && ee("afterLoad", n2), xt("parallax", "afterLoad"), xt("waterEffect", "afterLoad"), xt("dropEffect", "afterLoad"), xt("scrollOverflowReset", "reset"), xt("resetSliders", "apply", n2), oi(), n2.localIsResizing || ie(n2.element), R(n2.element, Gn), k(F(n2.element), Gn), ke(), ti.hn(), vn({ canScroll: true }), fn.R(zn, n2), X(n2.callback) && n2.callback();
     }
     function Ye(n2, t2) {
       yt("fitToSection", n2, t2);
@@ -882,12 +882,14 @@ var fullpage_extensions_min = { exports: {} };
     });
     var ni, ti = { Sn: null, yn: null, Mn: null, Tn: function(n2) {
       if (!dn.canScroll)
-        return F(n2), false;
+        return V(n2), false;
     }, hn: function() {
       if (bt().scrollOverflow) {
         r.activeElement === this.Sn && this.Sn.blur();
         var n2 = ti.An(pn().N.item);
-        !n2 || a || u || (this.Sn = n2, this.Sn.focus());
+        !n2 || a || u || (this.Sn = n2, requestAnimationFrame(function() {
+          n2.focus();
+        }));
       }
     }, bn: function() {
       bt().scrollOverflowMacStyle && !l && R(Jt, "fp-scroll-mac"), pn().ln.forEach(function(n2) {
@@ -921,6 +923,8 @@ var fullpage_extensions_min = { exports: {} };
     }, kn: function(n2, t2) {
       if (!dn.canScroll)
         return false;
+      if (bt().scrollBar)
+        return true;
       var e2 = ti.An(t2);
       if (!bt().scrollOverflow || !g(e2, it) || g(Wt(t2), "fp-noscroll"))
         return true;
@@ -1075,7 +1079,7 @@ var fullpage_extensions_min = { exports: {} };
       return bi;
     } });
     function Ti() {
-      var n2 = bt().css3 ? I() + m() : rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight, t2 = Vt(n2);
+      var n2 = bt().css3 ? I() + m() : rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight, t2 = Ft(n2);
       s.test.top = -n2 + "px", vn({ canScroll: false }), $t(t2.element, t2.options, bt().scrollingSpeed, function() {
         setTimeout(function() {
           vn({ C: true }), vn({ canScroll: true });
@@ -1086,7 +1090,7 @@ var fullpage_extensions_min = { exports: {} };
       wt().getBoundingClientRect().bottom >= 0 && xi();
     }
     function xi() {
-      var n2 = Vt(rn(pn().L).item.offsetTop);
+      var n2 = Ft(rn(pn().L).item.offsetTop);
       vn({ canScroll: false }), $t(n2.element, n2.options, bt().scrollingSpeed, function() {
         vn({ canScroll: true }), vn({ C: false }), vn({ Pn: false });
       });
@@ -1121,15 +1125,15 @@ var fullpage_extensions_min = { exports: {} };
         At("scrollHorizontally") && (t2 = xt("scrollHorizontally", "getScrollSection", { type: n2, scrollSection: t2 })), bt().scrollOverflow && ti.mn(pn().N) ? ti.kn(n2, pn().N.item) && ti.jn() && t2() : t2();
       }
     }
-    var Pi, Ci, Hi, Wi = 0, Ii = 0, Vi = 0, Fi = 0, Zi = Qi(), Bi = { Cn: "ontouchmove" in window ? "touchmove" : Zi ? Zi.move : null, Hn: "ontouchstart" in window ? "touchstart" : Zi ? Zi.down : null };
+    var Pi, Ci, Hi, Wi = 0, Ii = 0, Fi = 0, Vi = 0, Zi = Qi(), Bi = { Cn: "ontouchmove" in window ? "touchmove" : Zi ? Zi.move : null, Hn: "ontouchstart" in window ? "touchstart" : Zi ? Zi.down : null };
     function Gi(n2) {
       var t2 = P(n2.target, Un) || pn().N.item, e2 = ti.mn(pn().N);
       if (Yi(n2)) {
-        vn({ U: true, X: false }), bt().autoScrolling && e2 && !dn.canScroll && F(n2);
+        vn({ U: true, X: false }), bt().autoScrolling && (e2 && !dn.canScroll || bt().scrollBar) && V(n2);
         var i2 = _i(n2);
-        Vi = i2.y, Fi = i2.x;
-        var r2 = Math.abs(Wi - Vi) > o.innerHeight / 100 * bt().touchSensitivity, a2 = Math.abs(Ii - Fi) > w() / 100 * bt().touchSensitivity, l2 = p($n, t2).length && Math.abs(Ii - Fi) > Math.abs(Wi - Vi), u2 = Wi > Vi ? "down" : "up";
-        vn({ G: l2 ? Ii > Fi ? "right" : "left" : u2 }), l2 ? !dn.W && a2 && (Ii > Fi ? ge().m.right && fn.R(wn, { section: t2 }) : ge().m.left && fn.R(mn, { section: t2 })) : bt().autoScrolling && dn.canScroll && r2 && Ni(u2);
+        Fi = i2.y, Vi = i2.x;
+        var r2 = Math.abs(Wi - Fi) > o.innerHeight / 100 * bt().touchSensitivity, a2 = Math.abs(Ii - Vi) > w() / 100 * bt().touchSensitivity, l2 = p($n, t2).length && Math.abs(Ii - Vi) > Math.abs(Wi - Fi), u2 = Wi > Fi ? "down" : "up";
+        vn({ G: l2 ? Ii > Vi ? "right" : "left" : u2 }), l2 ? !dn.W && a2 && (Ii > Vi ? ge().m.right && fn.R(wn, { section: t2 }) : ge().m.left && fn.R(mn, { section: t2 })) : bt().autoScrolling && dn.canScroll && r2 && Ni(u2);
       }
     }
     function Yi(n2) {
@@ -1154,7 +1158,7 @@ var fullpage_extensions_min = { exports: {} };
       return o.PointerEvent && (n2 = { down: "pointerdown", move: "pointermove" }), n2;
     }
     function Ji(n2) {
-      bt().autoScrolling && Yi(n2) && ge().m.up && (dn.canScroll || F(n2));
+      bt().autoScrolling && Yi(n2) && ge().m.up && (dn.canScroll || V(n2));
     }
     function Ki(n2, t2) {
       var e2 = t2 == null ? pn().N.item : t2, i2 = Nt(dn.L, e2), o2 = p($n, e2)[0];
@@ -1196,7 +1200,7 @@ var fullpage_extensions_min = { exports: {} };
           })[0];
           return e3 == null && (n3 = n3 !== void 0 ? n3 : 0, e3 = t3.slides[n3]), e3 ? e3.item : null;
         }(t2, e2);
-        e2.anchor === dn.F || g(e2.item, Zn) ? to(i2) : Ze(e2, function() {
+        e2.anchor === dn.V || g(e2.item, Zn) ? to(i2) : Ze(e2, function() {
           to(i2);
         });
       }
@@ -1214,7 +1218,7 @@ var fullpage_extensions_min = { exports: {} };
       e2 === 9 ? function(n3) {
         var t3 = n3.shiftKey, e3 = r.activeElement, i3 = fo(Wt(pn().N.item));
         function o3(n4) {
-          return F(n4), i3[0] ? i3[0].focus() : null;
+          return V(n4), i3[0] ? i3[0].focus() : null;
         }
         if (!function(n4) {
           var t4 = fo(r), e4 = t4.indexOf(r.activeElement), i4 = t4[n4.shiftKey ? e4 - 1 : e4 + 1], o4 = P(i4, Jn), a3 = P(i4, Un);
@@ -1223,7 +1227,7 @@ var fullpage_extensions_min = { exports: {} };
           e3 ? P(e3, ".fp-section.active,.fp-section.active .fp-slide.active") == null && (e3 = o3(n3)) : o3(n3);
           var a2 = e3 == i3[0], l2 = e3 == i3[i3.length - 1], u2 = t3 && a2;
           if (u2 || !t3 && l2) {
-            F(n3);
+            V(n3);
             var c2 = function(n4) {
               var t4, e4 = n4 ? "prevPanel" : "nextPanel", i4 = [], o4 = It((dn.N && dn.N.activeSlide ? dn.N.activeSlide : dn.N)[e4]());
               do {
@@ -1233,7 +1237,7 @@ var fullpage_extensions_min = { exports: {} };
             }(u2), s2 = c2 ? c2.Wn : null;
             if (s2) {
               var f2 = s2.on ? s2 : s2.parent;
-              fn.R(An, { Vn: f2.index() + 1, slideAnchor: s2.on ? 0 : s2.index() }), Hi = c2.In, F(n3);
+              fn.R(An, { Fn: f2.index() + 1, slideAnchor: s2.on ? 0 : s2.index() }), Hi = c2.In, V(n3);
             }
           }
         }
@@ -1315,14 +1319,14 @@ var fullpage_extensions_min = { exports: {} };
         new Date().getTime();
         var e3 = pn().C && n3.getBoundingClientRect().bottom >= 0 && Mi.Nn() === "up", i3 = pn().Pn;
         if (i3)
-          return F(t3), false;
+          return V(t3), false;
         if (pn().C) {
           if (e3) {
             var o2;
             if (!(i3 || ki("isNewKeyframe", "beyondFullpage") && Mi.Ln()))
-              return (o2 = Vt(rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight)).element.scrollTo(0, o2.options), vn({ Pn: false }), F(t3), false;
+              return (o2 = Ft(rn(pn().L).item.offsetTop + rn(pn().L).item.offsetHeight)).element.scrollTo(0, o2.options), vn({ Pn: false }), V(t3), false;
             if (Mi.Ln())
-              return e3 = false, vn({ Pn: true }), vn({ P: "wheel" }), xi(), F(t3), false;
+              return e3 = false, vn({ Pn: true }), vn({ P: "wheel" }), xi(), V(t3), false;
           } else
             ki("set", "beyondFullpage", 1e3);
           if (!i3 && !e3)
@@ -1330,14 +1334,14 @@ var fullpage_extensions_min = { exports: {} };
         }
       }(wt(), n2);
       if (dn.X || vn({ U: false, X: true, G: "none" }), !ge().m.down && !ge().m.up)
-        return F(n2), false;
+        return V(n2), false;
       if (i2)
         return true;
       if (i2 === false)
-        return F(n2), false;
+        return V(n2), false;
       if (bt().autoScrolling && !Pi && !e2) {
         var r2 = (n2 = n2 || o.event).wheelDelta || -n2.deltaY || -n2.detail, a2 = Math.max(-1, Math.min(1, r2)), l2 = n2.wheelDeltaX !== void 0 || n2.deltaX !== void 0, u2 = Math.abs(n2.wheelDeltaX) < Math.abs(n2.wheelDelta) || Math.abs(n2.deltaX) < Math.abs(n2.deltaY) || !l2, c2 = a2 < 0 ? "down" : a2 > 0 ? "up" : "none";
-        po.length > 149 && po.shift(), po.push(Math.abs(r2)), bt().scrollBar && F(n2);
+        po.length > 149 && po.shift(), po.push(Math.abs(r2)), bt().scrollBar && V(n2);
         var s2 = t2 - vo;
         return vo = t2, s2 > 200 && (po = []), vn({ Y: c2 }), dn.canScroll && !Ot() && an(po, 10) >= an(po, 70) && u2 && (vn({ P: "wheel" }), Ni(a2 < 0 ? "down" : "up")), false;
       }
@@ -1382,9 +1386,9 @@ var fullpage_extensions_min = { exports: {} };
       }, 800)), (t2 !== "mouseenter" || So) && (bt().normalScrollElements.split(",").forEach(function(n3) {
         if (!e2) {
           var t3 = Q(i2, n3), o2 = P(i2, n3);
-          (t3 || o2) && (s.shared.Fn || bo(false), s.shared.Fn = true, e2 = true);
+          (t3 || o2) && (s.shared.Vn || bo(false), s.shared.Vn = true, e2 = true);
         }
-      }), !e2 && s.shared.Fn && (bo(true), s.shared.Fn = false))) : bo(true);
+      }), !e2 && s.shared.Vn && (bo(true), s.shared.Vn = false))) : bo(true);
     }
     function Ao(n2, t2) {
       _t(0, "internal"), io(n2, t2), _t(St().scrollingSpeed, "internal");
@@ -1430,7 +1434,7 @@ var fullpage_extensions_min = { exports: {} };
       }, 400);
     }
     function Do(n2) {
-      if (!g(wt(), Vn)) {
+      if (!g(wt(), Fn)) {
         vn({ I: true, K: m(), Zn: w() });
         for (var t2 = pn().L, e2 = 0; e2 < t2.length; ++e2) {
           var i2 = t2[e2], r2 = p($n, i2.item)[0], a2 = i2.slides;
@@ -1461,9 +1465,9 @@ var fullpage_extensions_min = { exports: {} };
       U("hashchange", Co);
     }
     function Co() {
-      if (!dn.V && !bt().lockAnchors) {
-        var n2 = No(), t2 = n2.section, e2 = n2.cn, i2 = dn.F === void 0, o2 = dn.F === void 0 && e2 === void 0 && !dn.W;
-        t2 && t2.length && (t2 && t2 !== dn.F && !i2 || o2 && !Ot() || !dn.W && dn.Z != e2 && !Ot()) && fn.R(An, { Vn: t2, slideAnchor: e2 });
+      if (!dn.F && !bt().lockAnchors) {
+        var n2 = No(), t2 = n2.section, e2 = n2.cn, i2 = dn.V === void 0, o2 = dn.V === void 0 && e2 === void 0 && !dn.W;
+        t2 && t2.length && (t2 && t2 !== dn.V && !i2 || o2 && !Ot() || !dn.W && dn.Z != e2 && !Ot()) && fn.R(An, { Fn: t2, slideAnchor: e2 });
       }
     }
     function Ho(n2) {
@@ -1471,7 +1475,7 @@ var fullpage_extensions_min = { exports: {} };
       P(t2, bt().menu + " [data-menuanchor]") && Wo.call(t2, n2);
     }
     function Wo(n2) {
-      vn({ P: "menu" }), !p(bt().menu)[0] || !bt().lockAnchors && bt().anchors.length || (F(n2), fn.R(On, { anchor: Z(this, "data-menuanchor") }));
+      vn({ P: "menu" }), !p(bt().menu)[0] || !bt().lockAnchors && bt().anchors.length || (V(n2), fn.R(On, { anchor: Z(this, "data-menuanchor") }));
     }
     function Io(n2) {
       var t2 = n2.target;
@@ -1490,7 +1494,7 @@ var fullpage_extensions_min = { exports: {} };
     }), fn.O(Sn, function() {
       fn.O(gn, Io);
     });
-    var Vo, Fo, Zo = 0;
+    var Fo, Vo, Zo = 0;
     function Bo(n2) {
       var t2, e2, i2, o2, r2;
       if (_(wt(), "onScroll"), !dn.I && pn().N && (rn(pn().L), !pn().C && !pn().Pn && (!bt().autoScrolling || bt().scrollBar || At("dragAndMove")) && !Et())) {
@@ -1505,20 +1509,20 @@ var fullpage_extensions_min = { exports: {} };
             (P(f2[d2].item, Un) || f2[d2].item).offsetTop <= c2 && (u2 = d2);
         else
           u2 = 0;
-        if (i2 = l2, o2 = pn().N.item.offsetTop, r2 = o2 + m(), (i2 == "up" ? r2 >= I() + m() : o2 <= I()) && (g(pn().N.item, Gn) || (R(pn().N.item, Gn), k(V(pn().N.item), Gn))), e2 = (t2 = f2[u2]).item, !t2.isActive) {
-          vn({ V: true });
+        if (i2 = l2, o2 = pn().N.item.offsetTop, r2 = o2 + m(), (i2 == "up" ? r2 >= I() + m() : o2 <= I()) && (g(pn().N.item, Gn) || (R(pn().N.item, Gn), k(F(pn().N.item), Gn))), e2 = (t2 = f2[u2]).item, !t2.isActive) {
+          vn({ F: true });
           var v2, p2, h2 = pn().N.item, w2 = pn().N.index() + 1, b2 = Bt(pn().N, e2), S2 = t2.anchor, y2 = t2.index() + 1, M2 = t2.activeSlide, T2 = { N: h2, sectionIndex: y2 - 1, anchorLink: S2, element: e2, leavingSection: w2, direction: b2, items: { origin: pn().N, destination: t2 } };
           if (M2 && (p2 = M2.anchor, v2 = M2.index()), dn.canScroll)
             k(f2.filter(function(n3) {
               return n3.index() !== t2.index();
             }).map(function(n3) {
               return n3.item;
-            }), Zn), R(e2, Zn), xt("parallax", "afterLoad"), X(bt().beforeLeave) && Fe("beforeLeave", T2), X(bt().onLeave) && ee("onLeave", T2), X(bt().afterLoad) && ee("afterLoad", T2), xt("resetSliders", "apply", { localIsResizing: dn.I, leavingSection: w2 }), re(h2), ae(e2), ie(e2), Le(S2, y2 - 1), bt().anchors.length && vn({ F: S2 }), ce(v2, p2, S2), oi();
-          clearTimeout(Vo), Vo = setTimeout(function() {
-            vn({ V: false });
+            }), Zn), R(e2, Zn), xt("parallax", "afterLoad"), X(bt().beforeLeave) && Ve("beforeLeave", T2), X(bt().onLeave) && ee("onLeave", T2), X(bt().afterLoad) && ee("afterLoad", T2), xt("resetSliders", "apply", { localIsResizing: dn.I, leavingSection: w2 }), re(h2), ae(e2), ie(e2), Le(S2, y2 - 1), bt().anchors.length && vn({ V: S2 }), ce(v2, p2, S2), oi();
+          clearTimeout(Fo), Fo = setTimeout(function() {
+            vn({ F: false });
           }, 100);
         }
-        bt().fitToSection && dn.canScroll && (clearTimeout(Fo), Fo = setTimeout(function() {
+        bt().fitToSection && dn.canScroll && (clearTimeout(Vo), Vo = setTimeout(function() {
           dn.L.filter(function(n3) {
             var t3 = n3.item.getBoundingClientRect();
             return Math.round(t3.bottom) === Math.round(m()) || Math.round(t3.top) === 0;
@@ -1551,10 +1555,10 @@ var fullpage_extensions_min = { exports: {} };
       t2 ? bt().animateAnchor ? eo(t2, e2) : Ao(t2, e2) : fn.R(hn, null);
     }
     fn.O(yn, function() {
-      clearTimeout(Vo), clearTimeout(Fo);
+      clearTimeout(Fo), clearTimeout(Vo);
     }), fn.O(Sn, function() {
       G("scroll", Bo), r.body.addEventListener("scroll", Bo), fn.O(An, function(n2) {
-        eo(n2.Vn, n2.slideAnchor);
+        eo(n2.Fn, n2.slideAnchor);
       }), fn.O(On, function(n2) {
         io(n2.anchor, void 0);
       }), fn.O(Tn, function(n2) {
@@ -1618,7 +1622,7 @@ var fullpage_extensions_min = { exports: {} };
           return n3 && t4.indexOf(n3) === 0 && n3.length === t4.length;
         }(t3), (l2 || u2) && (bt().credits && l2 && e2 <= l2.Yn && l2.Xn === t3.split(n2[0])[4] || u2 || l2.Un) || false) });
       });
-      var n2 = ["-"], t2 = "2022-10-11".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
+      var n2 = ["-"], t2 = "2022-10-21".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
       function o2() {
         return [["re", "verse"].join("")]["".length];
       }
@@ -1677,7 +1681,7 @@ var fullpage_extensions_min = { exports: {} };
     }
     function ar() {
       ri(), oi(), bt().scrollBar = bt().scrollBar || bt().hybrid, Mt(), function() {
-        b(un(wt(), "body"), { height: "100%", position: "relative" }), R(wt(), Cn), R(Kt, Fn), vn({ K: m() }), k(wt(), Vn), fi(), xt("parallax", "init");
+        b(un(wt(), "body"), { height: "100%", position: "relative" }), R(wt(), Cn), R(Kt, Vn), vn({ K: m() }), k(wt(), Fn), fi(), xt("parallax", "init");
         for (var n2 = pn().rn, t2 = 0; t2 < n2.length; t2++) {
           var e2 = n2[t2], i2 = e2.wn;
           e2.item.setAttribute("data-fp-styles", Z(e2.item, "style")), qe(e2), Yo(e2), i2.length > 0 && di(e2);
@@ -1692,7 +1696,7 @@ var fullpage_extensions_min = { exports: {} };
     }
     function lr() {
       var n2 = bt().licenseKey;
-      bt().licenseKey.trim() === "" ? (f("error", "Fullpage.js requires a `licenseKey` option. Read about it on the following URL:"), f("error", "https://github.com/alvarotrigo/fullPage.js#options")) : bt() && dn.Gn || r.domain.indexOf("alvarotrigo.com") > -1 ? n2 && n2.length : (f("error", "Incorrect `licenseKey`. Get one for fullPage.js version 4 here:"), f("error", "https://alvarotrigo.com/fullPage/pricing")), g(Kt, Fn) ? f("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (bt().continuousVertical && (bt().loopTop || bt().loopBottom) && (bt().continuousVertical = false, f("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !bt().scrollOverflow || !bt().scrollBar && bt().autoScrolling || f("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !bt().continuousVertical || !bt().scrollBar && bt().autoScrolling || (bt().continuousVertical = false, f("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), bt().anchors.forEach(function(n3) {
+      bt().licenseKey.trim() === "" ? (f("error", "Fullpage.js requires a `licenseKey` option. Read about it on the following URL:"), f("error", "https://github.com/alvarotrigo/fullPage.js#options")) : bt() && dn.Gn || r.domain.indexOf("alvarotrigo.com") > -1 ? n2 && n2.length : (f("error", "Incorrect `licenseKey`. Get one for fullPage.js version 4 here:"), f("error", "https://alvarotrigo.com/fullPage/pricing")), g(Kt, Vn) ? f("error", "Fullpage.js can only be initialized once and you are doing it multiple times!") : (bt().continuousVertical && (bt().loopTop || bt().loopBottom) && (bt().continuousVertical = false, f("warn", "Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), !bt().scrollOverflow || !bt().scrollBar && bt().autoScrolling || f("warn", "Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox"), !bt().continuousVertical || !bt().scrollBar && bt().autoScrolling || (bt().continuousVertical = false, f("warn", "Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled")), bt().anchors.forEach(function(n3) {
         var t2 = [].slice.call(p("[name]")).filter(function(t3) {
           return Z(t3, "name") && Z(t3, "name").toLowerCase() == n3.toLowerCase();
         }), e2 = [].slice.call(p("[id]")).filter(function(t3) {
@@ -1720,12 +1724,12 @@ var fullpage_extensions_min = { exports: {} };
     }
     function sr(n2, t2) {
       var e2;
-      if (Jt = p("body")[0], Kt = p("html")[0], qt = p("html, body"), !g(Kt, Fn))
+      if (Jt = p("body")[0], Kt = p("html")[0], qt = p("html, body"), !g(Kt, Vn))
         return e2 = typeof n2 == "string" ? p(n2)[0] : n2, vt.touchWrapper = e2, function(n3) {
           mt = h({}, vt, n3), gt = Object.assign({}, mt);
         }(t2), function(n3) {
           pt = n3;
-        }(typeof n2 == "string" ? p(n2)[0] : n2), fn.R(bn), lr(), s.getFullpageData = ur, s.version = "4.0.14", s.test = Object.assign(s.test, { top: "0px", un: "translate3d(0px, 0px, 0px)", sn: function() {
+        }(typeof n2 == "string" ? p(n2)[0] : n2), fn.R(bn), lr(), s.getFullpageData = ur, s.version = "4.0.15", s.test = Object.assign(s.test, { top: "0px", un: "translate3d(0px, 0px, 0px)", sn: function() {
           for (var n3 = [], t3 = 0; t3 < p(bt().sectionSelector, wt()).length; t3++)
             n3.push("translate3d(0px, 0px, 0px)");
           return n3;
@@ -1733,15 +1737,15 @@ var fullpage_extensions_min = { exports: {} };
           for (var n3 = [], t3 = 0; t3 < p(bt().sectionSelector, wt()).length; t3++)
             n3.push(0);
           return n3;
-        }(), options: bt(), setAutoScrolling: null }), s.shared = Object.assign(s.shared, { _n: null, Fn: false }), o.fullpage_api = s, o.fullpage_extensions = true, wt() && (fn.R("beforeInit"), cr("continuousHorizontal"), cr("scrollHorizontally"), cr("resetSliders"), cr("interlockedSlides"), cr("responsiveSlides"), cr("fadingEffect"), cr("dragAndMove"), cr("offsetSections"), cr("scrollOverflowReset"), cr("parallax"), cr("cards"), cr("dropEffect"), cr("waterEffect"), xt("dragAndMove", "init"), xt("responsiveSlides", "init"), ar(), fn.R(Sn), xt("dragAndMove", "turnOffTouch")), o.fullpage_api;
+        }(), options: bt(), setAutoScrolling: null }), s.shared = Object.assign(s.shared, { _n: null, Vn: false }), o.fullpage_api = s, o.fullpage_extensions = true, wt() && (fn.R("beforeInit"), cr("continuousHorizontal"), cr("scrollHorizontally"), cr("resetSliders"), cr("interlockedSlides"), cr("responsiveSlides"), cr("fadingEffect"), cr("dragAndMove"), cr("offsetSections"), cr("scrollOverflowReset"), cr("parallax"), cr("cards"), cr("dropEffect"), cr("waterEffect"), xt("dragAndMove", "init"), xt("responsiveSlides", "init"), ar(), fn.R(Sn), xt("dragAndMove", "turnOffTouch")), o.fullpage_api;
       lr();
     }
     return s.destroy = function(n2) {
-      _(wt(), "destroy", n2), Ee(false, "internal"), Xo(true), bo(false), Go(false), R(wt(), Vn), fn.R(yn), xt("dragAndMove", "destroy"), n2 && (Xt(0), p("img[data-src], source[data-src], audio[data-src], iframe[data-src]", wt()).forEach(function(n3) {
+      _(wt(), "destroy", n2), Ee(false, "internal"), Xo(true), bo(false), Go(false), R(wt(), Fn), fn.R(yn), xt("dragAndMove", "destroy"), n2 && (Xt(0), p("img[data-src], source[data-src], audio[data-src], iframe[data-src]", wt()).forEach(function(n3) {
         ln(n3, "src");
       }), p("img[data-srcset]").forEach(function(n3) {
         ln(n3, "srcset");
-      }), q(p("#fp-nav, .fp-slidesNav, .fp-controlArrow")), b(Lt(pn().L), { height: "", "background-color": "", padding: "" }), b(Lt(pn().slides), { width: "" }), b(wt(), { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), b(qt, { overflow: "", height: "" }), k(Kt, Fn), k(Jt, Wn), Jt.className.split(/\s+/).forEach(function(n3) {
+      }), q(p("#fp-nav, .fp-slidesNav, .fp-controlArrow")), b(Lt(pn().L), { height: "", "background-color": "", padding: "" }), b(Lt(pn().slides), { width: "" }), b(wt(), { height: "", position: "", "-ms-touch-action": "", "touch-action": "" }), b(qt, { overflow: "", height: "" }), k(Kt, Vn), k(Jt, Wn), Jt.className.split(/\s+/).forEach(function(n3) {
         n3.indexOf("fp-viewing") === 0 && k(Jt, n3);
       }), Lt(pn().ln).forEach(function(n3) {
         bt().scrollOverflow && ti.Rn(n3), k(n3, "fp-table active " + Gn), Z(n3, "data-fp-styles") && n3.setAttribute("style", Z(n3, "data-fp-styles")), g(n3, Yn) && !ht && n3.removeAttribute("data-anchor");
