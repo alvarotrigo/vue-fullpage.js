@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "vue": "^3.0.4",
-    "vue-fullpage.js": "^0.2.10"
+    "vue-fullpage.js": "^0.2.11"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.4",
