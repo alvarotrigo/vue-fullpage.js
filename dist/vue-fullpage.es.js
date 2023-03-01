@@ -18,7 +18,7 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 /*!
-* vue-fullpage 0.2.12
+* vue-fullpage 0.2.13
 * https://github.com/alvarotrigo/vue-fullpage.js
 *
 * @license GPLv3 for open source use only
@@ -32,7 +32,7 @@ var fullpage_min = "";
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var fullpage_extensions_min = { exports: {} };
 /*!
-* fullPage 4.0.17
+* fullPage 4.0.18
 * https://github.com/alvarotrigo/fullPage.js
 *
 * @license GPLv3 for open source use only
@@ -1538,7 +1538,7 @@ var fullpage_extensions_min = { exports: {} };
               return n3.index() !== t2.index();
             }).map(function(n3) {
               return n3.item;
-            }), Yn), E(e2, Yn), Et("parallax", "afterLoad"), X(Mt().beforeLeave) && Ge("beforeLeave", T2), X(Mt().onLeave) && re("onLeave", T2), X(Mt().afterLoad) && re("afterLoad", T2), Et("resetSliders", "apply", { localIsResizing: vn.F, leavingSection: w2 }), ue(h2), ce(e2), ae(e2), He(S2, y2 - 1), Mt().anchors.length && pn({ Z: S2 }), de(v2, p2, S2), ci();
+            }), Yn), E(e2, Yn), Et("parallax", "afterLoad"), X(Mt().beforeLeave) && Ge("beforeLeave", T2), X(Mt().onLeave) && re("onLeave", T2), X(Mt().afterLoad) && re("afterLoad", T2), Et("resetSliders", "apply", { localIsResizing: vn.F, leavingSection: w2 }), ue(h2), ce(e2), ae(e2), He(S2, y2 - 1), Mt().anchors.length && pn({ Z: S2 }), ci(), de(v2, p2, S2);
           clearTimeout(Yo), Yo = setTimeout(function() {
             pn({ V: false });
           }, 100);
@@ -1643,7 +1643,7 @@ var fullpage_extensions_min = { exports: {} };
           return n3 && t4.indexOf(n3) === 0 && n3.length === t4.length;
         }(t3), (l2 || u2) && (l2 && e2 <= l2.Kn && l2.$n === t3.split(n2[0])[4] || u2 || l2.qn) || false) });
       });
-      var n2 = ["-"], t2 = "2023-1-16".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
+      var n2 = ["-"], t2 = "2023-2-1".split("-"), e2 = new Date(t2[0], t2[1], t2[2]), i2 = ["se", "licen", "-", "v3", "l", "gp"];
       function o2() {
         return [["re", "verse"].join("")]["".length];
       }
@@ -1750,7 +1750,7 @@ var fullpage_extensions_min = { exports: {} };
           St = h({}, gt, n3), bt = Object.assign({}, St);
         }(t2), function(n3) {
           mt = n3;
-        }(typeof n2 == "string" ? p(n2)[0] : n2), dn.j(Sn), dr(), s.getFullpageData = vr, s.version = "4.0.17", s.test = Object.assign(s.test, { top: "0px", cn: "translate3d(0px, 0px, 0px)", dn: function() {
+        }(typeof n2 == "string" ? p(n2)[0] : n2), dn.j(Sn), dr(), s.getFullpageData = vr, s.version = "4.0.18", s.test = Object.assign(s.test, { top: "0px", cn: "translate3d(0px, 0px, 0px)", dn: function() {
           for (var n3 = [], t3 = 0; t3 < p(Mt().sectionSelector, yt()).length; t3++)
             n3.push("translate3d(0px, 0px, 0px)");
           return n3;
