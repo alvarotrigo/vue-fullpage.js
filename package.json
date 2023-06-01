@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
@@ -16,11 +16,11 @@
     "src"
   ],
   "main": "./dist/vue-fullpage.umd.js",
-  "module": "./dist/vue-fullpage.es.js",
+  "module": "./dist/vue-fullpage.mjs",
   "exports": {
     ".": {
-      "import": "./dist/vue-fullpage.es.js",
-      "require": "./dist/vue-fullpage.umd.js"
+      "import": "./dist/vue-fullpage.mjs",
+      "require": "./dist/vue-fullpage.js"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
@@ -42,14 +42,13 @@
     "fullpage.js": "^4.0.20"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.1.0",
-    "@vue/compiler-sfc": "^3.2.29",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-vue": "^8.3.0",
-    "prettier": "^2.5.1",
-    "rollup-plugin-visualizer": "^5.5.4",
-    "vite": "^2.7.13"
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-vue": "^9.14.1",
+    "prettier": "^2.8.8",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "vite": "^4.3.9"
   },
   "license": "GPL-3.0"
 }
