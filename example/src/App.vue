@@ -57,7 +57,7 @@
 // import './fullpage.scrollHorizontally.min'
 
   export default {
-    name: 'app',
+    name: 'App',
     data () {
       return {
         options: {
@@ -81,7 +81,7 @@
       addSection (e) {
         e.preventDefault()
         var newSectionNumber = document.querySelectorAll('.fp-section').length + 1
-        
+
         // creating the section div
         var section = document.createElement('div')
         section.className = 'section'
@@ -128,7 +128,7 @@
       toggleNavigation () {
         this.options.navigation = !this.options.navigation
       },
-      
+
       toggleScrollbar () {
         console.log('Changing scrollbar...')
         this.options.scrollBar = !this.options.scrollBar
