@@ -6,11 +6,11 @@
 Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
 </p>
 
-<div align="center">
-
-  [![npm version][npm-version-src]][npm-version-href]
-
-</div>
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-fullpage.js">
+    <img src="https://img.shields.io/npm/v/vue-fullpage.js/latest.svg" alt="vue-fullpage.js version" />
+  </a>
+</p>
 
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg), [Raphael Owino](https://twitter.com/ralphowino) and [Jonathan Schneider](https://github.com/JonathanSchndr/).
