@@ -12,6 +12,7 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
   </a>
 </p>
 
+- [Codesandbox Demo](https://codesandbox.io/p/devbox/t6fzdr?file=%2Findex.html)
 - [fullpage.js Extensions](https://alvarotrigo.com/fullPage/extensions/)
 - By [@imac2](https://twitter.com/imac2). Thanks to [VasiliyGryaznoy](https://github.com/VasiliyGryaznoy) , [dragg](https://github.com/dragg), [Raphael Owino](https://twitter.com/ralphowino) and [Jonathan Schneider](https://github.com/JonathanSchndr/).
 
