@@ -1,6 +1,6 @@
 # Vue-fullpage.js - Official Vue.js 3 wrapper
 
-![preview](https://alvarotrigo.com/fullPage/vue-fullpage/imgs/vue-fullpage-wrapper.png)
+![preview](https://alvarotrigo.com/vue-fullpage/imgs/vue-fullpage-card.png)
 
 <p align="center">
 Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/alvarotrigo/fullPage.js/">fullpage.js library</a>.
