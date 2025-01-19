@@ -1,10 +1,10 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
-    "email": "alvarotrigo@alvarotrigo.com"
+    "email": "help@alvarotrigo.com"
   },
   "contributors": [
     "JonathanSchndr",
@@ -39,7 +39,7 @@
     "vue": "^3.2.26"
   },
   "dependencies": {
-    "fullpage.js": "^4.0.30"
+    "fullpage.js": "^4.0.32"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
