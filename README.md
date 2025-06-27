@@ -36,6 +36,7 @@ Official Vue.js 3 wrapper for the <a target="_blank" href="https://github.com/al
   - [Dynamic changes](#dynamic-changes)
   - [Usage with Nuxt.js](#usage-with-nuxtjs)
   - [:construction: Usage with Gridsome](#construction-usage-with-gridsome)
+  - [Automation](#automation)
   - [Contributing](#contributing)
 - [Resources](#resources)
 
@@ -293,6 +294,10 @@ Use the [nuxt-fullpage](https://github.com/alvarotrigo/nuxt-fullpage) module in 
 ## :construction: Usage with Gridsome
 
 TBD
+
+## Automation
+
+This repository includes automated GitHub Actions for keeping fullPage.js up-to-date. See [`.github/WORKFLOWS.md`](.github/WORKFLOWS.md) for detailed documentation.
 
 ## Contributing
 
