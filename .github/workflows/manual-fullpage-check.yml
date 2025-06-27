@@ -1,0 +1,158 @@
+name: Manual fullPage.js Version Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual updates)'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  check-fullpage-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Get current fullPage.js version
+        id: current-version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').dependencies['fullpage.js']")
+          echo "current_version=${CURRENT_VERSION}" >> $GITHUB_OUTPUT
+          echo "Current fullPage.js version: $CURRENT_VERSION"
+
+      - name: Get latest fullPage.js version from npm
+        id: latest-version
+        run: |
+          LATEST_VERSION=$(npm view fullpage.js version)
+          echo "latest_version=${LATEST_VERSION}" >> $GITHUB_OUTPUT
+          echo "Latest fullPage.js version: $LATEST_VERSION"
+
+      - name: Compare versions
+        id: compare-versions
+        run: |
+          CURRENT_VERSION="${{ steps.current-version.outputs.current_version }}"
+          LATEST_VERSION="${{ steps.latest-version.outputs.latest_version }}"
+          
+          # Remove the ^ from the current version for comparison
+          CURRENT_CLEAN=$(echo $CURRENT_VERSION | sed 's/^[^0-9]*//')
+          LATEST_CLEAN=$(echo $LATEST_VERSION | sed 's/^[^0-9]*//')
+          
+          echo "Current clean version: $CURRENT_CLEAN"
+          echo "Latest clean version: $LATEST_CLEAN"
+          
+          if [ "$CURRENT_CLEAN" != "$LATEST_CLEAN" ]; then
+            echo "update_needed=true" >> $GITHUB_OUTPUT
+            echo "Update needed: $CURRENT_CLEAN -> $LATEST_CLEAN"
+          else
+            echo "update_needed=false" >> $GITHUB_OUTPUT
+            echo "No update needed"
+          fi
+
+      - name: Show version comparison
+        run: |
+          echo "## Version Comparison"
+          echo "Current fullPage.js version: ${{ steps.current-version.outputs.current_version }}"
+          echo "Latest fullPage.js version: ${{ steps.latest-version.outputs.latest_version }}"
+          echo "Update needed: ${{ steps.compare-versions.outputs.update_needed }}"
+          echo "Dry run: ${{ github.event.inputs.dry_run }}"
+
+      - name: Test build with latest version (dry run)
+        if: steps.compare-versions.outputs.update_needed == 'true' && github.event.inputs.dry_run == 'true'
+        run: |
+          echo "Testing build with latest fullPage.js version..."
+          LATEST_VERSION="${{ steps.latest-version.outputs.latest_version }}"
+          npm install fullpage.js@$LATEST_VERSION --save
+          npm run build
+          echo "Build test completed successfully with version $LATEST_VERSION"
+
+      - name: Revert changes if dry run
+        if: steps.compare-versions.outputs.update_needed == 'true' && github.event.inputs.dry_run == 'true'
+        run: |
+          echo "Reverting changes (dry run mode)..."
+          git checkout package.json package-lock.json
+          npm ci
+
+      - name: Create issue for manual review
+        if: steps.compare-versions.outputs.update_needed == 'true' && github.event.inputs.dry_run == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['fullpage-update']
+            });
+            
+            const existingIssue = issues.find(issue => 
+              issue.title.includes('fullPage.js update available')
+            );
+            
+            if (!existingIssue) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `fullPage.js update available: ${{ steps.current-version.outputs.current_version }} → ${{ steps.latest-version.outputs.latest_version }}`,
+                body: `## fullPage.js Update Available
+                
+                **Current version:** ${{ steps.current-version.outputs.current_version }}
+                **Latest version:** ${{ steps.latest-version.outputs.latest_version }}
+                
+                ### What to do:
+                1. Review the changes in fullPage.js
+                2. Test the build locally
+                3. If everything looks good, trigger the automatic update workflow
+                
+                ### Manual update steps:
+                \`\`\`bash
+                npm install fullpage.js@${{ steps.latest-version.outputs.latest_version }} --save
+                npm run build
+                \`\`\`
+                
+                ---
+                *This issue was created automatically by the GitHub Action.*`,
+                labels: ['fullpage-update', 'dependencies']
+              });
+            }
+
+      - name: Show final summary
+        run: |
+          echo "## 📋 Manual Check Summary"
+          echo ""
+          if [ "${{ steps.compare-versions.outputs.update_needed }}" = "true" ]; then
+            echo "✅ **Update Available**"
+            echo "Current: ${{ steps.current-version.outputs.current_version }}"
+            echo "Latest: ${{ steps.latest-version.outputs.latest_version }}"
+            echo ""
+            if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+              echo "🔍 **Dry Run Mode**"
+              echo "- Build test completed successfully"
+              echo "- Changes were reverted"
+              echo "- Issue created for manual review"
+              echo ""
+              echo "**Next steps:**"
+              echo "1. Review the created issue"
+              echo "2. Test locally if needed"
+              echo "3. Trigger the automatic update workflow when ready"
+            else
+              echo "⚠️ **Live Mode**"
+              echo "- No changes were made (this is a check-only workflow)"
+              echo "- Use the 'fullPage.js Update Check' workflow to apply updates"
+            fi
+          else
+            echo "✅ **No Update Needed**"
+            echo "Current version is up to date: ${{ steps.current-version.outputs.current_version }}"
+          fi 

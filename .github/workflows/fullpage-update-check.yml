@@ -1,0 +1,167 @@
+name: fullPage.js Update Check
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if versions are the same'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Get current fullPage.js version
+        id: current-version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').dependencies['fullpage.js']")
+          # Remove the ^ prefix for comparison
+          CURRENT_CLEAN=$(echo $CURRENT_VERSION | sed 's/^[^0-9]*//')
+          echo "current_version=${CURRENT_VERSION}" >> $GITHUB_OUTPUT
+          echo "current_clean=${CURRENT_CLEAN}" >> $GITHUB_OUTPUT
+          echo "Current fullPage.js version: $CURRENT_VERSION (clean: $CURRENT_CLEAN)"
+
+      - name: Get latest fullPage.js version from npm
+        id: latest-version
+        run: |
+          LATEST_VERSION=$(npm view fullpage.js version)
+          echo "latest_version=${LATEST_VERSION}" >> $GITHUB_OUTPUT
+          echo "Latest fullPage.js version: $LATEST_VERSION"
+
+      - name: Compare versions using semver
+        id: compare-versions
+        run: |
+          CURRENT_CLEAN="${{ steps.current-version.outputs.current_clean }}"
+          LATEST_VERSION="${{ steps.latest-version.outputs.latest_version }}"
+          
+          # Use npm's semver comparison
+          if npm semver $LATEST_VERSION --gt $CURRENT_CLEAN; then
+            echo "update_needed=true" >> $GITHUB_OUTPUT
+            echo "Update needed: $CURRENT_CLEAN -> $LATEST_VERSION"
+          else
+            echo "update_needed=false" >> $GITHUB_OUTPUT
+            echo "No update needed: $CURRENT_CLEAN >= $LATEST_VERSION"
+          fi
+
+      - name: Check if force update is requested
+        id: force-check
+        run: |
+          if [ "${{ github.event.inputs.force_update }}" = "true" ]; then
+            echo "force_update=true" >> $GITHUB_OUTPUT
+            echo "Force update requested"
+          else
+            echo "force_update=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Determine if update should proceed
+        id: should-update
+        run: |
+          if [ "${{ steps.compare-versions.outputs.update_needed }}" = "true" ] || [ "${{ steps.force-check.outputs.force_update }}" = "true" ]; then
+            echo "should_update=true" >> $GITHUB_OUTPUT
+            echo "Update will proceed"
+          else
+            echo "should_update=false" >> $GITHUB_OUTPUT
+            echo "No update needed"
+          fi
+
+      - name: Update fullPage.js dependency
+        if: steps.should-update.outputs.should_update == 'true'
+        run: |
+          LATEST_VERSION="${{ steps.latest-version.outputs.latest_version }}"
+          echo "Updating fullPage.js to version $LATEST_VERSION..."
+          npm install fullpage.js@$LATEST_VERSION --save
+          echo "Updated fullPage.js to version $LATEST_VERSION"
+
+      - name: Update package version
+        if: steps.should-update.outputs.should_update == 'true'
+        id: package-version
+        run: |
+          # Get current package version
+          CURRENT_PKG_VERSION=$(node -p "require('./package.json').version")
+          echo "Current package version: $CURRENT_PKG_VERSION"
+          
+          # Increment patch version
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_PKG_VERSION"
+          NEW_PATCH=$((VERSION_PARTS[2] + 1))
+          NEW_VERSION="${VERSION_PARTS[0]}.${VERSION_PARTS[1]}.$NEW_PATCH"
+          
+          # Update package.json version
+          npm version $NEW_VERSION --no-git-tag-version
+          echo "new_version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+          echo "Updated package version to: $NEW_VERSION"
+
+      - name: Build project
+        if: steps.should-update.outputs.should_update == 'true'
+        run: |
+          echo "Building project..."
+          npm run build
+          echo "Build completed successfully"
+
+      - name: Create Pull Request
+        if: steps.should-update.outputs.should_update == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/fullpage-${{ steps.latest-version.outputs.latest_version }}
+          title: "chore: update fullPage.js to ${{ steps.latest-version.outputs.latest_version }}"
+          body: |
+            ## fullPage.js Update
+            
+            **Current version:** ${{ steps.current-version.outputs.current_version }}
+            **New version:** ${{ steps.latest-version.outputs.latest_version }}
+            **Package version:** ${{ steps.package-version.outputs.new_version }}
+            
+            ### Changes made:
+            - Updated fullPage.js dependency to ${{ steps.latest-version.outputs.latest_version }}
+            - Incremented package version to ${{ steps.package-version.outputs.new_version }}
+            - Built project successfully
+            
+            ### What to do:
+            1. Review the changes
+            2. Test the build locally if needed
+            3. Merge when ready
+            
+            ---
+            *This PR was created automatically by the GitHub Action.*
+          commit-message: "chore: update fullPage.js to ${{ steps.latest-version.outputs.latest_version }}"
+          delete-branch: true
+          labels: |
+            dependencies
+            fullpage-update
+            automated
+
+      - name: Send notification on success
+        if: steps.should-update.outputs.should_update == 'true'
+        run: |
+          echo "## ✅ Update Completed Successfully"
+          echo "Updated fullPage.js from ${{ steps.current-version.outputs.current_version }} to ${{ steps.latest-version.outputs.latest_version }}"
+          echo "New package version: ${{ steps.package-version.outputs.new_version }}"
+          echo "Pull Request created for review"
+
+      - name: Send notification on no update
+        if: steps.should-update.outputs.should_update == 'false'
+        run: |
+          echo "## ℹ️ No Update Needed"
+          echo "Current fullPage.js version (${{ steps.current-version.outputs.current_version }}) is up to date"
+          echo "Latest available version: ${{ steps.latest-version.outputs.latest_version }}" 
