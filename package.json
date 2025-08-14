@@ -1,6 +1,6 @@
 {
   "name": "vue-fullpage.js",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Vue 3 wrapper for fullpage.js",
   "author": {
     "name": "Alvaro Trigo",
@@ -33,13 +33,15 @@
     "analyze": "vite build --config analyze.config.js",
     "publish": "npm publish --access public",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "update-fullpage": "npm install fullpage.js@latest && npm run build",
+    "check-fullpage": "npm outdated fullpage.js"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
   },
   "dependencies": {
-    "fullpage.js": "^4.0.32"
+    "fullpage.js": "^4.0.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
